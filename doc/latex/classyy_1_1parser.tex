@@ -1,0 +1,255 @@
+\hypertarget{classyy_1_1parser}{}\section{yy\+:\+:parser Class Reference}
+\label{classyy_1_1parser}\index{yy\+::parser@{yy\+::parser}}
+
+
+A Bison parser.  
+
+
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structyy_1_1parser_1_1basic__symbol}{basic\+\_\+symbol}
+\item 
+struct \hyperlink{structyy_1_1parser_1_1by__type}{by\+\_\+type}
+\begin{DoxyCompactList}\small\item\em Type access provider for token (enum) based symbols. \end{DoxyCompactList}\item 
+struct \hyperlink{structyy_1_1parser_1_1syntax__error}{syntax\+\_\+error}
+\begin{DoxyCompactList}\small\item\em Syntax errors thrown from user actions. \end{DoxyCompactList}\item 
+struct \hyperlink{structyy_1_1parser_1_1token}{token}
+\begin{DoxyCompactList}\small\item\em Tokens. \end{DoxyCompactList}\item 
+union \hyperlink{unionyy_1_1parser_1_1union__type}{union\+\_\+type}
+\begin{DoxyCompactList}\small\item\em An auxiliary type to compute the largest semantic type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classyy_1_1parser_a0ce15da9cf616a7197b81e6055428165}{}typedef \hyperlink{structyy_1_1variant}{variant}$<$ sizeof(\hyperlink{unionyy_1_1parser_1_1union__type}{union\+\_\+type})$>$ \hyperlink{classyy_1_1parser_a0ce15da9cf616a7197b81e6055428165}{semantic\+\_\+type}\label{classyy_1_1parser_a0ce15da9cf616a7197b81e6055428165}
+
+\begin{DoxyCompactList}\small\item\em Symbol semantic values. \end{DoxyCompactList}\item 
+\hypertarget{classyy_1_1parser_ac1ba3f834abfa251ea746c4ca8da5a85}{}typedef token\+::yytokentype \hyperlink{classyy_1_1parser_ac1ba3f834abfa251ea746c4ca8da5a85}{token\+\_\+type}\label{classyy_1_1parser_ac1ba3f834abfa251ea746c4ca8da5a85}
+
+\begin{DoxyCompactList}\small\item\em (External) token type, as returned by yylex. \end{DoxyCompactList}\item 
+\hypertarget{classyy_1_1parser_a522f5c6c3481d9285b0b991ac12292eb}{}typedef int \hyperlink{classyy_1_1parser_a522f5c6c3481d9285b0b991ac12292eb}{symbol\+\_\+number\+\_\+type}\label{classyy_1_1parser_a522f5c6c3481d9285b0b991ac12292eb}
+
+\begin{DoxyCompactList}\small\item\em Internal symbol number. \end{DoxyCompactList}\item 
+\hypertarget{classyy_1_1parser_a9e3963a210d7f2b655d87ca544223ead}{}typedef unsigned char \hyperlink{classyy_1_1parser_a9e3963a210d7f2b655d87ca544223ead}{token\+\_\+number\+\_\+type}\label{classyy_1_1parser_a9e3963a210d7f2b655d87ca544223ead}
+
+\begin{DoxyCompactList}\small\item\em Internal symbol number for tokens (subsumed by symbol\+\_\+number\+\_\+type). \end{DoxyCompactList}\item 
+\hypertarget{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{}typedef \hyperlink{structyy_1_1parser_1_1basic__symbol}{basic\+\_\+symbol}$<$ \hyperlink{structyy_1_1parser_1_1by__type}{by\+\_\+type} $>$ \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type}\label{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}
+
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+External\char`\"{} symbols\+: returned by the scanner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classyy_1_1parser_a933976dee016ee0623704a75a53551a4}{}\hyperlink{classyy_1_1parser_a933976dee016ee0623704a75a53551a4}{parser} ()\label{classyy_1_1parser_a933976dee016ee0623704a75a53551a4}
+
+\begin{DoxyCompactList}\small\item\em Build a parser object. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classyy_1_1parser_ac54cad6da907397a978922bfe246e6f8}{parse} ()
+\item 
+virtual void \hyperlink{classyy_1_1parser_a3a740797fdf8f0ea046b20ffbc6c3f08}{error} (const std\+::string \&msg)
+\item 
+\hypertarget{classyy_1_1parser_a55d4a04712e5fa9f33baed8f92b3eb05}{}void \hyperlink{classyy_1_1parser_a55d4a04712e5fa9f33baed8f92b3eb05}{error} (const \hyperlink{structyy_1_1parser_1_1syntax__error}{syntax\+\_\+error} \&err)\label{classyy_1_1parser_a55d4a04712e5fa9f33baed8f92b3eb05}
+
+\begin{DoxyCompactList}\small\item\em Report a syntax error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classyy_1_1parser_a81e92308791a1bb5818a69350c57eb64}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+E\+N\+D} ()\label{classyy_1_1parser_a81e92308791a1bb5818a69350c57eb64}
+
+\item 
+\hypertarget{classyy_1_1parser_a55a4c5d45240f82b77369fa3b571dae2}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+W\+S} (const std\+::string \&v)\label{classyy_1_1parser_a55a4c5d45240f82b77369fa3b571dae2}
+
+\item 
+\hypertarget{classyy_1_1parser_a00430dd1f2872b195d4f26b55d4dc247}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+N\+L} (const std\+::string \&v)\label{classyy_1_1parser_a00430dd1f2872b195d4f26b55d4dc247}
+
+\item 
+\hypertarget{classyy_1_1parser_a4f06945a1f3e56b0ef6f1ebce4f56ac3}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+S\+E\+M\+C\+O\+L} (const std\+::string \&v)\label{classyy_1_1parser_a4f06945a1f3e56b0ef6f1ebce4f56ac3}
+
+\item 
+\hypertarget{classyy_1_1parser_afc27fadcd2040afd65962227c95eb319}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+S\+T\+R} (const std\+::string \&v)\label{classyy_1_1parser_afc27fadcd2040afd65962227c95eb319}
+
+\item 
+\hypertarget{classyy_1_1parser_a67b23cf5a405a0c77675b466b31757ad}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+N\+U\+M} (const std\+::string \&v)\label{classyy_1_1parser_a67b23cf5a405a0c77675b466b31757ad}
+
+\item 
+\hypertarget{classyy_1_1parser_ab0e8d64df70680c7a13927b079dc542e}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+E\+Q} (const std\+::string \&v)\label{classyy_1_1parser_ab0e8d64df70680c7a13927b079dc542e}
+
+\item 
+\hypertarget{classyy_1_1parser_a92ec6d535c5d31568fd37e71202f2adc}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+C\+O\+M} (const std\+::string \&v)\label{classyy_1_1parser_a92ec6d535c5d31568fd37e71202f2adc}
+
+\item 
+\hypertarget{classyy_1_1parser_ad4b03c1614e972e1f08dfc5b471f013d}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+D\+O\+T} (const std\+::string \&v)\label{classyy_1_1parser_ad4b03c1614e972e1f08dfc5b471f013d}
+
+\item 
+\hypertarget{classyy_1_1parser_a91dc27700306811ea87daef1b866f660}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+C\+O\+L} (const std\+::string \&v)\label{classyy_1_1parser_a91dc27700306811ea87daef1b866f660}
+
+\item 
+\hypertarget{classyy_1_1parser_acfca90e6b9e5eb99b8488e93a9ba480b}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+B\+R\+K\+O\+P\+N} (const std\+::string \&v)\label{classyy_1_1parser_acfca90e6b9e5eb99b8488e93a9ba480b}
+
+\item 
+\hypertarget{classyy_1_1parser_a5850afd400e47d6c8b8c172f1b9aa774}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+B\+R\+K\+C\+L\+S} (const std\+::string \&v)\label{classyy_1_1parser_a5850afd400e47d6c8b8c172f1b9aa774}
+
+\item 
+\hypertarget{classyy_1_1parser_a528f91f197cd828d3642e16a8c09ad32}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+T\+R\+I\+D\+O\+T} (const std\+::string \&v)\label{classyy_1_1parser_a528f91f197cd828d3642e16a8c09ad32}
+
+\item 
+\hypertarget{classyy_1_1parser_ab6f468303e330c04415d1a4089f7a804}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+P\+A\+R\+O\+P\+N} (const std\+::string \&v)\label{classyy_1_1parser_ab6f468303e330c04415d1a4089f7a804}
+
+\item 
+\hypertarget{classyy_1_1parser_af399acfadd6ded6789f9c8407ed89d59}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+P\+A\+R\+C\+L\+S} (const std\+::string \&v)\label{classyy_1_1parser_af399acfadd6ded6789f9c8407ed89d59}
+
+\item 
+\hypertarget{classyy_1_1parser_a368161036e383970c578fba038cee70a}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+C\+U\+R\+O\+P\+N} (const std\+::string \&v)\label{classyy_1_1parser_a368161036e383970c578fba038cee70a}
+
+\item 
+\hypertarget{classyy_1_1parser_a040e1dd54e2cf8da62e96f05d8c7dff0}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+C\+U\+R\+C\+L\+S} (const std\+::string \&v)\label{classyy_1_1parser_a040e1dd54e2cf8da62e96f05d8c7dff0}
+
+\item 
+\hypertarget{classyy_1_1parser_ad887bb2f45829f6766a1d6eb2e2a6d4b}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+N\+A\+M\+E} (const std\+::string \&v)\label{classyy_1_1parser_ad887bb2f45829f6766a1d6eb2e2a6d4b}
+
+\item 
+\hypertarget{classyy_1_1parser_a8e4e0d65ae0914b51d44ca771c46f4f9}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+P\+L\+U\+S} (const std\+::string \&v)\label{classyy_1_1parser_a8e4e0d65ae0914b51d44ca771c46f4f9}
+
+\item 
+\hypertarget{classyy_1_1parser_a615ece3190faf75067f3d057c1dd7cc3}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+M\+I\+N\+U\+S} (const std\+::string \&v)\label{classyy_1_1parser_a615ece3190faf75067f3d057c1dd7cc3}
+
+\item 
+\hypertarget{classyy_1_1parser_a78e6a2518f98a7e9833fd3579f8ecf09}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+M\+U\+L\+T} (const std\+::string \&v)\label{classyy_1_1parser_a78e6a2518f98a7e9833fd3579f8ecf09}
+
+\item 
+\hypertarget{classyy_1_1parser_acd2d63f972f6417514391222d58df642}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+D\+I\+V} (const std\+::string \&v)\label{classyy_1_1parser_acd2d63f972f6417514391222d58df642}
+
+\item 
+\hypertarget{classyy_1_1parser_a236dce84b313461a9b7ad10edfb9f7a5}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+P\+O\+W} (const std\+::string \&v)\label{classyy_1_1parser_a236dce84b313461a9b7ad10edfb9f7a5}
+
+\item 
+\hypertarget{classyy_1_1parser_abbd6d3c45242df16cd0ff1cf3775e438}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+M\+O\+D} (const std\+::string \&v)\label{classyy_1_1parser_abbd6d3c45242df16cd0ff1cf3775e438}
+
+\item 
+\hypertarget{classyy_1_1parser_a3c353a6cb33fbd29456e79d1dc4533b3}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+D\+D\+O\+T} (const std\+::string \&v)\label{classyy_1_1parser_a3c353a6cb33fbd29456e79d1dc4533b3}
+
+\item 
+\hypertarget{classyy_1_1parser_a4871d4b2f0b101c87a52878c8276c8f0}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+L\+E\+S\+S} (const std\+::string \&v)\label{classyy_1_1parser_a4871d4b2f0b101c87a52878c8276c8f0}
+
+\item 
+\hypertarget{classyy_1_1parser_abc57145f67e051c1a1a171b7289aa6a1}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+G\+R\+E\+A\+T} (const std\+::string \&v)\label{classyy_1_1parser_abc57145f67e051c1a1a171b7289aa6a1}
+
+\item 
+\hypertarget{classyy_1_1parser_a25eab02b1061a9e5fa492731150be864}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+L\+E\+S\+S\+E\+Q} (const std\+::string \&v)\label{classyy_1_1parser_a25eab02b1061a9e5fa492731150be864}
+
+\item 
+\hypertarget{classyy_1_1parser_ab0bb07afd77a97aebb52b0629df1bf29}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+G\+R\+E\+A\+T\+E\+Q} (const std\+::string \&v)\label{classyy_1_1parser_ab0bb07afd77a97aebb52b0629df1bf29}
+
+\item 
+\hypertarget{classyy_1_1parser_aa54c7fba2d0bb407a79b93ec53a58742}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+E\+Q\+E\+Q} (const std\+::string \&v)\label{classyy_1_1parser_aa54c7fba2d0bb407a79b93ec53a58742}
+
+\item 
+\hypertarget{classyy_1_1parser_ab435bf3bf0d19d93cb10782e4b1c60f9}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+N\+O\+T\+E\+Q} (const std\+::string \&v)\label{classyy_1_1parser_ab435bf3bf0d19d93cb10782e4b1c60f9}
+
+\item 
+\hypertarget{classyy_1_1parser_ac39bfee36cdc261d0b757e009a93cbee}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+A\+N\+D} (const std\+::string \&v)\label{classyy_1_1parser_ac39bfee36cdc261d0b757e009a93cbee}
+
+\item 
+\hypertarget{classyy_1_1parser_a6a595c290f27b08321ff5643bcf13dd3}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+O\+R} (const std\+::string \&v)\label{classyy_1_1parser_a6a595c290f27b08321ff5643bcf13dd3}
+
+\item 
+\hypertarget{classyy_1_1parser_afa141be1011c14c513680a8505c08bca}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+N\+O\+T} (const std\+::string \&v)\label{classyy_1_1parser_afa141be1011c14c513680a8505c08bca}
+
+\item 
+\hypertarget{classyy_1_1parser_aa582630135b6dc45898ca26c6fc57fc7}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+H\+A\+S\+H} (const std\+::string \&v)\label{classyy_1_1parser_aa582630135b6dc45898ca26c6fc57fc7}
+
+\item 
+\hypertarget{classyy_1_1parser_a07401233615916ab6f8bc300daaa90a3}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+W\+H\+I\+L\+E} (const std\+::string \&v)\label{classyy_1_1parser_a07401233615916ab6f8bc300daaa90a3}
+
+\item 
+\hypertarget{classyy_1_1parser_ae837e78205e71449eab62b1261c7a63e}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+F\+O\+R} (const std\+::string \&v)\label{classyy_1_1parser_ae837e78205e71449eab62b1261c7a63e}
+
+\item 
+\hypertarget{classyy_1_1parser_a6f709042bfae6b3b2918c550ff71e7eb}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+D\+O} (const std\+::string \&v)\label{classyy_1_1parser_a6f709042bfae6b3b2918c550ff71e7eb}
+
+\item 
+\hypertarget{classyy_1_1parser_a89aaad5b9f0453884591f663d75e3b10}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+I\+F} (const std\+::string \&v)\label{classyy_1_1parser_a89aaad5b9f0453884591f663d75e3b10}
+
+\item 
+\hypertarget{classyy_1_1parser_a44bc492a1e5eee13087d5a4eea27afd1}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+E\+L\+S\+E} (const std\+::string \&v)\label{classyy_1_1parser_a44bc492a1e5eee13087d5a4eea27afd1}
+
+\item 
+\hypertarget{classyy_1_1parser_a5b8d9189b5da6bdbdf2a0c7df5c7d0e3}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+E\+L\+S\+E\+I\+F} (const std\+::string \&v)\label{classyy_1_1parser_a5b8d9189b5da6bdbdf2a0c7df5c7d0e3}
+
+\item 
+\hypertarget{classyy_1_1parser_a0bfc86c8d296064954b9c085e8595039}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+T\+H\+E\+N} (const std\+::string \&v)\label{classyy_1_1parser_a0bfc86c8d296064954b9c085e8595039}
+
+\item 
+\hypertarget{classyy_1_1parser_ab6186195479cb5428989e5495219077b}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+R\+E\+T\+U\+R\+N} (const std\+::string \&v)\label{classyy_1_1parser_ab6186195479cb5428989e5495219077b}
+
+\item 
+\hypertarget{classyy_1_1parser_aff7385b20e837f94a019dbbf5e324294}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+B\+R\+E\+A\+K} (const std\+::string \&v)\label{classyy_1_1parser_aff7385b20e837f94a019dbbf5e324294}
+
+\item 
+\hypertarget{classyy_1_1parser_a0f13ec350f0cb23e8cf26fe9bd012d48}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+\_\+\+F\+A\+L\+S\+E} (const std\+::string \&v)\label{classyy_1_1parser_a0f13ec350f0cb23e8cf26fe9bd012d48}
+
+\item 
+\hypertarget{classyy_1_1parser_a611f5f3bd09007331b241987c504cc9f}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+\_\+\+T\+R\+U\+E} (const std\+::string \&v)\label{classyy_1_1parser_a611f5f3bd09007331b241987c504cc9f}
+
+\item 
+\hypertarget{classyy_1_1parser_a191e22c1989a6686978c0d3cd892d420}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+\_\+\+E\+N\+D} (const std\+::string \&v)\label{classyy_1_1parser_a191e22c1989a6686978c0d3cd892d420}
+
+\item 
+\hypertarget{classyy_1_1parser_ac3ae3318cdeb263113e958df72f6891b}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+I\+N} (const std\+::string \&v)\label{classyy_1_1parser_ac3ae3318cdeb263113e958df72f6891b}
+
+\item 
+\hypertarget{classyy_1_1parser_adca28b46143c93bcf6a15d6f2f19c26e}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+L\+O\+C\+A\+L} (const std\+::string \&v)\label{classyy_1_1parser_adca28b46143c93bcf6a15d6f2f19c26e}
+
+\item 
+\hypertarget{classyy_1_1parser_aca54532ab251e0b46fe7ee581d75edf9}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+N\+I\+L} (const std\+::string \&v)\label{classyy_1_1parser_aca54532ab251e0b46fe7ee581d75edf9}
+
+\item 
+\hypertarget{classyy_1_1parser_aaa001cb07460543d57b4638fab36e20f}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+R\+E\+P} (const std\+::string \&v)\label{classyy_1_1parser_aaa001cb07460543d57b4638fab36e20f}
+
+\item 
+\hypertarget{classyy_1_1parser_a2934454169abd544ad974913ba6f923f}{}static \hyperlink{classyy_1_1parser_aa8024edbba983aa5cd3e88c3a4dcacc9}{symbol\+\_\+type} {\bfseries make\+\_\+\+U\+N\+T\+I\+L} (const std\+::string \&v)\label{classyy_1_1parser_a2934454169abd544ad974913ba6f923f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Bison parser. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classyy_1_1parser_a3a740797fdf8f0ea046b20ffbc6c3f08}{}\index{yy\+::parser@{yy\+::parser}!error@{error}}
+\index{error@{error}!yy\+::parser@{yy\+::parser}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}void yy\+::parser\+::error (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{msg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classyy_1_1parser_a3a740797fdf8f0ea046b20ffbc6c3f08}
+Report a syntax error. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & a description of the syntax error. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classyy_1_1parser_ac54cad6da907397a978922bfe246e6f8}{}\index{yy\+::parser@{yy\+::parser}!parse@{parse}}
+\index{parse@{parse}!yy\+::parser@{yy\+::parser}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}int yy\+::parser\+::parse (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classyy_1_1parser_ac54cad6da907397a978922bfe246e6f8}
+Parse. \begin{DoxyReturn}{Returns}
+0 iff parsing succeeded. 
+\end{DoxyReturn}
+Whether yyla contains a lookahead.
+
+Length of the R\+H\+S of the rule being reduced.
+
+The lookahead symbol.
+
+The return value of parse (). 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{parser_8h}{parser.\+h}\item 
+src/main.\+cpp\item 
+src/parser.\+cpp\end{DoxyCompactItemize}
