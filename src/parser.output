@@ -1,0 +1,2478 @@
+Terminals unused in grammar
+
+   WS
+   NL
+
+
+State 0 conflicts: 1 reduce/reduce
+State 9 conflicts: 1 reduce/reduce
+State 14 conflicts: 1 reduce/reduce
+State 20 conflicts: 1 reduce/reduce
+State 35 conflicts: 1 shift/reduce
+State 92 conflicts: 15 shift/reduce
+State 95 conflicts: 1 reduce/reduce
+State 97 conflicts: 1 shift/reduce
+State 100 conflicts: 3 reduce/reduce
+State 120 conflicts: 15 shift/reduce
+State 145 conflicts: 1 reduce/reduce
+State 151 conflicts: 1 reduce/reduce
+State 159 conflicts: 1 reduce/reduce
+State 171 conflicts: 1 reduce/reduce
+State 172 conflicts: 3 reduce/reduce
+
+
+Grammar
+
+    0 $accept: chunk "end of file"
+
+    1 chunk: %empty
+    2      | rep_stat opt_laststat
+
+    3 block: chunk
+
+    4 stat: varlist EQ explist
+    5     | functioncall
+    6     | DO block _END
+    7     | WHILE exp DO block _END
+    8     | REP block UNTIL exp
+    9     | IF exp THEN block rep_elseif opt_else _END
+   10     | FOR NAME EQ exp COM exp opt_exp DO block _END
+   11     | FOR namelist IN explist DO block _END
+   12     | FUNC funcname funcbody
+   13     | LOCAL FUNC NAME funcbody
+   14     | LOCAL namelist opt_eq
+
+   15 laststat: RETURN opt_explist
+   16         | BREAK
+
+   17 funcname: NAME rep_func_name opt_name
+
+   18 varlist: var rep_var
+
+   19 var: NAME
+   20    | prefixexp BRKOPN exp BRKCLS
+   21    | prefixexp DOT NAME
+
+   22 namelist: NAME rep_list_name
+
+   23 explist: rep_exp exp
+
+   24 exp: NIL
+   25    | _FALSE
+   26    | _TRUE
+   27    | NUM
+   28    | STR
+   29    | TRIDOT
+   30    | function
+   31    | prefixexp
+   32    | tableconstructor
+   33    | exp binop exp
+   34    | unop exp
+
+   35 prefixexp: var
+   36          | functioncall
+   37          | PAROPN exp PARCLS
+
+   38 functioncall: prefixexp args
+   39             | prefixexp COL NAME args
+
+   40 args: PAROPN opt_explist PARCLS
+   41     | tableconstructor
+   42     | STR
+
+   43 function: FUNC funcbody
+
+   44 funcbody: PAROPN opt_parlist PARCLS block _END
+
+   45 parlist: namelist opt_tridot
+   46        | TRIDOT
+
+   47 tableconstructor: CUROPN opt_fieldlist CURCLS
+
+   48 fieldlist: field rep_field opt_fieldsep
+
+   49 field: BRKOPN exp BRKCLS EQ exp
+   50      | NAME EQ exp
+   51      | exp
+
+   52 fieldsep: COM
+   53         | SEMCOL
+
+   54 binop: PLUS
+   55      | MINUS
+   56      | DIV
+   57      | MULT
+   58      | POW
+   59      | MOD
+   60      | DDOT
+   61      | LESS
+   62      | LESSEQ
+   63      | GREAT
+   64      | GREATEQ
+   65      | EQEQ
+   66      | NOTEQ
+   67      | AND
+   68      | OR
+
+   69 unop: MINUS
+   70     | NOT
+   71     | HASH
+
+   72 rep_func_name: %empty
+   73              | rep_func_name DOT NAME
+
+   74 rep_var: %empty
+   75        | rep_var COM var
+
+   76 rep_list_name: %empty
+   77              | rep_list_name COM NAME
+
+   78 rep_exp: %empty
+   79        | rep_exp exp COM
+
+   80 rep_elseif: %empty
+   81           | rep_elseif ELSEIF exp THEN block
+
+   82 rep_stat: %empty
+   83         | rep_stat stat opt_semi
+
+   84 rep_field: %empty
+   85          | rep_field fieldsep field
+
+   86 opt_explist: %empty
+   87            | explist
+
+   88 opt_parlist: %empty
+   89            | parlist
+
+   90 opt_name: %empty
+   91         | COL NAME
+
+   92 opt_tridot: %empty
+   93           | COM TRIDOT
+
+   94 opt_fieldlist: %empty
+   95              | fieldlist
+
+   96 opt_fieldsep: %empty
+   97             | fieldsep
+
+   98 opt_semi: %empty
+   99         | SEMCOL
+
+  100 opt_laststat: %empty
+  101             | laststat opt_semi
+
+  102 opt_exp: %empty
+  103        | COM exp
+
+  104 opt_else: %empty
+  105         | ELSE block
+
+  106 opt_eq: %empty
+  107       | EQ explist
+
+
+Terminals, with rules where they appear
+
+"end of file" (0) 0
+error (256)
+WS (258)
+NL (259)
+SEMCOL (260) 53 99
+STR (261) 28 42
+NUM (262) 27
+EQ (263) 4 10 49 50 107
+COM (264) 10 52 75 77 79 93 103
+DOT (265) 21 73
+COL (266) 39 91
+BRKOPN (267) 20 49
+BRKCLS (268) 20 49
+TRIDOT (269) 29 46 93
+PAROPN (270) 37 40 44
+PARCLS (271) 37 40 44
+CUROPN (272) 47
+CURCLS (273) 47
+NAME (274) 10 13 17 19 21 22 39 50 73 77 91
+FUNC (275) 12 13 43
+WHILE (276) 7
+FOR (277) 10 11
+DO (278) 6 7 10 11
+IF (279) 9
+ELSE (280) 105
+ELSEIF (281) 81
+THEN (282) 9 81
+RETURN (283) 15
+BREAK (284) 16
+_FALSE (285) 25
+_TRUE (286) 26
+_END (287) 6 7 9 10 11 44
+IN (288) 11
+LOCAL (289) 13 14
+NIL (290) 24
+REP (291) 8
+UNTIL (292) 8
+DDOT (293) 60
+HASH (294) 71
+LESS (295) 61
+GREAT (296) 63
+LESSEQ (297) 62
+GREATEQ (298) 64
+EQEQ (299) 65
+NOTEQ (300) 66
+AND (301) 67
+OR (302) 68
+NOT (303) 70
+PLUS (304) 54
+MINUS (305) 55 69
+MULT (306) 57
+DIV (307) 56
+POW (308) 58
+MOD (309) 59
+
+
+Nonterminals, with rules where they appear
+
+$accept (55)
+    on left: 0
+chunk (56)
+    on left: 1 2, on right: 0 3
+block (57)
+    on left: 3, on right: 6 7 8 9 10 11 44 81 105
+stat (58)
+    on left: 4 5 6 7 8 9 10 11 12 13 14, on right: 83
+laststat (59)
+    on left: 15 16, on right: 101
+funcname (60)
+    on left: 17, on right: 12
+varlist (61)
+    on left: 18, on right: 4
+var (62)
+    on left: 19 20 21, on right: 18 35 75
+namelist (63)
+    on left: 22, on right: 11 14 45
+explist (64)
+    on left: 23, on right: 4 11 87 107
+exp (65)
+    on left: 24 25 26 27 28 29 30 31 32 33 34, on right: 7 8 9 10 20
+    23 33 34 37 49 50 51 79 81 103
+prefixexp (66)
+    on left: 35 36 37, on right: 20 21 31 38 39
+functioncall (67)
+    on left: 38 39, on right: 5 36
+args (68)
+    on left: 40 41 42, on right: 38 39
+function (69)
+    on left: 43, on right: 30
+funcbody (70)
+    on left: 44, on right: 12 13 43
+parlist (71)
+    on left: 45 46, on right: 89
+tableconstructor (72)
+    on left: 47, on right: 32 41
+fieldlist (73)
+    on left: 48, on right: 95
+field (74)
+    on left: 49 50 51, on right: 48 85
+fieldsep (75)
+    on left: 52 53, on right: 85 97
+binop (76)
+    on left: 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68, on right:
+    33
+unop (77)
+    on left: 69 70 71, on right: 34
+rep_func_name (78)
+    on left: 72 73, on right: 17 73
+rep_var (79)
+    on left: 74 75, on right: 18 75
+rep_list_name (80)
+    on left: 76 77, on right: 22 77
+rep_exp (81)
+    on left: 78 79, on right: 23 79
+rep_elseif (82)
+    on left: 80 81, on right: 9 81
+rep_stat (83)
+    on left: 82 83, on right: 2 83
+rep_field (84)
+    on left: 84 85, on right: 48 85
+opt_explist (85)
+    on left: 86 87, on right: 15 40
+opt_parlist (86)
+    on left: 88 89, on right: 44
+opt_name (87)
+    on left: 90 91, on right: 17
+opt_tridot (88)
+    on left: 92 93, on right: 45
+opt_fieldlist (89)
+    on left: 94 95, on right: 47
+opt_fieldsep (90)
+    on left: 96 97, on right: 48
+opt_semi (91)
+    on left: 98 99, on right: 83 101
+opt_laststat (92)
+    on left: 100 101, on right: 2
+opt_exp (93)
+    on left: 102 103, on right: 10
+opt_else (94)
+    on left: 104 105, on right: 9
+opt_eq (95)
+    on left: 106 107, on right: 14
+
+
+State 0
+
+    0 $accept: . chunk "end of file"
+
+    "end of file"  reduce using rule 1 (chunk)
+    "end of file"  [reduce using rule 82 (rep_stat)]
+    $default       reduce using rule 82 (rep_stat)
+
+    chunk     go to state 1
+    rep_stat  go to state 2
+
+
+State 1
+
+    0 $accept: chunk . "end of file"
+
+    "end of file"  shift, and go to state 3
+
+
+State 2
+
+    2 chunk: rep_stat . opt_laststat
+   83 rep_stat: rep_stat . stat opt_semi
+
+    PAROPN  shift, and go to state 4
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 6
+    WHILE   shift, and go to state 7
+    FOR     shift, and go to state 8
+    DO      shift, and go to state 9
+    IF      shift, and go to state 10
+    RETURN  shift, and go to state 11
+    BREAK   shift, and go to state 12
+    LOCAL   shift, and go to state 13
+    REP     shift, and go to state 14
+
+    $default  reduce using rule 100 (opt_laststat)
+
+    stat          go to state 15
+    laststat      go to state 16
+    varlist       go to state 17
+    var           go to state 18
+    prefixexp     go to state 19
+    functioncall  go to state 20
+    opt_laststat  go to state 21
+
+
+State 3
+
+    0 $accept: chunk "end of file" .
+
+    $default  accept
+
+
+State 4
+
+   37 prefixexp: PAROPN . exp PARCLS
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 34
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 5
+
+   19 var: NAME .
+
+    $default  reduce using rule 19 (var)
+
+
+State 6
+
+   12 stat: FUNC . funcname funcbody
+
+    NAME  shift, and go to state 40
+
+    funcname  go to state 41
+
+
+State 7
+
+    7 stat: WHILE . exp DO block _END
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 42
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 8
+
+   10 stat: FOR . NAME EQ exp COM exp opt_exp DO block _END
+   11     | FOR . namelist IN explist DO block _END
+
+    NAME  shift, and go to state 43
+
+    namelist  go to state 44
+
+
+State 9
+
+    6 stat: DO . block _END
+
+    _END      reduce using rule 1 (chunk)
+    _END      [reduce using rule 82 (rep_stat)]
+    $default  reduce using rule 82 (rep_stat)
+
+    chunk     go to state 45
+    block     go to state 46
+    rep_stat  go to state 2
+
+
+State 10
+
+    9 stat: IF . exp THEN block rep_elseif opt_else _END
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 47
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 11
+
+   15 laststat: RETURN . opt_explist
+
+    "end of file"  reduce using rule 86 (opt_explist)
+    SEMCOL         reduce using rule 86 (opt_explist)
+    ELSE           reduce using rule 86 (opt_explist)
+    ELSEIF         reduce using rule 86 (opt_explist)
+    _END           reduce using rule 86 (opt_explist)
+    UNTIL          reduce using rule 86 (opt_explist)
+    $default       reduce using rule 78 (rep_exp)
+
+    explist      go to state 48
+    rep_exp      go to state 49
+    opt_explist  go to state 50
+
+
+State 12
+
+   16 laststat: BREAK .
+
+    $default  reduce using rule 16 (laststat)
+
+
+State 13
+
+   13 stat: LOCAL . FUNC NAME funcbody
+   14     | LOCAL . namelist opt_eq
+
+    NAME  shift, and go to state 51
+    FUNC  shift, and go to state 52
+
+    namelist  go to state 53
+
+
+State 14
+
+    8 stat: REP . block UNTIL exp
+
+    UNTIL     reduce using rule 1 (chunk)
+    UNTIL     [reduce using rule 82 (rep_stat)]
+    $default  reduce using rule 82 (rep_stat)
+
+    chunk     go to state 45
+    block     go to state 54
+    rep_stat  go to state 2
+
+
+State 15
+
+   83 rep_stat: rep_stat stat . opt_semi
+
+    SEMCOL  shift, and go to state 55
+
+    $default  reduce using rule 98 (opt_semi)
+
+    opt_semi  go to state 56
+
+
+State 16
+
+  101 opt_laststat: laststat . opt_semi
+
+    SEMCOL  shift, and go to state 55
+
+    $default  reduce using rule 98 (opt_semi)
+
+    opt_semi  go to state 57
+
+
+State 17
+
+    4 stat: varlist . EQ explist
+
+    EQ  shift, and go to state 58
+
+
+State 18
+
+   18 varlist: var . rep_var
+   35 prefixexp: var .
+
+    EQ        reduce using rule 74 (rep_var)
+    COM       reduce using rule 74 (rep_var)
+    $default  reduce using rule 35 (prefixexp)
+
+    rep_var  go to state 59
+
+
+State 19
+
+   20 var: prefixexp . BRKOPN exp BRKCLS
+   21    | prefixexp . DOT NAME
+   38 functioncall: prefixexp . args
+   39             | prefixexp . COL NAME args
+
+    STR     shift, and go to state 60
+    DOT     shift, and go to state 61
+    COL     shift, and go to state 62
+    BRKOPN  shift, and go to state 63
+    PAROPN  shift, and go to state 64
+    CUROPN  shift, and go to state 25
+
+    args              go to state 65
+    tableconstructor  go to state 66
+
+
+State 20
+
+    5 stat: functioncall .
+   36 prefixexp: functioncall .
+
+    STR       reduce using rule 36 (prefixexp)
+    DOT       reduce using rule 36 (prefixexp)
+    COL       reduce using rule 36 (prefixexp)
+    BRKOPN    reduce using rule 36 (prefixexp)
+    PAROPN    reduce using rule 5 (stat)
+    PAROPN    [reduce using rule 36 (prefixexp)]
+    CUROPN    reduce using rule 36 (prefixexp)
+    $default  reduce using rule 5 (stat)
+
+
+State 21
+
+    2 chunk: rep_stat opt_laststat .
+
+    $default  reduce using rule 2 (chunk)
+
+
+State 22
+
+   28 exp: STR .
+
+    $default  reduce using rule 28 (exp)
+
+
+State 23
+
+   27 exp: NUM .
+
+    $default  reduce using rule 27 (exp)
+
+
+State 24
+
+   29 exp: TRIDOT .
+
+    $default  reduce using rule 29 (exp)
+
+
+State 25
+
+   47 tableconstructor: CUROPN . opt_fieldlist CURCLS
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    BRKOPN  shift, and go to state 67
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 68
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    $default  reduce using rule 94 (opt_fieldlist)
+
+    var               go to state 33
+    exp               go to state 69
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    fieldlist         go to state 70
+    field             go to state 71
+    unop              go to state 39
+    opt_fieldlist     go to state 72
+
+
+State 26
+
+   43 function: FUNC . funcbody
+
+    PAROPN  shift, and go to state 73
+
+    funcbody  go to state 74
+
+
+State 27
+
+   25 exp: _FALSE .
+
+    $default  reduce using rule 25 (exp)
+
+
+State 28
+
+   26 exp: _TRUE .
+
+    $default  reduce using rule 26 (exp)
+
+
+State 29
+
+   24 exp: NIL .
+
+    $default  reduce using rule 24 (exp)
+
+
+State 30
+
+   71 unop: HASH .
+
+    $default  reduce using rule 71 (unop)
+
+
+State 31
+
+   70 unop: NOT .
+
+    $default  reduce using rule 70 (unop)
+
+
+State 32
+
+   69 unop: MINUS .
+
+    $default  reduce using rule 69 (unop)
+
+
+State 33
+
+   35 prefixexp: var .
+
+    $default  reduce using rule 35 (prefixexp)
+
+
+State 34
+
+   33 exp: exp . binop exp
+   37 prefixexp: PAROPN exp . PARCLS
+
+    PARCLS   shift, and go to state 75
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    binop  go to state 91
+
+
+State 35
+
+   20 var: prefixexp . BRKOPN exp BRKCLS
+   21    | prefixexp . DOT NAME
+   31 exp: prefixexp .
+   38 functioncall: prefixexp . args
+   39             | prefixexp . COL NAME args
+
+    STR     shift, and go to state 60
+    DOT     shift, and go to state 61
+    COL     shift, and go to state 62
+    BRKOPN  shift, and go to state 63
+    PAROPN  shift, and go to state 64
+    CUROPN  shift, and go to state 25
+
+    PAROPN    [reduce using rule 31 (exp)]
+    $default  reduce using rule 31 (exp)
+
+    args              go to state 65
+    tableconstructor  go to state 66
+
+
+State 36
+
+   36 prefixexp: functioncall .
+
+    $default  reduce using rule 36 (prefixexp)
+
+
+State 37
+
+   30 exp: function .
+
+    $default  reduce using rule 30 (exp)
+
+
+State 38
+
+   32 exp: tableconstructor .
+
+    $default  reduce using rule 32 (exp)
+
+
+State 39
+
+   34 exp: unop . exp
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 92
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 40
+
+   17 funcname: NAME . rep_func_name opt_name
+
+    $default  reduce using rule 72 (rep_func_name)
+
+    rep_func_name  go to state 93
+
+
+State 41
+
+   12 stat: FUNC funcname . funcbody
+
+    PAROPN  shift, and go to state 73
+
+    funcbody  go to state 94
+
+
+State 42
+
+    7 stat: WHILE exp . DO block _END
+   33 exp: exp . binop exp
+
+    DO       shift, and go to state 95
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    binop  go to state 91
+
+
+State 43
+
+   10 stat: FOR NAME . EQ exp COM exp opt_exp DO block _END
+   22 namelist: NAME . rep_list_name
+
+    EQ  shift, and go to state 96
+
+    $default  reduce using rule 76 (rep_list_name)
+
+    rep_list_name  go to state 97
+
+
+State 44
+
+   11 stat: FOR namelist . IN explist DO block _END
+
+    IN  shift, and go to state 98
+
+
+State 45
+
+    3 block: chunk .
+
+    $default  reduce using rule 3 (block)
+
+
+State 46
+
+    6 stat: DO block . _END
+
+    _END  shift, and go to state 99
+
+
+State 47
+
+    9 stat: IF exp . THEN block rep_elseif opt_else _END
+   33 exp: exp . binop exp
+
+    THEN     shift, and go to state 100
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    binop  go to state 91
+
+
+State 48
+
+   87 opt_explist: explist .
+
+    $default  reduce using rule 87 (opt_explist)
+
+
+State 49
+
+   23 explist: rep_exp . exp
+   79 rep_exp: rep_exp . exp COM
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 101
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 50
+
+   15 laststat: RETURN opt_explist .
+
+    $default  reduce using rule 15 (laststat)
+
+
+State 51
+
+   22 namelist: NAME . rep_list_name
+
+    $default  reduce using rule 76 (rep_list_name)
+
+    rep_list_name  go to state 97
+
+
+State 52
+
+   13 stat: LOCAL FUNC . NAME funcbody
+
+    NAME  shift, and go to state 102
+
+
+State 53
+
+   14 stat: LOCAL namelist . opt_eq
+
+    EQ  shift, and go to state 103
+
+    $default  reduce using rule 106 (opt_eq)
+
+    opt_eq  go to state 104
+
+
+State 54
+
+    8 stat: REP block . UNTIL exp
+
+    UNTIL  shift, and go to state 105
+
+
+State 55
+
+   99 opt_semi: SEMCOL .
+
+    $default  reduce using rule 99 (opt_semi)
+
+
+State 56
+
+   83 rep_stat: rep_stat stat opt_semi .
+
+    $default  reduce using rule 83 (rep_stat)
+
+
+State 57
+
+  101 opt_laststat: laststat opt_semi .
+
+    $default  reduce using rule 101 (opt_laststat)
+
+
+State 58
+
+    4 stat: varlist EQ . explist
+
+    $default  reduce using rule 78 (rep_exp)
+
+    explist  go to state 106
+    rep_exp  go to state 49
+
+
+State 59
+
+   18 varlist: var rep_var .
+   75 rep_var: rep_var . COM var
+
+    COM  shift, and go to state 107
+
+    $default  reduce using rule 18 (varlist)
+
+
+State 60
+
+   42 args: STR .
+
+    $default  reduce using rule 42 (args)
+
+
+State 61
+
+   21 var: prefixexp DOT . NAME
+
+    NAME  shift, and go to state 108
+
+
+State 62
+
+   39 functioncall: prefixexp COL . NAME args
+
+    NAME  shift, and go to state 109
+
+
+State 63
+
+   20 var: prefixexp BRKOPN . exp BRKCLS
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 110
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 64
+
+   40 args: PAROPN . opt_explist PARCLS
+
+    PARCLS    reduce using rule 86 (opt_explist)
+    $default  reduce using rule 78 (rep_exp)
+
+    explist      go to state 48
+    rep_exp      go to state 49
+    opt_explist  go to state 111
+
+
+State 65
+
+   38 functioncall: prefixexp args .
+
+    $default  reduce using rule 38 (functioncall)
+
+
+State 66
+
+   41 args: tableconstructor .
+
+    $default  reduce using rule 41 (args)
+
+
+State 67
+
+   49 field: BRKOPN . exp BRKCLS EQ exp
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 112
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 68
+
+   19 var: NAME .
+   50 field: NAME . EQ exp
+
+    EQ  shift, and go to state 113
+
+    $default  reduce using rule 19 (var)
+
+
+State 69
+
+   33 exp: exp . binop exp
+   51 field: exp .
+
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    $default  reduce using rule 51 (field)
+
+    binop  go to state 91
+
+
+State 70
+
+   95 opt_fieldlist: fieldlist .
+
+    $default  reduce using rule 95 (opt_fieldlist)
+
+
+State 71
+
+   48 fieldlist: field . rep_field opt_fieldsep
+
+    $default  reduce using rule 84 (rep_field)
+
+    rep_field  go to state 114
+
+
+State 72
+
+   47 tableconstructor: CUROPN opt_fieldlist . CURCLS
+
+    CURCLS  shift, and go to state 115
+
+
+State 73
+
+   44 funcbody: PAROPN . opt_parlist PARCLS block _END
+
+    TRIDOT  shift, and go to state 116
+    NAME    shift, and go to state 51
+
+    $default  reduce using rule 88 (opt_parlist)
+
+    namelist     go to state 117
+    parlist      go to state 118
+    opt_parlist  go to state 119
+
+
+State 74
+
+   43 function: FUNC funcbody .
+
+    $default  reduce using rule 43 (function)
+
+
+State 75
+
+   37 prefixexp: PAROPN exp PARCLS .
+
+    $default  reduce using rule 37 (prefixexp)
+
+
+State 76
+
+   60 binop: DDOT .
+
+    $default  reduce using rule 60 (binop)
+
+
+State 77
+
+   61 binop: LESS .
+
+    $default  reduce using rule 61 (binop)
+
+
+State 78
+
+   63 binop: GREAT .
+
+    $default  reduce using rule 63 (binop)
+
+
+State 79
+
+   62 binop: LESSEQ .
+
+    $default  reduce using rule 62 (binop)
+
+
+State 80
+
+   64 binop: GREATEQ .
+
+    $default  reduce using rule 64 (binop)
+
+
+State 81
+
+   65 binop: EQEQ .
+
+    $default  reduce using rule 65 (binop)
+
+
+State 82
+
+   66 binop: NOTEQ .
+
+    $default  reduce using rule 66 (binop)
+
+
+State 83
+
+   67 binop: AND .
+
+    $default  reduce using rule 67 (binop)
+
+
+State 84
+
+   68 binop: OR .
+
+    $default  reduce using rule 68 (binop)
+
+
+State 85
+
+   54 binop: PLUS .
+
+    $default  reduce using rule 54 (binop)
+
+
+State 86
+
+   55 binop: MINUS .
+
+    $default  reduce using rule 55 (binop)
+
+
+State 87
+
+   57 binop: MULT .
+
+    $default  reduce using rule 57 (binop)
+
+
+State 88
+
+   56 binop: DIV .
+
+    $default  reduce using rule 56 (binop)
+
+
+State 89
+
+   58 binop: POW .
+
+    $default  reduce using rule 58 (binop)
+
+
+State 90
+
+   59 binop: MOD .
+
+    $default  reduce using rule 59 (binop)
+
+
+State 91
+
+   33 exp: exp binop . exp
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 120
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 92
+
+   33 exp: exp . binop exp
+   34    | unop exp .
+
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    DDOT      [reduce using rule 34 (exp)]
+    LESS      [reduce using rule 34 (exp)]
+    GREAT     [reduce using rule 34 (exp)]
+    LESSEQ    [reduce using rule 34 (exp)]
+    GREATEQ   [reduce using rule 34 (exp)]
+    EQEQ      [reduce using rule 34 (exp)]
+    NOTEQ     [reduce using rule 34 (exp)]
+    AND       [reduce using rule 34 (exp)]
+    OR        [reduce using rule 34 (exp)]
+    PLUS      [reduce using rule 34 (exp)]
+    MINUS     [reduce using rule 34 (exp)]
+    MULT      [reduce using rule 34 (exp)]
+    DIV       [reduce using rule 34 (exp)]
+    POW       [reduce using rule 34 (exp)]
+    MOD       [reduce using rule 34 (exp)]
+    $default  reduce using rule 34 (exp)
+
+    binop  go to state 91
+
+
+State 93
+
+   17 funcname: NAME rep_func_name . opt_name
+   73 rep_func_name: rep_func_name . DOT NAME
+
+    DOT  shift, and go to state 121
+    COL  shift, and go to state 122
+
+    $default  reduce using rule 90 (opt_name)
+
+    opt_name  go to state 123
+
+
+State 94
+
+   12 stat: FUNC funcname funcbody .
+
+    $default  reduce using rule 12 (stat)
+
+
+State 95
+
+    7 stat: WHILE exp DO . block _END
+
+    _END      reduce using rule 1 (chunk)
+    _END      [reduce using rule 82 (rep_stat)]
+    $default  reduce using rule 82 (rep_stat)
+
+    chunk     go to state 45
+    block     go to state 124
+    rep_stat  go to state 2
+
+
+State 96
+
+   10 stat: FOR NAME EQ . exp COM exp opt_exp DO block _END
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 125
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 97
+
+   22 namelist: NAME rep_list_name .
+   77 rep_list_name: rep_list_name . COM NAME
+
+    COM  shift, and go to state 126
+
+    COM       [reduce using rule 22 (namelist)]
+    $default  reduce using rule 22 (namelist)
+
+
+State 98
+
+   11 stat: FOR namelist IN . explist DO block _END
+
+    $default  reduce using rule 78 (rep_exp)
+
+    explist  go to state 127
+    rep_exp  go to state 49
+
+
+State 99
+
+    6 stat: DO block _END .
+
+    $default  reduce using rule 6 (stat)
+
+
+State 100
+
+    9 stat: IF exp THEN . block rep_elseif opt_else _END
+
+    ELSE      reduce using rule 1 (chunk)
+    ELSE      [reduce using rule 82 (rep_stat)]
+    ELSEIF    reduce using rule 1 (chunk)
+    ELSEIF    [reduce using rule 82 (rep_stat)]
+    _END      reduce using rule 1 (chunk)
+    _END      [reduce using rule 82 (rep_stat)]
+    $default  reduce using rule 82 (rep_stat)
+
+    chunk     go to state 45
+    block     go to state 128
+    rep_stat  go to state 2
+
+
+State 101
+
+   23 explist: rep_exp exp .
+   33 exp: exp . binop exp
+   79 rep_exp: rep_exp exp . COM
+
+    COM      shift, and go to state 129
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    $default  reduce using rule 23 (explist)
+
+    binop  go to state 91
+
+
+State 102
+
+   13 stat: LOCAL FUNC NAME . funcbody
+
+    PAROPN  shift, and go to state 73
+
+    funcbody  go to state 130
+
+
+State 103
+
+  107 opt_eq: EQ . explist
+
+    $default  reduce using rule 78 (rep_exp)
+
+    explist  go to state 131
+    rep_exp  go to state 49
+
+
+State 104
+
+   14 stat: LOCAL namelist opt_eq .
+
+    $default  reduce using rule 14 (stat)
+
+
+State 105
+
+    8 stat: REP block UNTIL . exp
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 132
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 106
+
+    4 stat: varlist EQ explist .
+
+    $default  reduce using rule 4 (stat)
+
+
+State 107
+
+   75 rep_var: rep_var COM . var
+
+    PAROPN  shift, and go to state 4
+    NAME    shift, and go to state 5
+
+    var           go to state 133
+    prefixexp     go to state 19
+    functioncall  go to state 36
+
+
+State 108
+
+   21 var: prefixexp DOT NAME .
+
+    $default  reduce using rule 21 (var)
+
+
+State 109
+
+   39 functioncall: prefixexp COL NAME . args
+
+    STR     shift, and go to state 60
+    PAROPN  shift, and go to state 64
+    CUROPN  shift, and go to state 25
+
+    args              go to state 134
+    tableconstructor  go to state 66
+
+
+State 110
+
+   20 var: prefixexp BRKOPN exp . BRKCLS
+   33 exp: exp . binop exp
+
+    BRKCLS   shift, and go to state 135
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    binop  go to state 91
+
+
+State 111
+
+   40 args: PAROPN opt_explist . PARCLS
+
+    PARCLS  shift, and go to state 136
+
+
+State 112
+
+   33 exp: exp . binop exp
+   49 field: BRKOPN exp . BRKCLS EQ exp
+
+    BRKCLS   shift, and go to state 137
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    binop  go to state 91
+
+
+State 113
+
+   50 field: NAME EQ . exp
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 138
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 114
+
+   48 fieldlist: field rep_field . opt_fieldsep
+   85 rep_field: rep_field . fieldsep field
+
+    SEMCOL  shift, and go to state 139
+    COM     shift, and go to state 140
+
+    $default  reduce using rule 96 (opt_fieldsep)
+
+    fieldsep      go to state 141
+    opt_fieldsep  go to state 142
+
+
+State 115
+
+   47 tableconstructor: CUROPN opt_fieldlist CURCLS .
+
+    $default  reduce using rule 47 (tableconstructor)
+
+
+State 116
+
+   46 parlist: TRIDOT .
+
+    $default  reduce using rule 46 (parlist)
+
+
+State 117
+
+   45 parlist: namelist . opt_tridot
+
+    COM  shift, and go to state 143
+
+    $default  reduce using rule 92 (opt_tridot)
+
+    opt_tridot  go to state 144
+
+
+State 118
+
+   89 opt_parlist: parlist .
+
+    $default  reduce using rule 89 (opt_parlist)
+
+
+State 119
+
+   44 funcbody: PAROPN opt_parlist . PARCLS block _END
+
+    PARCLS  shift, and go to state 145
+
+
+State 120
+
+   33 exp: exp . binop exp
+   33    | exp binop exp .
+
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    DDOT      [reduce using rule 33 (exp)]
+    LESS      [reduce using rule 33 (exp)]
+    GREAT     [reduce using rule 33 (exp)]
+    LESSEQ    [reduce using rule 33 (exp)]
+    GREATEQ   [reduce using rule 33 (exp)]
+    EQEQ      [reduce using rule 33 (exp)]
+    NOTEQ     [reduce using rule 33 (exp)]
+    AND       [reduce using rule 33 (exp)]
+    OR        [reduce using rule 33 (exp)]
+    PLUS      [reduce using rule 33 (exp)]
+    MINUS     [reduce using rule 33 (exp)]
+    MULT      [reduce using rule 33 (exp)]
+    DIV       [reduce using rule 33 (exp)]
+    POW       [reduce using rule 33 (exp)]
+    MOD       [reduce using rule 33 (exp)]
+    $default  reduce using rule 33 (exp)
+
+    binop  go to state 91
+
+
+State 121
+
+   73 rep_func_name: rep_func_name DOT . NAME
+
+    NAME  shift, and go to state 146
+
+
+State 122
+
+   91 opt_name: COL . NAME
+
+    NAME  shift, and go to state 147
+
+
+State 123
+
+   17 funcname: NAME rep_func_name opt_name .
+
+    $default  reduce using rule 17 (funcname)
+
+
+State 124
+
+    7 stat: WHILE exp DO block . _END
+
+    _END  shift, and go to state 148
+
+
+State 125
+
+   10 stat: FOR NAME EQ exp . COM exp opt_exp DO block _END
+   33 exp: exp . binop exp
+
+    COM      shift, and go to state 149
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    binop  go to state 91
+
+
+State 126
+
+   77 rep_list_name: rep_list_name COM . NAME
+
+    NAME  shift, and go to state 150
+
+
+State 127
+
+   11 stat: FOR namelist IN explist . DO block _END
+
+    DO  shift, and go to state 151
+
+
+State 128
+
+    9 stat: IF exp THEN block . rep_elseif opt_else _END
+
+    $default  reduce using rule 80 (rep_elseif)
+
+    rep_elseif  go to state 152
+
+
+State 129
+
+   79 rep_exp: rep_exp exp COM .
+
+    $default  reduce using rule 79 (rep_exp)
+
+
+State 130
+
+   13 stat: LOCAL FUNC NAME funcbody .
+
+    $default  reduce using rule 13 (stat)
+
+
+State 131
+
+  107 opt_eq: EQ explist .
+
+    $default  reduce using rule 107 (opt_eq)
+
+
+State 132
+
+    8 stat: REP block UNTIL exp .
+   33 exp: exp . binop exp
+
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    $default  reduce using rule 8 (stat)
+
+    binop  go to state 91
+
+
+State 133
+
+   35 prefixexp: var .
+   75 rep_var: rep_var COM var .
+
+    EQ        reduce using rule 75 (rep_var)
+    COM       reduce using rule 75 (rep_var)
+    $default  reduce using rule 35 (prefixexp)
+
+
+State 134
+
+   39 functioncall: prefixexp COL NAME args .
+
+    $default  reduce using rule 39 (functioncall)
+
+
+State 135
+
+   20 var: prefixexp BRKOPN exp BRKCLS .
+
+    $default  reduce using rule 20 (var)
+
+
+State 136
+
+   40 args: PAROPN opt_explist PARCLS .
+
+    $default  reduce using rule 40 (args)
+
+
+State 137
+
+   49 field: BRKOPN exp BRKCLS . EQ exp
+
+    EQ  shift, and go to state 153
+
+
+State 138
+
+   33 exp: exp . binop exp
+   50 field: NAME EQ exp .
+
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    $default  reduce using rule 50 (field)
+
+    binop  go to state 91
+
+
+State 139
+
+   53 fieldsep: SEMCOL .
+
+    $default  reduce using rule 53 (fieldsep)
+
+
+State 140
+
+   52 fieldsep: COM .
+
+    $default  reduce using rule 52 (fieldsep)
+
+
+State 141
+
+   85 rep_field: rep_field fieldsep . field
+   97 opt_fieldsep: fieldsep .
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    BRKOPN  shift, and go to state 67
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 68
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    $default  reduce using rule 97 (opt_fieldsep)
+
+    var               go to state 33
+    exp               go to state 69
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    field             go to state 154
+    unop              go to state 39
+
+
+State 142
+
+   48 fieldlist: field rep_field opt_fieldsep .
+
+    $default  reduce using rule 48 (fieldlist)
+
+
+State 143
+
+   93 opt_tridot: COM . TRIDOT
+
+    TRIDOT  shift, and go to state 155
+
+
+State 144
+
+   45 parlist: namelist opt_tridot .
+
+    $default  reduce using rule 45 (parlist)
+
+
+State 145
+
+   44 funcbody: PAROPN opt_parlist PARCLS . block _END
+
+    _END      reduce using rule 1 (chunk)
+    _END      [reduce using rule 82 (rep_stat)]
+    $default  reduce using rule 82 (rep_stat)
+
+    chunk     go to state 45
+    block     go to state 156
+    rep_stat  go to state 2
+
+
+State 146
+
+   73 rep_func_name: rep_func_name DOT NAME .
+
+    $default  reduce using rule 73 (rep_func_name)
+
+
+State 147
+
+   91 opt_name: COL NAME .
+
+    $default  reduce using rule 91 (opt_name)
+
+
+State 148
+
+    7 stat: WHILE exp DO block _END .
+
+    $default  reduce using rule 7 (stat)
+
+
+State 149
+
+   10 stat: FOR NAME EQ exp COM . exp opt_exp DO block _END
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 157
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 150
+
+   77 rep_list_name: rep_list_name COM NAME .
+
+    $default  reduce using rule 77 (rep_list_name)
+
+
+State 151
+
+   11 stat: FOR namelist IN explist DO . block _END
+
+    _END      reduce using rule 1 (chunk)
+    _END      [reduce using rule 82 (rep_stat)]
+    $default  reduce using rule 82 (rep_stat)
+
+    chunk     go to state 45
+    block     go to state 158
+    rep_stat  go to state 2
+
+
+State 152
+
+    9 stat: IF exp THEN block rep_elseif . opt_else _END
+   81 rep_elseif: rep_elseif . ELSEIF exp THEN block
+
+    ELSE    shift, and go to state 159
+    ELSEIF  shift, and go to state 160
+
+    $default  reduce using rule 104 (opt_else)
+
+    opt_else  go to state 161
+
+
+State 153
+
+   49 field: BRKOPN exp BRKCLS EQ . exp
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 162
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 154
+
+   85 rep_field: rep_field fieldsep field .
+
+    $default  reduce using rule 85 (rep_field)
+
+
+State 155
+
+   93 opt_tridot: COM TRIDOT .
+
+    $default  reduce using rule 93 (opt_tridot)
+
+
+State 156
+
+   44 funcbody: PAROPN opt_parlist PARCLS block . _END
+
+    _END  shift, and go to state 163
+
+
+State 157
+
+   10 stat: FOR NAME EQ exp COM exp . opt_exp DO block _END
+   33 exp: exp . binop exp
+
+    COM      shift, and go to state 164
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    $default  reduce using rule 102 (opt_exp)
+
+    binop    go to state 91
+    opt_exp  go to state 165
+
+
+State 158
+
+   11 stat: FOR namelist IN explist DO block . _END
+
+    _END  shift, and go to state 166
+
+
+State 159
+
+  105 opt_else: ELSE . block
+
+    _END      reduce using rule 1 (chunk)
+    _END      [reduce using rule 82 (rep_stat)]
+    $default  reduce using rule 82 (rep_stat)
+
+    chunk     go to state 45
+    block     go to state 167
+    rep_stat  go to state 2
+
+
+State 160
+
+   81 rep_elseif: rep_elseif ELSEIF . exp THEN block
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 168
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 161
+
+    9 stat: IF exp THEN block rep_elseif opt_else . _END
+
+    _END  shift, and go to state 169
+
+
+State 162
+
+   33 exp: exp . binop exp
+   49 field: BRKOPN exp BRKCLS EQ exp .
+
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    $default  reduce using rule 49 (field)
+
+    binop  go to state 91
+
+
+State 163
+
+   44 funcbody: PAROPN opt_parlist PARCLS block _END .
+
+    $default  reduce using rule 44 (funcbody)
+
+
+State 164
+
+  103 opt_exp: COM . exp
+
+    STR     shift, and go to state 22
+    NUM     shift, and go to state 23
+    TRIDOT  shift, and go to state 24
+    PAROPN  shift, and go to state 4
+    CUROPN  shift, and go to state 25
+    NAME    shift, and go to state 5
+    FUNC    shift, and go to state 26
+    _FALSE  shift, and go to state 27
+    _TRUE   shift, and go to state 28
+    NIL     shift, and go to state 29
+    HASH    shift, and go to state 30
+    NOT     shift, and go to state 31
+    MINUS   shift, and go to state 32
+
+    var               go to state 33
+    exp               go to state 170
+    prefixexp         go to state 35
+    functioncall      go to state 36
+    function          go to state 37
+    tableconstructor  go to state 38
+    unop              go to state 39
+
+
+State 165
+
+   10 stat: FOR NAME EQ exp COM exp opt_exp . DO block _END
+
+    DO  shift, and go to state 171
+
+
+State 166
+
+   11 stat: FOR namelist IN explist DO block _END .
+
+    $default  reduce using rule 11 (stat)
+
+
+State 167
+
+  105 opt_else: ELSE block .
+
+    $default  reduce using rule 105 (opt_else)
+
+
+State 168
+
+   33 exp: exp . binop exp
+   81 rep_elseif: rep_elseif ELSEIF exp . THEN block
+
+    THEN     shift, and go to state 172
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    binop  go to state 91
+
+
+State 169
+
+    9 stat: IF exp THEN block rep_elseif opt_else _END .
+
+    $default  reduce using rule 9 (stat)
+
+
+State 170
+
+   33 exp: exp . binop exp
+  103 opt_exp: COM exp .
+
+    DDOT     shift, and go to state 76
+    LESS     shift, and go to state 77
+    GREAT    shift, and go to state 78
+    LESSEQ   shift, and go to state 79
+    GREATEQ  shift, and go to state 80
+    EQEQ     shift, and go to state 81
+    NOTEQ    shift, and go to state 82
+    AND      shift, and go to state 83
+    OR       shift, and go to state 84
+    PLUS     shift, and go to state 85
+    MINUS    shift, and go to state 86
+    MULT     shift, and go to state 87
+    DIV      shift, and go to state 88
+    POW      shift, and go to state 89
+    MOD      shift, and go to state 90
+
+    $default  reduce using rule 103 (opt_exp)
+
+    binop  go to state 91
+
+
+State 171
+
+   10 stat: FOR NAME EQ exp COM exp opt_exp DO . block _END
+
+    _END      reduce using rule 1 (chunk)
+    _END      [reduce using rule 82 (rep_stat)]
+    $default  reduce using rule 82 (rep_stat)
+
+    chunk     go to state 45
+    block     go to state 173
+    rep_stat  go to state 2
+
+
+State 172
+
+   81 rep_elseif: rep_elseif ELSEIF exp THEN . block
+
+    ELSE      reduce using rule 1 (chunk)
+    ELSE      [reduce using rule 82 (rep_stat)]
+    ELSEIF    reduce using rule 1 (chunk)
+    ELSEIF    [reduce using rule 82 (rep_stat)]
+    _END      reduce using rule 1 (chunk)
+    _END      [reduce using rule 82 (rep_stat)]
+    $default  reduce using rule 82 (rep_stat)
+
+    chunk     go to state 45
+    block     go to state 174
+    rep_stat  go to state 2
+
+
+State 173
+
+   10 stat: FOR NAME EQ exp COM exp opt_exp DO block . _END
+
+    _END  shift, and go to state 175
+
+
+State 174
+
+   81 rep_elseif: rep_elseif ELSEIF exp THEN block .
+
+    $default  reduce using rule 81 (rep_elseif)
+
+
+State 175
+
+   10 stat: FOR NAME EQ exp COM exp opt_exp DO block _END .
+
+    $default  reduce using rule 10 (stat)

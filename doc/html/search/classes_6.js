@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['variant',['variant',['../structyy_1_1variant.html',1,'yy']]],
-  ['variant_3c_20sizeof_28union_5ftype_29_3e',['variant&lt; sizeof(union_type)&gt;',['../structyy_1_1variant.html',1,'yy']]]
+  ['slice',['slice',['../classyy_1_1slice.html',1,'yy']]],
+  ['stack',['stack',['../classyy_1_1stack.html',1,'yy']]],
+  ['stack_3c_20stack_5fsymbol_5ftype_20_3e',['stack&lt; stack_symbol_type &gt;',['../classyy_1_1stack.html',1,'yy']]],
+  ['syntax_5ferror',['syntax_error',['../structyy_1_1parser_1_1syntax__error.html',1,'yy::parser']]]
 ];

@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.9.1"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>My Project: yy::parser::token Struct Reference</title>
+        <title>LUA Interpreter: yy::parser::token Struct Reference</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +27,7 @@
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand">My Project </a>
+                    <a class="navbar-brand">LUA Interpreter </a>
                 </div>
             </div>
         </nav>
@@ -111,69 +111,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Types</h2></td></tr>
 <tr class="memitem:a90b63e7f9dd7177dd3bf01c58c408475"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90b63e7f9dd7177dd3bf01c58c408475"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>yytokentype</b> { <br />
 &#160;&#160;<b>END</b> = 0, 
-<b>WS</b> = 258, 
-<b>NL</b> = 259, 
-<b>SEMCOL</b> = 260, 
+<b>STR</b> = 258, 
+<b>NUM</b> = 259, 
+<b>NAME</b> = 260, 
 <br />
-&#160;&#160;<b>STR</b> = 261, 
-<b>NUM</b> = 262, 
-<b>EQ</b> = 263, 
-<b>COM</b> = 264, 
+&#160;&#160;<b>WHILE</b> = 261, 
+<b>FOR</b> = 262, 
+<b>DO</b> = 263, 
+<b>IF</b> = 264, 
 <br />
-&#160;&#160;<b>DOT</b> = 265, 
-<b>COL</b> = 266, 
-<b>BRKOPN</b> = 267, 
-<b>BRKCLS</b> = 268, 
+&#160;&#160;<b>ELSE</b> = 265, 
+<b>ELSEIF</b> = 266, 
+<b>THEN</b> = 267, 
+<b>RETURN</b> = 268, 
 <br />
-&#160;&#160;<b>TRIDOT</b> = 269, 
-<b>PAROPN</b> = 270, 
-<b>PARCLS</b> = 271, 
-<b>CUROPN</b> = 272, 
+&#160;&#160;<b>BREAK</b> = 269, 
+<b>_FALSE</b> = 270, 
+<b>_TRUE</b> = 271, 
+<b>_END</b> = 272, 
 <br />
-&#160;&#160;<b>CURCLS</b> = 273, 
-<b>NAME</b> = 274, 
-<b>PLUS</b> = 275, 
-<b>MINUS</b> = 276, 
+&#160;&#160;<b>IN</b> = 273, 
+<b>LOCAL</b> = 274, 
+<b>NIL</b> = 275, 
+<b>REP</b> = 276, 
 <br />
-&#160;&#160;<b>MULT</b> = 277, 
-<b>DIV</b> = 278, 
-<b>POW</b> = 279, 
-<b>MOD</b> = 280, 
+&#160;&#160;<b>UNTIL</b> = 277, 
+<b>SEMCOL</b> = 278, 
+<b>EQ</b> = 279, 
+<b>COM</b> = 280, 
 <br />
-&#160;&#160;<b>DDOT</b> = 281, 
-<b>LESS</b> = 282, 
-<b>GREAT</b> = 283, 
-<b>LESSEQ</b> = 284, 
+&#160;&#160;<b>DOT</b> = 281, 
+<b>COL</b> = 282, 
+<b>BRKOPN</b> = 283, 
+<b>BRKCLS</b> = 284, 
 <br />
-&#160;&#160;<b>GREATEQ</b> = 285, 
-<b>EQEQ</b> = 286, 
-<b>NOTEQ</b> = 287, 
-<b>AND</b> = 288, 
+&#160;&#160;<b>TRIDOT</b> = 285, 
+<b>PAROPN</b> = 286, 
+<b>PARCLS</b> = 287, 
+<b>CUROPN</b> = 288, 
 <br />
-&#160;&#160;<b>OR</b> = 289, 
-<b>NOT</b> = 290, 
-<b>HASH</b> = 291, 
-<b>WHILE</b> = 292, 
+&#160;&#160;<b>CURCLS</b> = 289, 
+<b>FUNC</b> = 290, 
+<b>OR</b> = 291, 
+<b>AND</b> = 292, 
 <br />
-&#160;&#160;<b>FOR</b> = 293, 
-<b>DO</b> = 294, 
-<b>IF</b> = 295, 
-<b>ELSE</b> = 296, 
+&#160;&#160;<b>LESS</b> = 293, 
+<b>GREAT</b> = 294, 
+<b>LESSEQ</b> = 295, 
+<b>GREATEQ</b> = 296, 
 <br />
-&#160;&#160;<b>ELSEIF</b> = 297, 
-<b>THEN</b> = 298, 
-<b>RETURN</b> = 299, 
-<b>BREAK</b> = 300, 
+&#160;&#160;<b>EQEQ</b> = 297, 
+<b>NOTEQ</b> = 298, 
+<b>DDOT</b> = 299, 
+<b>PLUS</b> = 300, 
 <br />
-&#160;&#160;<b>_FALSE</b> = 301, 
-<b>_TRUE</b> = 302, 
-<b>_END</b> = 303, 
-<b>IN</b> = 304, 
+&#160;&#160;<b>MINUS</b> = 301, 
+<b>MULT</b> = 302, 
+<b>DIV</b> = 303, 
+<b>MOD</b> = 304, 
 <br />
-&#160;&#160;<b>LOCAL</b> = 305, 
-<b>NIL</b> = 306, 
-<b>REP</b> = 307, 
-<b>UNTIL</b> = 308
+&#160;&#160;<b>NOT</b> = 305, 
+<b>HASH</b> = 306, 
+<b>POW</b> = 307
 <br />
  }</td></tr>
 <tr class="separator:a90b63e7f9dd7177dd3bf01c58c408475"><td class="memSeparator" colspan="2">&#160;</td></tr>

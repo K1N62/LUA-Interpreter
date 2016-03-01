@@ -1,14 +1,4 @@
 var searchData=
 [
-  ['self_5ftype',['self_type',['../structyy_1_1variant.html#afbd75aee339bd9fa06e6fa8f320cecd3',1,'yy::variant']]],
-  ['semantic_5ftype',['semantic_type',['../classyy_1_1parser.html#a0ce15da9cf616a7197b81e6055428165',1,'yy::parser']]],
-  ['slice',['slice',['../classyy_1_1slice.html',1,'yy']]],
-  ['stack',['stack',['../classyy_1_1stack.html',1,'yy']]],
-  ['stack_2ehh',['stack.hh',['../src_2stack_8hh.html',1,'']]],
-  ['stack_3c_20stack_5fsymbol_5ftype_20_3e',['stack&lt; stack_symbol_type &gt;',['../classyy_1_1stack.html',1,'yy']]],
-  ['super_5ftype',['super_type',['../structyy_1_1parser_1_1basic__symbol.html#aa67d0c9c65599dcf9d193b33743dae20',1,'yy::parser::basic_symbol']]],
-  ['swap',['swap',['../structyy_1_1variant.html#ac43b5ffdcedbda5462c53832027707ac',1,'yy::variant']]],
-  ['symbol_5fnumber_5ftype',['symbol_number_type',['../classyy_1_1parser.html#a522f5c6c3481d9285b0b991ac12292eb',1,'yy::parser']]],
-  ['symbol_5ftype',['symbol_type',['../classyy_1_1parser.html#aa8024edbba983aa5cd3e88c3a4dcacc9',1,'yy::parser']]],
-  ['syntax_5ferror',['syntax_error',['../structyy_1_1parser_1_1syntax__error.html',1,'yy::parser']]]
+  ['node',['Node',['../classNode.html',1,'Node'],['../classNode.html#ad7a34779cad45d997bfd6d3d8043c75f',1,'Node::Node()'],['../classNode.html#a4122dca231612c6fd2eb17fd92a02892',1,'Node::Node(Type type)'],['../classNode.html#a36ce067b8b3fde59af074a425fa3b97c',1,'Node::Node(Type type, std::string value)']]]
 ];

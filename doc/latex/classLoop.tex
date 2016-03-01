@@ -1,0 +1,143 @@
+\hypertarget{classLoop}{}\section{Loop Class Reference}
+\label{classLoop}\index{Loop@{Loop}}
+
+
+Class for loops.  
+
+
+
+
+{\ttfamily \#include $<$Loop.\+h$>$}
+
+
+
+Inheritance diagram for Loop\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=120pt]{classLoop__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Loop\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=120pt]{classLoop__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoop_af57e9c094063c514758dfe7bd986d6e7}{}enum \hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7}{Type} \{ \\*
+{\bfseries Undefined}, 
+{\bfseries Repeat}, 
+{\bfseries While}, 
+{\bfseries For}, 
+\\*
+{\bfseries Do}
+ \}\label{classLoop_af57e9c094063c514758dfe7bd986d6e7}
+
+\begin{DoxyCompactList}\small\item\em Defines types of Loops. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoop_a675e74b960c5e703adf1ee0e6fd8f3bf}{}\hyperlink{classLoop_a675e74b960c5e703adf1ee0e6fd8f3bf}{Loop} ()\label{classLoop_a675e74b960c5e703adf1ee0e6fd8f3bf}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classLoop_a3e42ab398babe1ba79e9242d64147960}{Loop} (\hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7}{Type} \hyperlink{classLoop_ae5e7c727c194b408bfc69b3f218c8b6f}{type})
+\begin{DoxyCompactList}\small\item\em Constructor with type. \end{DoxyCompactList}\item 
+int \hyperlink{classLoop_a32977a6ab0e1311d78c603db03f895d4}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Executes the \hyperlink{classLoop}{Loop}. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classLoop_a657b90074652fce7ab2028bdc3747b7b}{get\+Type} ()
+\begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoop_ae5e7c727c194b408bfc69b3f218c8b6f}{}\hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7}{Type} \hyperlink{classLoop_ae5e7c727c194b408bfc69b3f218c8b6f}{type}\label{classLoop_ae5e7c727c194b408bfc69b3f218c8b6f}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classLoop}{Loop} type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for loops. 
+
+\begin{DoxyAuthor}{Author}
+Jim Ahlstrand 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLoop_a3e42ab398babe1ba79e9242d64147960}{}\index{Loop@{Loop}!Loop@{Loop}}
+\index{Loop@{Loop}!Loop@{Loop}}
+\subsubsection[{Loop}]{\setlength{\rightskip}{0pt plus 5cm}Loop\+::\+Loop (
+\begin{DoxyParamCaption}
+\item[{{\bf Type}}]{type}
+\end{DoxyParamCaption}
+)}\label{classLoop_a3e42ab398babe1ba79e9242d64147960}
+
+
+Constructor with type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \hyperlink{classLoop}{Loop} type of enum Type \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoop_a32977a6ab0e1311d78c603db03f895d4}{}\index{Loop@{Loop}!execute@{execute}}
+\index{execute@{execute}!Loop@{Loop}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}int Loop\+::execute (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classLoop_a32977a6ab0e1311d78c603db03f895d4}
+
+
+Executes the \hyperlink{classLoop}{Loop}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer value of the node 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]implement for loop execution \end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]implement do loop execution \end{DoxyRefDesc}
+
+
+Reimplemented from \hyperlink{classNode_acc70d98952c4b061bc433c00180b7011}{Node}.
+
+\hypertarget{classLoop_a657b90074652fce7ab2028bdc3747b7b}{}\index{Loop@{Loop}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!Loop@{Loop}}
+\subsubsection[{get\+Type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Loop\+::get\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classLoop_a657b90074652fce7ab2028bdc3747b7b}
+
+
+Converts type of node to string. 
+
+\begin{DoxyReturn}{Returns}
+string type of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_abce0a9ddac6a5e2c0e546dbe6af02e3d}{Node}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/Loop.\+h\item 
+src/Loop.\+cpp\end{DoxyCompactItemize}

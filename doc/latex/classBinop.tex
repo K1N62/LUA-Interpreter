@@ -1,0 +1,141 @@
+\hypertarget{classBinop}{}\section{Binop Class Reference}
+\label{classBinop}\index{Binop@{Binop}}
+
+
+Class for binary operations.  
+
+
+
+
+{\ttfamily \#include $<$Binop.\+h$>$}
+
+
+
+Inheritance diagram for Binop\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=121pt]{classBinop__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Binop\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=121pt]{classBinop__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classBinop_a833e85c431d85ca69758bfebec9193dc}{}enum \hyperlink{classBinop_a833e85c431d85ca69758bfebec9193dc}{Type} \{ \\*
+{\bfseries Undefined}, 
+{\bfseries Addition}, 
+{\bfseries Subtraction}, 
+{\bfseries Division}, 
+\\*
+{\bfseries Multiplication}, 
+{\bfseries Power}, 
+{\bfseries Modulo}
+ \}\label{classBinop_a833e85c431d85ca69758bfebec9193dc}
+
+\begin{DoxyCompactList}\small\item\em Defines types of Binops. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classBinop_a18bd9729a042a045df7fe11ffe068707}{}\hyperlink{classBinop_a18bd9729a042a045df7fe11ffe068707}{Binop} ()\label{classBinop_a18bd9729a042a045df7fe11ffe068707}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classBinop_a3d538d66e8aa1ac46feb5e984fbfb8c9}{Binop} (\hyperlink{classBinop_a833e85c431d85ca69758bfebec9193dc}{Type} \hyperlink{classBinop_a6ba1f508e1122caea1ef9350fee74396}{type})
+\begin{DoxyCompactList}\small\item\em Constructor with type. \end{DoxyCompactList}\item 
+int \hyperlink{classBinop_ac905eda0640f64cd28ed5c65b4c0c125}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Executes the \hyperlink{classBinop}{Binop}. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classBinop_a25a4913ef0d2ec9787df24c391734094}{get\+Type} ()
+\begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classBinop_a6ba1f508e1122caea1ef9350fee74396}{}\hyperlink{classBinop_a833e85c431d85ca69758bfebec9193dc}{Type} \hyperlink{classBinop_a6ba1f508e1122caea1ef9350fee74396}{type}\label{classBinop_a6ba1f508e1122caea1ef9350fee74396}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classBinop}{Binop} type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for binary operations. 
+
+\begin{DoxyAuthor}{Author}
+Jim Ahlstrand 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]add test for number of children, binop can have max 2 \end{DoxyRefDesc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBinop_a3d538d66e8aa1ac46feb5e984fbfb8c9}{}\index{Binop@{Binop}!Binop@{Binop}}
+\index{Binop@{Binop}!Binop@{Binop}}
+\subsubsection[{Binop}]{\setlength{\rightskip}{0pt plus 5cm}Binop\+::\+Binop (
+\begin{DoxyParamCaption}
+\item[{{\bf Type}}]{type}
+\end{DoxyParamCaption}
+)}\label{classBinop_a3d538d66e8aa1ac46feb5e984fbfb8c9}
+
+
+Constructor with type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \hyperlink{classBinop}{Binop} type of enum Type \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBinop_ac905eda0640f64cd28ed5c65b4c0c125}{}\index{Binop@{Binop}!execute@{execute}}
+\index{execute@{execute}!Binop@{Binop}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}int Binop\+::execute (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classBinop_ac905eda0640f64cd28ed5c65b4c0c125}
+
+
+Executes the \hyperlink{classBinop}{Binop}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer value of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_acc70d98952c4b061bc433c00180b7011}{Node}.
+
+\hypertarget{classBinop_a25a4913ef0d2ec9787df24c391734094}{}\index{Binop@{Binop}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!Binop@{Binop}}
+\subsubsection[{get\+Type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Binop\+::get\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classBinop_a25a4913ef0d2ec9787df24c391734094}
+
+
+Converts type of node to string. 
+
+\begin{DoxyReturn}{Returns}
+string type of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_abce0a9ddac6a5e2c0e546dbe6af02e3d}{Node}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/Binop.\+h\item 
+src/Binop.\+cpp\end{DoxyCompactItemize}

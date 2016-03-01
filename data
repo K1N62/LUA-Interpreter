@@ -1,12 +1,15 @@
-function fibonacci(n)
-    if n<3 then
-        return 1
-    else
-        return fibonacci(n - 1) + fibonacci(n-2)
-    end
+repeat
+  x = x + 1
+until 1 == 1
+
+while 1 == 0 do
+  x = x + 1
 end
 
-for n = 1, 16 do
-    io.write(fibonacci(n), ", ")
+for i=1,10 do
+  print(i)
 end
-io.write("...\n")
+
+for i=10,1,-1 do
+  print(i)
+end

@@ -24,74 +24,46 @@ Node::Node(Type type, std::string value)
 
 Node::~Node()
 {
-  //Nothing
+  for (auto child : this->children)
+    delete child;
 }
 
-/**
-* Overloads the Type output stream operator
-* @author Jim Ahlstrand
-*/
-std::ostream& operator<<(std::ostream& out, const Node::Type& type)
+std::string Node::getType()
 {
-    switch (type) {
-    case Node::Type::Undefined: out << "Undefined"; break;
-    case Node::Type::ExpressionList: out << "ExpressionList"; break;
-    case Node::Type::VariableList: out << "VariableList"; break;
-    case Node::Type::FunctionBody: out << "FunctionBody"; break;
-    case Node::Type::FunctionName: out << "FunctionName"; break;
-    case Node::Type::FunctionCall: out << "FunctionCall"; break;
-    case Node::Type::Function: out << "Function"; break;
-    case Node::Type::MemberVariable: out << "MemberVariable"; break;
-    case Node::Type::MemberFunction: out << "MemberFunction"; break;
-    case Node::Type::Variable: out << "Variable"; break;
-    case Node::Type::ListName: out << "ListName"; break;
-    case Node::Type::Range: out << "Range"; break;
-    case Node::Type::Repeat: out << "Repeat"; break;
-    case Node::Type::While: out << "While"; break;
-    case Node::Type::For: out << "For"; break;
-    case Node::Type::If: out << "If"; break;
-    case Node::Type::ElseIf: out << "ElseIf"; break;
-    case Node::Type::Stat: out << "Stat"; break;
-    case Node::Type::Field: out << "Field"; break;
-    case Node::Type::Equal: out << "Equal"; break;
-    case Node::Type::Addition: out << "Addition"; break;
-    case Node::Type::Subtraction: out << "Subtraction"; break;
-    case Node::Type::Division: out << "Division"; break;
-    case Node::Type::Multiplication: out << "Multiplication"; break;
-    case Node::Type::Power: out << "Power"; break;
-    case Node::Type::Modulo: out << "Modulo"; break;
-    case Node::Type::DoubleDot: out << "DoubleDot"; break;
-    case Node::Type::LessThan: out << "LessThan"; break;
-    case Node::Type::LessOrEq: out << "LessOrEq"; break;
-    case Node::Type::GreaterThan: out << "GreaterThan"; break;
-    case Node::Type::GreaterOrEq: out << "GreaterOrEq"; break;
-    case Node::Type::Test: out << "Test"; break;
-    case Node::Type::NotEq: out << "NotEq"; break;
-    case Node::Type::And: out << "And"; break;
-    case Node::Type::Or: out << "Or"; break;
-    case Node::Type::Not: out << "Not"; break;
-    case Node::Type::Hash: out << "Hash"; break;
-    case Node::Type::Comma: out << "Comma"; break;
-    case Node::Type::SemiColon: out << "SemiColon"; break;
-    case Node::Type::Name: out << "Name"; break;
-    case Node::Type::Nil: out << "Nil"; break;
-    case Node::Type::False: out << "False"; break;
-    case Node::Type::True: out << "True"; break;
-    case Node::Type::Number: out << "Number"; break;
-    case Node::Type::String: out << "String"; break;
-    case Node::Type::Tridot: out << "Tridot"; break;
-    default: out << "Undefined"; break;
+    switch (this->type) {
+        case Node::Type::ExpressionList: return "ExpressionList";
+        case Node::Type::VariableList: return "VariableList";
+        case Node::Type::FunctionBody: return "FunctionBody";
+        case Node::Type::FunctionName: return "FunctionName";
+        case Node::Type::FunctionCall: return "FunctionCall";
+        case Node::Type::Function: return "Function";
+        case Node::Type::MemberFunction: return "MemberFunction";
+        case Node::Type::Variable: return "Variable";
+        case Node::Type::ListName: return "ListName";
+        case Node::Type::Range: return "Range";
+        case Node::Type::Stat: return "Stat";
+        case Node::Type::Field: return "Field";
+        case Node::Type::FieldList: return "FieldList";
+        case Node::Type::FieldElement: return "FieldElement";
+        case Node::Type::Equal: return "Equal";
+        case Node::Type::DoubleDot: return "DoubleDot";
+        case Node::Type::Hash: return "Hash";
+        case Node::Type::Negate: return "Negate";
+        case Node::Type::Name: return "Name";
+        case Node::Type::Nil: return "Nil";
+        case Node::Type::Number: return "Number";
+        case Node::Type::String: return "String";
+        case Node::Type::Tridot: return "Tridot";
+        default:
+            return "Undefined";
     }
-
-    return out;
 }
 
 int Node::print(int id, std::ofstream& file)
 {
   // Print children first to get correct id order
-  for (auto &child : this->children) {
-    id = child.print(id, file);
-  }
+  for (auto child : this->children)
+    id = child->print(id, file);
 
   // Grab this id
   this->id = ++id;
@@ -100,28 +72,47 @@ int Node::print(int id, std::ofstream& file)
   if (this->children.size() == 0) {
     file << this->id << " " << "[label=\"" << this->value << "\"]" << std::endl;
   } else {
-    file << this->id << " " << "[label=\"" << this->type << "\"]" << std::endl;
+    file << this->id << " " << "[label=\"" << this->getType() << "\"]" << std::endl;
   }
 
   // Print link to children
-  for(auto &child : this->children) {
-    file << this->id << " -> " << child.getNodeID() << std::endl;
-  }
+  for(auto child : this->children)
+    file << this->id << " -> " << child->getNodeID() << std::endl;
 
   return this->id;
 }
 
-int Node::addChild(Node& child)
+Node* Node::getChild(unsigned int i)
 {
-  //! \todo add tests for child here
-  this->children.push_back(child);
+  if ( i > this->children.size() - 1 || this->children.size() == 0 )
+    return new Node();
+
+  return this->children[i];
+}
+
+int Node::moveToFront()
+{
+
+  Node* tmp = this->children.back();
+  this->children.pop_back();
+  this->children.insert(this->children.begin(), tmp);
+
   return 0;
 }
 
-Node Node::getChild(unsigned int i)
+int Node::execute(Environment& env)
 {
-  if ( i > this->children.size() - 1 || this->children.size() == 0 )
-    return Node();
-
-  return this->children[i];
+    switch (this->type) {
+        case Number: return stoi(this->value);
+        default:
+            for(auto child : this->children) {
+                try {
+                    child->execute(env);
+                } catch (std::exception& e) {
+                    std::cerr << "Error: " << e.what() << std::endl;
+                }
+            }
+            return 0;
+            break;
+    }
 }

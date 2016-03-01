@@ -1,14 +1,17 @@
 #include <iostream>
+#include <exception>
 #include "parser.h"
-#include "Node.h"
 
 #define PRINT_FILE  "graph.dot"
 
-extern Node root;
+extern Node* root;
+extern Environment env;
+
+using namespace std;
 
 void yy::parser::error(std::string const&err)
 {
-  std::cout << "It's one of the bad ones... " << err << std::endl;
+  cout << "It's one of the bad ones... " << err << endl;
 }
 
 int main(int argc, char **argv)
@@ -23,12 +26,21 @@ int main(int argc, char **argv)
   file << "digraph {" << endl;
 
   // Print file
-  root.print(0, file);
+  root->print(0, file);
 
   // print footer
   file << "}" << endl;
   //close file
   file.close();
+
+  // Execute
+  try {
+      root->execute(env);
+  } catch (exception& e) {
+      cerr << "Error: " << e.what() << endl;
+  }
+
+  delete root;
 
   return 0;
 }

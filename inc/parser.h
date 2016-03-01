@@ -43,9 +43,14 @@
 #line 5 "src/parser.y" // lalr1.cc:372
 
   #include "Node.h"
+  #include "Test.h"
+  #include "Loop.h"
+  #include "Binop.h"
+  #include "Condition.h"
+  #include "Environment.h"
   using namespace std;
 
-#line 49 "inc/parser.h" // lalr1.cc:372
+#line 54 "inc/parser.h" // lalr1.cc:372
 
 
 # include <vector>
@@ -121,7 +126,7 @@
 
 
 namespace yy {
-#line 125 "inc/parser.h" // lalr1.cc:372
+#line 130 "inc/parser.h" // lalr1.cc:372
 
 
 
@@ -288,8 +293,6 @@ namespace yy {
       // fieldlist
       // field
       // fieldsep
-      // binop
-      // unop
       // rep_func_name
       // rep_var
       // rep_list_name
@@ -308,61 +311,12 @@ namespace yy {
       // opt_exp
       // opt_else
       // opt_eq
-      char dummy1[sizeof(Node)];
+      char dummy1[sizeof(Node*)];
 
-      // WS
-      // NL
-      // SEMCOL
       // STR
       // NUM
-      // EQ
-      // COM
-      // DOT
-      // COL
-      // BRKOPN
-      // BRKCLS
-      // TRIDOT
-      // PAROPN
-      // PARCLS
-      // CUROPN
-      // CURCLS
       // NAME
-      // FUNC
-      // PLUS
-      // MINUS
-      // MULT
-      // DIV
-      // POW
-      // MOD
-      // DDOT
-      // LESS
-      // GREAT
-      // LESSEQ
-      // GREATEQ
-      // EQEQ
-      // NOTEQ
-      // AND
-      // OR
-      // NOT
-      // HASH
-      // WHILE
-      // FOR
-      // DO
-      // IF
-      // ELSE
-      // ELSEIF
-      // THEN
-      // RETURN
-      // BREAK
-      // _FALSE
-      // _TRUE
-      // _END
-      // IN
-      // LOCAL
-      // NIL
-      // REP
-      // UNTIL
-      char dummy2[sizeof(std::string)];
+      char dummy2[sizeof(string)];
 };
 
     /// Symbol semantic values.
@@ -383,58 +337,56 @@ namespace yy {
       enum yytokentype
       {
         END = 0,
-        WS = 258,
-        NL = 259,
-        SEMCOL = 260,
-        STR = 261,
-        NUM = 262,
-        EQ = 263,
-        COM = 264,
-        DOT = 265,
-        COL = 266,
-        BRKOPN = 267,
-        BRKCLS = 268,
-        TRIDOT = 269,
-        PAROPN = 270,
-        PARCLS = 271,
-        CUROPN = 272,
-        CURCLS = 273,
-        NAME = 274,
-        FUNC = 275,
-        PLUS = 276,
-        MINUS = 277,
-        MULT = 278,
-        DIV = 279,
-        POW = 280,
-        MOD = 281,
-        DDOT = 282,
-        LESS = 283,
-        GREAT = 284,
-        LESSEQ = 285,
-        GREATEQ = 286,
-        EQEQ = 287,
-        NOTEQ = 288,
-        AND = 289,
-        OR = 290,
-        NOT = 291,
-        HASH = 292,
-        WHILE = 293,
-        FOR = 294,
-        DO = 295,
-        IF = 296,
-        ELSE = 297,
-        ELSEIF = 298,
-        THEN = 299,
-        RETURN = 300,
-        BREAK = 301,
-        _FALSE = 302,
-        _TRUE = 303,
-        _END = 304,
-        IN = 305,
-        LOCAL = 306,
-        NIL = 307,
-        REP = 308,
-        UNTIL = 309
+        STR = 258,
+        NUM = 259,
+        NAME = 260,
+        WHILE = 261,
+        FOR = 262,
+        DO = 263,
+        IF = 264,
+        ELSE = 265,
+        ELSEIF = 266,
+        THEN = 267,
+        RETURN = 268,
+        BREAK = 269,
+        _FALSE = 270,
+        _TRUE = 271,
+        _END = 272,
+        IN = 273,
+        LOCAL = 274,
+        NIL = 275,
+        REP = 276,
+        UNTIL = 277,
+        SEMCOL = 278,
+        EQ = 279,
+        COM = 280,
+        DOT = 281,
+        COL = 282,
+        BRKOPN = 283,
+        BRKCLS = 284,
+        TRIDOT = 285,
+        PAROPN = 286,
+        PARCLS = 287,
+        CUROPN = 288,
+        CURCLS = 289,
+        FUNC = 290,
+        OR = 291,
+        AND = 292,
+        LESS = 293,
+        GREAT = 294,
+        LESSEQ = 295,
+        GREATEQ = 296,
+        EQEQ = 297,
+        NOTEQ = 298,
+        DDOT = 299,
+        PLUS = 300,
+        MINUS = 301,
+        MULT = 302,
+        DIV = 303,
+        MOD = 304,
+        NOT = 305,
+        HASH = 306,
+        POW = 307
       };
     };
 
@@ -469,9 +421,9 @@ namespace yy {
 
   basic_symbol (typename Base::kind_type t);
 
-  basic_symbol (typename Base::kind_type t, const Node v);
+  basic_symbol (typename Base::kind_type t, const Node* v);
 
-  basic_symbol (typename Base::kind_type t, const std::string v);
+  basic_symbol (typename Base::kind_type t, const string v);
 
 
       /// Constructor for symbols with semantic value.
@@ -533,211 +485,203 @@ namespace yy {
 
     static inline
     symbol_type
-    make_WS (const std::string& v);
+    make_STR (const string& v);
 
     static inline
     symbol_type
-    make_NL (const std::string& v);
+    make_NUM (const string& v);
 
     static inline
     symbol_type
-    make_SEMCOL (const std::string& v);
+    make_NAME (const string& v);
 
     static inline
     symbol_type
-    make_STR (const std::string& v);
+    make_WHILE ();
 
     static inline
     symbol_type
-    make_NUM (const std::string& v);
+    make_FOR ();
 
     static inline
     symbol_type
-    make_EQ (const std::string& v);
+    make_DO ();
 
     static inline
     symbol_type
-    make_COM (const std::string& v);
+    make_IF ();
 
     static inline
     symbol_type
-    make_DOT (const std::string& v);
+    make_ELSE ();
 
     static inline
     symbol_type
-    make_COL (const std::string& v);
+    make_ELSEIF ();
 
     static inline
     symbol_type
-    make_BRKOPN (const std::string& v);
+    make_THEN ();
 
     static inline
     symbol_type
-    make_BRKCLS (const std::string& v);
+    make_RETURN ();
 
     static inline
     symbol_type
-    make_TRIDOT (const std::string& v);
+    make_BREAK ();
 
     static inline
     symbol_type
-    make_PAROPN (const std::string& v);
+    make__FALSE ();
 
     static inline
     symbol_type
-    make_PARCLS (const std::string& v);
+    make__TRUE ();
 
     static inline
     symbol_type
-    make_CUROPN (const std::string& v);
+    make__END ();
 
     static inline
     symbol_type
-    make_CURCLS (const std::string& v);
+    make_IN ();
 
     static inline
     symbol_type
-    make_NAME (const std::string& v);
+    make_LOCAL ();
 
     static inline
     symbol_type
-    make_FUNC (const std::string& v);
+    make_NIL ();
 
     static inline
     symbol_type
-    make_PLUS (const std::string& v);
+    make_REP ();
 
     static inline
     symbol_type
-    make_MINUS (const std::string& v);
+    make_UNTIL ();
 
     static inline
     symbol_type
-    make_MULT (const std::string& v);
+    make_SEMCOL ();
 
     static inline
     symbol_type
-    make_DIV (const std::string& v);
+    make_EQ ();
 
     static inline
     symbol_type
-    make_POW (const std::string& v);
+    make_COM ();
 
     static inline
     symbol_type
-    make_MOD (const std::string& v);
+    make_DOT ();
 
     static inline
     symbol_type
-    make_DDOT (const std::string& v);
+    make_COL ();
 
     static inline
     symbol_type
-    make_LESS (const std::string& v);
+    make_BRKOPN ();
 
     static inline
     symbol_type
-    make_GREAT (const std::string& v);
+    make_BRKCLS ();
 
     static inline
     symbol_type
-    make_LESSEQ (const std::string& v);
+    make_TRIDOT ();
 
     static inline
     symbol_type
-    make_GREATEQ (const std::string& v);
+    make_PAROPN ();
 
     static inline
     symbol_type
-    make_EQEQ (const std::string& v);
+    make_PARCLS ();
 
     static inline
     symbol_type
-    make_NOTEQ (const std::string& v);
+    make_CUROPN ();
 
     static inline
     symbol_type
-    make_AND (const std::string& v);
+    make_CURCLS ();
 
     static inline
     symbol_type
-    make_OR (const std::string& v);
+    make_FUNC ();
 
     static inline
     symbol_type
-    make_NOT (const std::string& v);
+    make_OR ();
 
     static inline
     symbol_type
-    make_HASH (const std::string& v);
+    make_AND ();
 
     static inline
     symbol_type
-    make_WHILE (const std::string& v);
+    make_LESS ();
 
     static inline
     symbol_type
-    make_FOR (const std::string& v);
+    make_GREAT ();
 
     static inline
     symbol_type
-    make_DO (const std::string& v);
+    make_LESSEQ ();
 
     static inline
     symbol_type
-    make_IF (const std::string& v);
+    make_GREATEQ ();
 
     static inline
     symbol_type
-    make_ELSE (const std::string& v);
+    make_EQEQ ();
 
     static inline
     symbol_type
-    make_ELSEIF (const std::string& v);
+    make_NOTEQ ();
 
     static inline
     symbol_type
-    make_THEN (const std::string& v);
+    make_DDOT ();
 
     static inline
     symbol_type
-    make_RETURN (const std::string& v);
+    make_PLUS ();
 
     static inline
     symbol_type
-    make_BREAK (const std::string& v);
+    make_MINUS ();
 
     static inline
     symbol_type
-    make__FALSE (const std::string& v);
+    make_MULT ();
 
     static inline
     symbol_type
-    make__TRUE (const std::string& v);
+    make_DIV ();
 
     static inline
     symbol_type
-    make__END (const std::string& v);
+    make_MOD ();
 
     static inline
     symbol_type
-    make_IN (const std::string& v);
+    make_NOT ();
 
     static inline
     symbol_type
-    make_LOCAL (const std::string& v);
+    make_HASH ();
 
     static inline
     symbol_type
-    make_NIL (const std::string& v);
-
-    static inline
-    symbol_type
-    make_REP (const std::string& v);
-
-    static inline
-    symbol_type
-    make_UNTIL (const std::string& v);
+    make_POW ();
 
 
     /// Build a parser object.
@@ -935,13 +879,13 @@ namespace yy {
     enum
     {
       yyeof_ = 0,
-      yylast_ = 356,     ///< Last index in yytable_.
-      yynnts_ = 41,  ///< Number of nonterminal symbols.
+      yylast_ = 438,     ///< Last index in yytable_.
+      yynnts_ = 39,  ///< Number of nonterminal symbols.
       yyempty_ = -2,
       yyfinal_ = 3, ///< Termination state number.
       yyterror_ = 1,
       yyerrcode_ = 256,
-      yyntokens_ = 55  ///< Number of tokens.
+      yyntokens_ = 53  ///< Number of tokens.
     };
 
 
@@ -986,9 +930,9 @@ namespace yy {
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
       35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
-      45,    46,    47,    48,    49,    50,    51,    52,    53,    54
+      45,    46,    47,    48,    49,    50,    51,    52
     };
-    const unsigned int user_token_number_max_ = 309;
+    const unsigned int user_token_number_max_ = 307;
     const token_number_type undef_token_ = 2;
 
     if (static_cast<int>(t) <= yyeof_)
@@ -1019,102 +963,51 @@ namespace yy {
   {
       switch (other.type_get ())
     {
-      case 56: // chunk
-      case 57: // block
-      case 58: // stat
-      case 59: // laststat
-      case 60: // funcname
-      case 61: // varlist
-      case 62: // var
-      case 63: // namelist
-      case 64: // explist
-      case 65: // exp
-      case 66: // prefixexp
-      case 67: // functioncall
-      case 68: // args
-      case 69: // function
-      case 70: // funcbody
-      case 71: // parlist
-      case 72: // tableconstructor
-      case 73: // fieldlist
-      case 74: // field
-      case 75: // fieldsep
-      case 76: // binop
-      case 77: // unop
-      case 78: // rep_func_name
-      case 79: // rep_var
-      case 80: // rep_list_name
-      case 81: // rep_exp
-      case 82: // rep_elseif
-      case 83: // rep_stat
-      case 84: // rep_field
-      case 85: // opt_explist
-      case 86: // opt_parlist
-      case 87: // opt_name
-      case 88: // opt_tridot
-      case 89: // opt_fieldlist
-      case 90: // opt_fieldsep
-      case 91: // opt_semi
-      case 92: // opt_laststat
-      case 93: // opt_exp
-      case 94: // opt_else
-      case 95: // opt_eq
-        value.copy< Node > (other.value);
+      case 54: // chunk
+      case 55: // block
+      case 56: // stat
+      case 57: // laststat
+      case 58: // funcname
+      case 59: // varlist
+      case 60: // var
+      case 61: // namelist
+      case 62: // explist
+      case 63: // exp
+      case 64: // prefixexp
+      case 65: // functioncall
+      case 66: // args
+      case 67: // function
+      case 68: // funcbody
+      case 69: // parlist
+      case 70: // tableconstructor
+      case 71: // fieldlist
+      case 72: // field
+      case 73: // fieldsep
+      case 74: // rep_func_name
+      case 75: // rep_var
+      case 76: // rep_list_name
+      case 77: // rep_exp
+      case 78: // rep_elseif
+      case 79: // rep_stat
+      case 80: // rep_field
+      case 81: // opt_explist
+      case 82: // opt_parlist
+      case 83: // opt_name
+      case 84: // opt_tridot
+      case 85: // opt_fieldlist
+      case 86: // opt_fieldsep
+      case 87: // opt_semi
+      case 88: // opt_laststat
+      case 89: // opt_exp
+      case 90: // opt_else
+      case 91: // opt_eq
+        value.copy< Node* > (other.value);
         break;
 
-      case 3: // WS
-      case 4: // NL
-      case 5: // SEMCOL
-      case 6: // STR
-      case 7: // NUM
-      case 8: // EQ
-      case 9: // COM
-      case 10: // DOT
-      case 11: // COL
-      case 12: // BRKOPN
-      case 13: // BRKCLS
-      case 14: // TRIDOT
-      case 15: // PAROPN
-      case 16: // PARCLS
-      case 17: // CUROPN
-      case 18: // CURCLS
-      case 19: // NAME
-      case 20: // FUNC
-      case 21: // PLUS
-      case 22: // MINUS
-      case 23: // MULT
-      case 24: // DIV
-      case 25: // POW
-      case 26: // MOD
-      case 27: // DDOT
-      case 28: // LESS
-      case 29: // GREAT
-      case 30: // LESSEQ
-      case 31: // GREATEQ
-      case 32: // EQEQ
-      case 33: // NOTEQ
-      case 34: // AND
-      case 35: // OR
-      case 36: // NOT
-      case 37: // HASH
-      case 38: // WHILE
-      case 39: // FOR
-      case 40: // DO
-      case 41: // IF
-      case 42: // ELSE
-      case 43: // ELSEIF
-      case 44: // THEN
-      case 45: // RETURN
-      case 46: // BREAK
-      case 47: // _FALSE
-      case 48: // _TRUE
-      case 49: // _END
-      case 50: // IN
-      case 51: // LOCAL
-      case 52: // NIL
-      case 53: // REP
-      case 54: // UNTIL
-        value.copy< std::string > (other.value);
+      case 3: // STR
+      case 4: // NUM
+      case 5: // NAME
+        value.copy< string > (other.value);
         break;
 
       default:
@@ -1133,102 +1026,51 @@ namespace yy {
     (void) v;
       switch (this->type_get ())
     {
-      case 56: // chunk
-      case 57: // block
-      case 58: // stat
-      case 59: // laststat
-      case 60: // funcname
-      case 61: // varlist
-      case 62: // var
-      case 63: // namelist
-      case 64: // explist
-      case 65: // exp
-      case 66: // prefixexp
-      case 67: // functioncall
-      case 68: // args
-      case 69: // function
-      case 70: // funcbody
-      case 71: // parlist
-      case 72: // tableconstructor
-      case 73: // fieldlist
-      case 74: // field
-      case 75: // fieldsep
-      case 76: // binop
-      case 77: // unop
-      case 78: // rep_func_name
-      case 79: // rep_var
-      case 80: // rep_list_name
-      case 81: // rep_exp
-      case 82: // rep_elseif
-      case 83: // rep_stat
-      case 84: // rep_field
-      case 85: // opt_explist
-      case 86: // opt_parlist
-      case 87: // opt_name
-      case 88: // opt_tridot
-      case 89: // opt_fieldlist
-      case 90: // opt_fieldsep
-      case 91: // opt_semi
-      case 92: // opt_laststat
-      case 93: // opt_exp
-      case 94: // opt_else
-      case 95: // opt_eq
-        value.copy< Node > (v);
+      case 54: // chunk
+      case 55: // block
+      case 56: // stat
+      case 57: // laststat
+      case 58: // funcname
+      case 59: // varlist
+      case 60: // var
+      case 61: // namelist
+      case 62: // explist
+      case 63: // exp
+      case 64: // prefixexp
+      case 65: // functioncall
+      case 66: // args
+      case 67: // function
+      case 68: // funcbody
+      case 69: // parlist
+      case 70: // tableconstructor
+      case 71: // fieldlist
+      case 72: // field
+      case 73: // fieldsep
+      case 74: // rep_func_name
+      case 75: // rep_var
+      case 76: // rep_list_name
+      case 77: // rep_exp
+      case 78: // rep_elseif
+      case 79: // rep_stat
+      case 80: // rep_field
+      case 81: // opt_explist
+      case 82: // opt_parlist
+      case 83: // opt_name
+      case 84: // opt_tridot
+      case 85: // opt_fieldlist
+      case 86: // opt_fieldsep
+      case 87: // opt_semi
+      case 88: // opt_laststat
+      case 89: // opt_exp
+      case 90: // opt_else
+      case 91: // opt_eq
+        value.copy< Node* > (v);
         break;
 
-      case 3: // WS
-      case 4: // NL
-      case 5: // SEMCOL
-      case 6: // STR
-      case 7: // NUM
-      case 8: // EQ
-      case 9: // COM
-      case 10: // DOT
-      case 11: // COL
-      case 12: // BRKOPN
-      case 13: // BRKCLS
-      case 14: // TRIDOT
-      case 15: // PAROPN
-      case 16: // PARCLS
-      case 17: // CUROPN
-      case 18: // CURCLS
-      case 19: // NAME
-      case 20: // FUNC
-      case 21: // PLUS
-      case 22: // MINUS
-      case 23: // MULT
-      case 24: // DIV
-      case 25: // POW
-      case 26: // MOD
-      case 27: // DDOT
-      case 28: // LESS
-      case 29: // GREAT
-      case 30: // LESSEQ
-      case 31: // GREATEQ
-      case 32: // EQEQ
-      case 33: // NOTEQ
-      case 34: // AND
-      case 35: // OR
-      case 36: // NOT
-      case 37: // HASH
-      case 38: // WHILE
-      case 39: // FOR
-      case 40: // DO
-      case 41: // IF
-      case 42: // ELSE
-      case 43: // ELSEIF
-      case 44: // THEN
-      case 45: // RETURN
-      case 46: // BREAK
-      case 47: // _FALSE
-      case 48: // _TRUE
-      case 49: // _END
-      case 50: // IN
-      case 51: // LOCAL
-      case 52: // NIL
-      case 53: // REP
-      case 54: // UNTIL
-        value.copy< std::string > (v);
+      case 3: // STR
+      case 4: // NUM
+      case 5: // NAME
+        value.copy< string > (v);
         break;
 
       default:
@@ -1246,13 +1088,13 @@ namespace yy {
   {}
 
   template <typename Base>
-  parser::basic_symbol<Base>::basic_symbol (typename Base::kind_type t, const Node v)
+  parser::basic_symbol<Base>::basic_symbol (typename Base::kind_type t, const Node* v)
     : Base (t)
     , value (v)
   {}
 
   template <typename Base>
-  parser::basic_symbol<Base>::basic_symbol (typename Base::kind_type t, const std::string v)
+  parser::basic_symbol<Base>::basic_symbol (typename Base::kind_type t, const string v)
     : Base (t)
     , value (v)
   {}
@@ -1273,102 +1115,51 @@ namespace yy {
     // Type destructor.
     switch (yytype)
     {
-      case 56: // chunk
-      case 57: // block
-      case 58: // stat
-      case 59: // laststat
-      case 60: // funcname
-      case 61: // varlist
-      case 62: // var
-      case 63: // namelist
-      case 64: // explist
-      case 65: // exp
-      case 66: // prefixexp
-      case 67: // functioncall
-      case 68: // args
-      case 69: // function
-      case 70: // funcbody
-      case 71: // parlist
-      case 72: // tableconstructor
-      case 73: // fieldlist
-      case 74: // field
-      case 75: // fieldsep
-      case 76: // binop
-      case 77: // unop
-      case 78: // rep_func_name
-      case 79: // rep_var
-      case 80: // rep_list_name
-      case 81: // rep_exp
-      case 82: // rep_elseif
-      case 83: // rep_stat
-      case 84: // rep_field
-      case 85: // opt_explist
-      case 86: // opt_parlist
-      case 87: // opt_name
-      case 88: // opt_tridot
-      case 89: // opt_fieldlist
-      case 90: // opt_fieldsep
-      case 91: // opt_semi
-      case 92: // opt_laststat
-      case 93: // opt_exp
-      case 94: // opt_else
-      case 95: // opt_eq
-        value.template destroy< Node > ();
+      case 54: // chunk
+      case 55: // block
+      case 56: // stat
+      case 57: // laststat
+      case 58: // funcname
+      case 59: // varlist
+      case 60: // var
+      case 61: // namelist
+      case 62: // explist
+      case 63: // exp
+      case 64: // prefixexp
+      case 65: // functioncall
+      case 66: // args
+      case 67: // function
+      case 68: // funcbody
+      case 69: // parlist
+      case 70: // tableconstructor
+      case 71: // fieldlist
+      case 72: // field
+      case 73: // fieldsep
+      case 74: // rep_func_name
+      case 75: // rep_var
+      case 76: // rep_list_name
+      case 77: // rep_exp
+      case 78: // rep_elseif
+      case 79: // rep_stat
+      case 80: // rep_field
+      case 81: // opt_explist
+      case 82: // opt_parlist
+      case 83: // opt_name
+      case 84: // opt_tridot
+      case 85: // opt_fieldlist
+      case 86: // opt_fieldsep
+      case 87: // opt_semi
+      case 88: // opt_laststat
+      case 89: // opt_exp
+      case 90: // opt_else
+      case 91: // opt_eq
+        value.template destroy< Node* > ();
         break;
 
-      case 3: // WS
-      case 4: // NL
-      case 5: // SEMCOL
-      case 6: // STR
-      case 7: // NUM
-      case 8: // EQ
-      case 9: // COM
-      case 10: // DOT
-      case 11: // COL
-      case 12: // BRKOPN
-      case 13: // BRKCLS
-      case 14: // TRIDOT
-      case 15: // PAROPN
-      case 16: // PARCLS
-      case 17: // CUROPN
-      case 18: // CURCLS
-      case 19: // NAME
-      case 20: // FUNC
-      case 21: // PLUS
-      case 22: // MINUS
-      case 23: // MULT
-      case 24: // DIV
-      case 25: // POW
-      case 26: // MOD
-      case 27: // DDOT
-      case 28: // LESS
-      case 29: // GREAT
-      case 30: // LESSEQ
-      case 31: // GREATEQ
-      case 32: // EQEQ
-      case 33: // NOTEQ
-      case 34: // AND
-      case 35: // OR
-      case 36: // NOT
-      case 37: // HASH
-      case 38: // WHILE
-      case 39: // FOR
-      case 40: // DO
-      case 41: // IF
-      case 42: // ELSE
-      case 43: // ELSEIF
-      case 44: // THEN
-      case 45: // RETURN
-      case 46: // BREAK
-      case 47: // _FALSE
-      case 48: // _TRUE
-      case 49: // _END
-      case 50: // IN
-      case 51: // LOCAL
-      case 52: // NIL
-      case 53: // REP
-      case 54: // UNTIL
-        value.template destroy< std::string > ();
+      case 3: // STR
+      case 4: // NUM
+      case 5: // NAME
+        value.template destroy< string > ();
         break;
 
       default:
@@ -1385,102 +1176,51 @@ namespace yy {
     super_type::move(s);
       switch (this->type_get ())
     {
-      case 56: // chunk
-      case 57: // block
-      case 58: // stat
-      case 59: // laststat
-      case 60: // funcname
-      case 61: // varlist
-      case 62: // var
-      case 63: // namelist
-      case 64: // explist
-      case 65: // exp
-      case 66: // prefixexp
-      case 67: // functioncall
-      case 68: // args
-      case 69: // function
-      case 70: // funcbody
-      case 71: // parlist
-      case 72: // tableconstructor
-      case 73: // fieldlist
-      case 74: // field
-      case 75: // fieldsep
-      case 76: // binop
-      case 77: // unop
-      case 78: // rep_func_name
-      case 79: // rep_var
-      case 80: // rep_list_name
-      case 81: // rep_exp
-      case 82: // rep_elseif
-      case 83: // rep_stat
-      case 84: // rep_field
-      case 85: // opt_explist
-      case 86: // opt_parlist
-      case 87: // opt_name
-      case 88: // opt_tridot
-      case 89: // opt_fieldlist
-      case 90: // opt_fieldsep
-      case 91: // opt_semi
-      case 92: // opt_laststat
-      case 93: // opt_exp
-      case 94: // opt_else
-      case 95: // opt_eq
-        value.move< Node > (s.value);
+      case 54: // chunk
+      case 55: // block
+      case 56: // stat
+      case 57: // laststat
+      case 58: // funcname
+      case 59: // varlist
+      case 60: // var
+      case 61: // namelist
+      case 62: // explist
+      case 63: // exp
+      case 64: // prefixexp
+      case 65: // functioncall
+      case 66: // args
+      case 67: // function
+      case 68: // funcbody
+      case 69: // parlist
+      case 70: // tableconstructor
+      case 71: // fieldlist
+      case 72: // field
+      case 73: // fieldsep
+      case 74: // rep_func_name
+      case 75: // rep_var
+      case 76: // rep_list_name
+      case 77: // rep_exp
+      case 78: // rep_elseif
+      case 79: // rep_stat
+      case 80: // rep_field
+      case 81: // opt_explist
+      case 82: // opt_parlist
+      case 83: // opt_name
+      case 84: // opt_tridot
+      case 85: // opt_fieldlist
+      case 86: // opt_fieldsep
+      case 87: // opt_semi
+      case 88: // opt_laststat
+      case 89: // opt_exp
+      case 90: // opt_else
+      case 91: // opt_eq
+        value.move< Node* > (s.value);
         break;
 
-      case 3: // WS
-      case 4: // NL
-      case 5: // SEMCOL
-      case 6: // STR
-      case 7: // NUM
-      case 8: // EQ
-      case 9: // COM
-      case 10: // DOT
-      case 11: // COL
-      case 12: // BRKOPN
-      case 13: // BRKCLS
-      case 14: // TRIDOT
-      case 15: // PAROPN
-      case 16: // PARCLS
-      case 17: // CUROPN
-      case 18: // CURCLS
-      case 19: // NAME
-      case 20: // FUNC
-      case 21: // PLUS
-      case 22: // MINUS
-      case 23: // MULT
-      case 24: // DIV
-      case 25: // POW
-      case 26: // MOD
-      case 27: // DDOT
-      case 28: // LESS
-      case 29: // GREAT
-      case 30: // LESSEQ
-      case 31: // GREATEQ
-      case 32: // EQEQ
-      case 33: // NOTEQ
-      case 34: // AND
-      case 35: // OR
-      case 36: // NOT
-      case 37: // HASH
-      case 38: // WHILE
-      case 39: // FOR
-      case 40: // DO
-      case 41: // IF
-      case 42: // ELSE
-      case 43: // ELSEIF
-      case 44: // THEN
-      case 45: // RETURN
-      case 46: // BREAK
-      case 47: // _FALSE
-      case 48: // _TRUE
-      case 49: // _END
-      case 50: // IN
-      case 51: // LOCAL
-      case 52: // NIL
-      case 53: // REP
-      case 54: // UNTIL
-        value.move< std::string > (s.value);
+      case 3: // STR
+      case 4: // NUM
+      case 5: // NAME
+        value.move< string > (s.value);
         break;
 
       default:
@@ -1535,7 +1275,7 @@ namespace yy {
      275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
      285,   286,   287,   288,   289,   290,   291,   292,   293,   294,
      295,   296,   297,   298,   299,   300,   301,   302,   303,   304,
-     305,   306,   307,   308,   309
+     305,   306,   307
     };
     return static_cast<token_type> (yytoken_number_[type]);
   }
@@ -1547,321 +1287,309 @@ namespace yy {
   }
 
   parser::symbol_type
-  parser::make_WS (const std::string& v)
-  {
-    return symbol_type (token::WS, v);
-  }
-
-  parser::symbol_type
-  parser::make_NL (const std::string& v)
-  {
-    return symbol_type (token::NL, v);
-  }
-
-  parser::symbol_type
-  parser::make_SEMCOL (const std::string& v)
-  {
-    return symbol_type (token::SEMCOL, v);
-  }
-
-  parser::symbol_type
-  parser::make_STR (const std::string& v)
+  parser::make_STR (const string& v)
   {
     return symbol_type (token::STR, v);
   }
 
   parser::symbol_type
-  parser::make_NUM (const std::string& v)
+  parser::make_NUM (const string& v)
   {
     return symbol_type (token::NUM, v);
   }
 
   parser::symbol_type
-  parser::make_EQ (const std::string& v)
-  {
-    return symbol_type (token::EQ, v);
-  }
-
-  parser::symbol_type
-  parser::make_COM (const std::string& v)
-  {
-    return symbol_type (token::COM, v);
-  }
-
-  parser::symbol_type
-  parser::make_DOT (const std::string& v)
-  {
-    return symbol_type (token::DOT, v);
-  }
-
-  parser::symbol_type
-  parser::make_COL (const std::string& v)
-  {
-    return symbol_type (token::COL, v);
-  }
-
-  parser::symbol_type
-  parser::make_BRKOPN (const std::string& v)
-  {
-    return symbol_type (token::BRKOPN, v);
-  }
-
-  parser::symbol_type
-  parser::make_BRKCLS (const std::string& v)
-  {
-    return symbol_type (token::BRKCLS, v);
-  }
-
-  parser::symbol_type
-  parser::make_TRIDOT (const std::string& v)
-  {
-    return symbol_type (token::TRIDOT, v);
-  }
-
-  parser::symbol_type
-  parser::make_PAROPN (const std::string& v)
-  {
-    return symbol_type (token::PAROPN, v);
-  }
-
-  parser::symbol_type
-  parser::make_PARCLS (const std::string& v)
-  {
-    return symbol_type (token::PARCLS, v);
-  }
-
-  parser::symbol_type
-  parser::make_CUROPN (const std::string& v)
-  {
-    return symbol_type (token::CUROPN, v);
-  }
-
-  parser::symbol_type
-  parser::make_CURCLS (const std::string& v)
-  {
-    return symbol_type (token::CURCLS, v);
-  }
-
-  parser::symbol_type
-  parser::make_NAME (const std::string& v)
+  parser::make_NAME (const string& v)
   {
     return symbol_type (token::NAME, v);
   }
 
   parser::symbol_type
-  parser::make_FUNC (const std::string& v)
+  parser::make_WHILE ()
   {
-    return symbol_type (token::FUNC, v);
+    return symbol_type (token::WHILE);
   }
 
   parser::symbol_type
-  parser::make_PLUS (const std::string& v)
+  parser::make_FOR ()
   {
-    return symbol_type (token::PLUS, v);
+    return symbol_type (token::FOR);
   }
 
   parser::symbol_type
-  parser::make_MINUS (const std::string& v)
+  parser::make_DO ()
   {
-    return symbol_type (token::MINUS, v);
+    return symbol_type (token::DO);
   }
 
   parser::symbol_type
-  parser::make_MULT (const std::string& v)
+  parser::make_IF ()
   {
-    return symbol_type (token::MULT, v);
+    return symbol_type (token::IF);
   }
 
   parser::symbol_type
-  parser::make_DIV (const std::string& v)
+  parser::make_ELSE ()
   {
-    return symbol_type (token::DIV, v);
+    return symbol_type (token::ELSE);
   }
 
   parser::symbol_type
-  parser::make_POW (const std::string& v)
+  parser::make_ELSEIF ()
   {
-    return symbol_type (token::POW, v);
+    return symbol_type (token::ELSEIF);
   }
 
   parser::symbol_type
-  parser::make_MOD (const std::string& v)
+  parser::make_THEN ()
   {
-    return symbol_type (token::MOD, v);
+    return symbol_type (token::THEN);
   }
 
   parser::symbol_type
-  parser::make_DDOT (const std::string& v)
+  parser::make_RETURN ()
   {
-    return symbol_type (token::DDOT, v);
+    return symbol_type (token::RETURN);
   }
 
   parser::symbol_type
-  parser::make_LESS (const std::string& v)
+  parser::make_BREAK ()
   {
-    return symbol_type (token::LESS, v);
+    return symbol_type (token::BREAK);
   }
 
   parser::symbol_type
-  parser::make_GREAT (const std::string& v)
+  parser::make__FALSE ()
   {
-    return symbol_type (token::GREAT, v);
+    return symbol_type (token::_FALSE);
   }
 
   parser::symbol_type
-  parser::make_LESSEQ (const std::string& v)
+  parser::make__TRUE ()
   {
-    return symbol_type (token::LESSEQ, v);
+    return symbol_type (token::_TRUE);
   }
 
   parser::symbol_type
-  parser::make_GREATEQ (const std::string& v)
+  parser::make__END ()
   {
-    return symbol_type (token::GREATEQ, v);
+    return symbol_type (token::_END);
   }
 
   parser::symbol_type
-  parser::make_EQEQ (const std::string& v)
+  parser::make_IN ()
   {
-    return symbol_type (token::EQEQ, v);
+    return symbol_type (token::IN);
   }
 
   parser::symbol_type
-  parser::make_NOTEQ (const std::string& v)
+  parser::make_LOCAL ()
   {
-    return symbol_type (token::NOTEQ, v);
+    return symbol_type (token::LOCAL);
   }
 
   parser::symbol_type
-  parser::make_AND (const std::string& v)
+  parser::make_NIL ()
   {
-    return symbol_type (token::AND, v);
+    return symbol_type (token::NIL);
   }
 
   parser::symbol_type
-  parser::make_OR (const std::string& v)
+  parser::make_REP ()
   {
-    return symbol_type (token::OR, v);
+    return symbol_type (token::REP);
   }
 
   parser::symbol_type
-  parser::make_NOT (const std::string& v)
+  parser::make_UNTIL ()
   {
-    return symbol_type (token::NOT, v);
+    return symbol_type (token::UNTIL);
   }
 
   parser::symbol_type
-  parser::make_HASH (const std::string& v)
+  parser::make_SEMCOL ()
   {
-    return symbol_type (token::HASH, v);
+    return symbol_type (token::SEMCOL);
   }
 
   parser::symbol_type
-  parser::make_WHILE (const std::string& v)
+  parser::make_EQ ()
   {
-    return symbol_type (token::WHILE, v);
+    return symbol_type (token::EQ);
   }
 
   parser::symbol_type
-  parser::make_FOR (const std::string& v)
+  parser::make_COM ()
   {
-    return symbol_type (token::FOR, v);
+    return symbol_type (token::COM);
   }
 
   parser::symbol_type
-  parser::make_DO (const std::string& v)
+  parser::make_DOT ()
   {
-    return symbol_type (token::DO, v);
+    return symbol_type (token::DOT);
   }
 
   parser::symbol_type
-  parser::make_IF (const std::string& v)
+  parser::make_COL ()
   {
-    return symbol_type (token::IF, v);
+    return symbol_type (token::COL);
   }
 
   parser::symbol_type
-  parser::make_ELSE (const std::string& v)
+  parser::make_BRKOPN ()
   {
-    return symbol_type (token::ELSE, v);
+    return symbol_type (token::BRKOPN);
   }
 
   parser::symbol_type
-  parser::make_ELSEIF (const std::string& v)
+  parser::make_BRKCLS ()
   {
-    return symbol_type (token::ELSEIF, v);
+    return symbol_type (token::BRKCLS);
   }
 
   parser::symbol_type
-  parser::make_THEN (const std::string& v)
+  parser::make_TRIDOT ()
   {
-    return symbol_type (token::THEN, v);
+    return symbol_type (token::TRIDOT);
   }
 
   parser::symbol_type
-  parser::make_RETURN (const std::string& v)
+  parser::make_PAROPN ()
   {
-    return symbol_type (token::RETURN, v);
+    return symbol_type (token::PAROPN);
   }
 
   parser::symbol_type
-  parser::make_BREAK (const std::string& v)
+  parser::make_PARCLS ()
   {
-    return symbol_type (token::BREAK, v);
+    return symbol_type (token::PARCLS);
   }
 
   parser::symbol_type
-  parser::make__FALSE (const std::string& v)
+  parser::make_CUROPN ()
   {
-    return symbol_type (token::_FALSE, v);
+    return symbol_type (token::CUROPN);
   }
 
   parser::symbol_type
-  parser::make__TRUE (const std::string& v)
+  parser::make_CURCLS ()
   {
-    return symbol_type (token::_TRUE, v);
+    return symbol_type (token::CURCLS);
   }
 
   parser::symbol_type
-  parser::make__END (const std::string& v)
+  parser::make_FUNC ()
   {
-    return symbol_type (token::_END, v);
+    return symbol_type (token::FUNC);
   }
 
   parser::symbol_type
-  parser::make_IN (const std::string& v)
+  parser::make_OR ()
   {
-    return symbol_type (token::IN, v);
+    return symbol_type (token::OR);
   }
 
   parser::symbol_type
-  parser::make_LOCAL (const std::string& v)
+  parser::make_AND ()
   {
-    return symbol_type (token::LOCAL, v);
+    return symbol_type (token::AND);
   }
 
   parser::symbol_type
-  parser::make_NIL (const std::string& v)
+  parser::make_LESS ()
   {
-    return symbol_type (token::NIL, v);
+    return symbol_type (token::LESS);
   }
 
   parser::symbol_type
-  parser::make_REP (const std::string& v)
+  parser::make_GREAT ()
   {
-    return symbol_type (token::REP, v);
+    return symbol_type (token::GREAT);
   }
 
   parser::symbol_type
-  parser::make_UNTIL (const std::string& v)
+  parser::make_LESSEQ ()
   {
-    return symbol_type (token::UNTIL, v);
+    return symbol_type (token::LESSEQ);
+  }
+
+  parser::symbol_type
+  parser::make_GREATEQ ()
+  {
+    return symbol_type (token::GREATEQ);
+  }
+
+  parser::symbol_type
+  parser::make_EQEQ ()
+  {
+    return symbol_type (token::EQEQ);
+  }
+
+  parser::symbol_type
+  parser::make_NOTEQ ()
+  {
+    return symbol_type (token::NOTEQ);
+  }
+
+  parser::symbol_type
+  parser::make_DDOT ()
+  {
+    return symbol_type (token::DDOT);
+  }
+
+  parser::symbol_type
+  parser::make_PLUS ()
+  {
+    return symbol_type (token::PLUS);
+  }
+
+  parser::symbol_type
+  parser::make_MINUS ()
+  {
+    return symbol_type (token::MINUS);
+  }
+
+  parser::symbol_type
+  parser::make_MULT ()
+  {
+    return symbol_type (token::MULT);
+  }
+
+  parser::symbol_type
+  parser::make_DIV ()
+  {
+    return symbol_type (token::DIV);
+  }
+
+  parser::symbol_type
+  parser::make_MOD ()
+  {
+    return symbol_type (token::MOD);
+  }
+
+  parser::symbol_type
+  parser::make_NOT ()
+  {
+    return symbol_type (token::NOT);
+  }
+
+  parser::symbol_type
+  parser::make_HASH ()
+  {
+    return symbol_type (token::HASH);
+  }
+
+  parser::symbol_type
+  parser::make_POW ()
+  {
+    return symbol_type (token::POW);
   }
 
 
 
 } // yy
-#line 1865 "inc/parser.h" // lalr1.cc:372
+#line 1593 "inc/parser.h" // lalr1.cc:372
 
 
 

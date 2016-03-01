@@ -4,15 +4,24 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "Error.h"
+#include "Environment.h"
 
-//! Node class to build node tree
+#define TRUE    1
+#define FALSE   0
+#define EXEC_LEFT this->children[0]->execute(env)
+#define EXEC_RIGHT this->children[1]->execute(env)
+
+//! Class to build a non-specific tree-node
 /**
 * @author Jim Ahlstrand
 */
 class Node {
-  public:
+public:
     //! Defines types of Nodes
+    //! \bug unary minus missing
     //! \todo concatenate some of these types to one type with different values
+    //! \todo implemetn local functions and namelists
     enum Type {
       Undefined,
       ExpressionList,
@@ -21,59 +30,36 @@ class Node {
       FunctionName,
       FunctionCall,
       Function,
-      MemberVariable,
       MemberFunction,
       Variable,
       ListName,
       Range,
-      Repeat,
-      While,
-      For,
-      If,
-      ElseIf,
       Stat,
       Field,
+      FieldList,
+      FieldElement,
       Equal,
-      Addition,
-      Subtraction,
-      Division,
-      Multiplication,
-      Power,
-      Modulo,
       DoubleDot,
-      LessThan,
-      LessOrEq,
-      GreaterThan,
-      GreaterOrEq,
-      Test,
-      NotEq,
-      And,
-      Or,
-      Not,
       Hash,
-      Comma,
-      SemiColon,
+      Negate,
       Name,
       Nil,
-      False,
-      True,
       Number,
       String,
       Tridot
     };
 
     // Constructors
+    // ---------------------------------------
     //! Default constructor
     Node();
     //! Constructor with type
     /**
-    * @author Jim Ahlstrand
     * @param type Node type of enum Type
     */
     Node(Type type);
     //! Constructor with type and value
     /**
-    * @author Jim Ahlstrand
     * @param type Node type of enum Type
     * @param value String value of the node
     */
@@ -85,7 +71,6 @@ class Node {
     // ---------------------------------------
     //! Prints the node tree
     /**
-    * @author Jim Ahlstrand
     * @param id integer of currently highest node id
     * @param file ofstream file handler
     * @return id integer of this node id
@@ -93,38 +78,53 @@ class Node {
     int print(int id, std::ofstream& file);
     //! Adds a child to the node
     /**
-    * @author Jim Ahlstrand
     * @param child Node child to add
     * @return 0 on success else error
     */
-    int addChild(Node& child);
+    void addChild(Node* child) { this->children.push_back(child); }
     //! Gives a child of the node
     /**
-    * @author Jim Ahlstrand
     * @param i unsigned integer index of child
     * @return Node
     */
-    Node getChild(unsigned int i);
+    Node* getChild(unsigned int i);
+    //! Moves the end element to the front
+    //! \remark ugly hack only used for field list correction
+    /**
+    * @return int 0 on success
+    */
+    int moveToFront();
     //! Gives the nodes id
     /**
-    * @author Jim Ahlstrand
     * @return id integer of nodes id
     */
     int getNodeID() { return this->id; }
     //! Is this node undefined?
     /**
-    * @author Jim Ahlstrand
     * @return id integer of nodes id
     */
     bool isUndefined() { return this->type == Undefined ? true : false; }
     //! Returns the number of childs in this node
     /**
-    * @author Jim Ahlstrand
     * @return id integer number of childs
     */
-    int size() { return this->children.size(); }
+    unsigned int size() { return this->children.size(); }
+    //! Executes the Node
+    /**
+    * @param env current Environment
+    * @return integer value of the node
+    */
+    virtual int execute(Environment& env);
+    //! Converts type of node to string
+    /**
+    * @return string type of the node
+    */
+    virtual std::string getType();
 
-  private:
+protected:
+    // Methods
+    // ---------------------------------------
+
     // Properties
     // ---------------------------------------
     //! Node id
@@ -134,5 +134,8 @@ class Node {
     //! Node value
     std::string value;
     //! The children connected to the node
-    std::vector<Node> children;
+    std::vector<Node*> children;
 };
+
+//! Overloads the Node Type output stream operator
+std::ostream& operator<<(std::ostream& out, const Node::Type& type);

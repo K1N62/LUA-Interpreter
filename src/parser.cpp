@@ -49,16 +49,17 @@
 
 #line 51 "src/parser.cpp" // lalr1.cc:407
 // Unqualified %code blocks.
-#line 9 "src/parser.y" // lalr1.cc:408
+#line 14 "src/parser.y" // lalr1.cc:408
 
   #include <string>
   #include <iostream>
   #define YY_DECL yy::parser::symbol_type yylex()
   YY_DECL;
 
-  Node root;
+  Node* root;
+  Environment env;
 
-#line 62 "src/parser.cpp" // lalr1.cc:408
+#line 63 "src/parser.cpp" // lalr1.cc:408
 
 
 #ifndef YY_
@@ -125,7 +126,7 @@
 
 
 namespace yy {
-#line 129 "src/parser.cpp" // lalr1.cc:474
+#line 130 "src/parser.cpp" // lalr1.cc:474
 
   /// Build a parser object.
   parser::parser ()
@@ -187,102 +188,51 @@ namespace yy {
   {
       switch (that.type_get ())
     {
-      case 56: // chunk
-      case 57: // block
-      case 58: // stat
-      case 59: // laststat
-      case 60: // funcname
-      case 61: // varlist
-      case 62: // var
-      case 63: // namelist
-      case 64: // explist
-      case 65: // exp
-      case 66: // prefixexp
-      case 67: // functioncall
-      case 68: // args
-      case 69: // function
-      case 70: // funcbody
-      case 71: // parlist
-      case 72: // tableconstructor
-      case 73: // fieldlist
-      case 74: // field
-      case 75: // fieldsep
-      case 76: // binop
-      case 77: // unop
-      case 78: // rep_func_name
-      case 79: // rep_var
-      case 80: // rep_list_name
-      case 81: // rep_exp
-      case 82: // rep_elseif
-      case 83: // rep_stat
-      case 84: // rep_field
-      case 85: // opt_explist
-      case 86: // opt_parlist
-      case 87: // opt_name
-      case 88: // opt_tridot
-      case 89: // opt_fieldlist
-      case 90: // opt_fieldsep
-      case 91: // opt_semi
-      case 92: // opt_laststat
-      case 93: // opt_exp
-      case 94: // opt_else
-      case 95: // opt_eq
-        value.move< Node > (that.value);
+      case 54: // chunk
+      case 55: // block
+      case 56: // stat
+      case 57: // laststat
+      case 58: // funcname
+      case 59: // varlist
+      case 60: // var
+      case 61: // namelist
+      case 62: // explist
+      case 63: // exp
+      case 64: // prefixexp
+      case 65: // functioncall
+      case 66: // args
+      case 67: // function
+      case 68: // funcbody
+      case 69: // parlist
+      case 70: // tableconstructor
+      case 71: // fieldlist
+      case 72: // field
+      case 73: // fieldsep
+      case 74: // rep_func_name
+      case 75: // rep_var
+      case 76: // rep_list_name
+      case 77: // rep_exp
+      case 78: // rep_elseif
+      case 79: // rep_stat
+      case 80: // rep_field
+      case 81: // opt_explist
+      case 82: // opt_parlist
+      case 83: // opt_name
+      case 84: // opt_tridot
+      case 85: // opt_fieldlist
+      case 86: // opt_fieldsep
+      case 87: // opt_semi
+      case 88: // opt_laststat
+      case 89: // opt_exp
+      case 90: // opt_else
+      case 91: // opt_eq
+        value.move< Node* > (that.value);
         break;
 
-      case 3: // WS
-      case 4: // NL
-      case 5: // SEMCOL
-      case 6: // STR
-      case 7: // NUM
-      case 8: // EQ
-      case 9: // COM
-      case 10: // DOT
-      case 11: // COL
-      case 12: // BRKOPN
-      case 13: // BRKCLS
-      case 14: // TRIDOT
-      case 15: // PAROPN
-      case 16: // PARCLS
-      case 17: // CUROPN
-      case 18: // CURCLS
-      case 19: // NAME
-      case 20: // FUNC
-      case 21: // PLUS
-      case 22: // MINUS
-      case 23: // MULT
-      case 24: // DIV
-      case 25: // POW
-      case 26: // MOD
-      case 27: // DDOT
-      case 28: // LESS
-      case 29: // GREAT
-      case 30: // LESSEQ
-      case 31: // GREATEQ
-      case 32: // EQEQ
-      case 33: // NOTEQ
-      case 34: // AND
-      case 35: // OR
-      case 36: // NOT
-      case 37: // HASH
-      case 38: // WHILE
-      case 39: // FOR
-      case 40: // DO
-      case 41: // IF
-      case 42: // ELSE
-      case 43: // ELSEIF
-      case 44: // THEN
-      case 45: // RETURN
-      case 46: // BREAK
-      case 47: // _FALSE
-      case 48: // _TRUE
-      case 49: // _END
-      case 50: // IN
-      case 51: // LOCAL
-      case 52: // NIL
-      case 53: // REP
-      case 54: // UNTIL
-        value.move< std::string > (that.value);
+      case 3: // STR
+      case 4: // NUM
+      case 5: // NAME
+        value.move< string > (that.value);
         break;
 
       default:
@@ -300,102 +250,51 @@ namespace yy {
     state = that.state;
       switch (that.type_get ())
     {
-      case 56: // chunk
-      case 57: // block
-      case 58: // stat
-      case 59: // laststat
-      case 60: // funcname
-      case 61: // varlist
-      case 62: // var
-      case 63: // namelist
-      case 64: // explist
-      case 65: // exp
-      case 66: // prefixexp
-      case 67: // functioncall
-      case 68: // args
-      case 69: // function
-      case 70: // funcbody
-      case 71: // parlist
-      case 72: // tableconstructor
-      case 73: // fieldlist
-      case 74: // field
-      case 75: // fieldsep
-      case 76: // binop
-      case 77: // unop
-      case 78: // rep_func_name
-      case 79: // rep_var
-      case 80: // rep_list_name
-      case 81: // rep_exp
-      case 82: // rep_elseif
-      case 83: // rep_stat
-      case 84: // rep_field
-      case 85: // opt_explist
-      case 86: // opt_parlist
-      case 87: // opt_name
-      case 88: // opt_tridot
-      case 89: // opt_fieldlist
-      case 90: // opt_fieldsep
-      case 91: // opt_semi
-      case 92: // opt_laststat
-      case 93: // opt_exp
-      case 94: // opt_else
-      case 95: // opt_eq
-        value.copy< Node > (that.value);
+      case 54: // chunk
+      case 55: // block
+      case 56: // stat
+      case 57: // laststat
+      case 58: // funcname
+      case 59: // varlist
+      case 60: // var
+      case 61: // namelist
+      case 62: // explist
+      case 63: // exp
+      case 64: // prefixexp
+      case 65: // functioncall
+      case 66: // args
+      case 67: // function
+      case 68: // funcbody
+      case 69: // parlist
+      case 70: // tableconstructor
+      case 71: // fieldlist
+      case 72: // field
+      case 73: // fieldsep
+      case 74: // rep_func_name
+      case 75: // rep_var
+      case 76: // rep_list_name
+      case 77: // rep_exp
+      case 78: // rep_elseif
+      case 79: // rep_stat
+      case 80: // rep_field
+      case 81: // opt_explist
+      case 82: // opt_parlist
+      case 83: // opt_name
+      case 84: // opt_tridot
+      case 85: // opt_fieldlist
+      case 86: // opt_fieldsep
+      case 87: // opt_semi
+      case 88: // opt_laststat
+      case 89: // opt_exp
+      case 90: // opt_else
+      case 91: // opt_eq
+        value.copy< Node* > (that.value);
         break;
 
-      case 3: // WS
-      case 4: // NL
-      case 5: // SEMCOL
-      case 6: // STR
-      case 7: // NUM
-      case 8: // EQ
-      case 9: // COM
-      case 10: // DOT
-      case 11: // COL
-      case 12: // BRKOPN
-      case 13: // BRKCLS
-      case 14: // TRIDOT
-      case 15: // PAROPN
-      case 16: // PARCLS
-      case 17: // CUROPN
-      case 18: // CURCLS
-      case 19: // NAME
-      case 20: // FUNC
-      case 21: // PLUS
-      case 22: // MINUS
-      case 23: // MULT
-      case 24: // DIV
-      case 25: // POW
-      case 26: // MOD
-      case 27: // DDOT
-      case 28: // LESS
-      case 29: // GREAT
-      case 30: // LESSEQ
-      case 31: // GREATEQ
-      case 32: // EQEQ
-      case 33: // NOTEQ
-      case 34: // AND
-      case 35: // OR
-      case 36: // NOT
-      case 37: // HASH
-      case 38: // WHILE
-      case 39: // FOR
-      case 40: // DO
-      case 41: // IF
-      case 42: // ELSE
-      case 43: // ELSEIF
-      case 44: // THEN
-      case 45: // RETURN
-      case 46: // BREAK
-      case 47: // _FALSE
-      case 48: // _TRUE
-      case 49: // _END
-      case 50: // IN
-      case 51: // LOCAL
-      case 52: // NIL
-      case 53: // REP
-      case 54: // UNTIL
-        value.copy< std::string > (that.value);
+      case 3: // STR
+      case 4: // NUM
+      case 5: // NAME
+        value.copy< string > (that.value);
         break;
 
       default:
@@ -624,102 +523,51 @@ namespace yy {
          when using variants.  */
         switch (yyr1_[yyn])
     {
-      case 56: // chunk
-      case 57: // block
-      case 58: // stat
-      case 59: // laststat
-      case 60: // funcname
-      case 61: // varlist
-      case 62: // var
-      case 63: // namelist
-      case 64: // explist
-      case 65: // exp
-      case 66: // prefixexp
-      case 67: // functioncall
-      case 68: // args
-      case 69: // function
-      case 70: // funcbody
-      case 71: // parlist
-      case 72: // tableconstructor
-      case 73: // fieldlist
-      case 74: // field
-      case 75: // fieldsep
-      case 76: // binop
-      case 77: // unop
-      case 78: // rep_func_name
-      case 79: // rep_var
-      case 80: // rep_list_name
-      case 81: // rep_exp
-      case 82: // rep_elseif
-      case 83: // rep_stat
-      case 84: // rep_field
-      case 85: // opt_explist
-      case 86: // opt_parlist
-      case 87: // opt_name
-      case 88: // opt_tridot
-      case 89: // opt_fieldlist
-      case 90: // opt_fieldsep
-      case 91: // opt_semi
-      case 92: // opt_laststat
-      case 93: // opt_exp
-      case 94: // opt_else
-      case 95: // opt_eq
-        yylhs.value.build< Node > ();
+      case 54: // chunk
+      case 55: // block
+      case 56: // stat
+      case 57: // laststat
+      case 58: // funcname
+      case 59: // varlist
+      case 60: // var
+      case 61: // namelist
+      case 62: // explist
+      case 63: // exp
+      case 64: // prefixexp
+      case 65: // functioncall
+      case 66: // args
+      case 67: // function
+      case 68: // funcbody
+      case 69: // parlist
+      case 70: // tableconstructor
+      case 71: // fieldlist
+      case 72: // field
+      case 73: // fieldsep
+      case 74: // rep_func_name
+      case 75: // rep_var
+      case 76: // rep_list_name
+      case 77: // rep_exp
+      case 78: // rep_elseif
+      case 79: // rep_stat
+      case 80: // rep_field
+      case 81: // opt_explist
+      case 82: // opt_parlist
+      case 83: // opt_name
+      case 84: // opt_tridot
+      case 85: // opt_fieldlist
+      case 86: // opt_fieldsep
+      case 87: // opt_semi
+      case 88: // opt_laststat
+      case 89: // opt_exp
+      case 90: // opt_else
+      case 91: // opt_eq
+        yylhs.value.build< Node* > ();
         break;
 
-      case 3: // WS
-      case 4: // NL
-      case 5: // SEMCOL
-      case 6: // STR
-      case 7: // NUM
-      case 8: // EQ
-      case 9: // COM
-      case 10: // DOT
-      case 11: // COL
-      case 12: // BRKOPN
-      case 13: // BRKCLS
-      case 14: // TRIDOT
-      case 15: // PAROPN
-      case 16: // PARCLS
-      case 17: // CUROPN
-      case 18: // CURCLS
-      case 19: // NAME
-      case 20: // FUNC
-      case 21: // PLUS
-      case 22: // MINUS
-      case 23: // MULT
-      case 24: // DIV
-      case 25: // POW
-      case 26: // MOD
-      case 27: // DDOT
-      case 28: // LESS
-      case 29: // GREAT
-      case 30: // LESSEQ
-      case 31: // GREATEQ
-      case 32: // EQEQ
-      case 33: // NOTEQ
-      case 34: // AND
-      case 35: // OR
-      case 36: // NOT
-      case 37: // HASH
-      case 38: // WHILE
-      case 39: // FOR
-      case 40: // DO
-      case 41: // IF
-      case 42: // ELSE
-      case 43: // ELSEIF
-      case 44: // THEN
-      case 45: // RETURN
-      case 46: // BREAK
-      case 47: // _FALSE
-      case 48: // _TRUE
-      case 49: // _END
-      case 50: // IN
-      case 51: // LOCAL
-      case 52: // NIL
-      case 53: // REP
-      case 54: // UNTIL
-        yylhs.value.build< std::string > ();
+      case 3: // STR
+      case 4: // NUM
+      case 5: // NAME
+        yylhs.value.build< string > ();
         break;
 
       default:
@@ -735,756 +583,767 @@ namespace yy {
           switch (yyn)
             {
   case 2:
-#line 27 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 741 "src/parser.cpp" // lalr1.cc:847
+#line 47 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 589 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 3:
-#line 28 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[1].value.as< Node > (); if (!yystack_[0].value.as< Node > ().isUndefined()) yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ()); root = yylhs.value.as< Node > (); }
-#line 747 "src/parser.cpp" // lalr1.cc:847
+#line 48 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > ();
+                                                                      if (yystack_[0].value.as< Node* > () != NULL )
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
+                                                                      root = yylhs.value.as< Node* > ();
+                                                                    }
+#line 600 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 4:
-#line 31 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 753 "src/parser.cpp" // lalr1.cc:847
+#line 56 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 606 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 5:
-#line 34 "src/parser.y" // lalr1.cc:847
+#line 59 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::Equal);
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[2].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::Equal);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 763 "src/parser.cpp" // lalr1.cc:847
+#line 616 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 6:
-#line 39 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 769 "src/parser.cpp" // lalr1.cc:847
+#line 64 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 622 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 7:
-#line 40 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 775 "src/parser.cpp" // lalr1.cc:847
+#line 65 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = new Loop(Loop::Type::Do);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
+                                                                    }
+#line 631 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 8:
-#line 41 "src/parser.y" // lalr1.cc:847
+#line 69 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::While);
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[3].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ());
+                                                                      yylhs.value.as< Node* > () = new Loop(Loop::Type::While);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
                                                                     }
-#line 785 "src/parser.cpp" // lalr1.cc:847
+#line 641 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 9:
-#line 46 "src/parser.y" // lalr1.cc:847
+#line 74 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::Repeat);
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[2].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
+                                                                      yylhs.value.as< Node* > () = new Loop(Loop::Type::Repeat);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 795 "src/parser.cpp" // lalr1.cc:847
+#line 651 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 10:
-#line 51 "src/parser.y" // lalr1.cc:847
+#line 79 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::If);
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[5].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[3].value.as< Node > ());
-                                                                      if (yystack_[2].value.as< Node > ().size() != 0)
-                                                                        yylhs.value.as< Node > ().addChild(yystack_[2].value.as< Node > ());
-                                                                      if (!yystack_[1].value.as< Node > ().isUndefined())
-                                                                        yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ());
+                                                                      yylhs.value.as< Node* > () = new Condition(Condition::Type::If);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[5].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
+                                                                      if (yystack_[2].value.as< Node* > ()->size() != 0)
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ());
+                                                                      if (yystack_[1].value.as< Node* > () != NULL )
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
                                                                     }
-#line 809 "src/parser.cpp" // lalr1.cc:847
+#line 665 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 11:
-#line 60 "src/parser.y" // lalr1.cc:847
+#line 88 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::For);
-                                                                      Node name = Node(Node::Type::Name, yystack_[8].value.as< std::string > ());
-                                                                      yylhs.value.as< Node > ().addChild(name);
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[6].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[4].value.as< Node > ());
-                                                                      if (!yystack_[3].value.as< Node > ().isUndefined())
-                                                                        yylhs.value.as< Node > ().addChild(yystack_[3].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ());
+                                                                      yylhs.value.as< Node* > () = new Loop(Loop::Type::For);
+                                                                      Node* name = new Node(Node::Type::Name, yystack_[8].value.as< string > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(name);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[6].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[4].value.as< Node* > ());
+                                                                      if (yystack_[3].value.as< Node* > () != NULL )
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
                                                                     }
-#line 824 "src/parser.cpp" // lalr1.cc:847
+#line 680 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 12:
-#line 70 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 830 "src/parser.cpp" // lalr1.cc:847
+#line 98 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = new Loop(Loop::Type::For);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[5].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
+                                                                    }
+#line 691 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 13:
-#line 71 "src/parser.y" // lalr1.cc:847
+#line 104 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::Function);
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::Function);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 840 "src/parser.cpp" // lalr1.cc:847
+#line 701 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 14:
-#line 76 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 846 "src/parser.cpp" // lalr1.cc:847
+#line 109 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 707 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 15:
-#line 77 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 852 "src/parser.cpp" // lalr1.cc:847
+#line 110 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 713 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 16:
-#line 80 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 858 "src/parser.cpp" // lalr1.cc:847
+#line 113 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 719 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 17:
-#line 81 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 864 "src/parser.cpp" // lalr1.cc:847
+#line 114 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 725 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 18:
-#line 84 "src/parser.y" // lalr1.cc:847
+#line 117 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::FunctionName);
-                                                                      Node name = Node(Node::Type::Name, yystack_[2].value.as< std::string > ());
-                                                                      yylhs.value.as< Node > ().addChild(name);
-                                                                      if (yystack_[1].value.as< Node > ().size() > 0)
-                                                                        yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ());
-                                                                      if (!yystack_[0].value.as< Node > ().isUndefined())
-                                                                        yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::FunctionName);
+                                                                      Node* name = new Node(Node::Type::Name, yystack_[2].value.as< string > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(name);
+                                                                      if (yystack_[1].value.as< Node* > ()->size() > 0)
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
+                                                                      if (yystack_[0].value.as< Node* > () != NULL )
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 878 "src/parser.cpp" // lalr1.cc:847
+#line 739 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 19:
-#line 95 "src/parser.y" // lalr1.cc:847
+#line 128 "src/parser.y" // lalr1.cc:847
     {
-                                                                      if (yystack_[0].value.as< Node > ().size() == 0) {
-                                                                        yylhs.value.as< Node > () = yystack_[1].value.as< Node > ();
+                                                                      if (yystack_[0].value.as< Node* > ()->size() == 0) {
+                                                                        yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > ();
                                                                       } else {
-                                                                        yylhs.value.as< Node > () = yystack_[0].value.as< Node > ();
-                                                                        yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ());
+                                                                        yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > ();
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
                                                                       }
                                                                     }
-#line 891 "src/parser.cpp" // lalr1.cc:847
+#line 752 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 20:
-#line 105 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Name, yystack_[0].value.as< std::string > ()); }
-#line 897 "src/parser.cpp" // lalr1.cc:847
+#line 138 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::Name, yystack_[0].value.as< string > ()); }
+#line 758 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 21:
-#line 106 "src/parser.y" // lalr1.cc:847
+#line 139 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::MemberFunction);
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[3].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ());
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::FieldElement);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
                                                                     }
-#line 907 "src/parser.cpp" // lalr1.cc:847
+#line 768 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 22:
-#line 111 "src/parser.y" // lalr1.cc:847
+#line 144 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::MemberVariable);
-                                                                      Node name = Node(Node::Type::Name, yystack_[0].value.as< std::string > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[2].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(name);
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::MemberFunction);
+                                                                      Node* name = new Node(Node::Type::Name, yystack_[0].value.as< string > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(name);
                                                                     }
-#line 918 "src/parser.cpp" // lalr1.cc:847
+#line 779 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 23:
-#line 119 "src/parser.y" // lalr1.cc:847
+#line 152 "src/parser.y" // lalr1.cc:847
     {
-                                                                      Node name = Node(Node::Type::Name, yystack_[1].value.as< std::string > ());
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::ListName);
-                                                                      yylhs.value.as< Node > ().addChild(name);
-                                                                      if (yystack_[0].value.as< Node > ().size() != 0)
-                                                                        yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
+                                                                      Node* name = new Node(Node::Type::Name, yystack_[1].value.as< string > ());
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::ListName);
+                                                                      yylhs.value.as< Node* > ()->addChild(name);
+                                                                      if (yystack_[0].value.as< Node* > ()->size() != 0)
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 930 "src/parser.cpp" // lalr1.cc:847
+#line 791 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 24:
-#line 128 "src/parser.y" // lalr1.cc:847
+#line 161 "src/parser.y" // lalr1.cc:847
     {
-                                                                      if (yystack_[1].value.as< Node > ().size() != 0) {
-                                                                        yylhs.value.as< Node > () = yystack_[1].value.as< Node > ();
-                                                                        yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
+                                                                      if (yystack_[1].value.as< Node* > ()->size() != 0) {
+                                                                        yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > ();
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                       } else {
-                                                                        yylhs.value.as< Node > () = yystack_[0].value.as< Node > ();
+                                                                        yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > ();
                                                                       }
                                                                     }
-#line 943 "src/parser.cpp" // lalr1.cc:847
+#line 804 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 25:
-#line 138 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Nil, "Nil"); }
-#line 949 "src/parser.cpp" // lalr1.cc:847
+#line 171 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::Nil, "Nil"); }
+#line 810 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 26:
-#line 139 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::False, "false"); }
-#line 955 "src/parser.cpp" // lalr1.cc:847
+#line 172 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::False); }
+#line 816 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 27:
-#line 140 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::True, "true"); }
-#line 961 "src/parser.cpp" // lalr1.cc:847
+#line 173 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::True); }
+#line 822 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 28:
-#line 141 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Number, yystack_[0].value.as< std::string > ()); }
-#line 967 "src/parser.cpp" // lalr1.cc:847
+#line 174 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::Number, yystack_[0].value.as< string > ()); }
+#line 828 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 29:
-#line 142 "src/parser.y" // lalr1.cc:847
+#line 175 "src/parser.y" // lalr1.cc:847
     {
-                                                                      yystack_[0].value.as< std::string > ().erase(0,1);
-                                                                      yystack_[0].value.as< std::string > ().erase(yystack_[0].value.as< std::string > ().length() - 1, 1);
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::String, yystack_[0].value.as< std::string > ());
+                                                                      yystack_[0].value.as< string > ().erase(0,1);
+                                                                      yystack_[0].value.as< string > ().erase(yystack_[0].value.as< string > ().length() - 1, 1);
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::String, yystack_[0].value.as< string > ());
                                                                     }
-#line 977 "src/parser.cpp" // lalr1.cc:847
+#line 838 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 30:
-#line 147 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Tridot, "..."); }
-#line 983 "src/parser.cpp" // lalr1.cc:847
+#line 180 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::Tridot, "..."); }
+#line 844 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 31:
-#line 148 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 989 "src/parser.cpp" // lalr1.cc:847
+#line 181 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 850 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 32:
-#line 149 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 995 "src/parser.cpp" // lalr1.cc:847
+#line 182 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 856 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 33:
-#line 150 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1001 "src/parser.cpp" // lalr1.cc:847
+#line 183 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 862 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 34:
-#line 151 "src/parser.y" // lalr1.cc:847
-    {
-                                                                      yylhs.value.as< Node > () = yystack_[1].value.as< Node > ();
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[2].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
-                                                                    }
-#line 1011 "src/parser.cpp" // lalr1.cc:847
+#line 184 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::DoubleDot); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 868 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 35:
-#line 156 "src/parser.y" // lalr1.cc:847
-    {
-                                                                      yylhs.value.as< Node > () = yystack_[1].value.as< Node > ();
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
-                                                                    }
-#line 1020 "src/parser.cpp" // lalr1.cc:847
+#line 185 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Binop(Binop::Type::Addition); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 874 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 36:
-#line 162 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1026 "src/parser.cpp" // lalr1.cc:847
+#line 186 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Binop(Binop::Type::Subtraction); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 880 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 37:
-#line 163 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1032 "src/parser.cpp" // lalr1.cc:847
+#line 187 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Binop(Binop::Type::Division); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 886 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 38:
-#line 164 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[1].value.as< Node > (); }
-#line 1038 "src/parser.cpp" // lalr1.cc:847
+#line 188 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Binop(Binop::Type::Multiplication); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 892 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 39:
-#line 167 "src/parser.y" // lalr1.cc:847
-    {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::FunctionCall);
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
-                                                                    }
-#line 1048 "src/parser.cpp" // lalr1.cc:847
+#line 189 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Binop(Binop::Type::Power); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 898 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 40:
-#line 172 "src/parser.y" // lalr1.cc:847
-    {
-                                                                      yylhs.value.as< Node > () = yystack_[3].value.as< Node > ();
-                                                                      Node name = Node(Node::Type::Name, yystack_[1].value.as< std::string > ());
-                                                                      yylhs.value.as< Node > ().addChild(name);
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
-                                                                    }
-#line 1059 "src/parser.cpp" // lalr1.cc:847
+#line 190 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Binop(Binop::Type::Modulo); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 904 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 41:
-#line 180 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[1].value.as< Node > (); }
-#line 1065 "src/parser.cpp" // lalr1.cc:847
+#line 191 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::LessThan); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 910 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 42:
-#line 181 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1071 "src/parser.cpp" // lalr1.cc:847
+#line 192 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::LessOrEqual); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 916 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 43:
-#line 182 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::String, yystack_[0].value.as< std::string > ()); }
-#line 1077 "src/parser.cpp" // lalr1.cc:847
+#line 193 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::GreaterThan); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 922 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 44:
-#line 185 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1083 "src/parser.cpp" // lalr1.cc:847
+#line 194 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::GreaterOrEqual); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 928 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 45:
-#line 188 "src/parser.y" // lalr1.cc:847
-    {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::FunctionBody);
-                                                                      if (!yystack_[3].value.as< Node > ().isUndefined())
-                                                                        yylhs.value.as< Node > ().addChild(yystack_[3].value.as< Node > ());
-                                                                      yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ());
-                                                                    }
-#line 1094 "src/parser.cpp" // lalr1.cc:847
+#line 195 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::EqualEqual); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 934 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 46:
 #line 196 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1100 "src/parser.cpp" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::NotEqual); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 940 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 47:
 #line 197 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Tridot); }
-#line 1106 "src/parser.cpp" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::And); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 946 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 48:
-#line 200 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[1].value.as< Node > (); }
-#line 1112 "src/parser.cpp" // lalr1.cc:847
+#line 198 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::Or); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 952 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 49:
-#line 203 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1118 "src/parser.cpp" // lalr1.cc:847
+#line 199 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Test(Test::Type::Not); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 958 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 50:
-#line 206 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1124 "src/parser.cpp" // lalr1.cc:847
+#line 200 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::Negate); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 964 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 51:
-#line 207 "src/parser.y" // lalr1.cc:847
-    {
-                                                                      yylhs.value.as< Node > () = Node(Node::Type::Equal);
-                                                                      Node name = Node(Node::Type::Name, yystack_[2].value.as< std::string > ());
-                                                                      yylhs.value.as< Node > ().addChild(name); yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ());
-                                                                    }
-#line 1134 "src/parser.cpp" // lalr1.cc:847
+#line 201 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::Hash); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 970 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 52:
-#line 212 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1140 "src/parser.cpp" // lalr1.cc:847
+#line 204 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 976 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 53:
-#line 215 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Comma); }
-#line 1146 "src/parser.cpp" // lalr1.cc:847
+#line 205 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 982 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 54:
-#line 216 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::SemiColon); }
-#line 1152 "src/parser.cpp" // lalr1.cc:847
+#line 206 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > (); }
+#line 988 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 55:
-#line 219 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Addition); }
-#line 1158 "src/parser.cpp" // lalr1.cc:847
+#line 209 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::FunctionCall);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
+                                                                    }
+#line 998 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 56:
-#line 220 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Subtraction); }
-#line 1164 "src/parser.cpp" // lalr1.cc:847
+#line 214 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = yystack_[3].value.as< Node* > ();
+                                                                      Node* name = new Node(Node::Type::Name, yystack_[1].value.as< string > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(name);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
+                                                                    }
+#line 1009 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 57:
-#line 221 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Division); }
-#line 1170 "src/parser.cpp" // lalr1.cc:847
+#line 222 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > (); }
+#line 1015 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 58:
-#line 222 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Multiplication); }
-#line 1176 "src/parser.cpp" // lalr1.cc:847
+#line 223 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1021 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 59:
-#line 223 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Power); }
-#line 1182 "src/parser.cpp" // lalr1.cc:847
+#line 224 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yystack_[0].value.as< string > ().erase(0,1);
+                                                                      yystack_[0].value.as< string > ().erase(yystack_[0].value.as< string > ().length() - 1, 1);
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::String, yystack_[0].value.as< string > ());
+                                                                    }
+#line 1031 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 60:
-#line 224 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Modulo); }
-#line 1188 "src/parser.cpp" // lalr1.cc:847
+#line 231 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1037 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 61:
-#line 225 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::DoubleDot); }
-#line 1194 "src/parser.cpp" // lalr1.cc:847
+#line 234 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::FunctionBody);
+                                                                      if (yystack_[3].value.as< Node* > () != NULL )
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
+                                                                    }
+#line 1048 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 62:
-#line 226 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::LessThan); }
-#line 1200 "src/parser.cpp" // lalr1.cc:847
+#line 242 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1054 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 63:
-#line 227 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::LessOrEq); }
-#line 1206 "src/parser.cpp" // lalr1.cc:847
+#line 243 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::Tridot); }
+#line 1060 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 64:
-#line 228 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::GreaterThan); }
-#line 1212 "src/parser.cpp" // lalr1.cc:847
+#line 246 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > (); }
+#line 1066 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 65:
-#line 229 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::GreaterOrEq); }
-#line 1218 "src/parser.cpp" // lalr1.cc:847
+#line 249 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      if (yystack_[1].value.as< Node* > ()->size() != 0) {
+                                                                        yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > ();
+                                                                        yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ());
+                                                                        yylhs.value.as< Node* > ()->moveToFront();
+                                                                      } else {
+                                                                        yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > ();
+                                                                      }
+                                                                    }
+#line 1080 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 66:
-#line 230 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Test); }
-#line 1224 "src/parser.cpp" // lalr1.cc:847
+#line 260 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::Equal);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
+                                                                    }
+#line 1090 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 67:
-#line 231 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::NotEq); }
-#line 1230 "src/parser.cpp" // lalr1.cc:847
+#line 265 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::Equal);
+                                                                      Node* name = new Node(Node::Type::Name, yystack_[2].value.as< string > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(name);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
+                                                                    }
+#line 1101 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 68:
-#line 232 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::And); }
-#line 1236 "src/parser.cpp" // lalr1.cc:847
+#line 271 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1107 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 69:
-#line 233 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Or); }
-#line 1242 "src/parser.cpp" // lalr1.cc:847
+#line 274 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1113 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 70:
-#line 236 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Subtraction); }
-#line 1248 "src/parser.cpp" // lalr1.cc:847
+#line 275 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1119 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 71:
-#line 237 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Not); }
-#line 1254 "src/parser.cpp" // lalr1.cc:847
+#line 278 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::FunctionName); }
+#line 1125 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 72:
-#line 238 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Hash); }
-#line 1260 "src/parser.cpp" // lalr1.cc:847
+#line 279 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > ();
+                                                                      Node* name = new Node(Node::Type::Name, yystack_[0].value.as< string > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(name);
+                                                                    }
+#line 1135 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 73:
-#line 241 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::FunctionName); }
-#line 1266 "src/parser.cpp" // lalr1.cc:847
+#line 286 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::VariableList); }
+#line 1141 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 74:
-#line 242 "src/parser.y" // lalr1.cc:847
-    {
-                                                                      yylhs.value.as< Node > () = yystack_[2].value.as< Node > ();
-                                                                      Node name = Node(Node::Type::Name, yystack_[0].value.as< std::string > ());
-                                                                      yylhs.value.as< Node > ().addChild(name);
-                                                                    }
-#line 1276 "src/parser.cpp" // lalr1.cc:847
+#line 287 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > (); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 1147 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 75:
-#line 249 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::VariableList); }
-#line 1282 "src/parser.cpp" // lalr1.cc:847
+#line 290 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::ListName); }
+#line 1153 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 76:
-#line 250 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[2].value.as< Node > (); yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ()); }
-#line 1288 "src/parser.cpp" // lalr1.cc:847
+#line 291 "src/parser.y" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > ();
+                                                                      Node* name = new Node(Node::Type::Name, yystack_[0].value.as< string > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(name);
+                                                                    }
+#line 1163 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 77:
-#line 253 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::ListName); }
-#line 1294 "src/parser.cpp" // lalr1.cc:847
+#line 298 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::ExpressionList); }
+#line 1169 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 78:
-#line 254 "src/parser.y" // lalr1.cc:847
-    {
-                                                                      yylhs.value.as< Node > () = yystack_[2].value.as< Node > ();
-                                                                      Node name = Node(Node::Type::Name, yystack_[0].value.as< std::string > ());
-                                                                      yylhs.value.as< Node > ().addChild(name);
-                                                                    }
-#line 1304 "src/parser.cpp" // lalr1.cc:847
+#line 299 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > (); yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ()); }
+#line 1175 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 79:
-#line 261 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::ExpressionList); }
-#line 1310 "src/parser.cpp" // lalr1.cc:847
+#line 302 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Condition(Condition::Type::ElseIf); }
+#line 1181 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 80:
-#line 262 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[2].value.as< Node > (); yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ()); }
-#line 1316 "src/parser.cpp" // lalr1.cc:847
+#line 303 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[4].value.as< Node* > (); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 1187 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 81:
-#line 265 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::ElseIf); }
-#line 1322 "src/parser.cpp" // lalr1.cc:847
+#line 306 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::Stat); }
+#line 1193 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 82:
-#line 266 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[4].value.as< Node > (); yylhs.value.as< Node > ().addChild(yystack_[2].value.as< Node > ()); yylhs.value.as< Node > ().addChild(yystack_[0].value.as< Node > ()); }
-#line 1328 "src/parser.cpp" // lalr1.cc:847
+#line 307 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > (); yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ()); }
+#line 1199 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 83:
-#line 269 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Stat); }
-#line 1334 "src/parser.cpp" // lalr1.cc:847
+#line 310 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::FieldList); }
+#line 1205 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 84:
-#line 270 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[2].value.as< Node > (); yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ()); }
-#line 1340 "src/parser.cpp" // lalr1.cc:847
+#line 311 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > (); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
+#line 1211 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 85:
-#line 273 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Field); }
-#line 1346 "src/parser.cpp" // lalr1.cc:847
+#line 314 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1217 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 86:
-#line 274 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[2].value.as< Node > (); yylhs.value.as< Node > ().addChild(yystack_[1].value.as< Node > ()); }
-#line 1352 "src/parser.cpp" // lalr1.cc:847
+#line 315 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1223 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 87:
-#line 277 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1358 "src/parser.cpp" // lalr1.cc:847
+#line 318 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1229 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 88:
-#line 278 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1364 "src/parser.cpp" // lalr1.cc:847
+#line 319 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1235 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 89:
-#line 281 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1370 "src/parser.cpp" // lalr1.cc:847
+#line 322 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1241 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 90:
-#line 282 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1376 "src/parser.cpp" // lalr1.cc:847
+#line 323 "src/parser.y" // lalr1.cc:847
+    { Node* name = new Node(Node::Type::Name, yystack_[0].value.as< string > ()); yylhs.value.as< Node* > () = name; }
+#line 1247 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 91:
-#line 285 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1382 "src/parser.cpp" // lalr1.cc:847
+#line 326 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1253 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 92:
-#line 286 "src/parser.y" // lalr1.cc:847
-    { Node name = Node(Node::Type::Name, yystack_[0].value.as< std::string > ()); yylhs.value.as< Node > () = name; }
-#line 1388 "src/parser.cpp" // lalr1.cc:847
+#line 327 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::Tridot); }
+#line 1259 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 93:
-#line 289 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1394 "src/parser.cpp" // lalr1.cc:847
+#line 330 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = new Node(Node::Type::FieldList); }
+#line 1265 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 94:
-#line 290 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::Tridot); }
-#line 1400 "src/parser.cpp" // lalr1.cc:847
+#line 331 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1271 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 95:
-#line 293 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1406 "src/parser.cpp" // lalr1.cc:847
+#line 334 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1277 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 96:
-#line 294 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1412 "src/parser.cpp" // lalr1.cc:847
+#line 335 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1283 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 97:
-#line 297 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1418 "src/parser.cpp" // lalr1.cc:847
+#line 338 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1289 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 98:
-#line 298 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1424 "src/parser.cpp" // lalr1.cc:847
+#line 339 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1295 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 99:
-#line 301 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1430 "src/parser.cpp" // lalr1.cc:847
+#line 342 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1301 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 100:
-#line 302 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(Node::Type::SemiColon); }
-#line 1436 "src/parser.cpp" // lalr1.cc:847
+#line 343 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > (); }
+#line 1307 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 101:
-#line 305 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1442 "src/parser.cpp" // lalr1.cc:847
+#line 346 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1313 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 102:
-#line 306 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[1].value.as< Node > (); }
-#line 1448 "src/parser.cpp" // lalr1.cc:847
+#line 347 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1319 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 103:
-#line 309 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1454 "src/parser.cpp" // lalr1.cc:847
+#line 350 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1325 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 104:
-#line 310 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1460 "src/parser.cpp" // lalr1.cc:847
+#line 351 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1331 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 105:
-#line 313 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1466 "src/parser.cpp" // lalr1.cc:847
+#line 354 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = NULL; }
+#line 1337 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 106:
-#line 314 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1472 "src/parser.cpp" // lalr1.cc:847
-    break;
-
-  case 107:
-#line 317 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = Node(); }
-#line 1478 "src/parser.cpp" // lalr1.cc:847
-    break;
-
-  case 108:
-#line 318 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node > () = yystack_[0].value.as< Node > (); }
-#line 1484 "src/parser.cpp" // lalr1.cc:847
+#line 355 "src/parser.y" // lalr1.cc:847
+    { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
+#line 1343 "src/parser.cpp" // lalr1.cc:847
     break;
 
 
-#line 1488 "src/parser.cpp" // lalr1.cc:847
+#line 1347 "src/parser.cpp" // lalr1.cc:847
             default:
               break;
             }
@@ -1646,195 +1505,212 @@ namespace yy {
   }
 
 
-  const signed char parser::yypact_ninf_ = -44;
+  const signed char parser::yypact_ninf_ = -50;
 
-  const signed char parser::yytable_ninf_ = -88;
+  const signed char parser::yytable_ninf_ = -86;
 
   const short int
   parser::yypact_[] =
   {
-      19,    25,   113,   -44,    83,   -44,    11,    83,    27,   -33,
-      83,     8,   -44,    21,     4,    51,    51,    53,    87,    32,
-      16,   -44,   -44,   -44,   -44,    17,    52,   -44,   -44,   -44,
-     -44,   -44,   -44,   -44,    50,    32,   -44,   -44,   -44,    83,
-     -44,    52,   301,    80,    54,   -44,    44,   215,   -44,    83,
-     -44,   -44,    98,   110,    67,   -44,   -44,   -44,   -44,   114,
-     -44,   103,   106,    83,   108,   -44,   -44,    83,   118,   321,
-     -44,   -44,   109,    -5,   -44,   -44,   -44,   -44,   -44,   -44,
-     -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,
-     -44,    83,   321,   101,   -44,   -33,    83,   120,   -44,   -44,
-     -31,   146,    52,   -44,   -44,    83,   -44,     2,   -44,    93,
-     263,   121,   286,    83,    43,   -44,   -44,   125,   -44,   122,
-     321,   124,   127,   -44,    90,   173,   128,   100,   -44,   -44,
-     -44,   -44,   321,   105,   -44,   -44,   -44,   133,   321,   -44,
-     -44,    17,   -44,   130,   -44,   -33,   -44,   -44,   -44,    83,
-     -44,   -33,    73,    83,   -44,   -44,    99,   200,   112,   -33,
-      83,   116,   321,   -44,    83,   117,   -44,   -44,   239,   -44,
-     321,   -33,   -31,   134,   -44,   -44
+       6,    29,   216,   -50,   -50,    27,    10,    31,    27,   105,
+     -50,     9,     5,    27,    41,    32,    32,    35,   -14,   126,
+     215,   -50,   -50,   -50,   -50,   -50,   -50,   -50,    21,    43,
+      27,    27,    27,   -50,    96,   126,   -50,   -50,   -50,    39,
+      58,   -50,    66,   151,   -50,    27,   -50,   -50,    79,    84,
+      81,   329,   -50,    43,   -50,   -50,   -50,   -50,    88,   -50,
+     104,   109,    27,    85,   -50,   -50,    95,    27,   346,   -50,
+     -50,    87,    15,   -50,   -30,    72,    72,    31,    27,    27,
+      27,    27,    27,    27,    27,    27,    27,    27,    27,    27,
+      27,    27,    27,    27,    98,   -50,   -50,   101,   219,    43,
+     -50,   -50,    27,   -50,    42,   -50,   -50,     3,   -50,     2,
+     290,    93,    27,   311,   -16,   -50,   -50,   106,   -50,    94,
+     113,   362,   377,   386,   386,   386,   386,   386,   386,   386,
+     -30,   -30,    72,    72,    72,    72,   244,   141,   142,   -50,
+     -50,   -50,   -50,   346,   144,   150,   -50,    55,   -50,   -50,
+     -50,   346,   132,   -50,   -50,    21,   -50,   128,   -50,    31,
+     -50,    27,   -50,    31,    71,   -50,   -50,    27,   -50,   -50,
+     143,   269,   145,    31,    27,   147,   346,   -50,    27,   157,
+     -50,   -50,   168,   -50,   346,    31,   101,   149,   -50,   -50
   };
 
   const unsigned char
   parser::yydefact_[] =
   {
-      83,     0,   101,     1,     0,    20,     0,     0,     0,    83,
-       0,    79,    17,     0,    83,    99,    99,     0,    36,     0,
-       6,     3,    29,    28,    30,    95,     0,    70,    71,    72,
-      26,    27,    25,    36,     0,    32,    37,    31,    33,     0,
-      73,     0,     0,    77,     0,     4,     0,     0,    88,     0,
-      16,    77,     0,   107,     0,   100,    84,   102,    79,    19,
-      43,     0,     0,     0,    79,    39,    42,     0,    20,    52,
-      96,    85,     0,    89,    44,    38,    55,    56,    58,    57,
-      59,    60,    61,    62,    64,    63,    65,    66,    67,    68,
-      69,     0,    35,    91,    13,    83,     0,    23,    79,     7,
-      83,    24,     0,    79,    15,     0,     5,     0,    22,     0,
-       0,     0,     0,     0,    97,    48,    47,    93,    90,     0,
-      34,     0,     0,    18,     0,     0,     0,     0,    81,    80,
-      14,   108,     9,    36,    40,    21,    41,     0,    51,    54,
-      53,    98,    49,     0,    46,    83,    74,    92,     8,     0,
-      78,    83,   105,     0,    86,    94,     0,   103,     0,    83,
-       0,     0,    50,    45,     0,     0,    12,   106,     0,    10,
-     104,    83,    83,     0,    82,    11
+      81,     0,    99,     1,    20,     0,     0,    81,     0,    77,
+      17,     0,    81,     0,     0,    97,    97,     0,    52,     0,
+       6,     3,    29,    28,    26,    27,    25,    30,    93,     0,
+       0,     0,     0,    52,     0,    32,    53,    31,    33,    75,
+       0,     4,     0,     0,    86,     0,    16,    75,     0,   105,
+       0,     0,    71,     0,    98,    82,   100,    77,    19,    59,
+       0,     0,     0,    77,    55,    58,    20,     0,    68,    94,
+      83,     0,    87,    60,    50,    49,    51,    81,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,    23,    77,     7,    81,    24,     0,
+      77,    15,     0,    54,    89,    13,     5,     0,    22,     0,
+       0,     0,     0,     0,    95,    64,    63,    91,    88,     0,
+       0,    48,    47,    41,    43,    42,    44,    45,    46,    34,
+      35,    36,    38,    37,    40,    39,     0,     0,     0,    79,
+      78,    14,   106,     9,     0,     0,    18,    52,    56,    21,
+      57,    67,     0,    70,    69,    96,    65,     0,    62,    81,
+       8,     0,    76,    81,   103,    72,    90,     0,    84,    92,
+       0,   101,     0,    81,     0,     0,    66,    61,     0,     0,
+      12,   104,     0,    10,   102,    81,    81,     0,    80,    11
   };
 
   const short int
   parser::yypgoto_[] =
   {
-     -44,   184,    -9,   -44,   -44,   -44,   -44,    -1,    -3,   -43,
-      -4,     0,   183,    77,   -44,   -34,   -44,   -15,   -44,    46,
-     -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,
-     126,   -44,   -44,   -44,   -44,   -44,   172,   -44,   -44,   -44,
-     -44
+     -50,   167,   -12,   -50,   -50,   -50,   -50,    -1,    -8,   -34,
+       8,     0,   166,    61,   -50,   -49,   -50,    -7,   -50,    16,
+     -50,   -50,   -50,   -50,   -50,   -50,   -50,   -50,   114,   -50,
+     -50,   -50,   -50,   -50,   156,   -50,   -50,   -50,   -50
   };
 
   const short int
   parser::yydefgoto_[] =
   {
-      -1,    45,    46,    15,    16,    41,    17,    33,    44,    48,
-      69,    35,    36,    65,    37,    74,   118,    38,    70,    71,
-     141,    91,    39,    93,    59,    97,    49,   152,     2,   114,
-      50,   119,   123,   144,    72,   142,    56,    21,   165,   161,
-     104
+      -1,    41,    42,    15,    16,    53,    17,    33,    40,    44,
+      68,    35,    36,    64,    37,    73,   118,    38,    69,    70,
+     155,   104,    58,    94,    45,   164,     2,   114,    46,   119,
+     146,   158,    71,   156,    55,    21,   179,   175,   101
   };
 
   const short int
   parser::yytable_[] =
   {
-      34,    18,    19,    42,    66,    54,    47,    94,   -87,   116,
-      53,    -2,    -2,   -87,    51,   106,    -2,     4,    -2,    -2,
-      66,     5,   -37,    22,    23,     3,   -37,   -37,   -37,    67,
-      40,    24,     4,   -37,    25,    92,    68,    26,    60,    27,
-      51,    52,    61,    62,    63,   101,    43,    64,   139,    25,
-     -87,   -87,   140,    28,    29,   127,    55,   -87,    -2,   110,
-     131,    58,   -87,   112,    30,    31,    75,    73,   130,    32,
-     117,    76,    77,    78,    79,    80,    81,    82,    83,    84,
-      85,    86,    87,    88,    89,    90,   124,   120,    96,    22,
-      23,   128,   125,    99,    66,   -75,   -75,    24,     4,    60,
-      25,   132,     5,    26,    98,    27,   133,    19,    64,   138,
-      25,   121,   122,   -76,   -76,   159,   160,   102,   103,    28,
-      29,   105,   108,   107,   -87,   109,   113,   115,     4,   126,
-      30,    31,     5,     6,   143,    32,   156,   136,   145,   148,
-     151,   153,   158,   146,   155,   157,   147,   150,   163,   162,
-     167,     7,     8,     9,    10,   129,   168,   171,    11,    12,
-     170,   166,   173,   174,    13,   169,    14,    76,    77,    78,
-      79,    80,    81,    82,    83,    84,    85,    86,    87,    88,
-      89,    90,   149,   175,     1,    20,   134,   154,    57,     0,
-     111,     0,     0,     0,    76,    77,    78,    79,    80,    81,
-      82,    83,    84,    85,    86,    87,    88,    89,    90,   164,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,    76,    77,    78,    79,    80,    81,    82,    83,    84,
-      85,    86,    87,    88,    89,    90,    76,    77,    78,    79,
+      50,    18,    19,    49,   105,    59,    -2,   153,     4,   154,
+     -73,   -73,    65,    34,    47,    39,    43,    89,    90,    91,
+      47,    51,    92,   106,    22,    23,    66,    -2,    65,     3,
+      22,    23,     4,    63,    13,    28,    24,    25,    74,    75,
+      76,    26,    24,    25,    48,   116,    52,    26,    -2,    67,
+     141,    27,    13,    98,    28,    54,    29,    27,    13,    57,
+      28,   138,    29,    93,   117,   120,   142,    30,   144,   145,
+     110,    31,    32,    30,    72,   113,    95,    31,    32,   -74,
+     -74,   173,   174,    96,    99,   139,   121,   122,   123,   124,
+     125,   126,   127,   128,   129,   130,   131,   132,   133,   134,
+     135,   136,    65,   102,    77,   -85,   147,    19,   100,   108,
+     143,    -2,    -2,   107,   109,   -85,   -85,   -85,    -2,   112,
+     151,   115,   -85,   137,    92,   150,   159,   -85,   -85,    59,
+     160,   157,    78,    79,    80,    81,    82,    83,    84,    85,
+      86,    87,    88,    89,    90,    91,   162,   170,    92,   165,
+     163,   172,    60,    61,    62,   166,   167,    63,   169,    28,
+     177,   181,   180,    97,   183,   185,   189,     1,    20,   171,
+     148,   168,    56,   187,   188,   176,     0,   111,     0,     0,
+     186,     0,   182,     0,     0,     0,   184,    78,    79,    80,
+      81,    82,    83,    84,    85,    86,    87,    88,    89,    90,
+      91,     0,     0,    92,    78,    79,    80,    81,    82,    83,
+      84,    85,    86,    87,    88,    89,    90,    91,   -53,     0,
+      92,     4,     5,     6,     7,     8,     0,     0,     0,     9,
+      10,     0,     0,     0,     0,    11,     0,    12,     0,     0,
+       0,   -53,   -53,   -53,   140,     0,     0,    13,   -53,     0,
+       0,    14,     0,     0,     0,    78,    79,    80,    81,    82,
+      83,    84,    85,    86,    87,    88,    89,    90,    91,   161,
+       0,    92,     0,     0,     0,     0,     0,     0,     0,     0,
+      78,    79,    80,    81,    82,    83,    84,    85,    86,    87,
+      88,    89,    90,    91,   178,     0,    92,     0,     0,     0,
+       0,     0,     0,     0,     0,    78,    79,    80,    81,    82,
+      83,    84,    85,    86,    87,    88,    89,    90,    91,   149,
+       0,    92,     0,     0,     0,     0,    78,    79,    80,    81,
+      82,    83,    84,    85,    86,    87,    88,    89,    90,    91,
+     152,     0,    92,     0,     0,     0,     0,    78,    79,    80,
+      81,    82,    83,    84,    85,    86,    87,    88,    89,    90,
+      91,   103,     0,    92,     0,    78,    79,    80,    81,    82,
+      83,    84,    85,    86,    87,    88,    89,    90,    91,     0,
+       0,    92,    78,    79,    80,    81,    82,    83,    84,    85,
+      86,    87,    88,    89,    90,    91,     0,     0,    92,    79,
       80,    81,    82,    83,    84,    85,    86,    87,    88,    89,
-      90,     0,     0,     0,     0,     0,     0,     0,     0,   100,
-      76,    77,    78,    79,    80,    81,    82,    83,    84,    85,
-      86,    87,    88,    89,    90,     0,   135,     0,     0,     0,
-       0,     0,     0,   172,    76,    77,    78,    79,    80,    81,
-      82,    83,    84,    85,    86,    87,    88,    89,    90,   137,
-       0,     0,     0,     0,     0,     0,     0,    76,    77,    78,
-      79,    80,    81,    82,    83,    84,    85,    86,    87,    88,
-      89,    90,    76,    77,    78,    79,    80,    81,    82,    83,
-      84,    85,    86,    87,    88,    89,    90,     0,     0,     0,
-       0,    95,    76,    77,    78,    79,    80,    81,    82,    83,
-      84,    85,    86,    87,    88,    89,    90
+      90,    91,     0,     0,    92,    80,    81,    82,    83,    84,
+      85,    86,    87,    88,    89,    90,    91,     0,     0,    92,
+      86,    87,    88,    89,    90,    91,     0,     0,    92
   };
 
   const short int
   parser::yycheck_[] =
   {
-       4,     2,     2,     7,    19,    14,    10,    41,     0,    14,
-      13,    42,    43,     5,    19,    58,    49,    15,    49,     0,
-      35,    19,     6,     6,     7,     0,    10,    11,    12,    12,
-      19,    14,    15,    17,    17,    39,    19,    20,     6,    22,
-      19,    20,    10,    11,    12,    49,    19,    15,     5,    17,
-      42,    43,     9,    36,    37,    98,     5,    49,    54,    63,
-     103,     8,    54,    67,    47,    48,    16,    15,   102,    52,
-      73,    21,    22,    23,    24,    25,    26,    27,    28,    29,
-      30,    31,    32,    33,    34,    35,    95,    91,     8,     6,
-       7,   100,    96,    49,   109,     8,     9,    14,    15,     6,
-      17,   105,    19,    20,    50,    22,   107,   107,    15,   113,
-      17,    10,    11,     8,     9,    42,    43,    19,     8,    36,
-      37,    54,    19,     9,    16,    19,     8,    18,    15,     9,
-      47,    48,    19,    20,     9,    52,   145,    16,    16,    49,
-      40,     8,   151,    19,    14,   149,    19,    19,    49,   153,
-     159,    38,    39,    40,    41,     9,   160,    40,    45,    46,
-     164,    49,   171,   172,    51,    49,    53,    21,    22,    23,
-      24,    25,    26,    27,    28,    29,    30,    31,    32,    33,
-      34,    35,     9,    49,     0,     2,   109,   141,    16,    -1,
-      64,    -1,    -1,    -1,    21,    22,    23,    24,    25,    26,
-      27,    28,    29,    30,    31,    32,    33,    34,    35,     9,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    21,    22,    23,    24,    25,    26,    27,    28,    29,
-      30,    31,    32,    33,    34,    35,    21,    22,    23,    24,
-      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    44,
-      21,    22,    23,    24,    25,    26,    27,    28,    29,    30,
-      31,    32,    33,    34,    35,    -1,    13,    -1,    -1,    -1,
-      -1,    -1,    -1,    44,    21,    22,    23,    24,    25,    26,
-      27,    28,    29,    30,    31,    32,    33,    34,    35,    13,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    21,    22,    23,
-      24,    25,    26,    27,    28,    29,    30,    31,    32,    33,
-      34,    35,    21,    22,    23,    24,    25,    26,    27,    28,
-      29,    30,    31,    32,    33,    34,    35,    -1,    -1,    -1,
-      -1,    40,    21,    22,    23,    24,    25,    26,    27,    28,
-      29,    30,    31,    32,    33,    34,    35
+      12,     2,     2,    11,    53,     3,     0,    23,     5,    25,
+      24,    25,    19,     5,     5,     5,     8,    47,    48,    49,
+       5,    13,    52,    57,     3,     4,     5,    22,    35,     0,
+       3,     4,     5,    31,    31,    33,    15,    16,    30,    31,
+      32,    20,    15,    16,    35,    30,     5,    20,    17,    28,
+      99,    30,    31,    45,    33,    23,    35,    30,    31,    24,
+      33,    95,    35,    24,    72,    77,   100,    46,    26,    27,
+      62,    50,    51,    46,    31,    67,    18,    50,    51,    24,
+      25,    10,    11,    17,     5,    97,    78,    79,    80,    81,
+      82,    83,    84,    85,    86,    87,    88,    89,    90,    91,
+      92,    93,   109,    22,     8,     0,   107,   107,    24,     5,
+     102,    10,    11,    25,     5,    10,    11,    32,    17,    24,
+     112,    34,    17,    25,    52,    32,    32,    22,    23,     3,
+      17,    25,    36,    37,    38,    39,    40,    41,    42,    43,
+      44,    45,    46,    47,    48,    49,     5,   159,    52,     5,
+       8,   163,    26,    27,    28,     5,    24,    31,    30,    33,
+      17,   173,    17,    12,    17,     8,    17,     0,     2,   161,
+     109,   155,    16,   185,   186,   167,    -1,    63,    -1,    -1,
+      12,    -1,   174,    -1,    -1,    -1,   178,    36,    37,    38,
+      39,    40,    41,    42,    43,    44,    45,    46,    47,    48,
+      49,    -1,    -1,    52,    36,    37,    38,    39,    40,    41,
+      42,    43,    44,    45,    46,    47,    48,    49,     3,    -1,
+      52,     5,     6,     7,     8,     9,    -1,    -1,    -1,    13,
+      14,    -1,    -1,    -1,    -1,    19,    -1,    21,    -1,    -1,
+      -1,    26,    27,    28,    25,    -1,    -1,    31,    33,    -1,
+      -1,    35,    -1,    -1,    -1,    36,    37,    38,    39,    40,
+      41,    42,    43,    44,    45,    46,    47,    48,    49,    25,
+      -1,    52,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      36,    37,    38,    39,    40,    41,    42,    43,    44,    45,
+      46,    47,    48,    49,    25,    -1,    52,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    36,    37,    38,    39,    40,
+      41,    42,    43,    44,    45,    46,    47,    48,    49,    29,
+      -1,    52,    -1,    -1,    -1,    -1,    36,    37,    38,    39,
+      40,    41,    42,    43,    44,    45,    46,    47,    48,    49,
+      29,    -1,    52,    -1,    -1,    -1,    -1,    36,    37,    38,
+      39,    40,    41,    42,    43,    44,    45,    46,    47,    48,
+      49,    32,    -1,    52,    -1,    36,    37,    38,    39,    40,
+      41,    42,    43,    44,    45,    46,    47,    48,    49,    -1,
+      -1,    52,    36,    37,    38,    39,    40,    41,    42,    43,
+      44,    45,    46,    47,    48,    49,    -1,    -1,    52,    37,
+      38,    39,    40,    41,    42,    43,    44,    45,    46,    47,
+      48,    49,    -1,    -1,    52,    38,    39,    40,    41,    42,
+      43,    44,    45,    46,    47,    48,    49,    -1,    -1,    52,
+      44,    45,    46,    47,    48,    49,    -1,    -1,    52
   };
 
   const unsigned char
   parser::yystos_[] =
   {
-       0,    56,    83,     0,    15,    19,    20,    38,    39,    40,
-      41,    45,    46,    51,    53,    58,    59,    61,    62,    66,
-      67,    92,     6,     7,    14,    17,    20,    22,    36,    37,
-      47,    48,    52,    62,    65,    66,    67,    69,    72,    77,
-      19,    60,    65,    19,    63,    56,    57,    65,    64,    81,
-      85,    19,    20,    63,    57,     5,    91,    91,     8,    79,
-       6,    10,    11,    12,    15,    68,    72,    12,    19,    65,
-      73,    74,    89,    15,    70,    16,    21,    22,    23,    24,
-      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35,    76,    65,    78,    70,    40,     8,    80,    50,    49,
-      44,    65,    19,     8,    95,    54,    64,     9,    19,    19,
-      65,    85,    65,     8,    84,    18,    14,    63,    71,    86,
-      65,    10,    11,    87,    57,    65,     9,    64,    57,     9,
-      70,    64,    65,    62,    68,    13,    16,    13,    65,     5,
-       9,    75,    90,     9,    88,    16,    19,    19,    49,     9,
-      19,    40,    82,     8,    74,    14,    57,    65,    57,    42,
-      43,    94,    65,    49,     9,    93,    49,    57,    65,    49,
-      65,    40,    44,    57,    57,    49
+       0,    54,    79,     0,     5,     6,     7,     8,     9,    13,
+      14,    19,    21,    31,    35,    56,    57,    59,    60,    64,
+      65,    88,     3,     4,    15,    16,    20,    30,    33,    35,
+      46,    50,    51,    60,    63,    64,    65,    67,    70,     5,
+      61,    54,    55,    63,    62,    77,    81,     5,    35,    61,
+      55,    63,     5,    58,    23,    87,    87,    24,    75,     3,
+      26,    27,    28,    31,    66,    70,     5,    28,    63,    71,
+      72,    85,    31,    68,    63,    63,    63,     8,    36,    37,
+      38,    39,    40,    41,    42,    43,    44,    45,    46,    47,
+      48,    49,    52,    24,    76,    18,    17,    12,    63,     5,
+      24,    91,    22,    32,    74,    68,    62,    25,     5,     5,
+      63,    81,    24,    63,    80,    34,    30,    61,    69,    82,
+      55,    63,    63,    63,    63,    63,    63,    63,    63,    63,
+      63,    63,    63,    63,    63,    63,    63,    25,    62,    55,
+      25,    68,    62,    63,    26,    27,    83,    60,    66,    29,
+      32,    63,    29,    23,    25,    73,    86,    25,    84,    32,
+      17,    25,     5,     8,    78,     5,     5,    24,    72,    30,
+      55,    63,    55,    10,    11,    90,    63,    17,    25,    89,
+      17,    55,    63,    17,    63,     8,    12,    55,    55,    17
   };
 
   const unsigned char
   parser::yyr1_[] =
   {
-       0,    55,    56,    56,    57,    58,    58,    58,    58,    58,
-      58,    58,    58,    58,    58,    58,    59,    59,    60,    61,
-      62,    62,    62,    63,    64,    65,    65,    65,    65,    65,
-      65,    65,    65,    65,    65,    65,    66,    66,    66,    67,
-      67,    68,    68,    68,    69,    70,    71,    71,    72,    73,
-      74,    74,    74,    75,    75,    76,    76,    76,    76,    76,
-      76,    76,    76,    76,    76,    76,    76,    76,    76,    76,
-      77,    77,    77,    78,    78,    79,    79,    80,    80,    81,
-      81,    82,    82,    83,    83,    84,    84,    85,    85,    86,
-      86,    87,    87,    88,    88,    89,    89,    90,    90,    91,
-      91,    92,    92,    93,    93,    94,    94,    95,    95
+       0,    53,    54,    54,    55,    56,    56,    56,    56,    56,
+      56,    56,    56,    56,    56,    56,    57,    57,    58,    59,
+      60,    60,    60,    61,    62,    63,    63,    63,    63,    63,
+      63,    63,    63,    63,    63,    63,    63,    63,    63,    63,
+      63,    63,    63,    63,    63,    63,    63,    63,    63,    63,
+      63,    63,    64,    64,    64,    65,    65,    66,    66,    66,
+      67,    68,    69,    69,    70,    71,    72,    72,    72,    73,
+      73,    74,    74,    75,    75,    76,    76,    77,    77,    78,
+      78,    79,    79,    80,    80,    81,    81,    82,    82,    83,
+      83,    84,    84,    85,    85,    86,    86,    87,    87,    88,
+      88,    89,    89,    90,    90,    91,    91
   };
 
   const unsigned char
@@ -1843,14 +1719,14 @@ namespace yy {
        0,     2,     0,     2,     1,     3,     1,     3,     5,     4,
        7,    10,     7,     3,     4,     3,     2,     1,     3,     2,
        1,     4,     3,     2,     2,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     3,     2,     1,     1,     3,     2,
-       4,     3,     1,     1,     2,     5,     2,     1,     3,     3,
-       5,     3,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     0,     3,     0,     3,     0,     3,     0,
-       3,     0,     5,     0,     3,     0,     3,     0,     1,     0,
-       1,     0,     2,     0,     2,     0,     1,     0,     1,     0,
-       1,     0,     2,     0,     2,     0,     2,     0,     2
+       1,     1,     1,     1,     3,     3,     3,     3,     3,     3,
+       3,     3,     3,     3,     3,     3,     3,     3,     3,     2,
+       2,     2,     1,     1,     3,     2,     4,     3,     1,     1,
+       2,     5,     2,     1,     3,     3,     5,     3,     1,     1,
+       1,     0,     3,     0,     3,     0,     3,     0,     3,     0,
+       5,     0,     3,     0,     3,     0,     1,     0,     1,     0,
+       2,     0,     2,     0,     1,     0,     1,     0,     1,     0,
+       2,     0,     2,     0,     2,     0,     2
   };
 
 
@@ -1860,37 +1736,37 @@ namespace yy {
   const char*
   const parser::yytname_[] =
   {
-  "\"end of file\"", "error", "$undefined", "WS", "NL", "SEMCOL", "STR",
-  "NUM", "EQ", "COM", "DOT", "COL", "BRKOPN", "BRKCLS", "TRIDOT", "PAROPN",
-  "PARCLS", "CUROPN", "CURCLS", "NAME", "FUNC", "PLUS", "MINUS", "MULT",
-  "DIV", "POW", "MOD", "DDOT", "LESS", "GREAT", "LESSEQ", "GREATEQ",
-  "EQEQ", "NOTEQ", "AND", "OR", "NOT", "HASH", "WHILE", "FOR", "DO", "IF",
-  "ELSE", "ELSEIF", "THEN", "RETURN", "BREAK", "_FALSE", "_TRUE", "_END",
-  "IN", "LOCAL", "NIL", "REP", "UNTIL", "$accept", "chunk", "block",
-  "stat", "laststat", "funcname", "varlist", "var", "namelist", "explist",
-  "exp", "prefixexp", "functioncall", "args", "function", "funcbody",
-  "parlist", "tableconstructor", "fieldlist", "field", "fieldsep", "binop",
-  "unop", "rep_func_name", "rep_var", "rep_list_name", "rep_exp",
-  "rep_elseif", "rep_stat", "rep_field", "opt_explist", "opt_parlist",
-  "opt_name", "opt_tridot", "opt_fieldlist", "opt_fieldsep", "opt_semi",
-  "opt_laststat", "opt_exp", "opt_else", "opt_eq", YY_NULLPTR
+  "\"end of file\"", "error", "$undefined", "STR", "NUM", "NAME", "WHILE",
+  "FOR", "DO", "IF", "ELSE", "ELSEIF", "THEN", "RETURN", "BREAK", "_FALSE",
+  "_TRUE", "_END", "IN", "LOCAL", "NIL", "REP", "UNTIL", "SEMCOL", "EQ",
+  "COM", "DOT", "COL", "BRKOPN", "BRKCLS", "TRIDOT", "PAROPN", "PARCLS",
+  "CUROPN", "CURCLS", "FUNC", "OR", "AND", "LESS", "GREAT", "LESSEQ",
+  "GREATEQ", "EQEQ", "NOTEQ", "DDOT", "PLUS", "MINUS", "MULT", "DIV",
+  "MOD", "NOT", "HASH", "POW", "$accept", "chunk", "block", "stat",
+  "laststat", "funcname", "varlist", "var", "namelist", "explist", "exp",
+  "prefixexp", "functioncall", "args", "function", "funcbody", "parlist",
+  "tableconstructor", "fieldlist", "field", "fieldsep", "rep_func_name",
+  "rep_var", "rep_list_name", "rep_exp", "rep_elseif", "rep_stat",
+  "rep_field", "opt_explist", "opt_parlist", "opt_name", "opt_tridot",
+  "opt_fieldlist", "opt_fieldsep", "opt_semi", "opt_laststat", "opt_exp",
+  "opt_else", "opt_eq", YY_NULLPTR
   };
 
 
   const unsigned short int
   parser::yyrline_[] =
   {
-       0,    27,    27,    28,    31,    34,    39,    40,    41,    46,
-      51,    60,    70,    71,    76,    77,    80,    81,    84,    95,
-     105,   106,   111,   119,   128,   138,   139,   140,   141,   142,
-     147,   148,   149,   150,   151,   156,   162,   163,   164,   167,
-     172,   180,   181,   182,   185,   188,   196,   197,   200,   203,
-     206,   207,   212,   215,   216,   219,   220,   221,   222,   223,
-     224,   225,   226,   227,   228,   229,   230,   231,   232,   233,
-     236,   237,   238,   241,   242,   249,   250,   253,   254,   261,
-     262,   265,   266,   269,   270,   273,   274,   277,   278,   281,
-     282,   285,   286,   289,   290,   293,   294,   297,   298,   301,
-     302,   305,   306,   309,   310,   313,   314,   317,   318
+       0,    47,    47,    48,    56,    59,    64,    65,    69,    74,
+      79,    88,    98,   104,   109,   110,   113,   114,   117,   128,
+     138,   139,   144,   152,   161,   171,   172,   173,   174,   175,
+     180,   181,   182,   183,   184,   185,   186,   187,   188,   189,
+     190,   191,   192,   193,   194,   195,   196,   197,   198,   199,
+     200,   201,   204,   205,   206,   209,   214,   222,   223,   224,
+     231,   234,   242,   243,   246,   249,   260,   265,   271,   274,
+     275,   278,   279,   286,   287,   290,   291,   298,   299,   302,
+     303,   306,   307,   310,   311,   314,   315,   318,   319,   322,
+     323,   326,   327,   330,   331,   334,   335,   338,   339,   342,
+     343,   346,   347,   350,   351,   354,   355
   };
 
   // Print the state stack on the debug stream.
@@ -1925,4 +1801,4 @@ namespace yy {
 
 
 } // yy
-#line 1929 "src/parser.cpp" // lalr1.cc:1155
+#line 1805 "src/parser.cpp" // lalr1.cc:1155

@@ -2,71 +2,123 @@
 \label{classNode}\index{Node@{Node}}
 
 
-\hyperlink{classNode}{Node} class to build node tree.  
+Class to build a non-\/specific tree-\/node.  
 
 
 
 
 {\ttfamily \#include $<$Node.\+h$>$}
 
+
+
+Inheritance diagram for Node\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{classNode__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classNode_a8dad370be1595f49e0a7c2406a91e867}{}enum \hyperlink{classNode_a8dad370be1595f49e0a7c2406a91e867}{Type} \{ \\*
+enum \hyperlink{classNode_a8dad370be1595f49e0a7c2406a91e867}{Type} \{ \\*
 {\bfseries Undefined}, 
-{\bfseries Chunk}, 
-{\bfseries Block}, 
+{\bfseries Expression\+List}, 
+{\bfseries Variable\+List}, 
+{\bfseries Function\+Body}, 
+\\*
+{\bfseries Function\+Name}, 
+{\bfseries Function\+Call}, 
+{\bfseries Function}, 
+{\bfseries Member\+Function}, 
+\\*
+{\bfseries Variable}, 
+{\bfseries List\+Name}, 
+{\bfseries Range}, 
 {\bfseries Stat}, 
 \\*
-{\bfseries Expression\+List}, 
+{\bfseries Field}, 
+{\bfseries Field\+List}, 
+{\bfseries Field\+Element}, 
 {\bfseries Equal}, 
-{\bfseries Addition}, 
-{\bfseries Subtraction}, 
-\\*
-{\bfseries Division}, 
-{\bfseries Multiplication}, 
-{\bfseries Power}, 
-{\bfseries Modulo}, 
 \\*
 {\bfseries Double\+Dot}, 
-{\bfseries Less\+Than}, 
-{\bfseries Less\+Or\+Eq}, 
-{\bfseries Greater\+Than}, 
+{\bfseries Hash}, 
+{\bfseries Negate}, 
+{\bfseries Name}, 
 \\*
-{\bfseries Greater\+Or\+Eq}, 
-{\bfseries Test}, 
-{\bfseries Not\+Eq}, 
-{\bfseries And}, 
-\\*
-{\bfseries Or}
- \}\label{classNode_a8dad370be1595f49e0a7c2406a91e867}
-
-\begin{DoxyCompactList}\small\item\em Types definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\bfseries Nil}, 
+{\bfseries Number}, 
+{\bfseries String}, 
+{\bfseries Tridot}
+ \}
+\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{}\hyperlink{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{Node} ()\label{classNode_ad7a34779cad45d997bfd6d3d8043c75f}
 
 \begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
-\hyperlink{classNode_a4122dca231612c6fd2eb17fd92a02892}{Node} (\hyperlink{classNode_a8dad370be1595f49e0a7c2406a91e867}{Type} type)
+\hyperlink{classNode_a4122dca231612c6fd2eb17fd92a02892}{Node} (\hyperlink{classNode_a8dad370be1595f49e0a7c2406a91e867}{Type} \hyperlink{classNode_adcaf01927a597ad0e6025b173fe5e552}{type})
 \begin{DoxyCompactList}\small\item\em Constructor with type. \end{DoxyCompactList}\item 
+\hyperlink{classNode_a36ce067b8b3fde59af074a425fa3b97c}{Node} (\hyperlink{classNode_a8dad370be1595f49e0a7c2406a91e867}{Type} \hyperlink{classNode_adcaf01927a597ad0e6025b173fe5e552}{type}, std\+::string \hyperlink{classNode_a51de8a12e67206f893b0bd6c2afeb11c}{value})
+\begin{DoxyCompactList}\small\item\em Constructor with type and value. \end{DoxyCompactList}\item 
 \hypertarget{classNode_aa0840c3cb5c7159be6d992adecd2097c}{}virtual \hyperlink{classNode_aa0840c3cb5c7159be6d992adecd2097c}{$\sim$\+Node} ()\label{classNode_aa0840c3cb5c7159be6d992adecd2097c}
 
 \begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
-int \hyperlink{classNode_a6da281a118324b234071c80a554500cf}{print} (int id, std\+::ofstream \&file)
+int \hyperlink{classNode_a6da281a118324b234071c80a554500cf}{print} (int \hyperlink{classNode_a59a543130a10c95f1e8642cf8c5645e8}{id}, std\+::ofstream \&file)
 \begin{DoxyCompactList}\small\item\em Prints the node tree. \end{DoxyCompactList}\item 
-int \hyperlink{classNode_a9b0be5aa8a91b5b9b99968bc835475c4}{add\+Child} (\hyperlink{classNode}{Node} \&child)
+void \hyperlink{classNode_a132699398b350e83b548a5645e69beb0}{add\+Child} (\hyperlink{classNode}{Node} $\ast$child)
 \begin{DoxyCompactList}\small\item\em Adds a child to the node. \end{DoxyCompactList}\item 
+\hyperlink{classNode}{Node} $\ast$ \hyperlink{classNode_a49395be2fd2be32e99c49df5bc5d2c6c}{get\+Child} (unsigned int i)
+\begin{DoxyCompactList}\small\item\em Gives a child of the node. \end{DoxyCompactList}\item 
+int \hyperlink{classNode_ae6c16dcf36a81a79b3b6e4adb51b229a}{move\+To\+Front} ()
+\item 
 int \hyperlink{classNode_a374c18bf6d7332e4a128107b8446d1ad}{get\+Node\+I\+D} ()
-\begin{DoxyCompactList}\small\item\em Returns the nodes id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gives the nodes id. \end{DoxyCompactList}\item 
+bool \hyperlink{classNode_a8a8a7a2ee9cd1bdf5a3e3cc374e678e6}{is\+Undefined} ()
+\begin{DoxyCompactList}\small\item\em Is this node undefined? \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classNode_a985e47bbe8f5fade05f7accc2475794e}{size} ()
+\begin{DoxyCompactList}\small\item\em Returns the number of childs in this node. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classNode_acc70d98952c4b061bc433c00180b7011}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Executes the \hyperlink{classNode}{Node}. \end{DoxyCompactList}\item 
+virtual std\+::string \hyperlink{classNode_abce0a9ddac6a5e2c0e546dbe6af02e3d}{get\+Type} ()
+\begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNode_a59a543130a10c95f1e8642cf8c5645e8}{}int \hyperlink{classNode_a59a543130a10c95f1e8642cf8c5645e8}{id}\label{classNode_a59a543130a10c95f1e8642cf8c5645e8}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNode}{Node} id. \end{DoxyCompactList}\item 
+\hypertarget{classNode_adcaf01927a597ad0e6025b173fe5e552}{}\hyperlink{classNode_a8dad370be1595f49e0a7c2406a91e867}{Type} \hyperlink{classNode_adcaf01927a597ad0e6025b173fe5e552}{type}\label{classNode_adcaf01927a597ad0e6025b173fe5e552}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNode}{Node} type. \end{DoxyCompactList}\item 
+\hypertarget{classNode_a51de8a12e67206f893b0bd6c2afeb11c}{}std\+::string \hyperlink{classNode_a51de8a12e67206f893b0bd6c2afeb11c}{value}\label{classNode_a51de8a12e67206f893b0bd6c2afeb11c}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classNode}{Node} value. \end{DoxyCompactList}\item 
+\hypertarget{classNode_a49baf1d613dc14f1e1e4aad883dde6fe}{}std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$ $>$ \hyperlink{classNode_a49baf1d613dc14f1e1e4aad883dde6fe}{children}\label{classNode_a49baf1d613dc14f1e1e4aad883dde6fe}
+
+\begin{DoxyCompactList}\small\item\em The children connected to the node. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\hyperlink{classNode}{Node} class to build node tree. 
+Class to build a non-\/specific tree-\/node. 
 
 \begin{DoxyAuthor}{Author}
 Jim Ahlstrand 
 \end{DoxyAuthor}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classNode_a8dad370be1595f49e0a7c2406a91e867}{}\index{Node@{Node}!Type@{Type}}
+\index{Type@{Type}!Node@{Node}}
+\subsubsection[{Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Node\+::\+Type}}\label{classNode_a8dad370be1595f49e0a7c2406a91e867}
+Defines types of Nodes \begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000001}{Bug}]unary minus missing \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]concatenate some of these types to one type with different values 
+
+implemetn local functions and namelists \end{DoxyRefDesc}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -81,31 +133,44 @@ Jim Ahlstrand
 
 Constructor with type. 
 
-\begin{DoxyAuthor}{Author}
-Jim Ahlstrand 
-\end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
 {\em type} & \hyperlink{classNode}{Node} type of enum Type \\
 \hline
 \end{DoxyParams}
+\hypertarget{classNode_a36ce067b8b3fde59af074a425fa3b97c}{}\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}Node\+::\+Node (
+\begin{DoxyParamCaption}
+\item[{{\bf Type}}]{type, }
+\item[{std\+::string}]{value}
+\end{DoxyParamCaption}
+)}\label{classNode_a36ce067b8b3fde59af074a425fa3b97c}
+
+
+Constructor with type and value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \hyperlink{classNode}{Node} type of enum Type \\
+\hline
+{\em value} & String value of the node \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classNode_a9b0be5aa8a91b5b9b99968bc835475c4}{}\index{Node@{Node}!add\+Child@{add\+Child}}
+\hypertarget{classNode_a132699398b350e83b548a5645e69beb0}{}\index{Node@{Node}!add\+Child@{add\+Child}}
 \index{add\+Child@{add\+Child}!Node@{Node}}
-\subsubsection[{add\+Child}]{\setlength{\rightskip}{0pt plus 5cm}int Node\+::add\+Child (
+\subsubsection[{add\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void Node\+::add\+Child (
 \begin{DoxyParamCaption}
-\item[{{\bf Node} \&}]{child}
+\item[{{\bf Node} $\ast$}]{child}
 \end{DoxyParamCaption}
-)}\label{classNode_a9b0be5aa8a91b5b9b99968bc835475c4}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classNode_a132699398b350e83b548a5645e69beb0}
 
 
 Adds a child to the node. 
 
-\begin{DoxyAuthor}{Author}
-Jim Ahlstrand 
-\end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
 {\em child} & \hyperlink{classNode}{Node} child to add \\
@@ -114,8 +179,48 @@ Jim Ahlstrand
 \begin{DoxyReturn}{Returns}
 0 on success else error 
 \end{DoxyReturn}
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000001}{Todo}]\{add tests for child here\} \end{DoxyRefDesc}
+\hypertarget{classNode_acc70d98952c4b061bc433c00180b7011}{}\index{Node@{Node}!execute@{execute}}
+\index{execute@{execute}!Node@{Node}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}int Node\+::execute (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classNode_acc70d98952c4b061bc433c00180b7011}
+
+
+Executes the \hyperlink{classNode}{Node}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer value of the node 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classTest_a579d613526a8fc37c15b461e2f07e65e}{Test}, \hyperlink{classBinop_ac905eda0640f64cd28ed5c65b4c0c125}{Binop}, \hyperlink{classLoop_a32977a6ab0e1311d78c603db03f895d4}{Loop}, and \hyperlink{classCondition_a59fde5772e9f804f86001c04cfce39ce}{Condition}.
+
+\hypertarget{classNode_a49395be2fd2be32e99c49df5bc5d2c6c}{}\index{Node@{Node}!get\+Child@{get\+Child}}
+\index{get\+Child@{get\+Child}!Node@{Node}}
+\subsubsection[{get\+Child}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} $\ast$ Node\+::get\+Child (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+)}\label{classNode_a49395be2fd2be32e99c49df5bc5d2c6c}
+
+
+Gives a child of the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & unsigned integer index of child \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classNode}{Node} 
+\end{DoxyReturn}
 \hypertarget{classNode_a374c18bf6d7332e4a128107b8446d1ad}{}\index{Node@{Node}!get\+Node\+I\+D@{get\+Node\+I\+D}}
 \index{get\+Node\+I\+D@{get\+Node\+I\+D}!Node@{Node}}
 \subsubsection[{get\+Node\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int Node\+::get\+Node\+I\+D (
@@ -125,13 +230,55 @@ Jim Ahlstrand
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{classNode_a374c18bf6d7332e4a128107b8446d1ad}
 
 
-Returns the nodes id. 
+Gives the nodes id. 
 
-\begin{DoxyAuthor}{Author}
-Jim Ahlstrand 
-\end{DoxyAuthor}
 \begin{DoxyReturn}{Returns}
 id integer of nodes id 
+\end{DoxyReturn}
+\hypertarget{classNode_abce0a9ddac6a5e2c0e546dbe6af02e3d}{}\index{Node@{Node}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!Node@{Node}}
+\subsubsection[{get\+Type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Node\+::get\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classNode_abce0a9ddac6a5e2c0e546dbe6af02e3d}
+
+
+Converts type of node to string. 
+
+\begin{DoxyReturn}{Returns}
+string type of the node 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classTest_adeefe4160992fad5d3a52584f69a420d}{Test}, \hyperlink{classBinop_a25a4913ef0d2ec9787df24c391734094}{Binop}, \hyperlink{classLoop_a657b90074652fce7ab2028bdc3747b7b}{Loop}, and \hyperlink{classCondition_addf79a820326e04e58937c9875afe181}{Condition}.
+
+\hypertarget{classNode_a8a8a7a2ee9cd1bdf5a3e3cc374e678e6}{}\index{Node@{Node}!is\+Undefined@{is\+Undefined}}
+\index{is\+Undefined@{is\+Undefined}!Node@{Node}}
+\subsubsection[{is\+Undefined}]{\setlength{\rightskip}{0pt plus 5cm}bool Node\+::is\+Undefined (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classNode_a8a8a7a2ee9cd1bdf5a3e3cc374e678e6}
+
+
+Is this node undefined? 
+
+\begin{DoxyReturn}{Returns}
+id integer of nodes id 
+\end{DoxyReturn}
+\hypertarget{classNode_ae6c16dcf36a81a79b3b6e4adb51b229a}{}\index{Node@{Node}!move\+To\+Front@{move\+To\+Front}}
+\index{move\+To\+Front@{move\+To\+Front}!Node@{Node}}
+\subsubsection[{move\+To\+Front}]{\setlength{\rightskip}{0pt plus 5cm}int Node\+::move\+To\+Front (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classNode_ae6c16dcf36a81a79b3b6e4adb51b229a}
+Moves the end element to the front \begin{DoxyRemark}{Remarks}
+ugly hack only used for field list correction 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+int 0 on success 
 \end{DoxyReturn}
 \hypertarget{classNode_a6da281a118324b234071c80a554500cf}{}\index{Node@{Node}!print@{print}}
 \index{print@{print}!Node@{Node}}
@@ -145,9 +292,6 @@ id integer of nodes id
 
 Prints the node tree. 
 
-\begin{DoxyAuthor}{Author}
-Jim Ahlstrand 
-\end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
 {\em id} & integer of currently highest node id \\
@@ -157,6 +301,20 @@ Jim Ahlstrand
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 id integer of this node id 
+\end{DoxyReturn}
+\hypertarget{classNode_a985e47bbe8f5fade05f7accc2475794e}{}\index{Node@{Node}!size@{size}}
+\index{size@{size}!Node@{Node}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Node\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classNode_a985e47bbe8f5fade05f7accc2475794e}
+
+
+Returns the number of childs in this node. 
+
+\begin{DoxyReturn}{Returns}
+id integer number of childs 
 \end{DoxyReturn}
 
 

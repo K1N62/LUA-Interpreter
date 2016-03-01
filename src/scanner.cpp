@@ -390,19 +390,19 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[121] =
     {   0,
-        0,    0,   54,   53,    1,    2,   53,   47,   19,    8,
+        0,    0,   54,   53,    1,    2,   53,   29,   19,    8,
         9,   16,   14,   13,   15,   48,   17,    3,    5,   12,
        20,    4,   21,   52,    6,    7,   18,   52,   52,   52,
        52,   52,   52,   52,   52,   52,   52,   52,   52,   52,
        10,   11,   53,    2,    0,   51,    0,   49,    3,   22,
-       24,   23,   52,   52,   52,   33,   52,   52,   52,   52,
-       52,   35,   26,   52,   52,   52,   29,   52,   52,   52,
-       52,   52,   25,    0,   51,    0,   50,   28,   52,   52,
-       34,   52,   32,   52,   52,   27,   30,   52,   52,   52,
-       52,   52,   52,   52,   36,   52,   52,   52,   52,   52,
+       24,   23,   52,   52,   52,   34,   52,   52,   52,   52,
+       52,   36,   30,   52,   52,   52,   27,   52,   52,   52,
+       52,   52,   25,    0,   51,    0,   50,   26,   52,   52,
+       35,   52,   33,   52,   52,   31,   28,   52,   52,   52,
+       52,   52,   52,   52,   37,   52,   52,   52,   52,   52,
 
-       38,   42,   52,   52,   40,   52,   41,   52,   43,   52,
-       52,   44,   31,   37,   52,   45,   39,   52,   46,    0
+       39,   43,   52,   52,   41,   52,   42,   52,   44,   52,
+       52,   45,   32,   38,   52,   46,   40,   52,   47,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -833,237 +833,237 @@ return yy::parser::make_NUM(yytext);
 case 4:
 YY_RULE_SETUP
 #line 11 "src/scanner.lex"
-return yy::parser::make_EQ(yytext);
+return yy::parser::make_EQ();
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 12 "src/scanner.lex"
-return yy::parser::make_COL(yytext);
+return yy::parser::make_COL();
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 13 "src/scanner.lex"
-return yy::parser::make_BRKOPN(yytext);
+return yy::parser::make_BRKOPN();
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 14 "src/scanner.lex"
-return yy::parser::make_BRKCLS(yytext);
+return yy::parser::make_BRKCLS();
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 15 "src/scanner.lex"
-return yy::parser::make_PAROPN(yytext);
+return yy::parser::make_PAROPN();
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 16 "src/scanner.lex"
-return yy::parser::make_PARCLS(yytext);
+return yy::parser::make_PARCLS();
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 17 "src/scanner.lex"
-return yy::parser::make_CUROPN(yytext);
+return yy::parser::make_CUROPN();
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 18 "src/scanner.lex"
-return yy::parser::make_CURCLS(yytext);
+return yy::parser::make_CURCLS();
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 19 "src/scanner.lex"
-return yy::parser::make_SEMCOL(yytext);
+return yy::parser::make_SEMCOL();
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 20 "src/scanner.lex"
-return yy::parser::make_COM(yytext);
+return yy::parser::make_COM();
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 21 "src/scanner.lex"
-return yy::parser::make_PLUS(yytext);
+return yy::parser::make_PLUS();
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 22 "src/scanner.lex"
-return yy::parser::make_MINUS(yytext);
+return yy::parser::make_MINUS();
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 23 "src/scanner.lex"
-return yy::parser::make_MULT(yytext);
+return yy::parser::make_MULT();
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 24 "src/scanner.lex"
-return yy::parser::make_DIV(yytext);
+return yy::parser::make_DIV();
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 25 "src/scanner.lex"
-return yy::parser::make_POW(yytext);
+return yy::parser::make_POW();
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 26 "src/scanner.lex"
-return yy::parser::make_MOD(yytext);
+return yy::parser::make_MOD();
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 27 "src/scanner.lex"
-return yy::parser::make_LESS(yytext);
+return yy::parser::make_LESS();
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 28 "src/scanner.lex"
-return yy::parser::make_GREAT(yytext);
+return yy::parser::make_GREAT();
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 29 "src/scanner.lex"
-return yy::parser::make_LESSEQ(yytext);
+return yy::parser::make_LESSEQ();
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 30 "src/scanner.lex"
-return yy::parser::make_GREATEQ(yytext);
+return yy::parser::make_GREATEQ();
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 31 "src/scanner.lex"
-return yy::parser::make_EQEQ(yytext);
+return yy::parser::make_EQEQ();
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 32 "src/scanner.lex"
-return yy::parser::make_NOTEQ(yytext);
+return yy::parser::make_NOTEQ();
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 33 "src/scanner.lex"
-return yy::parser::make_IN(yytext);
+return yy::parser::make_AND();
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 34 "src/scanner.lex"
-return yy::parser::make_NIL(yytext);
+return yy::parser::make_OR();
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 35 "src/scanner.lex"
-return yy::parser::make_AND(yytext);
+return yy::parser::make_NOT();
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 36 "src/scanner.lex"
-return yy::parser::make_OR(yytext);
+return yy::parser::make_HASH();
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 37 "src/scanner.lex"
-return yy::parser::make_NOT(yytext);
+return yy::parser::make_IN();
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 38 "src/scanner.lex"
-return yy::parser::make_WHILE(yytext);
+return yy::parser::make_NIL();
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 39 "src/scanner.lex"
-return yy::parser::make_FOR(yytext);
+return yy::parser::make_WHILE();
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 40 "src/scanner.lex"
-return yy::parser::make_DO(yytext);
+return yy::parser::make_FOR();
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
 #line 41 "src/scanner.lex"
-return yy::parser::make__END(yytext);
+return yy::parser::make_DO();
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
 #line 42 "src/scanner.lex"
-return yy::parser::make_IF(yytext);
+return yy::parser::make__END();
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 43 "src/scanner.lex"
-return yy::parser::make_ELSE(yytext);
+return yy::parser::make_IF();
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 44 "src/scanner.lex"
-return yy::parser::make_ELSEIF(yytext);
+return yy::parser::make_ELSE();
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
 #line 45 "src/scanner.lex"
-return yy::parser::make_THEN(yytext);
+return yy::parser::make_ELSEIF();
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 46 "src/scanner.lex"
-return yy::parser::make_RETURN(yytext);
+return yy::parser::make_THEN();
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
 #line 47 "src/scanner.lex"
-return yy::parser::make_BREAK(yytext);
+return yy::parser::make_RETURN();
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
 #line 48 "src/scanner.lex"
-return yy::parser::make__FALSE(yytext);
+return yy::parser::make_BREAK();
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
 #line 49 "src/scanner.lex"
-return yy::parser::make__TRUE(yytext);
+return yy::parser::make__FALSE();
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
 #line 50 "src/scanner.lex"
-return yy::parser::make_LOCAL(yytext);
+return yy::parser::make__TRUE();
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
 #line 51 "src/scanner.lex"
-return yy::parser::make_UNTIL(yytext);
+return yy::parser::make_LOCAL();
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
 #line 52 "src/scanner.lex"
-return yy::parser::make_REP(yytext);
+return yy::parser::make_UNTIL();
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
 #line 53 "src/scanner.lex"
-return yy::parser::make_FUNC(yytext);
+return yy::parser::make_REP();
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
 #line 54 "src/scanner.lex"
-return yy::parser::make_HASH(yytext);
+return yy::parser::make_FUNC();
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
 #line 55 "src/scanner.lex"
-return yy::parser::make_DOT(yytext);
+return yy::parser::make_DOT();
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
 #line 56 "src/scanner.lex"
-return yy::parser::make_DDOT(yytext);
+return yy::parser::make_DDOT();
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
 #line 57 "src/scanner.lex"
-return yy::parser::make_TRIDOT(yytext);
+return yy::parser::make_TRIDOT();
 	YY_BREAK
 case 51:
 /* rule 51 can match eol */
