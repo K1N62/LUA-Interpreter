@@ -113,6 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structyy_1_1parser_1_1basic__symbol.html">basic_symbol</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A complete symbol.  <a href="structyy_1_1parser_1_1basic__symbol.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structyy_1_1parser_1_1by__type.html">by_type</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type access provider for token (enum) based symbols.  <a href="structyy_1_1parser_1_1by__type.html#details">More...</a><br /></td></tr>
@@ -157,8 +158,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a933976dee016ee0623704a75a53551a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a parser object. <br /></td></tr>
 <tr class="separator:a933976dee016ee0623704a75a53551a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac54cad6da907397a978922bfe246e6f8"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyy_1_1parser.html#ac54cad6da907397a978922bfe246e6f8">parse</a> ()</td></tr>
+<tr class="memdesc:ac54cad6da907397a978922bfe246e6f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse.  <a href="#ac54cad6da907397a978922bfe246e6f8">More...</a><br /></td></tr>
 <tr class="separator:ac54cad6da907397a978922bfe246e6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a740797fdf8f0ea046b20ffbc6c3f08"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyy_1_1parser.html#a3a740797fdf8f0ea046b20ffbc6c3f08">error</a> (const std::string &amp;msg)</td></tr>
+<tr class="memdesc:a3a740797fdf8f0ea046b20ffbc6c3f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report a syntax error.  <a href="#a3a740797fdf8f0ea046b20ffbc6c3f08">More...</a><br /></td></tr>
 <tr class="separator:a3a740797fdf8f0ea046b20ffbc6c3f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55d4a04712e5fa9f33baed8f92b3eb05"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a55d4a04712e5fa9f33baed8f92b3eb05"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyy_1_1parser.html#a55d4a04712e5fa9f33baed8f92b3eb05">error</a> (const <a class="el" href="structyy_1_1parser_1_1syntax__error.html">syntax_error</a> &amp;err)</td></tr>
@@ -345,7 +348,9 @@ static <a class="el" href="classyy_1_1parser.html#aa8024edbba983aa5cd3e88c3a4dca
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Report a syntax error. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Report a syntax error. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">msg</td><td>a description of the syntax error. </td></tr>
   </table>
@@ -374,7 +379,9 @@ static <a class="el" href="classyy_1_1parser.html#aa8024edbba983aa5cd3e88c3a4dca
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Parse. </p><dl class="section return"><dt>Returns</dt><dd>0 iff parsing succeeded. </dd></dl>
+
+<p>Parse. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 iff parsing succeeded. </dd></dl>
 <p>Whether yyla contains a lookahead.</p>
 <p>Length of the RHS of the rule being reduced.</p>
 <p>The lookahead symbol.</p>

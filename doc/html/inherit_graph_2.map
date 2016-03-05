@@ -1,7 +1,8 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classNode.html" title="Class to build a non&#45;specific tree&#45;node. " alt="" coords="5,81,59,108"/>
-<area shape="rect" id="node2" href="$classBinop.html" title="Class for binary operations. " alt="" coords="118,5,173,32"/>
-<area shape="rect" id="node3" href="$classCondition.html" title="Class for contitional operations. " alt="" coords="107,56,184,83"/>
-<area shape="rect" id="node4" href="$classLoop.html" title="Class for loops. " alt="" coords="120,107,171,133"/>
-<area shape="rect" id="node5" href="$classTest.html" title="Class for test operations. " alt="" coords="121,157,169,184"/>
+<area shape="rect" id="node1" href="$classNode.html" title="Builds a tree&#45;node structure. " alt="" coords="5,107,59,133"/>
+<area shape="rect" id="node2" href="$classBinop.html" title="Handles binary operations. " alt="" coords="118,5,173,32"/>
+<area shape="rect" id="node3" href="$classCondition.html" title="Handles contitional operations. " alt="" coords="107,56,184,83"/>
+<area shape="rect" id="node4" href="$classLoop.html" title="Handles loops. " alt="" coords="120,107,171,133"/>
+<area shape="rect" id="node5" href="$classMemory.html" title="Handles memory operations. " alt="" coords="111,157,180,184"/>
+<area shape="rect" id="node6" href="$classTest.html" title="Handles test operations. " alt="" coords="121,208,169,235"/>
 </map>

@@ -2,7 +2,7 @@
 \label{classNode}\index{Node@{Node}}
 
 
-Class to build a non-\/specific tree-\/node.  
+Builds a tree-\/node structure.  
 
 
 
@@ -15,7 +15,7 @@ Inheritance diagram for Node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=308pt]{classNode__inherit__graph}
+\includegraphics[width=350pt]{classNode__inherit__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Types}
@@ -25,34 +25,26 @@ enum \hyperlink{classNode_a8dad370be1595f49e0a7c2406a91e867}{Type} \{ \\*
 {\bfseries Undefined}, 
 {\bfseries Expression\+List}, 
 {\bfseries Variable\+List}, 
-{\bfseries Function\+Body}, 
-\\*
 {\bfseries Function\+Name}, 
+\\*
 {\bfseries Function\+Call}, 
 {\bfseries Function}, 
 {\bfseries Member\+Function}, 
-\\*
-{\bfseries Variable}, 
 {\bfseries List\+Name}, 
-{\bfseries Range}, 
+\\*
 {\bfseries Stat}, 
-\\*
 {\bfseries Field}, 
-{\bfseries Field\+List}, 
 {\bfseries Field\+Element}, 
-{\bfseries Equal}, 
-\\*
 {\bfseries Double\+Dot}, 
+\\*
 {\bfseries Hash}, 
 {\bfseries Negate}, 
 {\bfseries Name}, 
+{\bfseries Tridot}, 
 \\*
-{\bfseries Nil}, 
-{\bfseries Number}, 
-{\bfseries String}, 
-{\bfseries Tridot}
+{\bfseries Return}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Defines types of Nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -73,17 +65,23 @@ void \hyperlink{classNode_a132699398b350e83b548a5645e69beb0}{add\+Child} (\hyper
 \hyperlink{classNode}{Node} $\ast$ \hyperlink{classNode_a49395be2fd2be32e99c49df5bc5d2c6c}{get\+Child} (unsigned int i)
 \begin{DoxyCompactList}\small\item\em Gives a child of the node. \end{DoxyCompactList}\item 
 int \hyperlink{classNode_ae6c16dcf36a81a79b3b6e4adb51b229a}{move\+To\+Front} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Moves the end element to the front. \end{DoxyCompactList}\item 
 int \hyperlink{classNode_a374c18bf6d7332e4a128107b8446d1ad}{get\+Node\+I\+D} ()
 \begin{DoxyCompactList}\small\item\em Gives the nodes id. \end{DoxyCompactList}\item 
 bool \hyperlink{classNode_a8a8a7a2ee9cd1bdf5a3e3cc374e678e6}{is\+Undefined} ()
 \begin{DoxyCompactList}\small\item\em Is this node undefined? \end{DoxyCompactList}\item 
 unsigned int \hyperlink{classNode_a985e47bbe8f5fade05f7accc2475794e}{size} ()
 \begin{DoxyCompactList}\small\item\em Returns the number of childs in this node. \end{DoxyCompactList}\item 
-virtual int \hyperlink{classNode_acc70d98952c4b061bc433c00180b7011}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
+virtual bool \hyperlink{classNode_ad2758f63dc60560b83e1d8a038df6e86}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
 \begin{DoxyCompactList}\small\item\em Executes the \hyperlink{classNode}{Node}. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classNode_ab5a9a064d1d0ef20c984b1d76e56d843}{eval\+Int} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Evaluate integer value of the \hyperlink{classNode}{Node}. \end{DoxyCompactList}\item 
+virtual std\+::string \hyperlink{classNode_a8ee89abe1c903f5a0bae8ed3c798b47a}{eval\+Str} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Evaluate string value of the \hyperlink{classNode}{Node}. \end{DoxyCompactList}\item 
 virtual std\+::string \hyperlink{classNode_abce0a9ddac6a5e2c0e546dbe6af02e3d}{get\+Type} ()
-\begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classNode_afaf17dbadc6bca669dbbe97bf252c88e}{get\+Value} ()
+\begin{DoxyCompactList}\small\item\em Gets the nodes value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -102,7 +100,7 @@ virtual std\+::string \hyperlink{classNode_abce0a9ddac6a5e2c0e546dbe6af02e3d}{ge
 
 
 \subsection{Detailed Description}
-Class to build a non-\/specific tree-\/node. 
+Builds a tree-\/node structure. 
 
 \begin{DoxyAuthor}{Author}
 Jim Ahlstrand 
@@ -113,12 +111,12 @@ Jim Ahlstrand
 \hypertarget{classNode_a8dad370be1595f49e0a7c2406a91e867}{}\index{Node@{Node}!Type@{Type}}
 \index{Type@{Type}!Node@{Node}}
 \subsubsection[{Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Node\+::\+Type}}\label{classNode_a8dad370be1595f49e0a7c2406a91e867}
-Defines types of Nodes \begin{DoxyRefDesc}{Bug}
-\item[\hyperlink{bug__bug000001}{Bug}]unary minus missing \end{DoxyRefDesc}
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000002}{Todo}]concatenate some of these types to one type with different values 
 
-implemetn local functions and namelists \end{DoxyRefDesc}
+
+Defines types of Nodes. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]implement local functions and namelists \end{DoxyRefDesc}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -179,16 +177,16 @@ Adds a child to the node.
 \begin{DoxyReturn}{Returns}
 0 on success else error 
 \end{DoxyReturn}
-\hypertarget{classNode_acc70d98952c4b061bc433c00180b7011}{}\index{Node@{Node}!execute@{execute}}
-\index{execute@{execute}!Node@{Node}}
-\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}int Node\+::execute (
+\hypertarget{classNode_ab5a9a064d1d0ef20c984b1d76e56d843}{}\index{Node@{Node}!eval\+Int@{eval\+Int}}
+\index{eval\+Int@{eval\+Int}!Node@{Node}}
+\subsubsection[{eval\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Node\+::eval\+Int (
 \begin{DoxyParamCaption}
 \item[{{\bf Environment} \&}]{env}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classNode_acc70d98952c4b061bc433c00180b7011}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classNode_ab5a9a064d1d0ef20c984b1d76e56d843}
 
 
-Executes the \hyperlink{classNode}{Node}. 
+Evaluate integer value of the \hyperlink{classNode}{Node}. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -200,7 +198,56 @@ integer value of the node
 \end{DoxyReturn}
 
 
-Reimplemented in \hyperlink{classTest_a579d613526a8fc37c15b461e2f07e65e}{Test}, \hyperlink{classBinop_ac905eda0640f64cd28ed5c65b4c0c125}{Binop}, \hyperlink{classLoop_a32977a6ab0e1311d78c603db03f895d4}{Loop}, and \hyperlink{classCondition_a59fde5772e9f804f86001c04cfce39ce}{Condition}.
+Reimplemented in \hyperlink{classMemory_a0bf9b7657489146568ae62137c684522}{Memory}, \hyperlink{classBinop_a5f011a9a0259af43447271dfc8668a2a}{Binop}, and \hyperlink{classTest_a4366c4ade4ae8732660604f344ea9567}{Test}.
+
+\hypertarget{classNode_a8ee89abe1c903f5a0bae8ed3c798b47a}{}\index{Node@{Node}!eval\+Str@{eval\+Str}}
+\index{eval\+Str@{eval\+Str}!Node@{Node}}
+\subsubsection[{eval\+Str}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Node\+::eval\+Str (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classNode_a8ee89abe1c903f5a0bae8ed3c798b47a}
+
+
+Evaluate string value of the \hyperlink{classNode}{Node}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string value of the node 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classMemory_a298bdf094ac4807ad563f76f5bf159d0}{Memory}, \hyperlink{classBinop_a9b31b3aa7963440e499143f8fb837bf4}{Binop}, and \hyperlink{classTest_a48f01bd6e66144e9adccda3a090552b3}{Test}.
+
+\hypertarget{classNode_ad2758f63dc60560b83e1d8a038df6e86}{}\index{Node@{Node}!execute@{execute}}
+\index{execute@{execute}!Node@{Node}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool Node\+::execute (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classNode_ad2758f63dc60560b83e1d8a038df6e86}
+
+
+Executes the \hyperlink{classNode}{Node}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true if node did execute
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+should print end line? 
+\end{DoxyRemark}
+
+
+Reimplemented in \hyperlink{classMemory_ae00c898b45732c0bf74140d604363319}{Memory}, \hyperlink{classBinop_ac3cff65931eaf4d542fc50c1dc696f55}{Binop}, \hyperlink{classLoop_a661edc5e6b0f90787e2a55922109f110}{Loop}, and \hyperlink{classCondition_a4660fd89788efc03c57c35f66e14ae5b}{Condition}.
 
 \hypertarget{classNode_a49395be2fd2be32e99c49df5bc5d2c6c}{}\index{Node@{Node}!get\+Child@{get\+Child}}
 \index{get\+Child@{get\+Child}!Node@{Node}}
@@ -251,8 +298,22 @@ string type of the node
 \end{DoxyReturn}
 
 
-Reimplemented in \hyperlink{classTest_adeefe4160992fad5d3a52584f69a420d}{Test}, \hyperlink{classBinop_a25a4913ef0d2ec9787df24c391734094}{Binop}, \hyperlink{classLoop_a657b90074652fce7ab2028bdc3747b7b}{Loop}, and \hyperlink{classCondition_addf79a820326e04e58937c9875afe181}{Condition}.
+Reimplemented in \hyperlink{classMemory_a222e2dc37b587f8c243aabc1eebcf7a1}{Memory}, \hyperlink{classTest_adeefe4160992fad5d3a52584f69a420d}{Test}, \hyperlink{classBinop_a25a4913ef0d2ec9787df24c391734094}{Binop}, \hyperlink{classLoop_a657b90074652fce7ab2028bdc3747b7b}{Loop}, and \hyperlink{classCondition_addf79a820326e04e58937c9875afe181}{Condition}.
 
+\hypertarget{classNode_afaf17dbadc6bca669dbbe97bf252c88e}{}\index{Node@{Node}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!Node@{Node}}
+\subsubsection[{get\+Value}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Node\+::get\+Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classNode_afaf17dbadc6bca669dbbe97bf252c88e}
+
+
+Gets the nodes value. 
+
+\begin{DoxyReturn}{Returns}
+string value of the node 
+\end{DoxyReturn}
 \hypertarget{classNode_a8a8a7a2ee9cd1bdf5a3e3cc374e678e6}{}\index{Node@{Node}!is\+Undefined@{is\+Undefined}}
 \index{is\+Undefined@{is\+Undefined}!Node@{Node}}
 \subsubsection[{is\+Undefined}]{\setlength{\rightskip}{0pt plus 5cm}bool Node\+::is\+Undefined (
@@ -274,12 +335,16 @@ id integer of nodes id
 {}
 \end{DoxyParamCaption}
 )}\label{classNode_ae6c16dcf36a81a79b3b6e4adb51b229a}
-Moves the end element to the front \begin{DoxyRemark}{Remarks}
-ugly hack only used for field list correction 
-\end{DoxyRemark}
+
+
+Moves the end element to the front. 
+
 \begin{DoxyReturn}{Returns}
 int 0 on success 
 \end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+ugly hack only used for field list correction 
+\end{DoxyRemark}
 \hypertarget{classNode_a6da281a118324b234071c80a554500cf}{}\index{Node@{Node}!print@{print}}
 \index{print@{print}!Node@{Node}}
 \subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}int Node\+::print (

@@ -1,0 +1,182 @@
+\hypertarget{classConstant}{}\section{Constant Class Reference}
+\label{classConstant}\index{Constant@{Constant}}
+
+
+Class for binary operations.  
+
+
+
+
+{\ttfamily \#include $<$Constant.\+h$>$}
+
+
+
+Inheritance diagram for Constant\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=136pt]{classConstant__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Constant\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=136pt]{classConstant__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classConstant_aae1f2765a3f050013d5ab334de3b5985}{}enum \hyperlink{classConstant_aae1f2765a3f050013d5ab334de3b5985}{Type} \{ {\bfseries Undefined}, 
+{\bfseries Nil}, 
+{\bfseries Number}, 
+{\bfseries String}
+ \}\label{classConstant_aae1f2765a3f050013d5ab334de3b5985}
+
+\begin{DoxyCompactList}\small\item\em Defines types of Constants. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classConstant_a6d2f7d070d22aed4a3371c181da67716}{}\hyperlink{classConstant_a6d2f7d070d22aed4a3371c181da67716}{Constant} ()\label{classConstant_a6d2f7d070d22aed4a3371c181da67716}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classConstant_a952469735b0f54c34b9db659ae2c6bf1}{Constant} (\hyperlink{classConstant_aae1f2765a3f050013d5ab334de3b5985}{Type} \hyperlink{classConstant_ae680fe722ea06116b5b186c137daf883}{type})
+\begin{DoxyCompactList}\small\item\em Constructor with type. \end{DoxyCompactList}\item 
+\hyperlink{classConstant_ad5838e4497d0dc5384a6a60387003039}{Constant} (\hyperlink{classConstant_aae1f2765a3f050013d5ab334de3b5985}{Type} \hyperlink{classConstant_ae680fe722ea06116b5b186c137daf883}{type}, std\+::string \hyperlink{classNode_a51de8a12e67206f893b0bd6c2afeb11c}{value})
+\begin{DoxyCompactList}\small\item\em Constructor with type and value. \end{DoxyCompactList}\item 
+int \hyperlink{classConstant_a36753a0a5cf6b7f480a7548d154896cc}{eval\+Int} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Evaluate integer of the \hyperlink{classConstant}{Constant}. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classConstant_a474f09f1717851de4436975f394d89b4}{eval\+Str} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Evaluate string of the \hyperlink{classConstant}{Constant}. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classConstant_ac2ad057c7cd5995e9e0331c3725db204}{get\+Type} ()
+\begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classConstant_ae680fe722ea06116b5b186c137daf883}{}\hyperlink{classConstant_aae1f2765a3f050013d5ab334de3b5985}{Type} \hyperlink{classConstant_ae680fe722ea06116b5b186c137daf883}{type}\label{classConstant_ae680fe722ea06116b5b186c137daf883}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classConstant}{Constant} type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for binary operations. 
+
+\begin{DoxyAuthor}{Author}
+Jim Ahlstrand 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classConstant_a952469735b0f54c34b9db659ae2c6bf1}{}\index{Constant@{Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!Constant@{Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}Constant\+::\+Constant (
+\begin{DoxyParamCaption}
+\item[{{\bf Type}}]{type}
+\end{DoxyParamCaption}
+)}\label{classConstant_a952469735b0f54c34b9db659ae2c6bf1}
+
+
+Constructor with type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \hyperlink{classConstant}{Constant} type of enum Type \\
+\hline
+\end{DoxyParams}
+\hypertarget{classConstant_ad5838e4497d0dc5384a6a60387003039}{}\index{Constant@{Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!Constant@{Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}Constant\+::\+Constant (
+\begin{DoxyParamCaption}
+\item[{{\bf Type}}]{type, }
+\item[{std\+::string}]{value}
+\end{DoxyParamCaption}
+)}\label{classConstant_ad5838e4497d0dc5384a6a60387003039}
+
+
+Constructor with type and value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \hyperlink{classNode}{Node} type of enum Type \\
+\hline
+{\em value} & String value of the node \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classConstant_a36753a0a5cf6b7f480a7548d154896cc}{}\index{Constant@{Constant}!eval\+Int@{eval\+Int}}
+\index{eval\+Int@{eval\+Int}!Constant@{Constant}}
+\subsubsection[{eval\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Constant\+::eval\+Int (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classConstant_a36753a0a5cf6b7f480a7548d154896cc}
+
+
+Evaluate integer of the \hyperlink{classConstant}{Constant}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer value of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_ab5a9a064d1d0ef20c984b1d76e56d843}{Node}.
+
+\hypertarget{classConstant_a474f09f1717851de4436975f394d89b4}{}\index{Constant@{Constant}!eval\+Str@{eval\+Str}}
+\index{eval\+Str@{eval\+Str}!Constant@{Constant}}
+\subsubsection[{eval\+Str}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Constant\+::eval\+Str (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classConstant_a474f09f1717851de4436975f394d89b4}
+
+
+Evaluate string of the \hyperlink{classConstant}{Constant}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string value of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_a8ee89abe1c903f5a0bae8ed3c798b47a}{Node}.
+
+\hypertarget{classConstant_ac2ad057c7cd5995e9e0331c3725db204}{}\index{Constant@{Constant}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!Constant@{Constant}}
+\subsubsection[{get\+Type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Constant\+::get\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classConstant_ac2ad057c7cd5995e9e0331c3725db204}
+
+
+Converts type of node to string. 
+
+\begin{DoxyReturn}{Returns}
+string type of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_abce0a9ddac6a5e2c0e546dbe6af02e3d}{Node}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/Constant.\+h\item 
+src/Constant.\+cpp\end{DoxyCompactItemize}

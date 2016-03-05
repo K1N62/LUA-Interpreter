@@ -98,26 +98,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classEnvironment.html" title="Environment class to handle variables. ">Environment</a> class to handle variables.  
+<p>Handles current memory scope.  
  <a href="classEnvironment.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Environment_8h_source.html">Environment.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8b427c4448d8b7536666837521b9e83d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b427c4448d8b7536666837521b9e83d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a8b427c4448d8b7536666837521b9e83d">Environment</a> ()</td></tr>
-<tr class="memdesc:a8b427c4448d8b7536666837521b9e83d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
-<tr class="separator:a8b427c4448d8b7536666837521b9e83d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e294735187880dd3d59be10c425b29d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e294735187880dd3d59be10c425b29d"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a8e294735187880dd3d59be10c425b29d">~Environment</a> ()</td></tr>
 <tr class="memdesc:a8e294735187880dd3d59be10c425b29d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
 <tr class="separator:a8e294735187880dd3d59be10c425b29d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a225cc24b6810880fdaf914327caf1662"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a225cc24b6810880fdaf914327caf1662">write</a> (std::string name, <a class="el" href="classMemory.html">Memory</a> *memory)</td></tr>
+<tr class="memdesc:a225cc24b6810880fdaf914327caf1662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes to memory.  <a href="#a225cc24b6810880fdaf914327caf1662">More...</a><br /></td></tr>
+<tr class="separator:a225cc24b6810880fdaf914327caf1662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44bfdd6aa66ff6503c57e5e89ee2dd9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMemory.html">Memory</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a44bfdd6aa66ff6503c57e5e89ee2dd9c">read</a> (std::string name)</td></tr>
+<tr class="memdesc:a44bfdd6aa66ff6503c57e5e89ee2dd9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads from memory  <a href="#a44bfdd6aa66ff6503c57e5e89ee2dd9c">More...</a><br /></td></tr>
+<tr class="separator:a44bfdd6aa66ff6503c57e5e89ee2dd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classEnvironment.html" title="Environment class to handle variables. ">Environment</a> class to handle variables. </p>
+<div class="textblock"><p>Handles current memory scope. </p>
 <dl class="section author"><dt>Author</dt><dd>Jim Ahlstrand </dd></dl>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a44bfdd6aa66ff6503c57e5e89ee2dd9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMemory.html">Memory</a> * Environment::read </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reads from memory </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>name identifier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>integer value of the variable </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a225cc24b6810880fdaf914327caf1662"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Environment::write </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMemory.html">Memory</a> *&#160;</td>
+          <td class="paramname"><em>memory</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes to memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>name identifier </td></tr>
+    <tr><td class="paramname">Memory*</td><td>mem pointer to memory </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int 0 if success </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>inc/<a class="el" href="Environment_8h_source.html">Environment.h</a></li>
 <li>src/Environment.cpp</li>
 </ul>

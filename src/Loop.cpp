@@ -24,21 +24,21 @@ std::string Loop::getType()
     }
 }
 
-int Loop::execute(Environment& env)
+bool Loop::execute(Environment& env)
 {
     switch (this->type) {
         case Repeat:
-            while (!EXEC_RIGHT) EXEC_LEFT;
-            return TRUE;
+            while (!EVAL_INT_RIGHT) EXEC_LEFT;
+            return true;
         case While:
-            while (EXEC_LEFT) EXEC_RIGHT;
-            return TRUE;
+            while (EVAL_INT_LEFT) EXEC_RIGHT;
+            return true;
         case For:
             //! \todo implement for loop execution
-            return TRUE;
+            return true;
         case Do:
             //! \todo implement do loop execution
-            return TRUE;
+            return true;
     default:
         throw Error("Invalid binary operation");
     }

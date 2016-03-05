@@ -2,8 +2,7 @@
 
 #include "Node.h"
 
-//! Class for contitional operations
-/**
+/** Handles contitional operations
 * @author Jim Ahlstrand
 */
 class Condition : public Node {
@@ -19,22 +18,19 @@ public:
     // ---------------------------------------
     //! Default constructor
     Condition();
-    //! Constructor with type
-    /**
+    /** Constructor with type
     * @param type Condition type of enum Type
     */
     Condition(Type type);
 
     // Methods
     // ---------------------------------------
-    //! Executes the Condition
-    /**
+    /** Executes the Condition
     * @param env current Environment
     * @return integer value of the node
     */
-    int execute(Environment& env);
-    //! Converts type of node to string
-    /**
+    bool execute(Environment& env);
+    /** Converts type of node to string
     * @return string type of the node
     */
     std::string getType();

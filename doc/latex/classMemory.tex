@@ -1,0 +1,277 @@
+\hypertarget{classMemory}{}\section{Memory Class Reference}
+\label{classMemory}\index{Memory@{Memory}}
+
+
+Handles memory operations.  
+
+
+
+
+{\ttfamily \#include $<$Memory.\+h$>$}
+
+
+
+Inheritance diagram for Memory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=132pt]{classMemory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Memory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=132pt]{classMemory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classMemory_a9193c3e610b1728964440284db90c812}{}enum \hyperlink{classMemory_a9193c3e610b1728964440284db90c812}{Type} \{ \\*
+{\bfseries Nil}, 
+{\bfseries Number}, 
+{\bfseries String}, 
+{\bfseries Field\+List}, 
+\\*
+{\bfseries Function\+Body}
+ \}\label{classMemory_a9193c3e610b1728964440284db90c812}
+
+\begin{DoxyCompactList}\small\item\em Defines types of \hyperlink{classMemory}{Memory}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMemory_a585d7bb6fc6f2237bcebf94a86b7dd99}{Memory} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classMemory_a94bd3f09f65c210e6f4259724d2b8efa}{Memory} (int \hyperlink{classNode_a51de8a12e67206f893b0bd6c2afeb11c}{value})
+\begin{DoxyCompactList}\small\item\em Constructor with integer type. \end{DoxyCompactList}\item 
+\hyperlink{classMemory_a0174eface9607ffd7a5c40761ba09b1f}{Memory} (std\+::string \hyperlink{classNode_a51de8a12e67206f893b0bd6c2afeb11c}{value})
+\begin{DoxyCompactList}\small\item\em Constructor with string type. \end{DoxyCompactList}\item 
+\hyperlink{classMemory_a97531dd41f355d34c6479d9ebfd4b652}{Memory} (\hyperlink{classNode}{Node} $\ast$\hyperlink{classMemory_ae8c01f737989b477cf085612795ed13b}{func})
+\begin{DoxyCompactList}\small\item\em Constructor with function type. \end{DoxyCompactList}\item 
+\hypertarget{classMemory_a0ffa9759ebbf103f11132a505b93bdc0}{}virtual \hyperlink{classMemory_a0ffa9759ebbf103f11132a505b93bdc0}{$\sim$\+Memory} ()\label{classMemory_a0ffa9759ebbf103f11132a505b93bdc0}
+
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classMemory_ae00c898b45732c0bf74140d604363319}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Executes the \hyperlink{classNode}{Node}. \end{DoxyCompactList}\item 
+int \hyperlink{classMemory_a0bf9b7657489146568ae62137c684522}{eval\+Int} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Evaluate integer of the \hyperlink{classMemory}{Memory}. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classMemory_a298bdf094ac4807ad563f76f5bf159d0}{eval\+Str} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Evaluate string of the \hyperlink{classMemory}{Memory}. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classMemory_a222e2dc37b587f8c243aabc1eebcf7a1}{get\+Type} ()
+\begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classMemory_a55d46c565490996d8680cdb78cca6a76}{length} ()
+\begin{DoxyCompactList}\small\item\em Get length of \hyperlink{classMemory}{Memory}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classMemory_a918d8160ac6fefa393ab29a11da83e6e}{}\hyperlink{classMemory_a9193c3e610b1728964440284db90c812}{Type} \hyperlink{classMemory_a918d8160ac6fefa393ab29a11da83e6e}{type}\label{classMemory_a918d8160ac6fefa393ab29a11da83e6e}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classMemory}{Memory} type. \end{DoxyCompactList}\item 
+\hypertarget{classMemory_ac80bb688056b1ea413f35e6395e7c590}{}int \hyperlink{classMemory_ac80bb688056b1ea413f35e6395e7c590}{integer}\label{classMemory_ac80bb688056b1ea413f35e6395e7c590}
+
+\begin{DoxyCompactList}\small\item\em Integer value. \end{DoxyCompactList}\item 
+\hypertarget{classMemory_a96bb9384b8d7a57c75af4f1345279cc4}{}std\+::string \hyperlink{classMemory_a96bb9384b8d7a57c75af4f1345279cc4}{str}\label{classMemory_a96bb9384b8d7a57c75af4f1345279cc4}
+
+\begin{DoxyCompactList}\small\item\em String value. \end{DoxyCompactList}\item 
+\hypertarget{classMemory_ae8c01f737989b477cf085612795ed13b}{}\hyperlink{classNode}{Node} $\ast$ \hyperlink{classMemory_ae8c01f737989b477cf085612795ed13b}{func}\label{classMemory_ae8c01f737989b477cf085612795ed13b}
+
+\begin{DoxyCompactList}\small\item\em Function pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Handles memory operations. 
+
+\begin{DoxyAuthor}{Author}
+Jim Ahlstrand 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classMemory_a585d7bb6fc6f2237bcebf94a86b7dd99}{}\index{Memory@{Memory}!Memory@{Memory}}
+\index{Memory@{Memory}!Memory@{Memory}}
+\subsubsection[{Memory}]{\setlength{\rightskip}{0pt plus 5cm}Memory\+::\+Memory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classMemory_a585d7bb6fc6f2237bcebf94a86b7dd99}
+
+
+Default constructor. 
+
+\begin{DoxyRemark}{Remarks}
+is assumed to be a field list 
+\end{DoxyRemark}
+\hypertarget{classMemory_a94bd3f09f65c210e6f4259724d2b8efa}{}\index{Memory@{Memory}!Memory@{Memory}}
+\index{Memory@{Memory}!Memory@{Memory}}
+\subsubsection[{Memory}]{\setlength{\rightskip}{0pt plus 5cm}Memory\+::\+Memory (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\label{classMemory_a94bd3f09f65c210e6f4259724d2b8efa}
+
+
+Constructor with integer type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \hyperlink{classMemory}{Memory} type of enum Type \\
+\hline
+{\em value} & integer value of the node \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMemory_a0174eface9607ffd7a5c40761ba09b1f}{}\index{Memory@{Memory}!Memory@{Memory}}
+\index{Memory@{Memory}!Memory@{Memory}}
+\subsubsection[{Memory}]{\setlength{\rightskip}{0pt plus 5cm}Memory\+::\+Memory (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{value}
+\end{DoxyParamCaption}
+)}\label{classMemory_a0174eface9607ffd7a5c40761ba09b1f}
+
+
+Constructor with string type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \hyperlink{classMemory}{Memory} type of enum Type \\
+\hline
+{\em value} & string value of the node \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMemory_a97531dd41f355d34c6479d9ebfd4b652}{}\index{Memory@{Memory}!Memory@{Memory}}
+\index{Memory@{Memory}!Memory@{Memory}}
+\subsubsection[{Memory}]{\setlength{\rightskip}{0pt plus 5cm}Memory\+::\+Memory (
+\begin{DoxyParamCaption}
+\item[{{\bf Node} $\ast$}]{func}
+\end{DoxyParamCaption}
+)}\label{classMemory_a97531dd41f355d34c6479d9ebfd4b652}
+
+
+Constructor with function type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \hyperlink{classMemory}{Memory} type of enum Type \\
+\hline
+{\em func} & Node$\ast$ value of the node \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMemory_a0bf9b7657489146568ae62137c684522}{}\index{Memory@{Memory}!eval\+Int@{eval\+Int}}
+\index{eval\+Int@{eval\+Int}!Memory@{Memory}}
+\subsubsection[{eval\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Memory\+::eval\+Int (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classMemory_a0bf9b7657489146568ae62137c684522}
+
+
+Evaluate integer of the \hyperlink{classMemory}{Memory}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer value of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_ab5a9a064d1d0ef20c984b1d76e56d843}{Node}.
+
+\hypertarget{classMemory_a298bdf094ac4807ad563f76f5bf159d0}{}\index{Memory@{Memory}!eval\+Str@{eval\+Str}}
+\index{eval\+Str@{eval\+Str}!Memory@{Memory}}
+\subsubsection[{eval\+Str}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Memory\+::eval\+Str (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classMemory_a298bdf094ac4807ad563f76f5bf159d0}
+
+
+Evaluate string of the \hyperlink{classMemory}{Memory}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string value of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_a8ee89abe1c903f5a0bae8ed3c798b47a}{Node}.
+
+\hypertarget{classMemory_ae00c898b45732c0bf74140d604363319}{}\index{Memory@{Memory}!execute@{execute}}
+\index{execute@{execute}!Memory@{Memory}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool Memory\+::execute (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classMemory_ae00c898b45732c0bf74140d604363319}
+
+
+Executes the \hyperlink{classNode}{Node}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true if node did execute 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_ad2758f63dc60560b83e1d8a038df6e86}{Node}.
+
+\hypertarget{classMemory_a222e2dc37b587f8c243aabc1eebcf7a1}{}\index{Memory@{Memory}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!Memory@{Memory}}
+\subsubsection[{get\+Type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Memory\+::get\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classMemory_a222e2dc37b587f8c243aabc1eebcf7a1}
+
+
+Converts type of node to string. 
+
+\begin{DoxyReturn}{Returns}
+string type of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_abce0a9ddac6a5e2c0e546dbe6af02e3d}{Node}.
+
+\hypertarget{classMemory_a55d46c565490996d8680cdb78cca6a76}{}\index{Memory@{Memory}!length@{length}}
+\index{length@{length}!Memory@{Memory}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Memory\+::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classMemory_a55d46c565490996d8680cdb78cca6a76}
+
+
+Get length of \hyperlink{classMemory}{Memory}. 
+
+\begin{DoxyReturn}{Returns}
+unsigned int length of \hyperlink{classMemory}{Memory} 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+length of list returns number of elements in list 
+
+length of string returns number of characters in string 
+
+length of integer \& function throws an exception 
+\end{DoxyRemark}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+inc/Memory.\+h\item 
+src/Memory.\+cpp\end{DoxyCompactItemize}

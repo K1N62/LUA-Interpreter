@@ -2,7 +2,7 @@
 \label{classBinop}\index{Binop@{Binop}}
 
 
-Class for binary operations.  
+Handles binary operations.  
 
 
 
@@ -32,10 +32,11 @@ Collaboration diagram for Binop\+:\nopagebreak
 \item 
 \hypertarget{classBinop_a833e85c431d85ca69758bfebec9193dc}{}enum \hyperlink{classBinop_a833e85c431d85ca69758bfebec9193dc}{Type} \{ \\*
 {\bfseries Undefined}, 
+{\bfseries Equal}, 
 {\bfseries Addition}, 
 {\bfseries Subtraction}, 
-{\bfseries Division}, 
 \\*
+{\bfseries Division}, 
 {\bfseries Multiplication}, 
 {\bfseries Power}, 
 {\bfseries Modulo}
@@ -50,8 +51,12 @@ Collaboration diagram for Binop\+:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \hyperlink{classBinop_a3d538d66e8aa1ac46feb5e984fbfb8c9}{Binop} (\hyperlink{classBinop_a833e85c431d85ca69758bfebec9193dc}{Type} \hyperlink{classBinop_a6ba1f508e1122caea1ef9350fee74396}{type})
 \begin{DoxyCompactList}\small\item\em Constructor with type. \end{DoxyCompactList}\item 
-int \hyperlink{classBinop_ac905eda0640f64cd28ed5c65b4c0c125}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
-\begin{DoxyCompactList}\small\item\em Executes the \hyperlink{classBinop}{Binop}. \end{DoxyCompactList}\item 
+bool \hyperlink{classBinop_ac3cff65931eaf4d542fc50c1dc696f55}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Executes the \hyperlink{classNode}{Node}. \end{DoxyCompactList}\item 
+int \hyperlink{classBinop_a5f011a9a0259af43447271dfc8668a2a}{eval\+Int} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Evaluate integer of the \hyperlink{classBinop}{Binop}. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classBinop_a9b31b3aa7963440e499143f8fb837bf4}{eval\+Str} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Evaluate string of the \hyperlink{classBinop}{Binop}. \end{DoxyCompactList}\item 
 std\+::string \hyperlink{classBinop_a25a4913ef0d2ec9787df24c391734094}{get\+Type} ()
 \begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
@@ -63,7 +68,7 @@ std\+::string \hyperlink{classBinop_a25a4913ef0d2ec9787df24c391734094}{get\+Type
 
 
 \subsection{Detailed Description}
-Class for binary operations. 
+Handles binary operations. 
 
 \begin{DoxyAuthor}{Author}
 Jim Ahlstrand 
@@ -92,16 +97,16 @@ Constructor with type.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classBinop_ac905eda0640f64cd28ed5c65b4c0c125}{}\index{Binop@{Binop}!execute@{execute}}
-\index{execute@{execute}!Binop@{Binop}}
-\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}int Binop\+::execute (
+\hypertarget{classBinop_a5f011a9a0259af43447271dfc8668a2a}{}\index{Binop@{Binop}!eval\+Int@{eval\+Int}}
+\index{eval\+Int@{eval\+Int}!Binop@{Binop}}
+\subsubsection[{eval\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Binop\+::eval\+Int (
 \begin{DoxyParamCaption}
 \item[{{\bf Environment} \&}]{env}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classBinop_ac905eda0640f64cd28ed5c65b4c0c125}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classBinop_a5f011a9a0259af43447271dfc8668a2a}
 
 
-Executes the \hyperlink{classBinop}{Binop}. 
+Evaluate integer of the \hyperlink{classBinop}{Binop}. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -113,7 +118,61 @@ integer value of the node
 \end{DoxyReturn}
 
 
-Reimplemented from \hyperlink{classNode_acc70d98952c4b061bc433c00180b7011}{Node}.
+Reimplemented from \hyperlink{classNode_ab5a9a064d1d0ef20c984b1d76e56d843}{Node}.
+
+\hypertarget{classBinop_a9b31b3aa7963440e499143f8fb837bf4}{}\index{Binop@{Binop}!eval\+Str@{eval\+Str}}
+\index{eval\+Str@{eval\+Str}!Binop@{Binop}}
+\subsubsection[{eval\+Str}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Binop\+::eval\+Str (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classBinop_a9b31b3aa7963440e499143f8fb837bf4}
+
+
+Evaluate string of the \hyperlink{classBinop}{Binop}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string value of the node
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+this is ugly but works 
+\end{DoxyRemark}
+
+
+Reimplemented from \hyperlink{classNode_a8ee89abe1c903f5a0bae8ed3c798b47a}{Node}.
+
+\hypertarget{classBinop_ac3cff65931eaf4d542fc50c1dc696f55}{}\index{Binop@{Binop}!execute@{execute}}
+\index{execute@{execute}!Binop@{Binop}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool Binop\+::execute (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classBinop_ac3cff65931eaf4d542fc50c1dc696f55}
+
+
+Executes the \hyperlink{classNode}{Node}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true if node did execute
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This small hack limits variables to integers, but enables binops to be stored in memory 
+\end{DoxyRemark}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Fix this somehow? \end{DoxyRefDesc}
+
+
+Reimplemented from \hyperlink{classNode_ad2758f63dc60560b83e1d8a038df6e86}{Node}.
 
 \hypertarget{classBinop_a25a4913ef0d2ec9787df24c391734094}{}\index{Binop@{Binop}!get\+Type@{get\+Type}}
 \index{get\+Type@{get\+Type}!Binop@{Binop}}

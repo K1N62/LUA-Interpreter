@@ -2,7 +2,7 @@
 \label{classCondition}\index{Condition@{Condition}}
 
 
-Class for contitional operations.  
+Handles contitional operations.  
 
 
 
@@ -44,7 +44,7 @@ Collaboration diagram for Condition\+:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \hyperlink{classCondition_adffecd1d1fac2e3e75e190c63b409dd1}{Condition} (\hyperlink{classCondition_a3eed4b7ef94da5dda4a3353cffa8266e}{Type} \hyperlink{classCondition_aeebc812b5f02a5e017c26d4573e85530}{type})
 \begin{DoxyCompactList}\small\item\em Constructor with type. \end{DoxyCompactList}\item 
-int \hyperlink{classCondition_a59fde5772e9f804f86001c04cfce39ce}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
+bool \hyperlink{classCondition_a4660fd89788efc03c57c35f66e14ae5b}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
 \begin{DoxyCompactList}\small\item\em Executes the \hyperlink{classCondition}{Condition}. \end{DoxyCompactList}\item 
 std\+::string \hyperlink{classCondition_addf79a820326e04e58937c9875afe181}{get\+Type} ()
 \begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -57,7 +57,7 @@ std\+::string \hyperlink{classCondition_addf79a820326e04e58937c9875afe181}{get\+
 
 
 \subsection{Detailed Description}
-Class for contitional operations. 
+Handles contitional operations. 
 
 \begin{DoxyAuthor}{Author}
 Jim Ahlstrand 
@@ -84,13 +84,13 @@ Constructor with type.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classCondition_a59fde5772e9f804f86001c04cfce39ce}{}\index{Condition@{Condition}!execute@{execute}}
+\hypertarget{classCondition_a4660fd89788efc03c57c35f66e14ae5b}{}\index{Condition@{Condition}!execute@{execute}}
 \index{execute@{execute}!Condition@{Condition}}
-\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}int Condition\+::execute (
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool Condition\+::execute (
 \begin{DoxyParamCaption}
 \item[{{\bf Environment} \&}]{env}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCondition_a59fde5772e9f804f86001c04cfce39ce}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCondition_a4660fd89788efc03c57c35f66e14ae5b}
 
 
 Executes the \hyperlink{classCondition}{Condition}. 
@@ -105,7 +105,7 @@ integer value of the node
 \end{DoxyReturn}
 
 
-Reimplemented from \hyperlink{classNode_acc70d98952c4b061bc433c00180b7011}{Node}.
+Reimplemented from \hyperlink{classNode_ad2758f63dc60560b83e1d8a038df6e86}{Node}.
 
 \hypertarget{classCondition_addf79a820326e04e58937c9875afe181}{}\index{Condition@{Condition}!get\+Type@{get\+Type}}
 \index{get\+Type@{get\+Type}!Condition@{Condition}}

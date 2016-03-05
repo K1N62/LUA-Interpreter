@@ -17,28 +17,30 @@ std::string Condition::getType()
         case Condition::Type::If:       return "If";
         case Condition::Type::ElseIf:   return "ElseIf";
 
-        default:                    return "Undefined";
+        default:
+          return "Undefined";
     }
 }
 
-int Condition::execute(Environment& env)
+bool Condition::execute(Environment& env)
 {
     switch (this->type) {
         case If:
-            if (EXEC_LEFT) EXEC_RIGHT;
+            if (EVAL_INT_LEFT) EXEC_RIGHT;
             else for (unsigned int i = 2; i < this->size(); i++)
                 try {
-                    if (this->getChild(i)->execute(env)) return TRUE;
+                    if (this->getChild(i)->execute(env)) return true;
                 } catch (std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
                 }
-            return TRUE;
+            return true;
         case ElseIf:
-            if (EXEC_LEFT) {
+            if (EVAL_INT_LEFT) {
                 EXEC_RIGHT;
-                return TRUE;
+                return true;
             }
-            return FALSE;
+            return true;
+
     default:
         throw Error("Invalid contition");
     }

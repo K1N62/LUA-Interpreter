@@ -1,9 +1,15 @@
 \hypertarget{parser_8h}{}\section{inc/parser.h File Reference}
 \label{parser_8h}\index{inc/parser.\+h@{inc/parser.\+h}}
+
+
+Define the \hyperlink{classyy_1_1parser}{yy\+::parser} class.  
+
+
 {\ttfamily \#include \char`\"{}Node.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Test.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Loop.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Binop.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Memory.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Condition.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Environment.\+h\char`\"{}}\\*
 {\ttfamily \#include $<$vector$>$}\\*
@@ -30,7 +36,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structyy_1_1variant}{yy\+::variant$<$ S $>$}
-\item 
+\begin{DoxyCompactList}\small\item\em A char\mbox{[}S\mbox{]} buffer to store and retrieve objects. \end{DoxyCompactList}\item 
 class \hyperlink{classyy_1_1parser}{yy\+::parser}
 \begin{DoxyCompactList}\small\item\em A Bison parser. \end{DoxyCompactList}\item 
 union \hyperlink{unionyy_1_1parser_1_1union__type}{yy\+::parser\+::union\+\_\+type}
@@ -40,7 +46,7 @@ struct \hyperlink{structyy_1_1parser_1_1syntax__error}{yy\+::parser\+::syntax\+\
 struct \hyperlink{structyy_1_1parser_1_1token}{yy\+::parser\+::token}
 \begin{DoxyCompactList}\small\item\em Tokens. \end{DoxyCompactList}\item 
 struct \hyperlink{structyy_1_1parser_1_1basic__symbol}{yy\+::parser\+::basic\+\_\+symbol$<$ Base $>$}
-\item 
+\begin{DoxyCompactList}\small\item\em A complete symbol. \end{DoxyCompactList}\item 
 struct \hyperlink{structyy_1_1parser_1_1by__type}{yy\+::parser\+::by\+\_\+type}
 \begin{DoxyCompactList}\small\item\em Type access provider for token (enum) based symbols. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
@@ -80,3 +86,4 @@ struct \hyperlink{structyy_1_1parser_1_1by__type}{yy\+::parser\+::by\+\_\+type}
 
 \subsection{Detailed Description}
 Define the \hyperlink{classyy_1_1parser}{yy\+::parser} class. 
+

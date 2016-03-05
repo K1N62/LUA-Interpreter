@@ -2,7 +2,7 @@
 \label{classTest}\index{Test@{Test}}
 
 
-Class for test operations.  
+Handles test operations.  
 
 
 
@@ -56,8 +56,10 @@ Collaboration diagram for Test\+:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \hyperlink{classTest_aefafe8c714d1bbd89f09daf43793b465}{Test} (\hyperlink{classTest_a9e5d00cf02fb05573a6f97d14ebc154a}{Type} \hyperlink{classTest_add1faa7d527f515b973350d566772265}{type})
 \begin{DoxyCompactList}\small\item\em Constructor with type. \end{DoxyCompactList}\item 
-int \hyperlink{classTest_a579d613526a8fc37c15b461e2f07e65e}{execute} (\hyperlink{classEnvironment}{Environment} \&env)
+int \hyperlink{classTest_a4366c4ade4ae8732660604f344ea9567}{eval\+Int} (\hyperlink{classEnvironment}{Environment} \&env)
 \begin{DoxyCompactList}\small\item\em Executes the \hyperlink{classTest}{Test}. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classTest_a48f01bd6e66144e9adccda3a090552b3}{eval\+Str} (\hyperlink{classEnvironment}{Environment} \&env)
+\begin{DoxyCompactList}\small\item\em Evaluate string of the \hyperlink{classBinop}{Binop}. \end{DoxyCompactList}\item 
 std\+::string \hyperlink{classTest_adeefe4160992fad5d3a52584f69a420d}{get\+Type} ()
 \begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
@@ -69,7 +71,7 @@ std\+::string \hyperlink{classTest_adeefe4160992fad5d3a52584f69a420d}{get\+Type}
 
 
 \subsection{Detailed Description}
-Class for test operations. 
+Handles test operations. 
 
 \begin{DoxyAuthor}{Author}
 Jim Ahlstrand 
@@ -98,13 +100,13 @@ Constructor with type.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classTest_a579d613526a8fc37c15b461e2f07e65e}{}\index{Test@{Test}!execute@{execute}}
-\index{execute@{execute}!Test@{Test}}
-\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}int Test\+::execute (
+\hypertarget{classTest_a4366c4ade4ae8732660604f344ea9567}{}\index{Test@{Test}!eval\+Int@{eval\+Int}}
+\index{eval\+Int@{eval\+Int}!Test@{Test}}
+\subsubsection[{eval\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Test\+::eval\+Int (
 \begin{DoxyParamCaption}
 \item[{{\bf Environment} \&}]{env}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classTest_a579d613526a8fc37c15b461e2f07e65e}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classTest_a4366c4ade4ae8732660604f344ea9567}
 
 
 Executes the \hyperlink{classTest}{Test}. 
@@ -119,7 +121,30 @@ integer value of the node
 \end{DoxyReturn}
 
 
-Reimplemented from \hyperlink{classNode_acc70d98952c4b061bc433c00180b7011}{Node}.
+Reimplemented from \hyperlink{classNode_ab5a9a064d1d0ef20c984b1d76e56d843}{Node}.
+
+\hypertarget{classTest_a48f01bd6e66144e9adccda3a090552b3}{}\index{Test@{Test}!eval\+Str@{eval\+Str}}
+\index{eval\+Str@{eval\+Str}!Test@{Test}}
+\subsubsection[{eval\+Str}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Test\+::eval\+Str (
+\begin{DoxyParamCaption}
+\item[{{\bf Environment} \&}]{env}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classTest_a48f01bd6e66144e9adccda3a090552b3}
+
+
+Evaluate string of the \hyperlink{classBinop}{Binop}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & current \hyperlink{classEnvironment}{Environment} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string value of the node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classNode_a8ee89abe1c903f5a0bae8ed3c798b47a}{Node}.
 
 \hypertarget{classTest_adeefe4160992fad5d3a52584f69a420d}{}\index{Test@{Test}!get\+Type@{get\+Type}}
 \index{get\+Type@{get\+Type}!Test@{Test}}

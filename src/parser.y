@@ -7,6 +7,7 @@
   #include "Test.h"
   #include "Loop.h"
   #include "Binop.h"
+  #include "Memory.h"
   #include "Condition.h"
   #include "Environment.h"
   using namespace std;
@@ -57,7 +58,7 @@ block         : chunk                                               { $$ = $1; }
               ;
 
 stat          : varlist EQ explist                                  {
-                                                                      $$ = new Node(Node::Type::Equal);
+                                                                      $$ = new Binop(Binop::Type::Equal);
                                                                       $$->addChild($1);
                                                                       $$->addChild($3);
                                                                     }
@@ -87,8 +88,7 @@ stat          : varlist EQ explist                                  {
                                                                     }
               | FOR NAME EQ exp COM exp opt_exp DO block _END       {
                                                                       $$ = new Loop(Loop::Type::For);
-                                                                      Node* name = new Node(Node::Type::Name, $2);
-                                                                      $$->addChild(name);
+                                                                      $$->addChild(new Node(Node::Type::Name, $2));
                                                                       $$->addChild($4);
                                                                       $$->addChild($6);
                                                                       if ($7 != NULL )
@@ -110,16 +110,16 @@ stat          : varlist EQ explist                                  {
               | LOCAL namelist opt_eq                               { $$ = NULL; }
               ;
 
-laststat      : RETURN opt_explist                                  { $$ = $2; }
+laststat      : RETURN opt_explist                                  {
+                                                                      $$ = new Node(Node::Type::Return);
+                                                                      $$->addChild($2);
+                                                                    }
               | BREAK                                               { $$ = NULL; }
               ;
 
 funcname      : NAME rep_func_name opt_name                         {
-                                                                      $$ = new Node(Node::Type::FunctionName);
-                                                                      Node* name = new Node(Node::Type::Name, $1);
-                                                                      $$->addChild(name);
-                                                                      if ($2->size() > 0)
-                                                                        $$->addChild($2);
+                                                                      $$ = $2;
+                                                                      $$->addChild(new Node(Node::Type::Name, $1));
                                                                       if ($3 != NULL )
                                                                         $$->addChild($3);
                                                                     }
@@ -143,18 +143,19 @@ var           : NAME                                                { $$ = new N
                                                                     }
               | prefixexp DOT NAME                                  {
                                                                       $$ = new Node(Node::Type::MemberFunction);
-                                                                      Node* name = new Node(Node::Type::Name, $3);
                                                                       $$->addChild($1);
-                                                                      $$->addChild(name);
+                                                                      $$->addChild(new Node(Node::Type::Name, $3));
                                                                     }
               ;
 
 namelist      : NAME rep_list_name                                  {
-                                                                      Node* name = new Node(Node::Type::Name, $1);
-                                                                      $$ = new Node(Node::Type::ListName);
-                                                                      $$->addChild(name);
-                                                                      if ($2->size() != 0)
-                                                                        $$->addChild($2);
+                                                                      if ($2->size() != 0) {
+                                                                        $$ = $2;
+                                                                        $$->addChild(new Node(Node::Type::Name, $1));
+                                                                      } else {
+                                                                        $$ = new Node(Node::Type::ListName);
+                                                                        $$->addChild(new Node(Node::Type::Name, $1));
+                                                                      }
                                                                     }
               ;
 
@@ -168,14 +169,14 @@ explist       : rep_exp exp                                         {
                                                                     }
               ;
 
-exp           : NIL                                                 { $$ = new Node(Node::Type::Nil, "Nil"); }
+exp           : NIL                                                 { $$ = new Memory(Memory::Type::Nil); }
               | _FALSE                                              { $$ = new Test(Test::Type::False); }
               | _TRUE                                               { $$ = new Test(Test::Type::True); }
-              | NUM                                                 { $$ = new Node(Node::Type::Number, $1); }
+              | NUM                                                 { $$ = new Memory(stoi($1)); }
               | STR                                                 {
                                                                       $1.erase(0,1);
                                                                       $1.erase($1.length() - 1, 1);
-                                                                      $$ = new Node(Node::Type::String, $1);
+                                                                      $$ = new Memory($1);
                                                                     }
               | TRIDOT                                              { $$ = new Node(Node::Type::Tridot, "..."); }
               | function                                            { $$ = $1; }
@@ -213,8 +214,7 @@ functioncall  : prefixexp args                                      {
                                                                     }
               | prefixexp COL NAME args                             {
                                                                       $$ = $1;
-                                                                      Node* name = new Node(Node::Type::Name, $3);
-                                                                      $$->addChild(name);
+                                                                      $$->addChild(new Node(Node::Type::Name, $3));
                                                                       $$->addChild($4);
                                                                     }
               ;
@@ -224,7 +224,8 @@ args          : PAROPN opt_explist PARCLS                           { $$ = $2; }
               | STR                                                 {
                                                                       $1.erase(0,1);
                                                                       $1.erase($1.length() - 1, 1);
-                                                                      $$ = new Node(Node::Type::String, $1);
+                                                                      $$ = new Node(Node::Type::ExpressionList);
+                                                                      $$->addChild(new Memory($1));
                                                                     }
               ;
 
@@ -239,7 +240,11 @@ funcbody      : PAROPN opt_parlist PARCLS block _END                {
                                                                     }
               ;
 
-parlist       : namelist opt_tridot                                 { $$ = NULL; }
+parlist       : namelist opt_tridot                                 {
+                                                                      $$ = $1;
+                                                                      if ($2 != NULL )
+                                                                        $$->addChild($2);
+                                                                    }
               | TRIDOT                                              { $$ = new Node(Node::Type::Tridot); }
               ;
 
@@ -258,14 +263,13 @@ fieldlist     : field rep_field opt_fieldsep                        {
               ;
 
 field         : BRKOPN exp BRKCLS EQ exp                            {
-                                                                      $$ = new Node(Node::Type::Equal);
+                                                                      $$ = new Binop(Binop::Type::Equal);
                                                                       $$->addChild($2);
                                                                       $$->addChild($5);
                                                                     }
               | NAME EQ exp                                         {
-                                                                      $$ = new Node(Node::Type::Equal);
-                                                                      Node* name = new Node(Node::Type::Name, $1);
-                                                                      $$->addChild(name);
+                                                                      $$ = new Binop(Binop::Type::Equal);
+                                                                      $$->addChild(new Node(Node::Type::Name, $1));
                                                                       $$->addChild($3);
                                                                     }
               | exp                                                 { $$ = $1; }
@@ -278,8 +282,7 @@ fieldsep      : COM                                                 { $$ = NULL;
 rep_func_name : /* EMPTY */                                         { $$ = new Node(Node::Type::FunctionName); }
               | rep_func_name DOT NAME                              {
                                                                       $$ = $1;
-                                                                      Node* name = new Node(Node::Type::Name, $3);
-                                                                      $$->addChild(name);
+                                                                      $$->addChild(new Node(Node::Type::Name, $3));
                                                                     }
               ;
 
@@ -290,8 +293,7 @@ rep_var       : /* EMPTY */                                         { $$ = new N
 rep_list_name : /* EMPTY */                                         { $$ = new Node(Node::Type::ListName); }
               | rep_list_name COM NAME                              {
                                                                       $$ = $1;
-                                                                      Node* name = new Node(Node::Type::Name, $3);
-                                                                      $$->addChild(name);
+                                                                      $$->addChild(new Node(Node::Type::Name, $3));
                                                                     }
               ;
 
@@ -307,7 +309,7 @@ rep_stat      : /* EMPTY */                                         { $$ = new N
               | rep_stat stat opt_semi                              { $$ = $1; $$->addChild($2); }
               ;
 
-rep_field     : /* EMPTY */                                         { $$ = new Node(Node::Type::FieldList); }
+rep_field     : /* EMPTY */                                         { $$ = new Memory(); }
               | rep_field fieldsep field                            { $$ = $1; $$->addChild($3); }
               ;
 
@@ -320,14 +322,14 @@ opt_parlist   : /* EMPTY */                                         { $$ = NULL;
               ;
 
 opt_name      : /* EMPTY */                                         { $$ = NULL; }
-              | COL NAME                                            { Node* name = new Node(Node::Type::Name, $2); $$ = name; }
+              | COL NAME                                            { $$ = new Node(Node::Type::Name, $2); }
               ;
 
 opt_tridot    : /* EMPTY */                                         { $$ = NULL; }
               | COM TRIDOT                                          { $$ = new Node(Node::Type::Tridot); }
               ;
 
-opt_fieldlist : /* EMPTY */                                         { $$ = new Node(Node::Type::FieldList); }
+opt_fieldlist : /* EMPTY */                                         { $$ = new Memory(); }
               | fieldlist                                           { $$ = $1; }
               ;
 

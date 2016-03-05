@@ -15,7 +15,7 @@ PROG	= $(BIN)/Interpreter
 
 # Flags
 LDFLAGS	=
-CFLAGS 	= -c -std=c++11 -Wall -m64 -L$(LIB) -I$(INC)
+CFLAGS 	= -c -std=c++11 -g -Wall -m64 -L$(LIB) -I$(INC)
 
 LEX		= scanner
 BISON = parser
@@ -41,6 +41,7 @@ project: dir docsconfig gitignore
 	sed -i "s/HTML_FOOTER            =/HTML_FOOTER = $(DOC)\/footer.html/g" $(DOC)/doxy.conf;\
 	sed -i "s/HTML_EXTRA_STYLESHEET  =/HTML_EXTRA_STYLESHEET = $(DOC)\/customdoxygen.css/g" $(DOC)/doxy.conf;\
 	sed -i "s/OUTPUT_DIRECTORY       =/OUTPUT_DIRECTORY = $(DOC)/g" $(DOC)/doxy.conf;\
+	sed -i "s/JAVADOC_AUTOBRIEF      = NO/JAVADOC_AUTOBRIEF = YES/g" $(DOC)/doxy.conf;\
 	sed -i "s/RECURSIVE              = NO/RECURSIVE = YES/g" $(DOC)/doxy.conf;\
 	sed -i "s/EXCLUDE_PATTERNS       =/EXCLUDE_PATTERNS = \*\/bin\/\*\nEXCLUDE_PATTERNS += \*\/doc\/\*\nEXCLUDE_PATTERNS += \*\/obj\/\*\n/g" $(DOC)/doxy.conf;
 

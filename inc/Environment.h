@@ -1,29 +1,40 @@
 #pragma once
 
 #include <string>
+#include <iostream>
+#include <exception>
 #include <map>
+#include "Error.h"
 
-//! Environment class to handle variables
-/**
+class Memory;
+
+/** Handles current memory scope
 * @author Jim Ahlstrand
 */
 class Environment {
   public:
-
     // Constructors
     // ---------------------------------------
-    //! Default constructor
-    Environment();
     //! Default destructor
     virtual ~Environment();
 
     // Methods
     // ---------------------------------------
-
+    /** Writes to memory
+    * @param string name identifier
+    * @param Memory* mem pointer to memory
+    * @return int 0 if success
+    */
+    int write(std::string name, Memory* memory);
+    /** reads from memory
+    * @param string name identifier
+    * @return integer value of the variable
+    */
+    Memory* read(std::string name);
 
   private:
     // Properties
     // ---------------------------------------
-    //! Map of variable names and their values
-    std::map<std::string, std::string> var;
+    //! Memory map
+    std::map<std::string, Memory*> memory;
 };

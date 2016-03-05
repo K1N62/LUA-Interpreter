@@ -103,6 +103,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>A char[S] buffer to store and retrieve objects.  
+ <a href="structyy_1_1variant.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="parser_8h_source.html">parser.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -149,9 +152,11 @@ template&lt;typename T &gt; </td></tr>
 <tr class="separator:a7930977f8a1b707c687daec8b0d76e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac43b5ffdcedbda5462c53832027707ac"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ac43b5ffdcedbda5462c53832027707ac"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structyy_1_1variant.html#ac43b5ffdcedbda5462c53832027707ac">swap</a> (<a class="el" href="structyy_1_1variant.html#afbd75aee339bd9fa06e6fa8f320cecd3">self_type</a> &amp;other)</td></tr>
+<tr class="memdesc:ac43b5ffdcedbda5462c53832027707ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap the content with <em>other</em>, of same type.  <a href="#ac43b5ffdcedbda5462c53832027707ac">More...</a><br /></td></tr>
 <tr class="separator:ac43b5ffdcedbda5462c53832027707ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae71b4ef21f1446b328b9d93dbc6806e1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ae71b4ef21f1446b328b9d93dbc6806e1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structyy_1_1variant.html#ae71b4ef21f1446b328b9d93dbc6806e1">move</a> (<a class="el" href="structyy_1_1variant.html#afbd75aee339bd9fa06e6fa8f320cecd3">self_type</a> &amp;other)</td></tr>
+<tr class="memdesc:ae71b4ef21f1446b328b9d93dbc6806e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the content of <em>other</em> to this.  <a href="#ae71b4ef21f1446b328b9d93dbc6806e1">More...</a><br /></td></tr>
 <tr class="separator:ae71b4ef21f1446b328b9d93dbc6806e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a526d966e2923f6ae1d3fab2e1eac5311"><td class="memTemplParams" colspan="2"><a class="anchor" id="a526d966e2923f6ae1d3fab2e1eac5311"></a>
 template&lt;typename T &gt; </td></tr>
@@ -168,7 +173,7 @@ template&lt;typename T &gt; </td></tr>
 <div class="textblock"><h3>template&lt;size_t S&gt;<br />
 struct yy::variant&lt; S &gt;</h3>
 
-<p>A char[S] buffer to store and retrieve objects.</p>
+<p>A char[S] buffer to store and retrieve objects. </p>
 <p>Sort of a variant, but does not keep track of the nature of the stored data, since that knowledge is available via the current state. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ae71b4ef21f1446b328b9d93dbc6806e1"></a>
@@ -196,7 +201,8 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Move the content of <em>other</em> to this.</p>
+
+<p>Move the content of <em>other</em> to this. </p>
 <p>Destroys <em>other</em>. </p>
 
 </div>
@@ -226,8 +232,9 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Swap the content with <em>other</em>, of same type.</p>
-<p>Both variants must be built beforehand, because swapping the actual data requires reading it (with <a class="el" href="structyy_1_1variant.html#a7fae4866c8d57a6f2ea30e9926e367cd" title="Accessor to a built T. ">as()</a>), and this is not possible on unconstructed variants: it would require some dynamic testing, which should not be the variant's responsability. Swapping between built and (possibly) non-built is done with <a class="el" href="structyy_1_1variant.html#ae71b4ef21f1446b328b9d93dbc6806e1">variant::move</a> (). </p>
+
+<p>Swap the content with <em>other</em>, of same type. </p>
+<p>Both variants must be built beforehand, because swapping the actual data requires reading it (with <a class="el" href="structyy_1_1variant.html#a7fae4866c8d57a6f2ea30e9926e367cd" title="Accessor to a built T. ">as()</a>), and this is not possible on unconstructed variants: it would require some dynamic testing, which should not be the variant's responsability. Swapping between built and (possibly) non-built is done with <a class="el" href="structyy_1_1variant.html#ae71b4ef21f1446b328b9d93dbc6806e1" title="Move the content of other to this. ">variant::move</a> (). </p>
 
 </div>
 </div>

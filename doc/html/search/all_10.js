@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['what',['what',['../classError.html#a57dd37fd445e3182ed9da6ebfd2a28c0',1,'Error']]]
+  ['union_5ftype',['union_type',['../unionyy_1_1parser_1_1union__type.html',1,'yy::parser']]]
 ];

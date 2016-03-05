@@ -13,7 +13,7 @@ A Bison parser.
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structyy_1_1parser_1_1basic__symbol}{basic\+\_\+symbol}
-\item 
+\begin{DoxyCompactList}\small\item\em A complete symbol. \end{DoxyCompactList}\item 
 struct \hyperlink{structyy_1_1parser_1_1by__type}{by\+\_\+type}
 \begin{DoxyCompactList}\small\item\em Type access provider for token (enum) based symbols. \end{DoxyCompactList}\item 
 struct \hyperlink{structyy_1_1parser_1_1syntax__error}{syntax\+\_\+error}
@@ -47,9 +47,9 @@ union \hyperlink{unionyy_1_1parser_1_1union__type}{union\+\_\+type}
 
 \begin{DoxyCompactList}\small\item\em Build a parser object. \end{DoxyCompactList}\item 
 virtual int \hyperlink{classyy_1_1parser_ac54cad6da907397a978922bfe246e6f8}{parse} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Parse. \end{DoxyCompactList}\item 
 virtual void \hyperlink{classyy_1_1parser_a3a740797fdf8f0ea046b20ffbc6c3f08}{error} (const std\+::string \&msg)
-\item 
+\begin{DoxyCompactList}\small\item\em Report a syntax error. \end{DoxyCompactList}\item 
 \hypertarget{classyy_1_1parser_a55d4a04712e5fa9f33baed8f92b3eb05}{}void \hyperlink{classyy_1_1parser_a55d4a04712e5fa9f33baed8f92b3eb05}{error} (const \hyperlink{structyy_1_1parser_1_1syntax__error}{syntax\+\_\+error} \&err)\label{classyy_1_1parser_a55d4a04712e5fa9f33baed8f92b3eb05}
 
 \begin{DoxyCompactList}\small\item\em Report a syntax error. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -222,7 +222,11 @@ A Bison parser.
 \item[{const std\+::string \&}]{msg}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{classyy_1_1parser_a3a740797fdf8f0ea046b20ffbc6c3f08}
+
+
 Report a syntax error. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em msg} & a description of the syntax error. \\
 \hline
@@ -234,7 +238,11 @@ Report a syntax error.
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{classyy_1_1parser_ac54cad6da907397a978922bfe246e6f8}
-Parse. \begin{DoxyReturn}{Returns}
+
+
+Parse. 
+
+\begin{DoxyReturn}{Returns}
 0 iff parsing succeeded. 
 \end{DoxyReturn}
 Whether yyla contains a lookahead.

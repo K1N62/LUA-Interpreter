@@ -99,46 +99,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Node.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;math.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classBinop.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBinop.html">Binop</a> : <span class="keyword">public</span> <a class="code" href="classNode.html">Node</a> {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classBinop.html#a833e85c431d85ca69758bfebec9193dc">   14</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="classBinop.html#a833e85c431d85ca69758bfebec9193dc">Type</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        Undefined,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        Addition,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        Subtraction,</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        Division,</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        Multiplication,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        Power,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        Modulo</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// Constructors</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// ---------------------------------------</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"></span>    <a class="code" href="classBinop.html#a18bd9729a042a045df7fe11ffe068707">Binop</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classBinop.html#a18bd9729a042a045df7fe11ffe068707">Binop</a>(<a class="code" href="classBinop.html#a833e85c431d85ca69758bfebec9193dc">Type</a> <a class="code" href="classBinop.html#a6ba1f508e1122caea1ef9350fee74396">type</a>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classBinop.html#a833e85c431d85ca69758bfebec9193dc">   14</a></span>&#160;  <span class="keyword">enum</span> <a class="code" href="classBinop.html#a833e85c431d85ca69758bfebec9193dc">Type</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    Undefined,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    Equal,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    Addition,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    Subtraction,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    Division,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    Multiplication,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Power,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    Modulo</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">// Constructors</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span>  <a class="code" href="classBinop.html#a18bd9729a042a045df7fe11ffe068707">Binop</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classBinop.html#a18bd9729a042a045df7fe11ffe068707">Binop</a>(<a class="code" href="classBinop.html#a833e85c431d85ca69758bfebec9193dc">Type</a> <a class="code" href="classBinop.html#a6ba1f508e1122caea1ef9350fee74396">type</a>);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// Methods</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// ---------------------------------------</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classBinop.html#ac905eda0640f64cd28ed5c65b4c0c125">execute</a>(<a class="code" href="classEnvironment.html">Environment</a>&amp; env);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::string <a class="code" href="classBinop.html#a25a4913ef0d2ec9787df24c391734094">getType</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// Properties</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// ---------------------------------------</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classBinop.html#a6ba1f508e1122caea1ef9350fee74396">   52</a></span>&#160;<span class="comment"></span>    <a class="code" href="classBinop.html#a833e85c431d85ca69758bfebec9193dc">Type</a> <a class="code" href="classBinop.html#a6ba1f508e1122caea1ef9350fee74396">type</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
-<div class="ttc" id="classBinop_html_a25a4913ef0d2ec9787df24c391734094"><div class="ttname"><a href="classBinop.html#a25a4913ef0d2ec9787df24c391734094">Binop::getType</a></div><div class="ttdeci">std::string getType()</div><div class="ttdoc">Converts type of node to string. </div><div class="ttdef"><b>Definition:</b> Binop.cpp:14</div></div>
-<div class="ttc" id="classBinop_html"><div class="ttname"><a href="classBinop.html">Binop</a></div><div class="ttdoc">Class for binary operations. </div><div class="ttdef"><b>Definition:</b> Binop.h:11</div></div>
-<div class="ttc" id="classNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Class to build a non-specific tree-node. </div><div class="ttdef"><b>Definition:</b> Node.h:19</div></div>
-<div class="ttc" id="classBinop_html_a6ba1f508e1122caea1ef9350fee74396"><div class="ttname"><a href="classBinop.html#a6ba1f508e1122caea1ef9350fee74396">Binop::type</a></div><div class="ttdeci">Type type</div><div class="ttdoc">Binop type. </div><div class="ttdef"><b>Definition:</b> Binop.h:52</div></div>
-<div class="ttc" id="classBinop_html_ac905eda0640f64cd28ed5c65b4c0c125"><div class="ttname"><a href="classBinop.html#ac905eda0640f64cd28ed5c65b4c0c125">Binop::execute</a></div><div class="ttdeci">int execute(Environment &amp;env)</div><div class="ttdoc">Executes the Binop. </div><div class="ttdef"><b>Definition:</b> Binop.cpp:29</div></div>
-<div class="ttc" id="classBinop_html_a18bd9729a042a045df7fe11ffe068707"><div class="ttname"><a href="classBinop.html#a18bd9729a042a045df7fe11ffe068707">Binop::Binop</a></div><div class="ttdeci">Binop()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> Binop.cpp:4</div></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// Methods</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"></span>  <span class="keywordtype">bool</span> <a class="code" href="classBinop.html#ac3cff65931eaf4d542fc50c1dc696f55">execute</a>(<a class="code" href="classEnvironment.html">Environment</a>&amp; env);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classBinop.html#a5f011a9a0259af43447271dfc8668a2a">evalInt</a>(<a class="code" href="classEnvironment.html">Environment</a>&amp; env);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  std::string <a class="code" href="classBinop.html#a9b31b3aa7963440e499143f8fb837bf4">evalStr</a>(<a class="code" href="classEnvironment.html">Environment</a>&amp; env);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  std::string <a class="code" href="classBinop.html#a25a4913ef0d2ec9787df24c391734094">getType</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// Properties</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classBinop.html#a6ba1f508e1122caea1ef9350fee74396">   60</a></span>&#160;<span class="comment"></span>  <a class="code" href="classBinop.html#a833e85c431d85ca69758bfebec9193dc">Type</a> <a class="code" href="classBinop.html#a6ba1f508e1122caea1ef9350fee74396">type</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="ttc" id="classBinop_html_a25a4913ef0d2ec9787df24c391734094"><div class="ttname"><a href="classBinop.html#a25a4913ef0d2ec9787df24c391734094">Binop::getType</a></div><div class="ttdeci">std::string getType()</div><div class="ttdoc">Converts type of node to string. </div><div class="ttdef"><b>Definition:</b> Binop.cpp:16</div></div>
+<div class="ttc" id="classBinop_html"><div class="ttname"><a href="classBinop.html">Binop</a></div><div class="ttdoc">Handles binary operations. </div><div class="ttdef"><b>Definition:</b> Binop.h:11</div></div>
+<div class="ttc" id="classNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Builds a tree-node structure. </div><div class="ttdef"><b>Definition:</b> Node.h:32</div></div>
+<div class="ttc" id="classBinop_html_ac3cff65931eaf4d542fc50c1dc696f55"><div class="ttname"><a href="classBinop.html#ac3cff65931eaf4d542fc50c1dc696f55">Binop::execute</a></div><div class="ttdeci">bool execute(Environment &amp;env)</div><div class="ttdoc">Executes the Node. </div><div class="ttdef"><b>Definition:</b> Binop.cpp:33</div></div>
+<div class="ttc" id="classBinop_html_a6ba1f508e1122caea1ef9350fee74396"><div class="ttname"><a href="classBinop.html#a6ba1f508e1122caea1ef9350fee74396">Binop::type</a></div><div class="ttdeci">Type type</div><div class="ttdoc">Binop type. </div><div class="ttdef"><b>Definition:</b> Binop.h:60</div></div>
+<div class="ttc" id="classBinop_html_a18bd9729a042a045df7fe11ffe068707"><div class="ttname"><a href="classBinop.html#a18bd9729a042a045df7fe11ffe068707">Binop::Binop</a></div><div class="ttdeci">Binop()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> Binop.cpp:6</div></div>
+<div class="ttc" id="classBinop_html_a5f011a9a0259af43447271dfc8668a2a"><div class="ttname"><a href="classBinop.html#a5f011a9a0259af43447271dfc8668a2a">Binop::evalInt</a></div><div class="ttdeci">int evalInt(Environment &amp;env)</div><div class="ttdoc">Evaluate integer of the Binop. </div><div class="ttdef"><b>Definition:</b> Binop.cpp:62</div></div>
+<div class="ttc" id="classBinop_html_a9b31b3aa7963440e499143f8fb837bf4"><div class="ttname"><a href="classBinop.html#a9b31b3aa7963440e499143f8fb837bf4">Binop::evalStr</a></div><div class="ttdeci">std::string evalStr(Environment &amp;env)</div><div class="ttdoc">Evaluate string of the Binop. </div><div class="ttdef"><b>Definition:</b> Binop.cpp:76</div></div>
 <div class="ttc" id="classBinop_html_a833e85c431d85ca69758bfebec9193dc"><div class="ttname"><a href="classBinop.html#a833e85c431d85ca69758bfebec9193dc">Binop::Type</a></div><div class="ttdeci">Type</div><div class="ttdoc">Defines types of Binops. </div><div class="ttdef"><b>Definition:</b> Binop.h:14</div></div>
-<div class="ttc" id="classEnvironment_html"><div class="ttname"><a href="classEnvironment.html">Environment</a></div><div class="ttdoc">Environment class to handle variables. </div><div class="ttdef"><b>Definition:</b> Environment.h:10</div></div>
+<div class="ttc" id="classEnvironment_html"><div class="ttname"><a href="classEnvironment.html">Environment</a></div><div class="ttdoc">Handles current memory scope. </div><div class="ttdef"><b>Definition:</b> Environment.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
