@@ -10,10 +10,10 @@ public:
   //! Defines types of Loops
   enum Type {
     Undefined,
-    Repeat,
+    Repeat,   //! @todo convert to while loop
     While,
-    For,
-    Do,
+    For,    //! @todo convert to while loop
+    Do,   //! @todo convert to while loop
   };
 
   // Constructors

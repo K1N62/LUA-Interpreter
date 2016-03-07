@@ -104,28 +104,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Error.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">class </span><a class="code" href="classMemory.html">Memory</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classEnvironment.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEnvironment.html">Environment</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="comment">// Constructors</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">// ---------------------------------------</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"></span>    <span class="keyword">virtual</span> <a class="code" href="classEnvironment.html#a8e294735187880dd3d59be10c425b29d">~Environment</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// Methods</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// ---------------------------------------</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span>    <span class="keywordtype">int</span> <a class="code" href="classEnvironment.html#a225cc24b6810880fdaf914327caf1662">write</a>(std::string name, <a class="code" href="classMemory.html">Memory</a>* memory);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classMemory.html">Memory</a>* <a class="code" href="classEnvironment.html#a44bfdd6aa66ff6503c57e5e89ee2dd9c">read</a>(std::string name);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// Properties</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// ---------------------------------------</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"></span>    std::map&lt;std::string, Memory*&gt; memory;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
-<div class="ttc" id="classEnvironment_html_a8e294735187880dd3d59be10c425b29d"><div class="ttname"><a href="classEnvironment.html#a8e294735187880dd3d59be10c425b29d">Environment::~Environment</a></div><div class="ttdeci">virtual ~Environment()</div><div class="ttdoc">Default destructor. </div><div class="ttdef"><b>Definition:</b> Environment.cpp:5</div></div>
-<div class="ttc" id="classEnvironment_html_a225cc24b6810880fdaf914327caf1662"><div class="ttname"><a href="classEnvironment.html#a225cc24b6810880fdaf914327caf1662">Environment::write</a></div><div class="ttdeci">int write(std::string name, Memory *memory)</div><div class="ttdoc">Writes to memory. </div><div class="ttdef"><b>Definition:</b> Environment.cpp:15</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="classNode.html">Node</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define KEY this-&gt;memory[name]</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classEnvironment.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEnvironment.html">Environment</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// Constructors</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span>    <a class="code" href="classEnvironment.html#a8b427c4448d8b7536666837521b9e83d">Environment</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classEnvironment.html#a8b427c4448d8b7536666837521b9e83d">Environment</a>(<a class="code" href="classEnvironment.html">Environment</a>* parent);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classEnvironment.html#a8e294735187880dd3d59be10c425b29d">~Environment</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Methods</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"></span>    <span class="keywordtype">int</span> <a class="code" href="classEnvironment.html#af7d70b4545df76070cb5d7a4699e0d04">write</a>(std::string name, <a class="code" href="classMemory.html">Memory</a>* memory, <span class="keywordtype">bool</span> local = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classEnvironment.html#af7d70b4545df76070cb5d7a4699e0d04">write</a>(std::string name, <a class="code" href="classNode.html">Node</a>* node, <span class="keywordtype">bool</span> local = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classMemory.html">Memory</a>* <a class="code" href="classEnvironment.html#a44bfdd6aa66ff6503c57e5e89ee2dd9c">read</a>(std::string name);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Properties</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"></span>    std::map&lt;std::string, Memory*&gt; memory;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classEnvironment.html">Environment</a>* parent;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="ttc" id="classEnvironment_html_a8e294735187880dd3d59be10c425b29d"><div class="ttname"><a href="classEnvironment.html#a8e294735187880dd3d59be10c425b29d">Environment::~Environment</a></div><div class="ttdeci">virtual ~Environment()</div><div class="ttdoc">Default destructor. </div><div class="ttdef"><b>Definition:</b> Environment.cpp:22</div></div>
+<div class="ttc" id="classNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Builds a tree-node structure. </div><div class="ttdef"><b>Definition:</b> Node.h:32</div></div>
+<div class="ttc" id="classEnvironment_html_af7d70b4545df76070cb5d7a4699e0d04"><div class="ttname"><a href="classEnvironment.html#af7d70b4545df76070cb5d7a4699e0d04">Environment::write</a></div><div class="ttdeci">int write(std::string name, Memory *memory, bool local=false)</div><div class="ttdoc">Writes to memory. </div><div class="ttdef"><b>Definition:</b> Environment.cpp:33</div></div>
+<div class="ttc" id="classEnvironment_html_a8b427c4448d8b7536666837521b9e83d"><div class="ttname"><a href="classEnvironment.html#a8b427c4448d8b7536666837521b9e83d">Environment::Environment</a></div><div class="ttdeci">Environment()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> Environment.cpp:6</div></div>
 <div class="ttc" id="classMemory_html"><div class="ttname"><a href="classMemory.html">Memory</a></div><div class="ttdoc">Handles memory operations. </div><div class="ttdef"><b>Definition:</b> Memory.h:8</div></div>
-<div class="ttc" id="classEnvironment_html_a44bfdd6aa66ff6503c57e5e89ee2dd9c"><div class="ttname"><a href="classEnvironment.html#a44bfdd6aa66ff6503c57e5e89ee2dd9c">Environment::read</a></div><div class="ttdeci">Memory * read(std::string name)</div><div class="ttdoc">reads from memory </div><div class="ttdef"><b>Definition:</b> Environment.cpp:41</div></div>
-<div class="ttc" id="classEnvironment_html"><div class="ttname"><a href="classEnvironment.html">Environment</a></div><div class="ttdoc">Handles current memory scope. </div><div class="ttdef"><b>Definition:</b> Environment.h:14</div></div>
+<div class="ttc" id="classEnvironment_html_a44bfdd6aa66ff6503c57e5e89ee2dd9c"><div class="ttname"><a href="classEnvironment.html#a44bfdd6aa66ff6503c57e5e89ee2dd9c">Environment::read</a></div><div class="ttdeci">Memory * read(std::string name)</div><div class="ttdoc">reads from memory </div><div class="ttdef"><b>Definition:</b> Environment.cpp:106</div></div>
+<div class="ttc" id="classEnvironment_html"><div class="ttname"><a href="classEnvironment.html">Environment</a></div><div class="ttdoc">Handles current memory scope. </div><div class="ttdef"><b>Definition:</b> Environment.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->

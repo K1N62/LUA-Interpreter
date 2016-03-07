@@ -30,15 +30,14 @@ Collaboration diagram for Loop\+:\nopagebreak
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classLoop_af57e9c094063c514758dfe7bd986d6e7}{}enum \hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7}{Type} \{ \\*
+enum \hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7}{Type} \{ \\*
 {\bfseries Undefined}, 
 {\bfseries Repeat}, 
-{\bfseries While}, 
+\hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7a681be1f5a1ab60d13010c6df3358088e}{While}, 
 {\bfseries For}, 
 \\*
-{\bfseries Do}
- \}\label{classLoop_af57e9c094063c514758dfe7bd986d6e7}
-
+\hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7a1dd9cd3dd842ae131b6f73ed04063cdd}{Do}
+ \}
 \begin{DoxyCompactList}\small\item\em Defines types of Loops. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -66,6 +65,29 @@ Handles loops.
 \begin{DoxyAuthor}{Author}
 Jim Ahlstrand 
 \end{DoxyAuthor}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classLoop_af57e9c094063c514758dfe7bd986d6e7}{}\index{Loop@{Loop}!Type@{Type}}
+\index{Type@{Type}!Loop@{Loop}}
+\subsubsection[{Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Loop\+::\+Type}}\label{classLoop_af57e9c094063c514758dfe7bd986d6e7}
+
+
+Defines types of Loops. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{While@{While}!Loop@{Loop}}\index{Loop@{Loop}!While@{While}}\item[{\em 
+\hypertarget{classLoop_af57e9c094063c514758dfe7bd986d6e7a681be1f5a1ab60d13010c6df3358088e}{}While\label{classLoop_af57e9c094063c514758dfe7bd986d6e7a681be1f5a1ab60d13010c6df3358088e}
+}]\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]convert to while loop \end{DoxyRefDesc}
+\index{Do@{Do}!Loop@{Loop}}\index{Loop@{Loop}!Do@{Do}}\item[{\em 
+\hypertarget{classLoop_af57e9c094063c514758dfe7bd986d6e7a1dd9cd3dd842ae131b6f73ed04063cdd}{}Do\label{classLoop_af57e9c094063c514758dfe7bd986d6e7a1dd9cd3dd842ae131b6f73ed04063cdd}
+}]\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]convert to while loop \end{DoxyRefDesc}
+\end{description}
+\end{Desc}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -107,12 +129,16 @@ Executes the \hyperlink{classLoop}{Loop}.
 \begin{DoxyReturn}{Returns}
 integer value of the node 
 \end{DoxyReturn}
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000005}{Todo}]implement for loop execution \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000001}{Bug}]won\textquotesingle{}t run first time if right isn\textquotesingle{}t true \end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000006}{Todo}]implement do loop execution \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000017}{Todo}]implement for loop execution \end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000018}{Todo}]implement do loop execution \end{DoxyRefDesc}
 
 
 Reimplemented from \hyperlink{classNode_ad2758f63dc60560b83e1d8a038df6e86}{Node}.

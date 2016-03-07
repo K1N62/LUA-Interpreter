@@ -32,22 +32,22 @@ Memory::Memory(Node* func) : Node()
 Memory::~Memory()
 {
   #if (DEBUG)
-    std::cout << "Deleting memory (" << getType() << ")" << std::endl;
+    std::cout << " - Deleting memory " << getType() << " ( " << this << " )" << std::endl;
   #endif
 }
 
 std::string Memory::getType()
 {
-    switch (type) {
-        case Memory::Type::Nil:           return "Nil";
-        case Memory::Type::Number:        return "Number";
-        case Memory::Type::String:        return "String";
-        case Memory::Type::Function:      return "Function";
-        case Memory::Type::FieldList:     return "FieldList";
+  switch (this->type) {
+    case Nil:           return "Nil";
+    case Number:        return "Number";
+    case String:        return "String";
+    case Function:      return "Function";
+    case FieldList:     return "FieldList";
 
-        default:
-            return "Undefined";
-    }
+    default:
+      return "Undefined";
+  }
 }
 
 bool Memory::execute(Environment& env)
@@ -58,6 +58,7 @@ bool Memory::execute(Environment& env)
         return this->func->execute(env);
       else
         throw Error("Tried to execute null function");
+
   default:
     throw Error("Tried to execute non-executable memory (" + this->getType() + ")");
   }
@@ -69,7 +70,9 @@ int Memory::evalInt(Environment& env)
     case Nil:       return 0;
     case Number:    return this->integer;
     case String:    return stoi(this->str);
-  default:          throw Error("Tried to evaluate invalid integer value from constant");
+
+  default:
+    throw Error("Tried to evaluate invalid integer value from constant");
   }
 }
 
@@ -79,7 +82,9 @@ std::string Memory::evalStr(Environment& env)
     case Nil:       return "";
     case Number:    return std::to_string(this->integer);
     case String:    return this->str;
-  default:          throw Error("Tried to evaluate invalid string value from constant");
+
+  default:
+    throw Error("Tried to evaluate invalid string value from constant");
   }
 }
 
@@ -89,6 +94,8 @@ unsigned int Memory::length()
     case Nil:       return 0;
     case String:    return this->str.length();
     case FieldList: return this->size();
-  default:          throw Error("Tried to evaluate invalid string value from constant");
+
+  default:
+    throw Error("Tried to evaluate invalid string value from constant");
   }
 }

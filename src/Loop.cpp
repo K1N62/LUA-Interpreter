@@ -28,7 +28,7 @@ bool Loop::execute(Environment& env)
 {
     switch (this->type) {
         case Repeat:
-            while (!EVAL_INT_RIGHT) EXEC_LEFT;
+            while (!EVAL_INT_RIGHT) EXEC_LEFT; //! @bug won't run first time if right isn't true
             return true;
         case While:
             while (EVAL_INT_LEFT) EXEC_RIGHT;

@@ -26,10 +26,6 @@ Node::Node(Type type, std::string value)
 
 Node::~Node()
 {
-  #if (DEBUG)
-    std::cout << "Deleting node (" << getType() << ")" << std::endl;
-  #endif
-
   for (auto child : this->children)
     delete child;
 }
@@ -54,6 +50,7 @@ std::string Node::getType()
         case Node::Type::Name: return "Name";
         case Node::Type::Tridot: return "Tridot";
         case Node::Type::Return: return "Return";
+
         default:
             return "Undefined";
     }
@@ -119,16 +116,44 @@ bool Node::execute(Environment& env)
     case FunctionCall:
       if (VAL_LEFT == "print") std::cout << EVAL_STR_RIGHT << std::endl;
       else {
-        Memory* func = env.read(LEFT->value);
-        // @todo save right hand value as input paramater, need lookahead at function node for Name
-        func->execute(env); // @bug don't work with memberfunction
+        Node* func = env.read(LEFT->value)->getFunc();
+
+        // Make a new scope
+        Environment f(&env);
+        #if (DEBUG)
+          std::cout << " + Creating new Environment ( " << &f << " ) -> " << &env << std::endl;
+        #endif
+        // Save local right hand value as input parameter, need lookahead at function node for Name
+        //! @bug this does not include Nil values when no parameters were passed it assumes equal #params
+        //! @todo fix this mess
+        // Do we have any parameters?
+        if (func->size() == 2) {
+          Node* param = func->getChild(0)->getChild(0);
+          f.write(param->value, RIGHT, true);
+        } else if (func->size() > 2) {
+          Node* paramList = func->getChild(0);
+          // For each parameter get the value supplied in the call
+          for ( size_t i = 0; i < paramList->size(); i++) {
+            f.write(paramList->getChild(i)->value, RIGHT->getChild(i+1), true);
+          }
+        }
+
+        #if (DEBUG)
+          std::cout << " -=[ Calling: " << LEFT->value << " ]=-" << std::endl;
+        #endif
+        // Execute function
+        func->execute(f); // @bug don't work with memberfunction
       }
       return true;
     case FunctionBody:
-      {
-        Environment f = env;
-        EXEC_RIGHT;
-      }
+      #if (DEBUG)
+        std::cout << " $ Executing function ( " << this << " )" << std::endl;
+      #endif
+      this->size() == 1 ? EXEC_LEFT : EXEC_RIGHT;
+      return true;
+    case Return:
+      env.write("return", LEFT);
+      return true;
 
     default:
       for (auto child : this->children) {
@@ -146,17 +171,23 @@ int Node::evalInt(Environment& env) {
   switch (this->type) {
       case Name:  return env.read(this->value)->evalInt(env);
       case Hash:  return env.read(LEFT->value)->length();
+      case FunctionCall:
+        this->execute(env);
+        return env.read("return")->evalInt(env);
 
       default:
-        throw Error("Warning: Tried to evaluate invalid integer value of node");
+        throw Error("Error: Tried to evaluate invalid integer value of node");
   }
 }
 
 std::string Node::evalStr(Environment& env) {
   switch (this->type) {
       case Name:    return env.read(this->value)->evalStr(env);
+      case FunctionCall:
+        this->execute(env);
+        return env.read("return")->evalStr(env);
 
       default:
-        throw Error("Warning: Tried to evaluate invalid string value of node");
+        throw Error("Error: Tried to evaluate invalid string value of node");
   }
 }

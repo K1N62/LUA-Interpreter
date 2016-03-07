@@ -105,13 +105,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a8b427c4448d8b7536666837521b9e83d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b427c4448d8b7536666837521b9e83d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a8b427c4448d8b7536666837521b9e83d">Environment</a> ()</td></tr>
+<tr class="memdesc:a8b427c4448d8b7536666837521b9e83d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="separator:a8b427c4448d8b7536666837521b9e83d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a030253266b5d549059c14984dfbb31da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a030253266b5d549059c14984dfbb31da">Environment</a> (<a class="el" href="classEnvironment.html">Environment</a> *parent)</td></tr>
+<tr class="memdesc:a030253266b5d549059c14984dfbb31da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with parent scope.  <a href="#a030253266b5d549059c14984dfbb31da">More...</a><br /></td></tr>
+<tr class="separator:a030253266b5d549059c14984dfbb31da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e294735187880dd3d59be10c425b29d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e294735187880dd3d59be10c425b29d"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a8e294735187880dd3d59be10c425b29d">~Environment</a> ()</td></tr>
 <tr class="memdesc:a8e294735187880dd3d59be10c425b29d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
 <tr class="separator:a8e294735187880dd3d59be10c425b29d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a225cc24b6810880fdaf914327caf1662"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a225cc24b6810880fdaf914327caf1662">write</a> (std::string name, <a class="el" href="classMemory.html">Memory</a> *memory)</td></tr>
-<tr class="memdesc:a225cc24b6810880fdaf914327caf1662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes to memory.  <a href="#a225cc24b6810880fdaf914327caf1662">More...</a><br /></td></tr>
-<tr class="separator:a225cc24b6810880fdaf914327caf1662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d70b4545df76070cb5d7a4699e0d04"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#af7d70b4545df76070cb5d7a4699e0d04">write</a> (std::string name, <a class="el" href="classMemory.html">Memory</a> *memory, bool local=false)</td></tr>
+<tr class="memdesc:af7d70b4545df76070cb5d7a4699e0d04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes to memory.  <a href="#af7d70b4545df76070cb5d7a4699e0d04">More...</a><br /></td></tr>
+<tr class="separator:af7d70b4545df76070cb5d7a4699e0d04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef0731380006123a7b339a9eb6c3f8e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a5ef0731380006123a7b339a9eb6c3f8e">write</a> (std::string name, <a class="el" href="classNode.html">Node</a> *node, bool local=false)</td></tr>
+<tr class="memdesc:a5ef0731380006123a7b339a9eb6c3f8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes to memory.  <a href="#a5ef0731380006123a7b339a9eb6c3f8e">More...</a><br /></td></tr>
+<tr class="separator:a5ef0731380006123a7b339a9eb6c3f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44bfdd6aa66ff6503c57e5e89ee2dd9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMemory.html">Memory</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a44bfdd6aa66ff6503c57e5e89ee2dd9c">read</a> (std::string name)</td></tr>
 <tr class="memdesc:a44bfdd6aa66ff6503c57e5e89ee2dd9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads from memory  <a href="#a44bfdd6aa66ff6503c57e5e89ee2dd9c">More...</a><br /></td></tr>
 <tr class="separator:a44bfdd6aa66ff6503c57e5e89ee2dd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,7 +129,32 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles current memory scope. </p>
 <dl class="section author"><dt>Author</dt><dd>Jim Ahlstrand </dd></dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a030253266b5d549059c14984dfbb31da"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Environment::Environment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEnvironment.html">Environment</a> *&#160;</td>
+          <td class="paramname"><em>parent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor with parent scope. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td><a class="el" href="classEnvironment.html" title="Handles current memory scope. ">Environment</a> parent scope </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a44bfdd6aa66ff6503c57e5e89ee2dd9c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -145,7 +180,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a225cc24b6810880fdaf914327caf1662"></a>
+<a class="anchor" id="af7d70b4545df76070cb5d7a4699e0d04"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -159,7 +194,13 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classMemory.html">Memory</a> *&#160;</td>
-          <td class="paramname"><em>memory</em>&#160;</td>
+          <td class="paramname"><em>memory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>local</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,6 +219,49 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int 0 if success </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5ef0731380006123a7b339a9eb6c3f8e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Environment::write </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>local</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes to memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>name identifier </td></tr>
+    <tr><td class="paramname">Node*</td><td>node pointer that needs evaluation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int 0 if success </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Really ugly this one is </dd></dl>
 
 </div>
 </div>

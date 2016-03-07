@@ -7,6 +7,9 @@
 #include "Error.h"
 
 class Memory;
+class Node;
+
+#define KEY this->memory[name]
 
 /** Handles current memory scope
 * @author Jim Ahlstrand
@@ -15,6 +18,12 @@ class Environment {
   public:
     // Constructors
     // ---------------------------------------
+    //! Default constructor
+    Environment();
+    /** Constructor with parent scope
+    * @param parent Environment parent scope
+    */
+    Environment(Environment* parent);
     //! Default destructor
     virtual ~Environment();
 
@@ -25,7 +34,13 @@ class Environment {
     * @param Memory* mem pointer to memory
     * @return int 0 if success
     */
-    int write(std::string name, Memory* memory);
+    int write(std::string name, Memory* memory, bool local = false);
+    /** Writes to memory
+    * @param string name identifier
+    * @param Node* node pointer that needs evaluation
+    * @return int 0 if success
+    */
+    int write(std::string name, Node* node, bool local = false);
     /** reads from memory
     * @param string name identifier
     * @return integer value of the variable
@@ -37,4 +52,6 @@ class Environment {
     // ---------------------------------------
     //! Memory map
     std::map<std::string, Memory*> memory;
+    //! Pointer to parent environment
+    Environment* parent;
 };

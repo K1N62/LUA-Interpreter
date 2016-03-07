@@ -60,6 +60,18 @@ public:
   * @return string type of the node
   */
   std::string getType();
+  /** Gets the function pointer
+  * @return Node* pointer to the function node
+  */
+  Node* getFunc() { return this->func; }
+  /** Gets the integer value
+  * @return integer
+  */
+  int getInt() { return this->integer; }
+  /** Gets the string value
+  * @return string
+  */
+  std::string getStr() { return this->str; }
   /** Get length of Memory
   * @return unsigned int length of Memory
   * @remark length of list returns number of elements in list

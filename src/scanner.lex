@@ -56,6 +56,7 @@
 ".."                  return yy::parser::make_DDOT();
 "..."                 return yy::parser::make_TRIDOT();
 \"([^"]|\\.)*\"       return yy::parser::make_STR(yytext);
-[a-zA-Z][a-zA-Z0-9_]*  return yy::parser::make_NAME(yytext);
+\'([^']|\\.)*\'       return yy::parser::make_STR(yytext);
+[a-zA-Z_][a-zA-Z0-9_]*  return yy::parser::make_NAME(yytext);
 <<EOF>>               return yy::parser::make_END();
 %%

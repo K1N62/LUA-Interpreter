@@ -15,7 +15,7 @@
 
 // Settings
 #define DEBUG true
-#define PRINT_LEAF_VALUES false
+#define PRINT_LEAF_VALUES true
 
 // Includes
 #include <string>
@@ -35,23 +35,23 @@ public:
   //! @todo implement local functions and namelists
   enum Type {
     Undefined,
-    ExpressionList,
-    VariableList,
+    ExpressionList, //! @todo implement
+    VariableList, //! @todo implement
     FunctionName,
     FunctionCall,
     FunctionBody,
     Function,
-    MemberFunction,
-    ListName,
+    MemberFunction, //! @todo implement
+    ListName, //! @todo implement
     Stat,
-    Field,
-    FieldElement,
-    DoubleDot,
+    Field, //! @todo implement
+    FieldElement, //! @todo implement
+    DoubleDot, //! @todo implement
     Hash,
-    Negate,
+    Negate, //! @todo implement
     Name,
-    Tridot,
-    Return
+    Tridot, //! @todo implement
+    Return //! @todo implement
   };
 
   // Constructors
@@ -130,9 +130,6 @@ public:
   std::string getValue() { return this->value; }
 
 protected:
-  // Methods
-  // ---------------------------------------
-
   // Properties
   // ---------------------------------------
   //! Node id

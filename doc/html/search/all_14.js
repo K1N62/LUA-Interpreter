@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['_7eenvironment',['~Environment',['../classEnvironment.html#a8e294735187880dd3d59be10c425b29d',1,'Environment']]],
-  ['_7ememory',['~Memory',['../classMemory.html#a0ffa9759ebbf103f11132a505b93bdc0',1,'Memory']]],
-  ['_7enode',['~Node',['../classNode.html#aa0840c3cb5c7159be6d992adecd2097c',1,'Node']]],
-  ['_7evariant',['~variant',['../structyy_1_1variant.html#a41eed194f0196ede63cd451e9b7835e3',1,'yy::variant']]]
+  ['yy_5fbs_5fcolumn',['yy_bs_column',['../structyy__buffer__state.html#a10c4fcd8be759e6bf11e6d3e8cdb0307',1,'yy_buffer_state']]],
+  ['yy_5fbs_5flineno',['yy_bs_lineno',['../structyy__buffer__state.html#a818e94bc9c766e683c60df1e9fd01199',1,'yy_buffer_state']]],
+  ['yy_5fbuffer_5fstate',['yy_buffer_state',['../structyy__buffer__state.html',1,'']]],
+  ['yy_5ftrans_5finfo',['yy_trans_info',['../structyy__trans__info.html',1,'']]],
+  ['yyalign_5fme',['yyalign_me',['../structyy_1_1variant.html#a460114cb823622a797e97f79442d0fe4',1,'yy::variant']]],
+  ['yyraw',['yyraw',['../structyy_1_1variant.html#a888cad25e7084a89867ab29ab0837593',1,'yy::variant']]]
 ];

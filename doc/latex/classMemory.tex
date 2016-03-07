@@ -34,9 +34,9 @@ Collaboration diagram for Memory\+:\nopagebreak
 {\bfseries Nil}, 
 {\bfseries Number}, 
 {\bfseries String}, 
-{\bfseries Field\+List}, 
+{\bfseries Function}, 
 \\*
-{\bfseries Function\+Body}
+{\bfseries Field\+List}
  \}\label{classMemory_a9193c3e610b1728964440284db90c812}
 
 \begin{DoxyCompactList}\small\item\em Defines types of \hyperlink{classMemory}{Memory}. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -62,6 +62,12 @@ std\+::string \hyperlink{classMemory_a298bdf094ac4807ad563f76f5bf159d0}{eval\+St
 \begin{DoxyCompactList}\small\item\em Evaluate string of the \hyperlink{classMemory}{Memory}. \end{DoxyCompactList}\item 
 std\+::string \hyperlink{classMemory_a222e2dc37b587f8c243aabc1eebcf7a1}{get\+Type} ()
 \begin{DoxyCompactList}\small\item\em Converts type of node to string. \end{DoxyCompactList}\item 
+\hyperlink{classNode}{Node} $\ast$ \hyperlink{classMemory_a45c7902075f19101c539240893075311}{get\+Func} ()
+\begin{DoxyCompactList}\small\item\em Gets the function pointer. \end{DoxyCompactList}\item 
+int \hyperlink{classMemory_a4e22f8404e11645dcaa68b2ffc4c4455}{get\+Int} ()
+\begin{DoxyCompactList}\small\item\em Gets the integer value. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classMemory_aecf23bb53fc58d668edae8e4e791ea99}{get\+Str} ()
+\begin{DoxyCompactList}\small\item\em Gets the string value. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{classMemory_a55d46c565490996d8680cdb78cca6a76}{length} ()
 \begin{DoxyCompactList}\small\item\em Get length of \hyperlink{classMemory}{Memory}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
@@ -230,6 +236,48 @@ bool true if node did execute
 
 Reimplemented from \hyperlink{classNode_ad2758f63dc60560b83e1d8a038df6e86}{Node}.
 
+\hypertarget{classMemory_a45c7902075f19101c539240893075311}{}\index{Memory@{Memory}!get\+Func@{get\+Func}}
+\index{get\+Func@{get\+Func}!Memory@{Memory}}
+\subsubsection[{get\+Func}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ Memory\+::get\+Func (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classMemory_a45c7902075f19101c539240893075311}
+
+
+Gets the function pointer. 
+
+\begin{DoxyReturn}{Returns}
+Node$\ast$ pointer to the function node 
+\end{DoxyReturn}
+\hypertarget{classMemory_a4e22f8404e11645dcaa68b2ffc4c4455}{}\index{Memory@{Memory}!get\+Int@{get\+Int}}
+\index{get\+Int@{get\+Int}!Memory@{Memory}}
+\subsubsection[{get\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Memory\+::get\+Int (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classMemory_a4e22f8404e11645dcaa68b2ffc4c4455}
+
+
+Gets the integer value. 
+
+\begin{DoxyReturn}{Returns}
+integer 
+\end{DoxyReturn}
+\hypertarget{classMemory_aecf23bb53fc58d668edae8e4e791ea99}{}\index{Memory@{Memory}!get\+Str@{get\+Str}}
+\index{get\+Str@{get\+Str}!Memory@{Memory}}
+\subsubsection[{get\+Str}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Memory\+::get\+Str (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classMemory_aecf23bb53fc58d668edae8e4e791ea99}
+
+
+Gets the string value. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
 \hypertarget{classMemory_a222e2dc37b587f8c243aabc1eebcf7a1}{}\index{Memory@{Memory}!get\+Type@{get\+Type}}
 \index{get\+Type@{get\+Type}!Memory@{Memory}}
 \subsubsection[{get\+Type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Memory\+::get\+Type (

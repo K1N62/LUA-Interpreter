@@ -210,7 +210,8 @@ prefixexp     : var                                                 { $$ = $1; }
 functioncall  : prefixexp args                                      {
                                                                       $$ = new Node(Node::Type::FunctionCall);
                                                                       $$->addChild($1);
-                                                                      $$->addChild($2);
+                                                                      if ($2 != NULL)
+                                                                        $$->addChild($2);
                                                                     }
               | prefixexp COL NAME args                             {
                                                                       $$ = $1;

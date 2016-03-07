@@ -29,31 +29,14 @@ std::string Binop::getType()
     }
 }
 
-//! @remark This small hack limits variables to integers, but enables binops to be stored in memory
+//! @remark This small limits expressions to integers
 bool Binop::execute(Environment& env)
 {
   switch (this->type) {
     case Equal:
-      {
-        //! @todo Fix this somehow?
-        if (RIGHT->getType() == "Number" ||
-            RIGHT->getType() == "String" ||
-            RIGHT->getType() == "FieldList") {
-          #if (DEBUG)
-            std::cout << "Creating new " << RIGHT->getType() << std::endl;
-          #endif
-          Memory* mem = new Memory();
-          *mem = *dynamic_cast<Memory*>(RIGHT);
-          env.write(VAL_LEFT, mem);
-        } else {
-          #if (DEBUG)
-            std::cout << "Creating new Number" << std::endl;
-          #endif
-          Memory* mem = new Memory(EVAL_INT_RIGHT);
-          env.write(VAL_LEFT, mem);
-        }
-        return true;
-      }
+      env.write(VAL_LEFT, RIGHT);
+      return true;
+
   default:
     throw Error("Tried to execute invalid binary operation");
   }
