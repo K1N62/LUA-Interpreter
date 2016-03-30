@@ -7,10 +7,11 @@ AR		= ar
 # Folders
 LIB				= lib
 SRC 			= src
+BIN 			= bin
 OBJ				= obj
 INC 			= inc
 DOC 			= doc
-PROG			= bin/interpreter
+PROG			= $(BIN)/interpreter
 
 # Flags
 LDFLAGS		=
@@ -56,7 +57,7 @@ docs:
 
 # create directories
 dir:
-	$(MKDIR) -p $(LIB) $(SRC) $(OBJ) $(INC) $(DOC) $(DOC)/html
+	$(MKDIR) -p $(LIB) $(SRC) $(OBJ) $(INC) $(BIN) $(DOC) $(DOC)/html
 
 # clean
 clean:
