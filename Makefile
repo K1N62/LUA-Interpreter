@@ -10,7 +10,7 @@ SRC 	= src
 OBJ		= obj
 INC 	= inc
 DOC 	= doc
-PROG	= interpreter
+PROG	= bin/interpreter
 
 # Flags
 LDFLAGS	=
