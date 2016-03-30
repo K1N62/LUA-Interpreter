@@ -9,11 +9,16 @@ addons:
       - bison
       - flex
 
-language: cpp
+language: c++
 
 compiler: gcc
 
-script: make
-
 notifications:
   - email: false
+
+before_script:
+  - composer self-update
+  - bison --version
+  - flex --version
+
+script: make
