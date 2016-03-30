@@ -1,4 +1,8 @@
 
+branches:
+  only:
+    - master
+
 addons:
   apt:
     packages:
