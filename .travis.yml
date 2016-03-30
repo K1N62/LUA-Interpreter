@@ -10,8 +10,11 @@ compiler: gcc
 notifications:
   - email: false
 
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq bison flex
+
 before_script:
-  - apt-get install -qq bison flex
   - bison --version
   - flex --version
 
