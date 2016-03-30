@@ -1,0 +1,12 @@
+
+addons:
+  apt:
+    packages:
+      - bison
+      - flex
+
+language: cpp
+
+compiler: gcc
+
+script: make

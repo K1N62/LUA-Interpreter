@@ -2,6 +2,6 @@
 *.log
 *.o
 *.so
+travis.yml
 data
 graph.dot
-.travis.yml
