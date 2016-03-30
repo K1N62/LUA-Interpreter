@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['isundefined',['isUndefined',['../classNode.html#a8a8a7a2ee9cd1bdf5a3e3cc374e678e6',1,'Node']]]
+  ['length',['length',['../classMemory.html#a55d46c565490996d8680cdb78cca6a76',1,'Memory']]],
+  ['loop',['Loop',['../classLoop.html#a675e74b960c5e703adf1ee0e6fd8f3bf',1,'Loop::Loop()'],['../classLoop.html#a3e42ab398babe1ba79e9242d64147960',1,'Loop::Loop(Type type)']]]
 ];

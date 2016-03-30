@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['variant',['variant',['../structyy_1_1variant.html#ad89e5bb6a0418c8065b9d0d2b05b2d23',1,'yy::variant::variant()'],['../structyy_1_1variant.html#a8022c28bb598dd69dbb3f14db4c9cc1f',1,'yy::variant::variant(const T &amp;t)']]]
+  ['_7eenvironment',['~Environment',['../classEnvironment.html#a8e294735187880dd3d59be10c425b29d',1,'Environment']]],
+  ['_7ememory',['~Memory',['../classMemory.html#a0ffa9759ebbf103f11132a505b93bdc0',1,'Memory']]],
+  ['_7enode',['~Node',['../classNode.html#aa0840c3cb5c7159be6d992adecd2097c',1,'Node']]]
 ];

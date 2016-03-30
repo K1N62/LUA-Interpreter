@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['environment',['Environment',['../classEnvironment.html#a8b427c4448d8b7536666837521b9e83d',1,'Environment::Environment()'],['../classEnvironment.html#a030253266b5d549059c14984dfbb31da',1,'Environment::Environment(Environment *parent)']]],
-  ['error',['error',['../classyy_1_1parser.html#a3a740797fdf8f0ea046b20ffbc6c3f08',1,'yy::parser::error(const std::string &amp;msg)'],['../classyy_1_1parser.html#a55d4a04712e5fa9f33baed8f92b3eb05',1,'yy::parser::error(const syntax_error &amp;err)'],['../classError.html#aa26df5de41c9f8b689b9f42fdbbc9abd',1,'Error::Error()']]],
-  ['evalint',['evalInt',['../classBinop.html#a5f011a9a0259af43447271dfc8668a2a',1,'Binop::evalInt()'],['../classMemory.html#a0bf9b7657489146568ae62137c684522',1,'Memory::evalInt()'],['../classNode.html#ab5a9a064d1d0ef20c984b1d76e56d843',1,'Node::evalInt()'],['../classTest.html#a4366c4ade4ae8732660604f344ea9567',1,'Test::evalInt()']]],
-  ['evalstr',['evalStr',['../classBinop.html#a9b31b3aa7963440e499143f8fb837bf4',1,'Binop::evalStr()'],['../classMemory.html#a298bdf094ac4807ad563f76f5bf159d0',1,'Memory::evalStr()'],['../classNode.html#a8ee89abe1c903f5a0bae8ed3c798b47a',1,'Node::evalStr()'],['../classTest.html#a48f01bd6e66144e9adccda3a090552b3',1,'Test::evalStr()']]],
-  ['execute',['execute',['../classBinop.html#ac3cff65931eaf4d542fc50c1dc696f55',1,'Binop::execute()'],['../classCondition.html#a4660fd89788efc03c57c35f66e14ae5b',1,'Condition::execute()'],['../classLoop.html#a661edc5e6b0f90787e2a55922109f110',1,'Loop::execute()'],['../classMemory.html#ae00c898b45732c0bf74140d604363319',1,'Memory::execute()'],['../classNode.html#ad2758f63dc60560b83e1d8a038df6e86',1,'Node::execute()']]]
+  ['getchild',['getChild',['../classNode.html#a49395be2fd2be32e99c49df5bc5d2c6c',1,'Node']]],
+  ['getfunc',['getFunc',['../classMemory.html#a45c7902075f19101c539240893075311',1,'Memory']]],
+  ['getint',['getInt',['../classMemory.html#a4e22f8404e11645dcaa68b2ffc4c4455',1,'Memory']]],
+  ['getnodeid',['getNodeID',['../classNode.html#a374c18bf6d7332e4a128107b8446d1ad',1,'Node']]],
+  ['getstr',['getStr',['../classMemory.html#aecf23bb53fc58d668edae8e4e791ea99',1,'Memory']]],
+  ['gettype',['getType',['../classBinop.html#a25a4913ef0d2ec9787df24c391734094',1,'Binop::getType()'],['../classCondition.html#addf79a820326e04e58937c9875afe181',1,'Condition::getType()'],['../classLoop.html#a657b90074652fce7ab2028bdc3747b7b',1,'Loop::getType()'],['../classMemory.html#a222e2dc37b587f8c243aabc1eebcf7a1',1,'Memory::getType()'],['../classNode.html#abce0a9ddac6a5e2c0e546dbe6af02e3d',1,'Node::getType()'],['../classTest.html#adeefe4160992fad5d3a52584f69a420d',1,'Test::getType()']]],
+  ['getvalue',['getValue',['../classNode.html#afaf17dbadc6bca669dbbe97bf252c88e',1,'Node']]]
 ];

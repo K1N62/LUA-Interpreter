@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parser_2eh',['parser.h',['../parser_8h.html',1,'']]]
+  ['stack_2ehh',['stack.hh',['../src_2stack_8hh.html',1,'']]]
 ];
