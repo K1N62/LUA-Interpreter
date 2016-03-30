@@ -1,7 +1,0 @@
-<map id="Node" name="Node">
-<area shape="rect" id="node2" href="$classBinop.html" title="Handles binary operations. " alt="" coords="5,80,60,107"/>
-<area shape="rect" id="node3" href="$classCondition.html" title="Handles contitional operations. " alt="" coords="85,80,162,107"/>
-<area shape="rect" id="node4" href="$classLoop.html" title="Handles loops. " alt="" coords="186,80,237,107"/>
-<area shape="rect" id="node5" href="$classMemory.html" title="Handles memory operations. " alt="" coords="261,80,330,107"/>
-<area shape="rect" id="node6" href="$classTest.html" title="Handles test operations. " alt="" coords="354,80,402,107"/>
-</map>

@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['test',['Test',['../classTest.html',1,'Test'],['../classTest.html#a99f2bbfac6c95612322b0f10e607ebe5',1,'Test::Test()'],['../classTest.html#aefafe8c714d1bbd89f09daf43793b465',1,'Test::Test(Type type)']]],
-  ['todo_20list',['Todo List',['../todo.html',1,'']]],
-  ['type',['type',['../classBinop.html#a6ba1f508e1122caea1ef9350fee74396',1,'Binop::type()'],['../classCondition.html#aeebc812b5f02a5e017c26d4573e85530',1,'Condition::type()'],['../classLoop.html#ae5e7c727c194b408bfc69b3f218c8b6f',1,'Loop::type()'],['../classMemory.html#a918d8160ac6fefa393ab29a11da83e6e',1,'Memory::type()'],['../classNode.html#adcaf01927a597ad0e6025b173fe5e552',1,'Node::type()'],['../classTest.html#add1faa7d527f515b973350d566772265',1,'Test::type()'],['../classBinop.html#a833e85c431d85ca69758bfebec9193dc',1,'Binop::Type()'],['../classCondition.html#a3eed4b7ef94da5dda4a3353cffa8266e',1,'Condition::Type()'],['../classLoop.html#af57e9c094063c514758dfe7bd986d6e7',1,'Loop::Type()'],['../classMemory.html#a9193c3e610b1728964440284db90c812',1,'Memory::Type()'],['../classNode.html#a8dad370be1595f49e0a7c2406a91e867',1,'Node::Type()'],['../classTest.html#a9e5d00cf02fb05573a6f97d14ebc154a',1,'Test::Type()']]]
-];
