@@ -2,6 +2,7 @@
 %defines
 %define api.value.type variant
 %define api.token.constructor
+%define parse.error verbose
 %code requires {
   #include "Node.h"
   #include "Test.h"
@@ -20,6 +21,7 @@
 
   Node* root;
   Environment env;
+
 }
 
 %token <string> STR NUM NAME
@@ -64,7 +66,7 @@ stat          : varlist EQ explist                                  {
                                                                     }
               | functioncall                                        { $$ = $1; }
               | DO block _END                                       {
-                                                                      $$ = new Loop(Loop::Type::Do);
+                                                                      $$ = new Node(Node::Type::Do);
                                                                       $$->addChild($2);
                                                                     }
               | WHILE exp DO block _END                             {
@@ -87,13 +89,38 @@ stat          : varlist EQ explist                                  {
                                                                         $$->addChild($6);
                                                                     }
               | FOR NAME EQ exp COM exp opt_exp DO block _END       {
-                                                                      $$ = new Loop(Loop::Type::For);
-                                                                      $$->addChild(new Node(Node::Type::Name, $2));
-                                                                      $$->addChild($4);
-                                                                      $$->addChild($6);
+                                                                      // Rewrites to an while loop, does not
+                                                                      // support negative increments though
+                                                                      $$ = new Node(Node::Type::Stat);
+
+                                                                      Node* eq = new Binop(Binop::Type::Equal);
+                                                                      eq->addChild(new Node(Node::Type::Name, $2));
+                                                                      eq->addChild($4);
+                                                                      $$->addChild(eq);
+
+                                                                      Node* less = new Test(Test::Type::LessOrEqual);
+                                                                      less->addChild(new Node(Node::Type::Name, $2));
+                                                                      less->addChild($6);
+
+                                                                      Node* w = new Loop(Loop::Type::While);
+                                                                      w->addChild(less);
+
+                                                                      Node* add = new Binop(Binop::Type::Addition);
+                                                                      add->addChild(new Node(Node::Type::Name, $2));
                                                                       if ($7 != NULL )
-                                                                        $$->addChild($7);
-                                                                      $$->addChild($9);
+                                                                        add->addChild($7);
+                                                                      else
+                                                                        add->addChild(new Memory(1));
+
+                                                                      eq = new Binop(Binop::Type::Equal);
+                                                                      eq->addChild(new Node(Node::Type::Name, $2));
+                                                                      eq->addChild(add);
+
+                                                                      $9->addChild(eq);
+
+                                                                      w->addChild($9);
+
+                                                                      $$->addChild(w);
                                                                     }
               | FOR namelist IN explist DO block _END               {
                                                                       $$ = new Loop(Loop::Type::For);

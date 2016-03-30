@@ -4,16 +4,17 @@
 
 /** Handles loops
 * @author Jim Ahlstrand
+* @remark for loop is rewritten in the parser, however this is not a complete rewrite
 */
 class Loop : public Node {
 public:
   //! Defines types of Loops
   enum Type {
     Undefined,
-    Repeat,   //! @todo convert to while loop
+    Repeat,   //! @todo Implement this
     While,
-    For,    //! @todo convert to while loop
-    Do,   //! @todo convert to while loop
+    For       //! @todo Should be rewritten as while loop
+              //! @see http://www.lua.org/manual/5.1/manual.html#2.4.5
   };
 
   // Constructors

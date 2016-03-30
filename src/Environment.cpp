@@ -21,9 +21,8 @@ Environment::Environment(Environment* parent)
 
 Environment::~Environment()
 {
-  #if (DEBUG)
+  if (debug)
     std::cout << " - Deleting environment: " << this << std::endl;
-  #endif
 
   for (std::map<std::string, Memory*>::iterator it = this->memory.begin(); it != this->memory.end(); it++)
     if (it->second != NULL)
@@ -89,16 +88,14 @@ int Environment::write(std::string name, Node* node, bool local)
     // Make copy of node
     Memory* mem = new Memory();
     *mem = *dynamic_cast<Memory*>(node);
-    #if (DEBUG)
+    if (debug)
       std::cout << " + Creating new " << mem->getType() << " ( " << mem << " )" << std::endl;
-    #endif
     return this->write(name, mem, local);
   } else {
     // else assume it's an expression with numbers
     Memory* mem = new Memory(node->evalInt(*this));
-    #if (DEBUG)
+    if (debug)
       std::cout << " + Creating new " << mem->getType() << " ( " << mem << " )" << std::endl;
-    #endif
     return this->write(name, mem, local);
   }
 }
@@ -124,9 +121,8 @@ Memory* Environment::read(std::string name)
         throw Error("Variable not in scope: " + name);
       }
     } else {
-      #if (DEBUG)
+      if (debug)
         std::cout << " ? Reading " << name << " in: " << this << std::endl;
-      #endif
       // Else key is in this scope
       return KEY;
     }

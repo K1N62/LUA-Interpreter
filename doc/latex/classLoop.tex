@@ -11,7 +11,8 @@ Handles loops.
 
 
 
-Inheritance diagram for Loop\+:\nopagebreak
+Inheritance diagram for Loop\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Loop\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Loop\+:\nopagebreak
+Collaboration diagram for Loop\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,13 +32,10 @@ Collaboration diagram for Loop\+:\nopagebreak
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7}{Type} \{ \\*
-{\bfseries Undefined}, 
+enum \hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7}{Type} \{ {\bfseries Undefined}, 
 {\bfseries Repeat}, 
 \hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7a681be1f5a1ab60d13010c6df3358088e}{While}, 
-{\bfseries For}, 
-\\*
-\hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7a1dd9cd3dd842ae131b6f73ed04063cdd}{Do}
+\hyperlink{classLoop_af57e9c094063c514758dfe7bd986d6e7a7637227f2d51adc47dea05b5fe6802ac}{For}
  \}
 \begin{DoxyCompactList}\small\item\em Defines types of Loops. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
@@ -65,6 +64,9 @@ Handles loops.
 \begin{DoxyAuthor}{Author}
 Jim Ahlstrand 
 \end{DoxyAuthor}
+\begin{DoxyRemark}{Remarks}
+for loop is rewritten in the parser, however this is not a complete rewrite 
+\end{DoxyRemark}
 
 
 \subsection{Member Enumeration Documentation}
@@ -81,11 +83,14 @@ Defines types of Loops.
 \index{While@{While}!Loop@{Loop}}\index{Loop@{Loop}!While@{While}}\item[{\em 
 \hypertarget{classLoop_af57e9c094063c514758dfe7bd986d6e7a681be1f5a1ab60d13010c6df3358088e}{}While\label{classLoop_af57e9c094063c514758dfe7bd986d6e7a681be1f5a1ab60d13010c6df3358088e}
 }]\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000002}{Todo}]convert to while loop \end{DoxyRefDesc}
-\index{Do@{Do}!Loop@{Loop}}\index{Loop@{Loop}!Do@{Do}}\item[{\em 
-\hypertarget{classLoop_af57e9c094063c514758dfe7bd986d6e7a1dd9cd3dd842ae131b6f73ed04063cdd}{}Do\label{classLoop_af57e9c094063c514758dfe7bd986d6e7a1dd9cd3dd842ae131b6f73ed04063cdd}
+\item[\hyperlink{todo__todo000002}{Todo}]Implement this \end{DoxyRefDesc}
+\index{For@{For}!Loop@{Loop}}\index{Loop@{Loop}!For@{For}}\item[{\em 
+\hypertarget{classLoop_af57e9c094063c514758dfe7bd986d6e7a7637227f2d51adc47dea05b5fe6802ac}{}For\label{classLoop_af57e9c094063c514758dfe7bd986d6e7a7637227f2d51adc47dea05b5fe6802ac}
 }]\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000003}{Todo}]convert to while loop \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000003}{Todo}]Should be rewritten as while loop \begin{DoxySeeAlso}{See also}
+\href{http://www.lua.org/manual/5.1/manual.html#2.4.5}{\tt http\+://www.\+lua.\+org/manual/5.\+1/manual.\+html\#2.\+4.\+5} 
+\end{DoxySeeAlso}
+\end{DoxyRefDesc}
 \end{description}
 \end{Desc}
 
@@ -131,14 +136,6 @@ integer value of the node
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Bug}
 \item[\hyperlink{bug__bug000001}{Bug}]won\textquotesingle{}t run first time if right isn\textquotesingle{}t true \end{DoxyRefDesc}
-
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000017}{Todo}]implement for loop execution \end{DoxyRefDesc}
-
-
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000018}{Todo}]implement do loop execution \end{DoxyRefDesc}
 
 
 Reimplemented from \hyperlink{classNode_ad2758f63dc60560b83e1d8a038df6e86}{Node}.

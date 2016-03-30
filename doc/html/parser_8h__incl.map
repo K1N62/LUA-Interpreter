@@ -1,11 +1,11 @@
 <map id="inc/parser.h" name="inc/parser.h">
-<area shape="rect" id="node2" href="$Node_8h_source.html" title="Node.h" alt="" coords="424,155,488,181"/>
-<area shape="rect" id="node9" href="$Test_8h_source.html" title="Test.h" alt="" coords="160,80,219,107"/>
-<area shape="rect" id="node10" href="$Loop_8h_source.html" title="Loop.h" alt="" coords="243,80,304,107"/>
-<area shape="rect" id="node11" href="$Binop_8h_source.html" title="Binop.h" alt="" coords="595,80,662,107"/>
-<area shape="rect" id="node14" href="$Memory_8h_source.html" title="Memory.h" alt="" coords="328,80,408,107"/>
-<area shape="rect" id="node15" href="$Condition_8h_source.html" title="Condition.h" alt="" coords="432,80,520,107"/>
-<area shape="rect" id="node16" href="$Environment_8h_source.html" title="Environment.h" alt="" coords="736,155,843,181"/>
-<area shape="rect" id="node19" href="$inc_2stack_8hh_source.html" title="stack.hh" alt="" coords="20,155,92,181"/>
-<area shape="rect" id="node7" href="$Error_8h_source.html" title="Error.h" alt="" coords="691,229,752,256"/>
+<area shape="rect" id="node2" href="$Node_8h_source.html" title="Node.h" alt="" coords="349,155,413,181"/>
+<area shape="rect" id="node10" href="$Test_8h_source.html" title="Test.h" alt="" coords="268,80,326,107"/>
+<area shape="rect" id="node11" href="$Loop_8h_source.html" title="Loop.h" alt="" coords="350,80,412,107"/>
+<area shape="rect" id="node12" href="$Binop_8h_source.html" title="Binop.h" alt="" coords="692,80,758,107"/>
+<area shape="rect" id="node15" href="$Memory_8h_source.html" title="Memory.h" alt="" coords="436,80,516,107"/>
+<area shape="rect" id="node16" href="$Condition_8h_source.html" title="Condition.h" alt="" coords="105,80,193,107"/>
+<area shape="rect" id="node17" href="$Environment_8h_source.html" title="Environment.h" alt="" coords="101,155,208,181"/>
+<area shape="rect" id="node20" href="$inc_2stack_8hh_source.html" title="stack.hh" alt="" coords="641,155,713,181"/>
+<area shape="rect" id="node8" href="$Error_8h_source.html" title="Error.h" alt="" coords="158,229,220,256"/>
 </map>

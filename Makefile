@@ -7,11 +7,10 @@ AR		= ar
 # Folders
 LIB		= lib
 SRC 	= src
-BIN		= bin
 OBJ		= obj
 INC 	= inc
 DOC 	= doc
-PROG	= $(BIN)/Interpreter
+PROG	= int
 
 # Flags
 LDFLAGS	=
@@ -29,14 +28,14 @@ SOURCES = $(wildcard $(SRC)/*.cpp)
 OBJECTS = $(addprefix $(OBJ)/,$(notdir $(SOURCES:.cpp=.o)))
 
 # Default behaviour
-all: dir libr flex bison $(PROG)
+all: dir libr bison flex $(PROG)
 
 # Make new project structure
 project: dir docsconfig gitignore
-	cp ~/Documents/GitHub/doxygen-bootstrapped/customdoxygen.css $(DOC)/; \
-	cp ~/Documents/GitHub/doxygen-bootstrapped/doxy-boot.js $(DOC)/html; \
-	cp ~/Documents/GitHub/doxygen-bootstrapped/example-site/header.html $(DOC)/; \
-	cp ~/Documents/GitHub/doxygen-bootstrapped/example-site/footer.html $(DOC)/; \
+	cp ~/Documents/GitHub/doxygen-bootstrapped/customdoxygen.css $(DOC)/;\
+	cp ~/Documents/GitHub/doxygen-bootstrapped/doxy-boot.js $(DOC)/html;\
+	cp ~/Documents/GitHub/doxygen-bootstrapped/example-site/header.html $(DOC)/;\
+	cp ~/Documents/GitHub/doxygen-bootstrapped/example-site/footer.html $(DOC)/;\
 	sed -i "s/HTML_HEADER            =/HTML_HEADER = $(DOC)\/header.html/g" $(DOC)/doxy.conf;\
 	sed -i "s/HTML_FOOTER            =/HTML_FOOTER = $(DOC)\/footer.html/g" $(DOC)/doxy.conf;\
 	sed -i "s/HTML_EXTRA_STYLESHEET  =/HTML_EXTRA_STYLESHEET = $(DOC)\/customdoxygen.css/g" $(DOC)/doxy.conf;\
@@ -65,7 +64,7 @@ libr:
 
 # create directories
 dir:
-	$(MKDIR) -p $(LIB) $(SRC) $(BIN) $(OBJ) $(INC) $(DOC) $(DOC)/html
+	$(MKDIR) -p $(LIB) $(SRC) $(OBJ) $(INC) $(DOC) $(DOC)/html
 
 # generate documentation
 docsconfig:

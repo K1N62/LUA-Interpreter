@@ -31,9 +31,8 @@ Memory::Memory(Node* func) : Node()
 
 Memory::~Memory()
 {
-  #if (DEBUG)
+  if (debug)
     std::cout << " - Deleting memory " << getType() << " ( " << this << " )" << std::endl;
-  #endif
 }
 
 std::string Memory::getType()

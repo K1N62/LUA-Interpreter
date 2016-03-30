@@ -121,14 +121,10 @@ Collaboration diagram for Loop:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:af57e9c094063c514758dfe7bd986d6e7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoop.html#af57e9c094063c514758dfe7bd986d6e7">Type</a> { <br />
-&#160;&#160;<b>Undefined</b>, 
+<tr class="memitem:af57e9c094063c514758dfe7bd986d6e7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoop.html#af57e9c094063c514758dfe7bd986d6e7">Type</a> { <b>Undefined</b>, 
 <b>Repeat</b>, 
 <a class="el" href="classLoop.html#af57e9c094063c514758dfe7bd986d6e7a681be1f5a1ab60d13010c6df3358088e">While</a>, 
-<b>For</b>, 
-<br />
-&#160;&#160;<a class="el" href="classLoop.html#af57e9c094063c514758dfe7bd986d6e7a1dd9cd3dd842ae131b6f73ed04063cdd">Do</a>
-<br />
+<a class="el" href="classLoop.html#af57e9c094063c514758dfe7bd986d6e7a7637227f2d51adc47dea05b5fe6802ac">For</a>
  }</td></tr>
 <tr class="memdesc:af57e9c094063c514758dfe7bd986d6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines types of Loops.  <a href="classLoop.html#af57e9c094063c514758dfe7bd986d6e7">More...</a><br /></td></tr>
 <tr class="separator:af57e9c094063c514758dfe7bd986d6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,7 +151,8 @@ Public Types</h2></td></tr>
 <a class="el" href="classNode.html#a8dad370be1595f49e0a7c2406a91e867a183ed1e4cc2be1e5df44762c452281ef">Name</a>, 
 <br />
 &#160;&#160;<b>Tridot</b>, 
-<a class="el" href="classNode.html#a8dad370be1595f49e0a7c2406a91e867aab13754f7d035f904f4fc861bc6ad211">Return</a>
+<a class="el" href="classNode.html#a8dad370be1595f49e0a7c2406a91e867aab13754f7d035f904f4fc861bc6ad211">Return</a>, 
+<a class="el" href="classNode.html#a8dad370be1595f49e0a7c2406a91e867a0636a6d172da086b233f0170ba995a81">Do</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a8dad370be1595f49e0a7c2406a91e867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines types of Nodes.  <a href="classNode.html#a8dad370be1595f49e0a7c2406a91e867">More...</a><br /></td></tr>
@@ -249,6 +246,7 @@ std::vector&lt; <a class="el" href="classNode.html">Node</a> * &gt;&#160;</td><t
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles loops. </p>
 <dl class="section author"><dt>Author</dt><dd>Jim Ahlstrand </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>for loop is rewritten in the parser, however this is not a complete rewrite </dd></dl>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="af57e9c094063c514758dfe7bd986d6e7"></a>
 <div class="memitem">
@@ -263,10 +261,11 @@ std::vector&lt; <a class="el" href="classNode.html">Node</a> * &gt;&#160;</td><t
 <p>Defines types of Loops. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="af57e9c094063c514758dfe7bd986d6e7a681be1f5a1ab60d13010c6df3358088e"></a>While&#160;</td><td class="fielddoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>convert to while loop </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Implement this </dd></dl>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="af57e9c094063c514758dfe7bd986d6e7a1dd9cd3dd842ae131b6f73ed04063cdd"></a>Do&#160;</td><td class="fielddoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>convert to while loop </dd></dl>
+<tr><td class="fieldname"><a class="anchor" id="af57e9c094063c514758dfe7bd986d6e7a7637227f2d51adc47dea05b5fe6802ac"></a>For&#160;</td><td class="fielddoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Should be rewritten as while loop <dl class="section see"><dt>See also</dt><dd><a href="http://www.lua.org/manual/5.1/manual.html#2.4.5">http://www.lua.org/manual/5.1/manual.html#2.4.5</a> </dd></dl>
+</dd></dl>
 </td></tr>
 </table>
 
@@ -329,8 +328,6 @@ std::vector&lt; <a class="el" href="classNode.html">Node</a> * &gt;&#160;</td><t
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>integer value of the node </dd></dl>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug:</a></b></dt><dd>won't run first time if right isn't true </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd>implement for loop execution </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000018">Todo:</a></b></dt><dd>implement do loop execution </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classNode.html#ad2758f63dc60560b83e1d8a038df6e86">Node</a>.</p>
 

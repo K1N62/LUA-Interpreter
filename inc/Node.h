@@ -14,7 +14,6 @@
 #define EVAL_STR_RIGHT  RIGHT->evalStr(env)
 
 // Settings
-#define DEBUG true
 #define PRINT_LEAF_VALUES true
 
 // Includes
@@ -22,7 +21,10 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <limits>
 #include "Error.h"
+
+extern bool debug;
 
 class Environment;
 
@@ -35,23 +37,24 @@ public:
   //! @todo implement local functions and namelists
   enum Type {
     Undefined,
-    ExpressionList, //! @todo implement
-    VariableList, //! @todo implement
+    ExpressionList, //! @todo Implement this
+    VariableList, //! @todo Implement this
     FunctionName,
     FunctionCall,
     FunctionBody,
     Function,
-    MemberFunction, //! @todo implement
-    ListName, //! @todo implement
+    MemberFunction, //! @todo Implement this
+    ListName, //! @todo Implement this
     Stat,
-    Field, //! @todo implement
-    FieldElement, //! @todo implement
-    DoubleDot, //! @todo implement
+    Field, //! @todo Implement this
+    FieldElement, //! @todo Implement this
+    DoubleDot, //! @todo Implement this
     Hash,
-    Negate, //! @todo implement
+    Negate, //! @todo Implement this
     Name,
-    Tridot, //! @todo implement
-    Return //! @todo implement
+    Tridot, //! @todo Implement this
+    Return, //! @todo Implement this
+    Do      //! @todo Implement this
   };
 
   // Constructors

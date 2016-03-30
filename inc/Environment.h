@@ -13,6 +13,7 @@ class Node;
 
 /** Handles current memory scope
 * @author Jim Ahlstrand
+* @remark no support for invisible variables
 */
 class Environment {
   public:

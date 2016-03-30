@@ -1,12 +1,12 @@
 %top{
 #include "parser.h"
-#include <iostream>
 #define YY_DECL yy::parser::symbol_type yylex()
 }
 %option noyywrap nounput batch noinput
 %%
 "\n"                  ;
 [ ]+                  ;
+--.*\n                ;
 [0-9]+                return yy::parser::make_NUM(yytext);
 "="                   return yy::parser::make_EQ();
 ":"                   return yy::parser::make_COL();

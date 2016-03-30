@@ -33,23 +33,24 @@ Node::~Node()
 std::string Node::getType()
 {
     switch (this->type) {
-        case Node::Type::ExpressionList: return "ExpressionList";
-        case Node::Type::VariableList: return "VariableList";
-        case Node::Type::FunctionName: return "FunctionName";
-        case Node::Type::FunctionCall: return "FunctionCall";
-        case Node::Type::FunctionBody: return "FunctionBody";
-        case Node::Type::Function: return "Function";
-        case Node::Type::MemberFunction: return "MemberFunction";
-        case Node::Type::ListName: return "ListName";
-        case Node::Type::Stat: return "Stat";
-        case Node::Type::Field: return "Field";
-        case Node::Type::FieldElement: return "FieldElement";
-        case Node::Type::DoubleDot: return "DoubleDot";
-        case Node::Type::Hash: return "Hash";
-        case Node::Type::Negate: return "Negate";
-        case Node::Type::Name: return "Name";
-        case Node::Type::Tridot: return "Tridot";
-        case Node::Type::Return: return "Return";
+        case Node::Type::ExpressionList:  return "ExpressionList";
+        case Node::Type::VariableList:    return "VariableList";
+        case Node::Type::FunctionName:    return "FunctionName";
+        case Node::Type::FunctionCall:    return "FunctionCall";
+        case Node::Type::FunctionBody:    return "FunctionBody";
+        case Node::Type::Function:        return "Function";
+        case Node::Type::MemberFunction:  return "MemberFunction";
+        case Node::Type::ListName:        return "ListName";
+        case Node::Type::Stat:            return "Stat";
+        case Node::Type::Field:           return "Field";
+        case Node::Type::FieldElement:    return "FieldElement";
+        case Node::Type::DoubleDot:       return "DoubleDot";
+        case Node::Type::Hash:            return "Hash";
+        case Node::Type::Negate:          return "Negate";
+        case Node::Type::Name:            return "Name";
+        case Node::Type::Tridot:          return "Tridot";
+        case Node::Type::Return:          return "Return";
+        case Node::Type::Do:              return "Do";
 
         default:
             return "Undefined";
@@ -106,24 +107,36 @@ bool Node::execute(Environment& env)
   switch (this->type) {
     case Function:
       {
-        #if (DEBUG)
+        if (debug)
           std::cout << "Creating new Function" << std::endl;
-        #endif
         Memory* mem = new Memory(RIGHT);
         env.write(LEFT->children[0]->value, mem);
         return true;
       }
     case FunctionCall:
       if (VAL_LEFT == "print") std::cout << EVAL_STR_RIGHT << std::endl;
-      else {
+      else if (LEFT->getType() == "MemberFunction") {
+        if (LEFT->children[0]->value == "io") {
+          if (LEFT->children[1]->value == "read" ) {
+            std::string tmp;
+            getline(std::cin, tmp);
+            std::cin.clear();
+            //! @remark Some flushing required?
+            Memory* mem = new Memory(tmp);
+            env.write("return", mem);
+          } else if (LEFT->children[1]->value == "write" ) {
+            //! @bug don't output \n character
+            std::cout << EVAL_STR_RIGHT;
+          }
+        }
+      } else {
         Node* func = env.read(LEFT->value)->getFunc();
 
         // Make a new scope
         Environment f(&env);
-        #if (DEBUG)
+        if (debug)
           std::cout << " + Creating new Environment ( " << &f << " ) -> " << &env << std::endl;
-        #endif
-        // Save local right hand value as input parameter, need lookahead at function node for Name
+
         //! @bug this does not include Nil values when no parameters were passed it assumes equal #params
         //! @todo fix this mess
         // Do we have any parameters?
@@ -138,17 +151,15 @@ bool Node::execute(Environment& env)
           }
         }
 
-        #if (DEBUG)
+        if (debug)
           std::cout << " -=[ Calling: " << LEFT->value << " ]=-" << std::endl;
-        #endif
         // Execute function
         func->execute(f); // @bug don't work with memberfunction
       }
       return true;
     case FunctionBody:
-      #if (DEBUG)
+      if (debug)
         std::cout << " $ Executing function ( " << this << " )" << std::endl;
-      #endif
       this->size() == 1 ? EXEC_LEFT : EXEC_RIGHT;
       return true;
     case Return:
@@ -186,6 +197,21 @@ std::string Node::evalStr(Environment& env) {
       case FunctionCall:
         this->execute(env);
         return env.read("return")->evalStr(env);
+      case ExpressionList:
+      {
+        std::string tmp = "";
+        // Check if all numbers
+        bool allNumbers = true;
+        for (auto child: this->children) {
+          if (child->getType() != "Number")
+            allNumbers = false;
+            break;
+        }
+        // If all numbers add some tabs between, else don't
+        for (auto child: this->children)
+          tmp += allNumbers ? child->evalStr(env) + "\t" : child->evalStr(env);
+        return tmp;
+      }
 
       default:
         throw Error("Error: Tried to evaluate invalid string value of node");

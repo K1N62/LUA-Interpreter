@@ -60,9 +60,8 @@ std::string Binop::evalStr(Environment& env)
 {
   std::string val = std::to_string(this->evalInt(env));
 
-  #if (DEBUG)
+  if (debug)
     std::cout << "Binary operation evaluated as string: " << val << std::endl;
-  #endif
 
   return val;
 }

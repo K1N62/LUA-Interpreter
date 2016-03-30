@@ -4,6 +4,7 @@
 
 /** Handles memory operations
 * @author Jim Ahlstrand
+* @todo implement support for float variables and infinite large int
 */
 class Memory : public Node {
 public:
