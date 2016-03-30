@@ -4,3 +4,4 @@
 *.so
 data
 graph.dot
+.travis.yml
