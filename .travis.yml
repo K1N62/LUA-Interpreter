@@ -17,7 +17,6 @@ notifications:
   - email: false
 
 before_script:
-  - composer self-update
   - bison --version
   - flex --version
 
