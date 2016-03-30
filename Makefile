@@ -5,30 +5,30 @@ CC 		= g++
 AR		= ar
 
 # Folders
-LIB		= lib
-SRC 	= src
-OBJ		= obj
-INC 	= inc
-DOC 	= doc
-PROG	= bin/interpreter
+LIB				= lib
+SRC 			= src
+OBJ				= obj
+INC 			= inc
+DOC 			= doc
+PROG			= bin/interpreter
 
 # Flags
-LDFLAGS	=
-CFLAGS 	= -c -std=c++11 -g -Wall -m64 -L$(LIB) -I$(INC)
+LDFLAGS		=
+CFLAGS 		= -c -std=c++11 -g -Wall -m64 -L$(LIB) -I$(INC)
 
-LEX		= scanner
-BISON = parser
+LEX				= scanner
+BISON 		= parser
 
 # Utils
-RM 		= /bin/rm
-MKDIR = /bin/mkdir
+RM 				= /bin/rm
+MKDIR 		= /bin/mkdir
 
 # Files
-SOURCES = $(wildcard $(SRC)/*.cpp)
-OBJECTS = $(addprefix $(OBJ)/,$(notdir $(SOURCES:.cpp=.o)))
+SOURCES 	= $(wildcard $(SRC)/*.cpp)
+OBJECTS 	= $(addprefix $(OBJ)/,$(notdir $(SOURCES:.cpp=.o)))
 
 # Default behaviour
-all: libr bison flex $(PROG)
+all: dir libr bison flex $(PROG)
 
 # Compile all sources
 $(PROG): $(OBJECTS)
@@ -53,6 +53,10 @@ docsconfig:
 	doxygen -g $(DOC)/doxy.conf
 docs:
 	doxygen $(DOC)/doxy.conf
+
+# create directories
+dir:
+	$(MKDIR) -p $(LIB) $(SRC) $(OBJ) $(INC) $(DOC) $(DOC)/html
 
 # clean
 clean:
