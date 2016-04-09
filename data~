@@ -2,6 +2,8 @@
 function fibonacci(x)
         if x == 0 then
                 return 0
+	elseif x < 0 then
+		return 1
         elseif x == 1 then
                 return 1
         else
@@ -9,4 +11,7 @@ function fibonacci(x)
         end
 end
 
-io.write(fibonacci(6))
+for n = 0, 6 do
+	io.write(fibonacci(n))
+	n = n + 1
+end

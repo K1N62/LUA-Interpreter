@@ -108,8 +108,11 @@ stat          : varlist EQ explist                                  {
                                                                       less->addChild(new Node(Node::Type::Name, $2));
                                                                       less->addChild($6);
 
+                                                                      Node* t = new Node(Node::Type::Test);
+                                                                      t->addChild(less);
+
                                                                       Node* w = new Loop(Loop::Type::While);
-                                                                      w->addChild(less);
+                                                                      w->addChild(t);
 
                                                                       Node* add = new Binop(Binop::Type::Addition);
                                                                       add->addChild(new Node(Node::Type::Name, $2));
@@ -124,7 +127,7 @@ stat          : varlist EQ explist                                  {
 
                                                                       $9->addChild(eq);
 
-                                                                      w->addChild($9);
+                                                                      t->addChild($9);
 
                                                                       $$->addChild(w);
                                                                     }
