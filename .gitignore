@@ -4,5 +4,6 @@ doc/latex/*
 *.log
 *.o
 *.so
-data
+data.*
 graph.dot
+tree.pdf

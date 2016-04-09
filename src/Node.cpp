@@ -51,6 +51,7 @@ std::string Node::getType()
         case Node::Type::Tridot:          return "Tridot";
         case Node::Type::Return:          return "Return";
         case Node::Type::Do:              return "Do";
+        case Node::Type::Test:            return "Test";
 
         default:
             return "Undefined";
@@ -165,6 +166,8 @@ bool Node::execute(Environment& env)
     case Return:
       env.write("return", LEFT);
       return true;
+    case Test:
+      return EVAL_INT_LEFT ? EXEC_RIGHT : false;
 
     default:
       for (auto child : this->children) {
@@ -216,4 +219,11 @@ std::string Node::evalStr(Environment& env) {
       default:
         throw Error("Error: Tried to evaluate invalid string value of node");
   }
+}
+
+void Node::transferChildren(Node* parent) {
+  for (auto child : this->children)
+    parent->addChild(child);
+
+  this->children = std::vector<Node*>();
 }

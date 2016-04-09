@@ -8,7 +8,7 @@ dist: trusty
 language: c++
 compiler: gcc
 notifications:
-  - email: false
+  - email: true
 
 before_install:
   - sudo apt-get update -qq

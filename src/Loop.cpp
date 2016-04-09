@@ -36,7 +36,7 @@ bool Loop::execute(Environment& env)
             while (!EVAL_INT_RIGHT) LEFT->execute(f); //! @bug won't run first time if right isn't true
             return true;
         case While:
-            while (EVAL_INT_LEFT) RIGHT->execute(f);
+            while (EXEC_LEFT);
             return true;
         case For:
             return true;

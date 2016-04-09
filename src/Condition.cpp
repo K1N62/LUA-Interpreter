@@ -26,20 +26,15 @@ bool Condition::execute(Environment& env)
 {
     switch (this->type) {
         case If:
-            if (EVAL_INT_LEFT) EXEC_RIGHT;
-            else for (unsigned int i = 2; i < this->size(); i++)
-                try {
-                    if (this->getChild(i)->execute(env)) return true;
-                } catch (std::exception& e) {
-                    std::cerr << "Error: " << e.what() << std::endl;
-                }
-            return true;
+            for (auto child : this->children)
+              try {
+                  if (child->execute(env)) return true;
+              } catch (std::exception& e) {
+                  std::cerr << "Error: " << e.what() << std::endl;
+              }
+            return false;
         case ElseIf:
-            if (EVAL_INT_LEFT) {
-                EXEC_RIGHT;
-                return true;
-            }
-            return true;
+            return EXEC_LEFT;
 
     default:
         throw Error("Invalid contition");
