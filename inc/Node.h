@@ -92,6 +92,11 @@ public:
   * @return Node
   */
   Node* getChild(unsigned int i);
+  /** Transfers children to parent
+  * @param parent Node* pointer to the parent node
+  * @return Node
+  */
+  void transferChildren(Node* parent);
   /** Moves the end element to the front
   * @return int 0 on success
   * @remark ugly hack only used for field list correction

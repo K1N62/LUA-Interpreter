@@ -220,3 +220,10 @@ std::string Node::evalStr(Environment& env) {
         throw Error("Error: Tried to evaluate invalid string value of node");
   }
 }
+
+void Node::transferChildren(Node* parent) {
+  for (auto child : this->children)
+    parent->addChild(child);
+
+  this->children = std::vector<Node*>();
+}

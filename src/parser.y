@@ -87,8 +87,10 @@ stat          : varlist EQ explist                                  {
                                                                       t->addChild($2);
                                                                       t->addChild($4);
                                                                       $$->addChild(t);
-                                                                      if ($5->size() != 0)
-                                                                        $$->addChild($5);
+                                                                      if ($5->size() != 0) {
+                                                                        $5->transferChildren($$);
+                                                                        delete $5;
+                                                                      }
                                                                       if ($6 != NULL )
                                                                         $$->addChild($6);
                                                                     }
