@@ -71,8 +71,10 @@ stat          : varlist EQ explist                                  {
                                                                     }
               | WHILE exp DO block _END                             {
                                                                       $$ = new Loop(Loop::Type::While);
-                                                                      $$->addChild($2);
-                                                                      $$->addChild($4);
+                                                                      Node* t = new Node(Node::Type::Test);
+                                                                      t->addChild($2);
+                                                                      t->addChild($4);
+                                                                      $$->addChild(t);
                                                                     }
               | REP block UNTIL exp                                 {
                                                                       $$ = new Loop(Loop::Type::Repeat);
@@ -81,8 +83,10 @@ stat          : varlist EQ explist                                  {
                                                                     }
               | IF exp THEN block rep_elseif opt_else _END          {
                                                                       $$ = new Condition(Condition::Type::If);
-                                                                      $$->addChild($2);
-                                                                      $$->addChild($4);
+                                                                      Node* t = new Node(Node::Type::Test);
+                                                                      t->addChild($2);
+                                                                      t->addChild($4);
+                                                                      $$->addChild(t);
                                                                       if ($5->size() != 0)
                                                                         $$->addChild($5);
                                                                       if ($6 != NULL )
@@ -329,8 +333,14 @@ rep_exp       : /* EMPTY */                                         { $$ = new N
               | rep_exp exp COM                                     { $$ = $1; $$->addChild($2); }
               ;
 
-rep_elseif    : /* EMPTY */                                         { $$ = new Condition(Condition::Type::ElseIf); }
-              | rep_elseif ELSEIF exp THEN block                    { $$ = $1; $$->addChild($3); $$->addChild($5); }
+rep_elseif    : /* EMPTY */                                         { $$ = new Condition(Condition::Type::If); }
+              | rep_elseif ELSEIF exp THEN block                    {
+                                                                      $$ = $1;
+                                                                      Node* t = new Node(Node::Type::Test);
+                                                                      t->addChild($3);
+                                                                      t->addChild($5);
+                                                                      $$->addChild(t);
+                                                                    }
               ;
 
 rep_stat      : /* EMPTY */                                         { $$ = new Node(Node::Type::Stat); }

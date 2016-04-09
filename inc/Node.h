@@ -54,7 +54,8 @@ public:
     Name,
     Tridot, //! @todo Implement this
     Return, //! @todo Implement this
-    Do      //! @todo Implement this
+    Do,      //! @todo Implement this
+    Test
   };
 
   // Constructors
