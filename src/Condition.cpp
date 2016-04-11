@@ -15,7 +15,6 @@ std::string Condition::getType()
 {
     switch (type) {
         case Condition::Type::If:       return "If";
-        case Condition::Type::ElseIf:   return "ElseIf";
 
         default:
           return "Undefined";
