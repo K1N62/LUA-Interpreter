@@ -17,7 +17,6 @@ std::string Loop::getType()
     switch (type) {
         case Loop::Type::Repeat:    return "Repeat";
         case Loop::Type::While:     return "While";
-        case Loop::Type::For:       return "For";
 
     default:
         return "Undefined";
