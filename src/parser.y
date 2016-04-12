@@ -174,10 +174,11 @@ funcname      : NAME rep_func_name opt_name                         {
               ;
 
 funcbody      : PAROPN opt_parlist PARCLS block _END                {
-                                                                      $$ = new Memory(Memory::Type::Function);
-                                                                      if ($2 != NULL )
-                                                                        $$->addChild($2);
-                                                                      $$->addChild($4);
+                                                                        Node* f = new Node(Node::Type::Function);
+                                                                        if ($2 != NULL )
+                                                                            f->addChild($2);
+                                                                        f->addChild($4);
+                                                                        $$ = new Memory(f);
                                                                     }
               ;
 

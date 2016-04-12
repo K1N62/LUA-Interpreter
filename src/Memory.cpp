@@ -18,18 +18,21 @@ Memory::Memory(int value, bool local) : Node()
 
 Memory::Memory(std::string value, bool local) : Node()
 {
-  this->type = Type::String;
-  this->value = value;
-  this->str = value;
-  this->local = local;
-  this->func = NULL;
+    this->type = Type::String;
+    this->value = value;
+    this->str = value;
+    this->local = local;
+    this->func = NULL;
 }
 
 Memory::Memory(Node* func, bool local) : Node()
 {
-  this->type = Type::Function;
-  this->func = func;
-  this->local = local;
+	if (debug)
+	  std::cout << "Creating new Function" << std::endl;
+
+ 	this->type = Type::Function;
+ 	this->func = func;
+ 	this->local = local;
 }
 
 Memory::~Memory()
@@ -54,16 +57,18 @@ std::string Memory::getType()
 
 bool Memory::execute(Environment& env)
 {
-  switch (this->type) {
-    case Function:
-      if (this->func != NULL)
-        return this->func->execute(env);
-      else
-        throw Error("Tried to execute null function");
+    switch (this->type) {
+        case Function:
+            if (this->func != NULL) {
+                if (debug)
+                        std::cout << " $ Executing function ( " << this << " )" << std::endl;
+                return this->func->execute(env);
+            } else
+                throw Error("Tried to execute null function");
 
-  default:
-    throw Error("Tried to execute non-executable memory (" + this->getType() + ")");
-  }
+        default:
+            throw Error("Tried to execute non-executable memory (" + this->getType() + ")");
+    }
 }
 
 int Memory::evalInt(Environment& env)

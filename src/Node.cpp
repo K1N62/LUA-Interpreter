@@ -110,13 +110,10 @@ bool Node::execute(Environment& env)
 {
   switch (this->type) {
     case Function:
-      {
-        if (debug)
-          std::cout << "Creating new Function" << std::endl;
-        Memory* mem = new Memory(RIGHT);
-        env.write(LEFT->children[0]->value, mem);
-        return true;
-      }
+      if (debug)
+        std::cout << " $ Executing function ( " << this << " )" << std::endl;
+      this->size() == 1 ? EXEC_LEFT : EXEC_RIGHT;
+      return true;
     case FunctionCall:
       if (VAL_LEFT == "print") std::cout << EVAL_STR_RIGHT << std::endl;
       else if (LEFT->getType() == "MemberFunction") {
@@ -160,11 +157,6 @@ bool Node::execute(Environment& env)
         // Execute function
         func->execute(f); // @bug don't work with memberfunction
       }
-      return true;
-    case FunctionBody:
-      if (debug)
-        std::cout << " $ Executing function ( " << this << " )" << std::endl;
-      this->size() == 1 ? EXEC_LEFT : EXEC_RIGHT;
       return true;
     case Return:
       env.write("return", LEFT);
