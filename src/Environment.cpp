@@ -88,14 +88,10 @@ int Environment::write(std::string name, Node* node, bool local)
     // Make copy of node
     Memory* mem = new Memory();
     *mem = *dynamic_cast<Memory*>(node);
-    if (debug)
-      std::cout << " + Creating new " << mem->getType() << " ( " << mem << " )" << std::endl;
     return this->write(name, mem, local);
   } else {
     // else assume it's an expression with numbers
     Memory* mem = new Memory(node->evalInt(*this));
-    if (debug)
-      std::cout << " + Creating new " << mem->getType() << " ( " << mem << " )" << std::endl;
     return this->write(name, mem, local);
   }
 }
