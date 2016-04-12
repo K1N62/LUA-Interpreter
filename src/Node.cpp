@@ -199,7 +199,7 @@ int Node::evalInt(Environment& env) {
 
 std::string Node::evalStr(Environment& env) {
   switch (this->type) {
-      case Name:    return env.read(this->value)->evalStr(env);
+      case Name:  return env.read(this->value)->evalStr(env);
       case FunctionCall:
         this->execute(env);
         return env.read("return")->evalStr(env);

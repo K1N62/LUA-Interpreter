@@ -279,6 +279,7 @@ namespace yy {
       // stat
       // laststat
       // funcname
+      // funcbody
       // varlist
       // var
       // namelist
@@ -288,7 +289,6 @@ namespace yy {
       // functioncall
       // args
       // function
-      // funcbody
       // parlist
       // tableconstructor
       // fieldlist
@@ -972,16 +972,16 @@ namespace yy {
       case 56: // stat
       case 57: // laststat
       case 58: // funcname
-      case 59: // varlist
-      case 60: // var
-      case 61: // namelist
-      case 62: // explist
-      case 63: // exp
-      case 64: // prefixexp
-      case 65: // functioncall
-      case 66: // args
-      case 67: // function
-      case 68: // funcbody
+      case 59: // funcbody
+      case 60: // varlist
+      case 61: // var
+      case 62: // namelist
+      case 63: // explist
+      case 64: // exp
+      case 65: // prefixexp
+      case 66: // functioncall
+      case 67: // args
+      case 68: // function
       case 69: // parlist
       case 70: // tableconstructor
       case 71: // fieldlist
@@ -1035,16 +1035,16 @@ namespace yy {
       case 56: // stat
       case 57: // laststat
       case 58: // funcname
-      case 59: // varlist
-      case 60: // var
-      case 61: // namelist
-      case 62: // explist
-      case 63: // exp
-      case 64: // prefixexp
-      case 65: // functioncall
-      case 66: // args
-      case 67: // function
-      case 68: // funcbody
+      case 59: // funcbody
+      case 60: // varlist
+      case 61: // var
+      case 62: // namelist
+      case 63: // explist
+      case 64: // exp
+      case 65: // prefixexp
+      case 66: // functioncall
+      case 67: // args
+      case 68: // function
       case 69: // parlist
       case 70: // tableconstructor
       case 71: // fieldlist
@@ -1124,16 +1124,16 @@ namespace yy {
       case 56: // stat
       case 57: // laststat
       case 58: // funcname
-      case 59: // varlist
-      case 60: // var
-      case 61: // namelist
-      case 62: // explist
-      case 63: // exp
-      case 64: // prefixexp
-      case 65: // functioncall
-      case 66: // args
-      case 67: // function
-      case 68: // funcbody
+      case 59: // funcbody
+      case 60: // varlist
+      case 61: // var
+      case 62: // namelist
+      case 63: // explist
+      case 64: // exp
+      case 65: // prefixexp
+      case 66: // functioncall
+      case 67: // args
+      case 68: // function
       case 69: // parlist
       case 70: // tableconstructor
       case 71: // fieldlist
@@ -1185,16 +1185,16 @@ namespace yy {
       case 56: // stat
       case 57: // laststat
       case 58: // funcname
-      case 59: // varlist
-      case 60: // var
-      case 61: // namelist
-      case 62: // explist
-      case 63: // exp
-      case 64: // prefixexp
-      case 65: // functioncall
-      case 66: // args
-      case 67: // function
-      case 68: // funcbody
+      case 59: // funcbody
+      case 60: // varlist
+      case 61: // var
+      case 62: // namelist
+      case 63: // explist
+      case 64: // exp
+      case 65: // prefixexp
+      case 66: // functioncall
+      case 67: // args
+      case 68: // function
       case 69: // parlist
       case 70: // tableconstructor
       case 71: // fieldlist

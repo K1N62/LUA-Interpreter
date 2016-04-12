@@ -3,12 +3,12 @@
 
 Condition::Condition() : Node()
 {
-  this->type = Type::Undefined;
+	this->type = Type::Undefined;
 }
 
 Condition::Condition(Type type) : Node()
 {
-  this->type = type;
+    this->type = type;
 }
 
 std::string Condition::getType()
@@ -16,8 +16,8 @@ std::string Condition::getType()
     switch (type) {
         case Condition::Type::If:       return "If";
 
-        default:
-          return "Undefined";
+    default:
+      return "Undefined";
     }
 }
 

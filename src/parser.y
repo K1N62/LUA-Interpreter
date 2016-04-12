@@ -138,7 +138,7 @@ stat          : varlist EQ explist                                  {
                                                                       $$->addChild($6);
                                                                     }
               | FUNC funcname funcbody                              {
-                                                                      $$ = new Node(Node::Type::Function);
+                                                                      $$ = new Binop(Binop::Type::Equal);
                                                                       $$->addChild($2);
                                                                       $$->addChild($3);
                                                                     }
@@ -162,10 +162,22 @@ laststat      : RETURN opt_explist                                  {
               ;
 
 funcname      : NAME rep_func_name opt_name                         {
-                                                                      $$ = $2;
-                                                                      $$->addChild(new Node(Node::Type::Name, $1));
-                                                                      if ($3 != NULL )
-                                                                        $$->addChild($3);
+																		if ($2->size() == 0) {
+																			$$ = new Node(Node::Type::Name, $1);
+																		} else {
+																			$$ = $2;
+	                                                                        $$->addChild(new Node(Node::Type::Name, $1));
+																		}
+	                                                                    if ($3 != NULL )
+	                                                                		$$->addChild($3);
+                                                                    }
+              ;
+
+funcbody      : PAROPN opt_parlist PARCLS block _END                {
+                                                                      $$ = new Memory(Memory::Type::Function);
+                                                                      if ($2 != NULL )
+                                                                        $$->addChild($2);
+                                                                      $$->addChild($4);
                                                                     }
               ;
 
@@ -275,14 +287,6 @@ args          : PAROPN opt_explist PARCLS                           { $$ = $2; }
               ;
 
 function      : FUNC funcbody                                       { $$ = $2; }
-              ;
-
-funcbody      : PAROPN opt_parlist PARCLS block _END                {
-                                                                      $$ = new Node(Node::Type::FunctionBody);
-                                                                      if ($2 != NULL )
-                                                                        $$->addChild($2);
-                                                                      $$->addChild($4);
-                                                                    }
               ;
 
 parlist       : namelist opt_tridot                                 {
