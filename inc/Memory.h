@@ -23,20 +23,20 @@ public:
   //! @remark is assumed to be a field list
   Memory();
   /** Constructor with integer type
-  * @param type Memory type of enum Type
   * @param value integer value of the node
+  * @param local Bool True if defined in local namespace
   */
-  Memory(int value);
+  Memory(int value, bool local = false);
   /** Constructor with string type
-  * @param type Memory type of enum Type
   * @param value string value of the node
+  * @param local Bool True if defined in local namespace
   */
-  Memory(std::string value);
+  Memory(std::string value, bool local = false);
   /** Constructor with function type
-  * @param type Memory type of enum Type
   * @param func Node* value of the node
+  * @param local Bool True if defined in local namespace
   */
-  Memory(Node* func);
+  Memory(Node* func, bool local = false);
   //! Default destructor
   virtual ~Memory();
 

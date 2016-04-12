@@ -142,7 +142,11 @@ stat          : varlist EQ explist                                  {
                                                                       $$->addChild($2);
                                                                       $$->addChild($3);
                                                                     }
-              | LOCAL FUNC NAME funcbody                            { $$ = NULL; }
+              | LOCAL FUNC NAME funcbody                            {
+                                                                      $$ = new Node(Node::Type::Function, true);
+                                                                      $$->addChild($3);
+                                                                      $$->addChild($4);
+                                                                    }
               | LOCAL namelist opt_eq                               { $$ = NULL; }
               ;
 

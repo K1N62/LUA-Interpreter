@@ -64,8 +64,9 @@ public:
   Node();
   /** Constructor with type
   * @param type Node type of enum Type
+  * @param local Bool True if defined in local namespace
   */
-  Node(Type type);
+  Node(Type type, bool local = false);
   /** Constructor with type and value
   * @param type Node type of enum Type
   * @param value String value of the node
@@ -143,6 +144,8 @@ protected:
   // ---------------------------------------
   //! Node id
   int id;
+  //! Localy defined
+  bool local;
   //! Node type
   Type type;
   //! Node value

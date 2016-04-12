@@ -7,26 +7,29 @@ Memory::Memory() : Node()
   this->func = NULL;
 }
 
-Memory::Memory(int value) : Node()
+Memory::Memory(int value, bool local) : Node()
 {
   this->type = Type::Number;
   this->integer = value;
   this->value = std::to_string(value);
+  this->local = local;
   this->func = NULL;
 }
 
-Memory::Memory(std::string value) : Node()
+Memory::Memory(std::string value, bool local) : Node()
 {
   this->type = Type::String;
   this->value = value;
   this->str = value;
+  this->local = local;
   this->func = NULL;
 }
 
-Memory::Memory(Node* func) : Node()
+Memory::Memory(Node* func, bool local) : Node()
 {
   this->type = Type::Function;
   this->func = func;
+  this->local = local;
 }
 
 Memory::~Memory()

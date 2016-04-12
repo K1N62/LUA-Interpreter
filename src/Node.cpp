@@ -7,13 +7,15 @@ Node::Node()
 {
   this->id = 0;
   this->type = Type::Undefined;
+  this->local = false;
   this->value = "";
 }
 
-Node::Node(Type type)
+Node::Node(Type type, bool local)
 {
   this->id = 0;
   this->type = type;
+  this->local = local;
   this->value = "";
 }
 
@@ -21,6 +23,7 @@ Node::Node(Type type, std::string value)
 {
   this->id = 0;
   this->type = type;
+  this->local = false;
   this->value = value;
 }
 
