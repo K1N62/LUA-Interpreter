@@ -34,7 +34,7 @@ bool Binop::execute(Environment& env)
 {
   switch (this->type) {
     case Equal:
-      env.write(VAL_LEFT, RIGHT);
+      env.write(VAL_LEFT, RIGHT, LEFT->getLocal());
       return true;
 
   default:

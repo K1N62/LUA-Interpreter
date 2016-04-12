@@ -103,10 +103,14 @@ public:
   * @remark ugly hack only used for field list correction
   */
   int moveToFront();
-  /** Gives the nodes id
+  /** Gets the node id
   * @return id integer of nodes id
   */
   int getNodeID() { return this->id; }
+  /** Gets if this node is local only
+  * @return bool True if node is local
+  */
+  bool getLocal() { return this->local; }
   /** Is this node undefined?
   * @return id integer of nodes id
   */
