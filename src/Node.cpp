@@ -19,11 +19,11 @@ Node::Node(Type type, bool local)
   this->value = "";
 }
 
-Node::Node(Type type, std::string value)
+Node::Node(Type type, std::string value, bool local)
 {
   this->id = 0;
   this->type = type;
-  this->local = false;
+  this->local = local;
   this->value = value;
 }
 

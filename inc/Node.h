@@ -71,7 +71,7 @@ public:
   * @param type Node type of enum Type
   * @param value String value of the node
   */
-  Node(Type type, std::string value);
+  Node(Type type, std::string value, bool local = false);
   //! Default destructor
   virtual ~Node();
 
@@ -111,6 +111,10 @@ public:
   * @return bool True if node is local
   */
   bool getLocal() { return this->local; }
+  /** Set local value
+  * @return bool True if node is local
+  */
+  void setLocal(bool l) { this->local = l; }
   /** Is this node undefined?
   * @return id integer of nodes id
   */

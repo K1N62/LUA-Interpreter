@@ -776,7 +776,7 @@ namespace yy {
 #line 145 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = new Node(Node::Type::Function, true);
-                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< string > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(new Node(Node::Type::Name, yystack_[1].value.as< string > ()));
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
 #line 783 "src/parser.cpp" // lalr1.cc:847

@@ -144,10 +144,14 @@ stat          : varlist EQ explist                                  {
                                                                     }
               | LOCAL FUNC NAME funcbody                            {
                                                                       $$ = new Node(Node::Type::Function, true);
-                                                                      $$->addChild($3);
+                                                                      $$->addChild(new Node(Node::Type::Name, $3));
                                                                       $$->addChild($4);
                                                                     }
-              | LOCAL namelist opt_eq                               { $$ = NULL; }
+              | LOCAL namelist opt_eq                               {
+                                                                      $$ = $2;
+                                                                      $2->setLocal(true);
+                                                                      $2->addChild($3);
+                                                                    }
               ;
 
 laststat      : RETURN opt_explist                                  {
