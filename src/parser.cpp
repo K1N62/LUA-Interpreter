@@ -774,44 +774,48 @@ namespace yy {
 
   case 14:
 #line 145 "src/parser.y" // lalr1.cc:847
-    { yylhs.value.as< Node* > () = NULL; }
-#line 779 "src/parser.cpp" // lalr1.cc:847
+    {
+                                                                      yylhs.value.as< Node* > () = new Node(Node::Type::Function, true);
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< string > ());
+                                                                      yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
+                                                                    }
+#line 783 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 15:
-#line 146 "src/parser.y" // lalr1.cc:847
+#line 150 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 785 "src/parser.cpp" // lalr1.cc:847
+#line 789 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 16:
-#line 149 "src/parser.y" // lalr1.cc:847
+#line 153 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = new Node(Node::Type::Return);
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 794 "src/parser.cpp" // lalr1.cc:847
+#line 798 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 17:
-#line 153 "src/parser.y" // lalr1.cc:847
+#line 157 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 800 "src/parser.cpp" // lalr1.cc:847
+#line 804 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 18:
-#line 156 "src/parser.y" // lalr1.cc:847
+#line 160 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > ();
                                                                       yylhs.value.as< Node* > ()->addChild(new Node(Node::Type::Name, yystack_[2].value.as< string > ()));
                                                                       if (yystack_[0].value.as< Node* > () != NULL )
                                                                         yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 811 "src/parser.cpp" // lalr1.cc:847
+#line 815 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 19:
-#line 164 "src/parser.y" // lalr1.cc:847
+#line 168 "src/parser.y" // lalr1.cc:847
     {
                                                                       if (yystack_[0].value.as< Node* > ()->size() == 0) {
                                                                         yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > ();
@@ -820,37 +824,37 @@ namespace yy {
                                                                         yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
                                                                       }
                                                                     }
-#line 824 "src/parser.cpp" // lalr1.cc:847
+#line 828 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 20:
-#line 174 "src/parser.y" // lalr1.cc:847
+#line 178 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::Name, yystack_[0].value.as< string > ()); }
-#line 830 "src/parser.cpp" // lalr1.cc:847
+#line 834 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 21:
-#line 175 "src/parser.y" // lalr1.cc:847
+#line 179 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = new Node(Node::Type::FieldElement);
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
                                                                     }
-#line 840 "src/parser.cpp" // lalr1.cc:847
+#line 844 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 22:
-#line 180 "src/parser.y" // lalr1.cc:847
+#line 184 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = new Node(Node::Type::MemberFunction);
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ());
                                                                       yylhs.value.as< Node* > ()->addChild(new Node(Node::Type::Name, yystack_[0].value.as< string > ()));
                                                                     }
-#line 850 "src/parser.cpp" // lalr1.cc:847
+#line 854 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 23:
-#line 187 "src/parser.y" // lalr1.cc:847
+#line 191 "src/parser.y" // lalr1.cc:847
     {
                                                                       if (yystack_[0].value.as< Node* > ()->size() != 0) {
                                                                         yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > ();
@@ -860,11 +864,11 @@ namespace yy {
                                                                         yylhs.value.as< Node* > ()->addChild(new Node(Node::Type::Name, yystack_[1].value.as< string > ()));
                                                                       }
                                                                     }
-#line 864 "src/parser.cpp" // lalr1.cc:847
+#line 868 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 24:
-#line 198 "src/parser.y" // lalr1.cc:847
+#line 202 "src/parser.y" // lalr1.cc:847
     {
                                                                       if (yystack_[1].value.as< Node* > ()->size() != 0) {
                                                                         yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > ();
@@ -873,278 +877,278 @@ namespace yy {
                                                                         yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > ();
                                                                       }
                                                                     }
-#line 877 "src/parser.cpp" // lalr1.cc:847
+#line 881 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 25:
-#line 208 "src/parser.y" // lalr1.cc:847
+#line 212 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Memory(Memory::Type::Nil); }
-#line 883 "src/parser.cpp" // lalr1.cc:847
+#line 887 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 26:
-#line 209 "src/parser.y" // lalr1.cc:847
+#line 213 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::False); }
-#line 889 "src/parser.cpp" // lalr1.cc:847
+#line 893 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 27:
-#line 210 "src/parser.y" // lalr1.cc:847
+#line 214 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::True); }
-#line 895 "src/parser.cpp" // lalr1.cc:847
+#line 899 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 28:
-#line 211 "src/parser.y" // lalr1.cc:847
+#line 215 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Memory(stoi(yystack_[0].value.as< string > ())); }
-#line 901 "src/parser.cpp" // lalr1.cc:847
+#line 905 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 29:
-#line 212 "src/parser.y" // lalr1.cc:847
+#line 216 "src/parser.y" // lalr1.cc:847
     {
                                                                       yystack_[0].value.as< string > ().erase(0,1);
                                                                       yystack_[0].value.as< string > ().erase(yystack_[0].value.as< string > ().length() - 1, 1);
                                                                       yylhs.value.as< Node* > () = new Memory(yystack_[0].value.as< string > ());
                                                                     }
-#line 911 "src/parser.cpp" // lalr1.cc:847
+#line 915 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 30:
-#line 217 "src/parser.y" // lalr1.cc:847
+#line 221 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::Tridot, "..."); }
-#line 917 "src/parser.cpp" // lalr1.cc:847
+#line 921 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 31:
-#line 218 "src/parser.y" // lalr1.cc:847
+#line 222 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 923 "src/parser.cpp" // lalr1.cc:847
+#line 927 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 32:
-#line 219 "src/parser.y" // lalr1.cc:847
+#line 223 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 929 "src/parser.cpp" // lalr1.cc:847
+#line 933 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 33:
-#line 220 "src/parser.y" // lalr1.cc:847
+#line 224 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 935 "src/parser.cpp" // lalr1.cc:847
+#line 939 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 34:
-#line 221 "src/parser.y" // lalr1.cc:847
+#line 225 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::DoubleDot); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 941 "src/parser.cpp" // lalr1.cc:847
+#line 945 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 35:
-#line 222 "src/parser.y" // lalr1.cc:847
+#line 226 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Binop(Binop::Type::Addition); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 947 "src/parser.cpp" // lalr1.cc:847
+#line 951 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 36:
-#line 223 "src/parser.y" // lalr1.cc:847
+#line 227 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Binop(Binop::Type::Subtraction); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 953 "src/parser.cpp" // lalr1.cc:847
+#line 957 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 37:
-#line 224 "src/parser.y" // lalr1.cc:847
+#line 228 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Binop(Binop::Type::Division); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 959 "src/parser.cpp" // lalr1.cc:847
+#line 963 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 38:
-#line 225 "src/parser.y" // lalr1.cc:847
+#line 229 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Binop(Binop::Type::Multiplication); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 965 "src/parser.cpp" // lalr1.cc:847
+#line 969 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 39:
-#line 226 "src/parser.y" // lalr1.cc:847
+#line 230 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Binop(Binop::Type::Power); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 971 "src/parser.cpp" // lalr1.cc:847
+#line 975 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 40:
-#line 227 "src/parser.y" // lalr1.cc:847
+#line 231 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Binop(Binop::Type::Modulo); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 977 "src/parser.cpp" // lalr1.cc:847
+#line 981 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 41:
-#line 228 "src/parser.y" // lalr1.cc:847
+#line 232 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::LessThan); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 983 "src/parser.cpp" // lalr1.cc:847
+#line 987 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 42:
-#line 229 "src/parser.y" // lalr1.cc:847
+#line 233 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::LessOrEqual); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 989 "src/parser.cpp" // lalr1.cc:847
+#line 993 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 43:
-#line 230 "src/parser.y" // lalr1.cc:847
+#line 234 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::GreaterThan); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 995 "src/parser.cpp" // lalr1.cc:847
+#line 999 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 44:
-#line 231 "src/parser.y" // lalr1.cc:847
+#line 235 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::GreaterOrEqual); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1001 "src/parser.cpp" // lalr1.cc:847
+#line 1005 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 45:
-#line 232 "src/parser.y" // lalr1.cc:847
+#line 236 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::EqualEqual); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1007 "src/parser.cpp" // lalr1.cc:847
+#line 1011 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 46:
-#line 233 "src/parser.y" // lalr1.cc:847
+#line 237 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::NotEqual); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1013 "src/parser.cpp" // lalr1.cc:847
+#line 1017 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 47:
-#line 234 "src/parser.y" // lalr1.cc:847
+#line 238 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::And); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1019 "src/parser.cpp" // lalr1.cc:847
+#line 1023 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 48:
-#line 235 "src/parser.y" // lalr1.cc:847
+#line 239 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::Or); yylhs.value.as< Node* > ()->addChild(yystack_[2].value.as< Node* > ()); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1025 "src/parser.cpp" // lalr1.cc:847
+#line 1029 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 49:
-#line 236 "src/parser.y" // lalr1.cc:847
+#line 240 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Test(Test::Type::Not); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1031 "src/parser.cpp" // lalr1.cc:847
+#line 1035 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 50:
-#line 237 "src/parser.y" // lalr1.cc:847
+#line 241 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::Negate); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1037 "src/parser.cpp" // lalr1.cc:847
+#line 1041 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 51:
-#line 238 "src/parser.y" // lalr1.cc:847
+#line 242 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::Hash); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1043 "src/parser.cpp" // lalr1.cc:847
+#line 1047 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 52:
-#line 241 "src/parser.y" // lalr1.cc:847
+#line 245 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1049 "src/parser.cpp" // lalr1.cc:847
+#line 1053 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 53:
-#line 242 "src/parser.y" // lalr1.cc:847
+#line 246 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1055 "src/parser.cpp" // lalr1.cc:847
+#line 1059 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 54:
-#line 243 "src/parser.y" // lalr1.cc:847
+#line 247 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > (); }
-#line 1061 "src/parser.cpp" // lalr1.cc:847
+#line 1065 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 55:
-#line 246 "src/parser.y" // lalr1.cc:847
+#line 250 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = new Node(Node::Type::FunctionCall);
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
                                                                       if (yystack_[0].value.as< Node* > () != NULL)
                                                                         yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 1072 "src/parser.cpp" // lalr1.cc:847
+#line 1076 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 56:
-#line 252 "src/parser.y" // lalr1.cc:847
+#line 256 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = yystack_[3].value.as< Node* > ();
                                                                       yylhs.value.as< Node* > ()->addChild(new Node(Node::Type::Name, yystack_[1].value.as< string > ()));
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 1082 "src/parser.cpp" // lalr1.cc:847
+#line 1086 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 57:
-#line 259 "src/parser.y" // lalr1.cc:847
+#line 263 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > (); }
-#line 1088 "src/parser.cpp" // lalr1.cc:847
+#line 1092 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 58:
-#line 260 "src/parser.y" // lalr1.cc:847
+#line 264 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1094 "src/parser.cpp" // lalr1.cc:847
+#line 1098 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 59:
-#line 261 "src/parser.y" // lalr1.cc:847
+#line 265 "src/parser.y" // lalr1.cc:847
     {
                                                                       yystack_[0].value.as< string > ().erase(0,1);
                                                                       yystack_[0].value.as< string > ().erase(yystack_[0].value.as< string > ().length() - 1, 1);
                                                                       yylhs.value.as< Node* > () = new Node(Node::Type::ExpressionList);
                                                                       yylhs.value.as< Node* > ()->addChild(new Memory(yystack_[0].value.as< string > ()));
                                                                     }
-#line 1105 "src/parser.cpp" // lalr1.cc:847
+#line 1109 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 60:
-#line 269 "src/parser.y" // lalr1.cc:847
+#line 273 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1111 "src/parser.cpp" // lalr1.cc:847
+#line 1115 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 61:
-#line 272 "src/parser.y" // lalr1.cc:847
+#line 276 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = new Node(Node::Type::FunctionBody);
                                                                       if (yystack_[3].value.as< Node* > () != NULL )
                                                                         yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ());
                                                                     }
-#line 1122 "src/parser.cpp" // lalr1.cc:847
+#line 1126 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 62:
-#line 280 "src/parser.y" // lalr1.cc:847
+#line 284 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > ();
                                                                       if (yystack_[0].value.as< Node* > () != NULL )
                                                                         yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 1132 "src/parser.cpp" // lalr1.cc:847
+#line 1136 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 63:
-#line 285 "src/parser.y" // lalr1.cc:847
+#line 289 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::Tridot); }
-#line 1138 "src/parser.cpp" // lalr1.cc:847
+#line 1142 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 64:
-#line 288 "src/parser.y" // lalr1.cc:847
+#line 292 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > (); }
-#line 1144 "src/parser.cpp" // lalr1.cc:847
+#line 1148 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 65:
-#line 291 "src/parser.y" // lalr1.cc:847
+#line 295 "src/parser.y" // lalr1.cc:847
     {
                                                                       if (yystack_[1].value.as< Node* > ()->size() != 0) {
                                                                         yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > ();
@@ -1154,109 +1158,109 @@ namespace yy {
                                                                         yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > ();
                                                                       }
                                                                     }
-#line 1158 "src/parser.cpp" // lalr1.cc:847
+#line 1162 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 66:
-#line 302 "src/parser.y" // lalr1.cc:847
+#line 306 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = new Binop(Binop::Type::Equal);
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[3].value.as< Node* > ());
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 1168 "src/parser.cpp" // lalr1.cc:847
+#line 1172 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 67:
-#line 307 "src/parser.y" // lalr1.cc:847
+#line 311 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = new Binop(Binop::Type::Equal);
                                                                       yylhs.value.as< Node* > ()->addChild(new Node(Node::Type::Name, yystack_[2].value.as< string > ()));
                                                                       yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ());
                                                                     }
-#line 1178 "src/parser.cpp" // lalr1.cc:847
+#line 1182 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 68:
-#line 312 "src/parser.y" // lalr1.cc:847
+#line 316 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1184 "src/parser.cpp" // lalr1.cc:847
+#line 1188 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 69:
-#line 315 "src/parser.y" // lalr1.cc:847
+#line 319 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1190 "src/parser.cpp" // lalr1.cc:847
+#line 1194 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 70:
-#line 316 "src/parser.y" // lalr1.cc:847
+#line 320 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1196 "src/parser.cpp" // lalr1.cc:847
+#line 1200 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 71:
-#line 319 "src/parser.y" // lalr1.cc:847
+#line 323 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::FunctionName); }
-#line 1202 "src/parser.cpp" // lalr1.cc:847
+#line 1206 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 72:
-#line 320 "src/parser.y" // lalr1.cc:847
+#line 324 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > ();
                                                                       yylhs.value.as< Node* > ()->addChild(new Node(Node::Type::Name, yystack_[0].value.as< string > ()));
                                                                     }
-#line 1211 "src/parser.cpp" // lalr1.cc:847
+#line 1215 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 73:
-#line 326 "src/parser.y" // lalr1.cc:847
+#line 330 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::VariableList); }
-#line 1217 "src/parser.cpp" // lalr1.cc:847
+#line 1221 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 74:
-#line 327 "src/parser.y" // lalr1.cc:847
+#line 331 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > (); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1223 "src/parser.cpp" // lalr1.cc:847
+#line 1227 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 75:
-#line 330 "src/parser.y" // lalr1.cc:847
+#line 334 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::ListName); }
-#line 1229 "src/parser.cpp" // lalr1.cc:847
+#line 1233 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 76:
-#line 331 "src/parser.y" // lalr1.cc:847
+#line 335 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > ();
                                                                       yylhs.value.as< Node* > ()->addChild(new Node(Node::Type::Name, yystack_[0].value.as< string > ()));
                                                                     }
-#line 1238 "src/parser.cpp" // lalr1.cc:847
+#line 1242 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 77:
-#line 337 "src/parser.y" // lalr1.cc:847
+#line 341 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::ExpressionList); }
-#line 1244 "src/parser.cpp" // lalr1.cc:847
+#line 1248 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 78:
-#line 338 "src/parser.y" // lalr1.cc:847
+#line 342 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > (); yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ()); }
-#line 1250 "src/parser.cpp" // lalr1.cc:847
+#line 1254 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 79:
-#line 341 "src/parser.y" // lalr1.cc:847
+#line 345 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Condition(Condition::Type::If); }
-#line 1256 "src/parser.cpp" // lalr1.cc:847
+#line 1260 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 80:
-#line 342 "src/parser.y" // lalr1.cc:847
+#line 346 "src/parser.y" // lalr1.cc:847
     {
                                                                       yylhs.value.as< Node* > () = yystack_[4].value.as< Node* > ();
                                                                       Node* t = new Node(Node::Type::Test);
@@ -1264,167 +1268,167 @@ namespace yy {
                                                                       t->addChild(yystack_[0].value.as< Node* > ());
                                                                       yylhs.value.as< Node* > ()->addChild(t);
                                                                     }
-#line 1268 "src/parser.cpp" // lalr1.cc:847
+#line 1272 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 81:
-#line 351 "src/parser.y" // lalr1.cc:847
+#line 355 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::Stat); }
-#line 1274 "src/parser.cpp" // lalr1.cc:847
+#line 1278 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 82:
-#line 352 "src/parser.y" // lalr1.cc:847
+#line 356 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > (); yylhs.value.as< Node* > ()->addChild(yystack_[1].value.as< Node* > ()); }
-#line 1280 "src/parser.cpp" // lalr1.cc:847
+#line 1284 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 83:
-#line 355 "src/parser.y" // lalr1.cc:847
+#line 359 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Memory(); }
-#line 1286 "src/parser.cpp" // lalr1.cc:847
+#line 1290 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 84:
-#line 356 "src/parser.y" // lalr1.cc:847
+#line 360 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[2].value.as< Node* > (); yylhs.value.as< Node* > ()->addChild(yystack_[0].value.as< Node* > ()); }
-#line 1292 "src/parser.cpp" // lalr1.cc:847
+#line 1296 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 85:
-#line 359 "src/parser.y" // lalr1.cc:847
+#line 363 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1298 "src/parser.cpp" // lalr1.cc:847
+#line 1302 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 86:
-#line 360 "src/parser.y" // lalr1.cc:847
+#line 364 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1304 "src/parser.cpp" // lalr1.cc:847
+#line 1308 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 87:
-#line 363 "src/parser.y" // lalr1.cc:847
+#line 367 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1310 "src/parser.cpp" // lalr1.cc:847
+#line 1314 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 88:
-#line 364 "src/parser.y" // lalr1.cc:847
+#line 368 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1316 "src/parser.cpp" // lalr1.cc:847
+#line 1320 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 89:
-#line 367 "src/parser.y" // lalr1.cc:847
+#line 371 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1322 "src/parser.cpp" // lalr1.cc:847
+#line 1326 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 90:
-#line 368 "src/parser.y" // lalr1.cc:847
+#line 372 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::Name, yystack_[0].value.as< string > ()); }
-#line 1328 "src/parser.cpp" // lalr1.cc:847
+#line 1332 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 91:
-#line 371 "src/parser.y" // lalr1.cc:847
+#line 375 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1334 "src/parser.cpp" // lalr1.cc:847
+#line 1338 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 92:
-#line 372 "src/parser.y" // lalr1.cc:847
+#line 376 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Node(Node::Type::Tridot); }
-#line 1340 "src/parser.cpp" // lalr1.cc:847
+#line 1344 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 93:
-#line 375 "src/parser.y" // lalr1.cc:847
+#line 379 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = new Memory(); }
-#line 1346 "src/parser.cpp" // lalr1.cc:847
+#line 1350 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 94:
-#line 376 "src/parser.y" // lalr1.cc:847
+#line 380 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1352 "src/parser.cpp" // lalr1.cc:847
+#line 1356 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 95:
-#line 379 "src/parser.y" // lalr1.cc:847
+#line 383 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1358 "src/parser.cpp" // lalr1.cc:847
+#line 1362 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 96:
-#line 380 "src/parser.y" // lalr1.cc:847
+#line 384 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1364 "src/parser.cpp" // lalr1.cc:847
+#line 1368 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 97:
-#line 383 "src/parser.y" // lalr1.cc:847
+#line 387 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1370 "src/parser.cpp" // lalr1.cc:847
+#line 1374 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 98:
-#line 384 "src/parser.y" // lalr1.cc:847
+#line 388 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1376 "src/parser.cpp" // lalr1.cc:847
+#line 1380 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 99:
-#line 387 "src/parser.y" // lalr1.cc:847
+#line 391 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1382 "src/parser.cpp" // lalr1.cc:847
+#line 1386 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 100:
-#line 388 "src/parser.y" // lalr1.cc:847
+#line 392 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[1].value.as< Node* > (); }
-#line 1388 "src/parser.cpp" // lalr1.cc:847
+#line 1392 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 101:
-#line 391 "src/parser.y" // lalr1.cc:847
+#line 395 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1394 "src/parser.cpp" // lalr1.cc:847
+#line 1398 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 102:
-#line 392 "src/parser.y" // lalr1.cc:847
+#line 396 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1400 "src/parser.cpp" // lalr1.cc:847
+#line 1404 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 103:
-#line 395 "src/parser.y" // lalr1.cc:847
+#line 399 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1406 "src/parser.cpp" // lalr1.cc:847
+#line 1410 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 104:
-#line 396 "src/parser.y" // lalr1.cc:847
+#line 400 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1412 "src/parser.cpp" // lalr1.cc:847
+#line 1416 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 105:
-#line 399 "src/parser.y" // lalr1.cc:847
+#line 403 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = NULL; }
-#line 1418 "src/parser.cpp" // lalr1.cc:847
+#line 1422 "src/parser.cpp" // lalr1.cc:847
     break;
 
   case 106:
-#line 400 "src/parser.y" // lalr1.cc:847
+#line 404 "src/parser.y" // lalr1.cc:847
     { yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > (); }
-#line 1424 "src/parser.cpp" // lalr1.cc:847
+#line 1428 "src/parser.cpp" // lalr1.cc:847
     break;
 
 
-#line 1428 "src/parser.cpp" // lalr1.cc:847
+#line 1432 "src/parser.cpp" // lalr1.cc:847
             default:
               break;
             }
@@ -1926,16 +1930,16 @@ namespace yy {
   parser::yyrline_[] =
   {
        0,    50,    50,    51,    59,    62,    67,    68,    72,    79,
-      84,    97,   134,   140,   145,   146,   149,   153,   156,   164,
-     174,   175,   180,   187,   198,   208,   209,   210,   211,   212,
-     217,   218,   219,   220,   221,   222,   223,   224,   225,   226,
-     227,   228,   229,   230,   231,   232,   233,   234,   235,   236,
-     237,   238,   241,   242,   243,   246,   252,   259,   260,   261,
-     269,   272,   280,   285,   288,   291,   302,   307,   312,   315,
-     316,   319,   320,   326,   327,   330,   331,   337,   338,   341,
-     342,   351,   352,   355,   356,   359,   360,   363,   364,   367,
-     368,   371,   372,   375,   376,   379,   380,   383,   384,   387,
-     388,   391,   392,   395,   396,   399,   400
+      84,    97,   134,   140,   145,   150,   153,   157,   160,   168,
+     178,   179,   184,   191,   202,   212,   213,   214,   215,   216,
+     221,   222,   223,   224,   225,   226,   227,   228,   229,   230,
+     231,   232,   233,   234,   235,   236,   237,   238,   239,   240,
+     241,   242,   245,   246,   247,   250,   256,   263,   264,   265,
+     273,   276,   284,   289,   292,   295,   306,   311,   316,   319,
+     320,   323,   324,   330,   331,   334,   335,   341,   342,   345,
+     346,   355,   356,   359,   360,   363,   364,   367,   368,   371,
+     372,   375,   376,   379,   380,   383,   384,   387,   388,   391,
+     392,   395,   396,   399,   400,   403,   404
   };
 
   // Print the state stack on the debug stream.
@@ -1970,4 +1974,4 @@ namespace yy {
 
 
 } // yy
-#line 1974 "src/parser.cpp" // lalr1.cc:1155
+#line 1978 "src/parser.cpp" // lalr1.cc:1155
