@@ -40,7 +40,6 @@ std::string Node::getType()
         case Node::Type::VariableList:    return "VariableList";
         case Node::Type::FunctionName:    return "FunctionName";
         case Node::Type::FunctionCall:    return "FunctionCall";
-        case Node::Type::FunctionBody:    return "FunctionBody";
         case Node::Type::Function:        return "Function";
         case Node::Type::MemberFunction:  return "MemberFunction";
         case Node::Type::ListName:        return "ListName";
