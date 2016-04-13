@@ -29,7 +29,6 @@ std::string Binop::getType()
     }
 }
 
-//! @remark This small limits expressions to integers
 bool Binop::execute(Environment& env)
 {
   switch (this->type) {

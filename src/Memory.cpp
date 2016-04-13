@@ -34,7 +34,7 @@ Memory::Memory(std::string value, bool local) : Node()
 Memory::Memory(Node* func, bool local) : Node()
 {
     if (debug)
-        std::cout << " + Creating new Function " << " ( " << this << " )" << std::endl;
+        std::cout << " + Creating new Function " << " ( " << func << " )" << std::endl;
  	this->type = Type::Function;
  	this->func = func;
  	this->local = local;
@@ -44,8 +44,8 @@ Memory::~Memory()
 {
     if (debug)
         std::cout << " - Deleting memory " << getType() << " ( " << this << " )" << std::endl;
-    //if (this->func != NULL)
-    //    delete this->func;
+    if (this->func != NULL)
+        delete this->func;
 }
 
 std::string Memory::getType()

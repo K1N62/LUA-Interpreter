@@ -37,23 +37,23 @@ public:
   //! @todo implement local functions and namelists
   enum Type {
     Undefined,
-    ExpressionList, //! @todo Implement this
-    VariableList, //! @todo Implement this
+    ExpressionList,     //! @todo Implement this
+    VariableList,       //! @todo Implement this
     FunctionName,
     FunctionCall,
     FunctionBody,
-    MemberFunction, //! @todo Implement this
-    ListName, //! @todo Implement this
+    MemberFunction,     //! @todo Implement this
+    ListName,           //! @todo Implement this
     Stat,
-    Field, //! @todo Implement this
-    FieldElement, //! @todo Implement this
-    DoubleDot, //! @todo Implement this
+    Field,              //! @todo Implement this
+    FieldElement,       //! @todo Implement this
+    DoubleDot,          //! @todo Implement this
     Hash,
-    Negate, //! @todo Implement this
+    Negate,             //! @todo Implement this
     Name,
-    Tridot, //! @todo Implement this
-    Return, //! @todo Implement this
-    Do,      //! @todo Implement this
+    Tridot,             //! @todo Implement this
+    Return,             //! @todo Implement this
+    Do,                 //! @todo Implement this
     Test
   };
 

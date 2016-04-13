@@ -43,12 +43,12 @@ int Environment::write(std::string name, Memory* memory, bool local)
       try {
         // Check if key dosen't exists
         if ( this->memory.find(name) == this->memory.end() ) {
-          #if (DEBUG)
-          if (memory->getType() == "Function")
-            std::cout << " -> Writing to " << name << " = " << memory << " -> " << memory->getFunc() << " in: " << this << std::endl;
-          else
-            std::cout << " -> Writing to " << name << " = " << memory << " in: " << this << std::endl;
-          #endif
+          if (debug) {
+              if (memory->getType() == "Function")
+                std::cout << " -> Writing to " << name << " = " << memory << " -> " << memory->getFunc() << " in: " << this << std::endl;
+              else
+                std::cout << " -> Writing to " << name << " = " << memory << " in: " << this << std::endl;
+          }
           KEY = memory;
         }
         // Else delete old value and then write
@@ -56,12 +56,12 @@ int Environment::write(std::string name, Memory* memory, bool local)
           if (KEY != NULL)
             delete KEY;
 
-          #if (DEBUG)
+          if (debug) {
             if (memory->getType() == "Function")
               std::cout << " -> Writing to " << name << " = " << memory << " -> " << memory->getFunc() << " in: " << this << std::endl;
             else
               std::cout << " -> Writing to " << name << " = " << memory << " in: " << this << std::endl;
-          #endif
+          }
           KEY = memory;
         }
       } catch (std::exception& e) {
