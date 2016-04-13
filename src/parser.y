@@ -143,7 +143,7 @@ stat          : varlist EQ explist                                  {
                                                                       $$->addChild($3);
                                                                     }
               | LOCAL FUNC NAME funcbody                            {
-                                                                      $$ = new Node(Node::Type::Function, true);
+                                                                      $$ = new Node(Node::Type::FunctionBody, true);
                                                                       $$->addChild(new Node(Node::Type::Name, $3));
                                                                       $$->addChild($4);
                                                                     }
@@ -174,11 +174,12 @@ funcname      : NAME rep_func_name opt_name                         {
               ;
 
 funcbody      : PAROPN opt_parlist PARCLS block _END                {
-                                                                        Node* f = new Node(Node::Type::Function);
+                                                                        Node* f = new Node(Node::Type::FunctionBody);
                                                                         if ($2 != NULL )
                                                                             f->addChild($2);
                                                                         f->addChild($4);
                                                                         $$ = new Memory(f);
+                                                                        $$->addChild(f);
                                                                     }
               ;
 

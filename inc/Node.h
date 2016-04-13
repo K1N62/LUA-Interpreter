@@ -41,7 +41,7 @@ public:
     VariableList, //! @todo Implement this
     FunctionName,
     FunctionCall,
-    Function,
+    FunctionBody,
     MemberFunction, //! @todo Implement this
     ListName, //! @todo Implement this
     Stat,

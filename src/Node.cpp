@@ -40,7 +40,7 @@ std::string Node::getType()
         case Node::Type::VariableList:    return "VariableList";
         case Node::Type::FunctionName:    return "FunctionName";
         case Node::Type::FunctionCall:    return "FunctionCall";
-        case Node::Type::Function:        return "Function";
+        case Node::Type::FunctionBody:    return "FunctionBody";
         case Node::Type::MemberFunction:  return "MemberFunction";
         case Node::Type::ListName:        return "ListName";
         case Node::Type::Stat:            return "Stat";
@@ -109,7 +109,7 @@ int Node::moveToFront()
 bool Node::execute(Environment& env)
 {
   switch (this->type) {
-    case Function:
+    case FunctionBody:
       if (debug)
         std::cout << " $ Executing function ( " << this << " )" << std::endl;
       this->size() == 1 ? EXEC_LEFT : EXEC_RIGHT;
