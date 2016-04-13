@@ -4,7 +4,7 @@
 Memory::Memory() : Node()
 {
     if (debug)
-        std::cout << " + Creating new Nil " << " ( " << this << " )" << std::endl;
+        std::cout << " + Creating new FieldList " << " ( " << this << " )" << std::endl;
     this->type = Type::FieldList;
     this->func = NULL;
 }
@@ -42,8 +42,10 @@ Memory::Memory(Node* func, bool local) : Node()
 
 Memory::~Memory()
 {
-  if (debug)
-    std::cout << " - Deleting memory " << getType() << " ( " << this << " )" << std::endl;
+    if (debug)
+        std::cout << " - Deleting memory " << getType() << " ( " << this << " )" << std::endl;
+    //if (this->func != NULL)
+    //    delete this->func;
 }
 
 std::string Memory::getType()

@@ -71,6 +71,7 @@ int Node::print(int id, std::ofstream& file)
 
   // Print this tag
   #if PRINT_LEAF_VALUES
+  //! @bug doesnt print functions because they are leap nodes
     if (this->children.size() == 0) {
       file << this->id << " " << "[label=\"" << this->value << "\"]" << std::endl;
     } else {
@@ -90,7 +91,7 @@ int Node::print(int id, std::ofstream& file)
 Node* Node::getChild(unsigned int i)
 {
   if ( i > this->children.size() - 1 || this->children.size() == 0 )
-    return new Node();
+    return NULL;
 
   return this->children[i];
 }

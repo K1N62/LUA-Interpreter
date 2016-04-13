@@ -116,10 +116,8 @@ int main(int argc, char **argv)
     if (graph.is_open()) {
       // print header
       graph << "digraph {" << endl;
-
       // Print graph
       root->print(0, graph);
-
       // print footer
       graph << "}" << endl;
       //close graph
