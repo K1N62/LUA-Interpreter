@@ -36,6 +36,7 @@ Memory::Memory(Node* func, bool local) : Node()
     if (debug)
         std::cout << " + Creating new Function " << " ( " << func << " )" << std::endl;
  	this->type = Type::Function;
+    this->value = "*func";
  	this->func = func;
  	this->local = local;
 }
@@ -66,11 +67,9 @@ bool Memory::execute(Environment& env)
 {
     switch (this->type) {
         case Function:
-            if (this->func != NULL) {
-                if (debug)
-                        std::cout << " $ Executing function ( " << this << " )" << std::endl;
+            if (this->func != NULL)
                 return this->func->execute(env);
-            } else
+            else
                 throw Error("Tried to execute null function");
 
         default:
@@ -86,7 +85,7 @@ int Memory::evalInt(Environment& env)
     case String:    return stoi(this->str);
 
   default:
-    throw Error("Tried to evaluate invalid integer value from constant");
+    throw Error("Tried to evaluate invalid integer value");
   }
 }
 
@@ -96,9 +95,10 @@ std::string Memory::evalStr(Environment& env)
     case Nil:       return "";
     case Number:    return std::to_string(this->integer);
     case String:    return this->str;
+    case Function:  return this->func->getValue();
 
   default:
-    throw Error("Tried to evaluate invalid string value from constant");
+    throw Error("Tried to evaluate invalid string value");
   }
 }
 
@@ -108,8 +108,9 @@ unsigned int Memory::length()
     case Nil:       return 0;
     case String:    return this->str.length();
     case FieldList: return this->size();
+    case Function:  return this->func->size();
 
   default:
-    throw Error("Tried to evaluate invalid string value from constant");
+    throw Error("Tried to evaluate invalid string value");
   }
 }

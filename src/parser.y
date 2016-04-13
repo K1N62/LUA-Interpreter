@@ -148,9 +148,11 @@ stat          : varlist EQ explist                                  {
                                                                       $$->addChild($4);
                                                                     }
               | LOCAL namelist opt_eq                               {
-                                                                      $$ = $2;
-                                                                      $2->setLocal(true);
-                                                                      $2->addChild($3);
+                                                                        $$ = new Binop(Binop::Type::Equal);
+                                                                        $2->getChild(0)->setLocal(true);
+                                                                        $2->transferChildren($$);
+                                                                        $$->addChild($3);
+                                                                        delete $2;
                                                                     }
               ;
 
@@ -179,7 +181,6 @@ funcbody      : PAROPN opt_parlist PARCLS block _END                {
                                                                             f->addChild($2);
                                                                         f->addChild($4);
                                                                         $$ = new Memory(f);
-                                                                        $$->addChild(f);
                                                                     }
               ;
 

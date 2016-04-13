@@ -43,12 +43,14 @@ int Environment::write(std::string name, Memory* memory, bool local)
       try {
         // Check if key dosen't exists
         if ( this->memory.find(name) == this->memory.end() ) {
+
           if (debug) {
               if (memory->getType() == "Function")
                 std::cout << " -> Writing to " << name << " = " << memory << " -> " << memory->getFunc() << " in: " << this << std::endl;
               else
                 std::cout << " -> Writing to " << name << " = " << memory << " in: " << this << std::endl;
           }
+
           KEY = memory;
         }
         // Else delete old value and then write
@@ -62,6 +64,7 @@ int Environment::write(std::string name, Memory* memory, bool local)
             else
               std::cout << " -> Writing to " << name << " = " << memory << " in: " << this << std::endl;
           }
+
           KEY = memory;
         }
       } catch (std::exception& e) {
@@ -77,19 +80,24 @@ int Environment::write(std::string name, Memory* memory, bool local)
   return 0;
 }
 
+//! This is shit
 int Environment::write(std::string name, Node* node, bool local)
 {
   // Check if node is of Memory type already
   //! @remark Really ugly this one is
   if (node->getType() == "Number"   ||
       node->getType() == "String"   ||
-      node->getType() == "Function" ||
+      node->getType() == "Function"  ||
       node->getType() == "FieldList"  ) {
+    if (debug)
+        std::cout << " ! Converting shitty Node to Memory " << std::endl;
     // Make copy of node
-    Memory* mem = new Memory();
+    Memory* mem = new Memory(); // Memory leaks?
     *mem = *dynamic_cast<Memory*>(node);
     return this->write(name, mem, local);
   } else {
+    if (debug)
+        std::cout << " ! Creating fake Memory to store expression results " << std::endl;
     // else assume it's an expression with numbers
     Memory* mem = new Memory(node->evalInt(*this));
     return this->write(name, mem, local);

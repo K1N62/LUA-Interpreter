@@ -62,9 +62,12 @@ std::string Node::getType()
 
 int Node::print(int id, std::ofstream& file)
 {
-  // Print children first to get correct id order
-  for (auto child : this->children)
-    id = child->print(id, file);
+    // Print children first to get correct id order
+    if (this->getType() == "Function")
+        id = dynamic_cast<Memory*>(this)->getFunc()->print(id, file);
+    else
+        for (auto child : this->children)
+            id = child->print(id, file);
 
   // Grab this id
   this->id = ++id;
@@ -153,7 +156,7 @@ bool Node::execute(Environment& env)
         }
 
         if (debug)
-          std::cout << " -=[ Calling: " << LEFT->value << " ]=-" << std::endl;
+          std::cout << " -=[ Calling: " << LEFT->value << " ( " << LEFT << " ) ]=-" << std::endl;
         // Execute function
         func->execute(f); // @bug don't work with memberfunction
       }
