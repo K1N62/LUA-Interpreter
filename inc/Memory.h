@@ -10,11 +10,11 @@ class Memory : public Node {
 public:
   //! Defines types of Memory
   enum Type {
-    Nil,
-    Number,
-    String,
-    Function,
-    FieldList
+      Nil,
+      Number,
+      String,
+      Function,
+      Variable,
   };
   //! @todo fix Fieldlist, ex. local and function calls
   // Constructors
@@ -26,17 +26,17 @@ public:
   * @param value integer value of the node
   * @param local Bool True if defined in local namespace
   */
-  Memory(int value, bool local = false);
+  Memory(int value);
   /** Constructor with string type
   * @param value string value of the node
   * @param local Bool True if defined in local namespace
   */
-  Memory(std::string value, bool local = false);
+  Memory(std::string value, bool isConstant = false);
   /** Constructor with function type
   * @param func Node* value of the node
   * @param local Bool True if defined in local namespace
   */
-  Memory(Node* func, bool local = false);
+  Memory(Node* func);
   //! Default destructor
   virtual ~Memory();
 
@@ -47,6 +47,11 @@ public:
   * @return bool true if node did execute
   */
   bool execute(Environment& env);
+  /** Evaluate value of node
+  * @param env current Environment
+  * @return Memory* Pointer to memory with value of node
+  */
+  Memory* eval(Environment& env);
   /** Evaluate integer of the Memory
   * @param env current Environment
   * @return integer value of the node
@@ -75,9 +80,7 @@ public:
   std::string getStr() { return this->str; }
   /** Get length of Memory
   * @return unsigned int length of Memory
-  * @remark length of list returns number of elements in list
-  * @remark length of string returns number of characters in string
-  * @remark length of integer & function throws an exception
+  * @remark Depends on type
   */
   unsigned int length();
 

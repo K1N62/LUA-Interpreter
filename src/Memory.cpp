@@ -1,44 +1,43 @@
 
 #include "Memory.h"
+#include "Environment.h"
 
 Memory::Memory() : Node()
 {
-    if (debug)
-        std::cout << " + Creating new FieldList " << " ( " << this << " )" << std::endl;
-    this->type = Type::FieldList;
+    this->type = Type::Nil;
+    this->str = "";
+    this->integer = 0;
     this->func = NULL;
 }
 
-Memory::Memory(int value, bool local) : Node()
+Memory::Memory(int value) : Node()
 {
     if (debug)
         std::cout << " + Creating new Integer " << " ( " << this << " )" << std::endl;
     this->type = Type::Number;
+    this->str = std::to_string(value);
     this->integer = value;
-    this->value = std::to_string(value);
-    this->local = local;
     this->func = NULL;
 }
 
-Memory::Memory(std::string value, bool local) : Node()
+Memory::Memory(std::string value, bool isConstant) : Node()
 {
     if (debug)
         std::cout << " + Creating new String " << " ( " << this << " )" << std::endl;
-    this->type = Type::String;
-    this->value = value;
+    this->type = isConstant ? Type::String : Type::Variable;
     this->str = value;
-    this->local = local;
+    this->integer = 0;
     this->func = NULL;
 }
 
-Memory::Memory(Node* func, bool local) : Node()
+Memory::Memory(Node* func) : Node()
 {
     if (debug)
         std::cout << " + Creating new Function " << " ( " << func << " )" << std::endl;
  	this->type = Type::Function;
-    this->value = "*func";
+    this->str = "*func";
+    this->integer = 0;
  	this->func = func;
- 	this->local = local;
 }
 
 Memory::~Memory()
@@ -56,7 +55,7 @@ std::string Memory::getType()
     case Number:        return "Number";
     case String:        return "String";
     case Function:      return "Function";
-    case FieldList:     return "FieldList";
+    case Variable:      return "Variable";
 
     default:
       return "Undefined";
@@ -77,29 +76,46 @@ bool Memory::execute(Environment& env)
     }
 }
 
+Memory* Memory::eval(Environment& env)
+{
+    Memory* m;
+    switch (this->type) {
+        case Variable:
+            m = new Memory();
+            *m = *env.read(this->str);
+            return m;
+        case Nil:           return new Memory("Nil");
+        case Number:        return new Memory(this->integer);
+        case String:        return new Memory(this->str);
+        case Function:      return new Memory(this->func);
+
+        default:
+            return NULL;
+    }
+}
+
 int Memory::evalInt(Environment& env)
 {
-  switch (this->type) {
-    case Nil:       return 0;
-    case Number:    return this->integer;
-    case String:    return stoi(this->str);
+    return this->integer;
+    switch (this->type) {
+        case Variable:
+            return env.read(this->str)->evalInt(env);
 
-  default:
-    throw Error("Tried to evaluate invalid integer value");
-  }
+        default:
+            return this->integer;
+    }
 }
 
 std::string Memory::evalStr(Environment& env)
 {
-  switch (this->type) {
-    case Nil:       return "";
-    case Number:    return std::to_string(this->integer);
-    case String:    return this->str;
-    case Function:  return this->func->getValue();
+    return this->str;
+    switch (this->type) {
+        case Variable:
+            return env.read(this->str)->evalStr(env);
 
-  default:
-    throw Error("Tried to evaluate invalid string value");
-  }
+        default:
+            return this->str;
+    }
 }
 
 unsigned int Memory::length()
@@ -107,10 +123,10 @@ unsigned int Memory::length()
   switch (this->type) {
     case Nil:       return 0;
     case String:    return this->str.length();
-    case FieldList: return this->size();
     case Function:  return this->func->size();
+    case Number:    return sizeof(this->integer);
 
   default:
-    throw Error("Tried to evaluate invalid string value");
+    throw Error("Tried to evaluate invalid length");
   }
 }

@@ -117,7 +117,7 @@ int main(int argc, char **argv)
       // Print header
       graph << "digraph {" << endl;
       // Print graph
-      root->print(0, graph);
+      root->print(0, graph, env);
       // Print footer
       graph << "}" << endl;
       //close graph

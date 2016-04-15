@@ -35,7 +35,7 @@ class Environment {
     * @param Memory* mem pointer to memory
     * @return int 0 if success
     */
-    int write(std::string name, Memory* memory, bool local = false);
+    int write(std::string name, Memory* m, bool local = false);
     /** Writes to memory
     * @param string name identifier
     * @param Node* node pointer that needs evaluation
