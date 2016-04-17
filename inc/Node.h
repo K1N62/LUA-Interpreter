@@ -4,17 +4,14 @@
 #define FALSE           0
 #define LEFT            this->children[0]
 #define RIGHT           this->children[1]
-#define VAL_LEFT        LEFT->getValue()
-#define VAL_RIGHT       RIGHT->getValue()
 #define EXEC_LEFT       LEFT->execute(env)
 #define EXEC_RIGHT      RIGHT->execute(env)
+#define EVAL_LEFT       LEFT->eval(env)
+#define EVAL_RIGHT      RIGHT->eval(env)
 #define EVAL_INT_LEFT   LEFT->evalInt(env)
 #define EVAL_INT_RIGHT  RIGHT->evalInt(env)
 #define EVAL_STR_LEFT   LEFT->evalStr(env)
 #define EVAL_STR_RIGHT  RIGHT->evalStr(env)
-
-// Settings
-#define PRINT_LEAF_VALUES true
 
 // Includes
 #include <string>
@@ -27,6 +24,7 @@
 extern bool debug;
 
 class Environment;
+class Memory;
 
 /** Builds a tree-node structure
 * @author Jim Ahlstrand
@@ -50,11 +48,10 @@ public:
     DoubleDot,          //! @todo Implement this
     Hash,
     Negate,             //! @todo Implement this
-    Name,
     Tridot,             //! @todo Implement this
     Return,             //! @todo Implement this
     Do,                 //! @todo Implement this
-    Test
+    Test,
   };
 
   // Constructors
@@ -63,14 +60,8 @@ public:
   Node();
   /** Constructor with type
   * @param type Node type of enum Type
-  * @param local Bool True if defined in local namespace
   */
-  Node(Type type, bool local = false);
-  /** Constructor with type and value
-  * @param type Node type of enum Type
-  * @param value String value of the node
-  */
-  Node(Type type, std::string value, bool local = false);
+  Node(Type type);
   //! Default destructor
   virtual ~Node();
 
@@ -81,7 +72,7 @@ public:
   * @param file ofstream file handler
   * @return id integer of this node id
   */
-  int print(int id, std::ofstream& file);
+  int print(int id, std::ofstream& file, Environment& env);
   /** Adds a child to the node
   * @param child Node child to add
   * @return 0 on success else error
@@ -127,6 +118,12 @@ public:
   * @return bool true if node did execute
   */
   virtual bool execute(Environment& env);
+  /** Evaluate value of node
+  * @remark It's the callers responsiblility to delete the returned memory
+  * @param env current Environment
+  * @return Memory* Pointer to memory with value of node
+  */
+  virtual Memory* eval(Environment& env);
   /** Evaluate integer value of the Node
   * @param env current Environment
   * @return integer value of the node
@@ -141,10 +138,6 @@ public:
   * @return string type of the node
   */
   virtual std::string getType();
-  /** Gets the nodes value.
-  * @return string value of the node
-  */
-  std::string getValue() { return this->value; }
 
 protected:
   // Properties
@@ -155,8 +148,6 @@ protected:
   bool local;
   //! Node type
   Type type;
-  //! Node value
-  std::string value;
   //! The children connected to the node
   std::vector<Node*> children;
 };

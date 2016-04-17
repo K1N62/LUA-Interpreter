@@ -21,19 +21,19 @@ Environment::Environment(Environment* parent)
 
 Environment::~Environment()
 {
-  if (debug)
-    std::cout << " - Deleting environment: " << this << std::endl;
-
-  for (std::map<std::string, Memory*>::iterator it = this->memory.begin(); it != this->memory.end(); it++)
-    if (it->second != NULL)
-      delete it->second;
+    if (debug)
+        std::cout << " - Deleting environment: " << this << std::endl;
+        
+    for (std::map<std::string, Memory*>::iterator it = this->memory.begin(); it != this->memory.end(); it++)
+        if (it->second != NULL)
+            delete it->second;
 }
 
-int Environment::write(std::string name, Memory* memory, bool local)
+int Environment::write(std::string name, Memory* m, bool local)
 {
   // return is a special case, always global
   if (name == "return" && this->parent != NULL) {
-    return this->parent->write(name, memory);
+    return this->parent->write(name, m);
   } else {
     // If varibale is found in this scope consider it local
     if (this->memory.find(name) != this->memory.end())
@@ -43,15 +43,13 @@ int Environment::write(std::string name, Memory* memory, bool local)
       try {
         // Check if key dosen't exists
         if ( this->memory.find(name) == this->memory.end() ) {
-
           if (debug) {
-              if (memory->getType() == "Function")
-                std::cout << " -> Writing to " << name << " = " << memory << " -> " << memory->getFunc() << " in: " << this << std::endl;
+              if (m->getType() == "Function")
+                std::cout << " -> Writing to " << name << " = " << m << " -> " << m->getFunc() << " in: " << this << std::endl;
               else
-                std::cout << " -> Writing to " << name << " = " << memory << " in: " << this << std::endl;
+                std::cout << " -> Writing to " << name << " = " << m << " in: " << this << std::endl;
           }
-
-          KEY = memory;
+          KEY = m;
         }
         // Else delete old value and then write
         else {
@@ -59,13 +57,12 @@ int Environment::write(std::string name, Memory* memory, bool local)
             delete KEY;
 
           if (debug) {
-            if (memory->getType() == "Function")
-              std::cout << " -> Writing to " << name << " = " << memory << " -> " << memory->getFunc() << " in: " << this << std::endl;
+            if (m->getType() == "Function")
+              std::cout << " -> Writing to " << name << " = " << m << " -> " << m->getFunc() << " in: " << this << std::endl;
             else
-              std::cout << " -> Writing to " << name << " = " << memory << " in: " << this << std::endl;
+              std::cout << " -> Writing to " << name << " = " << m << " in: " << this << std::endl;
           }
-
-          KEY = memory;
+          KEY = m;
         }
       } catch (std::exception& e) {
         std::cerr << " ! Error: " << e.what() << std::endl;
@@ -73,35 +70,11 @@ int Environment::write(std::string name, Memory* memory, bool local)
       }
     } else {
       // Else write variable to the parent scope
-      return this->parent->write(name, memory);
+      return this->parent->write(name, m);
     }
   }
 
   return 0;
-}
-
-//! This is shit
-int Environment::write(std::string name, Node* node, bool local)
-{
-  // Check if node is of Memory type already
-  //! @remark Really ugly this one is
-  if (node->getType() == "Number"   ||
-      node->getType() == "String"   ||
-      node->getType() == "Function"  ||
-      node->getType() == "FieldList"  ) {
-    if (debug)
-        std::cout << " ! Converting shitty Node to Memory " << std::endl;
-    // Make copy of node
-    Memory* mem = new Memory(); // Memory leaks?
-    *mem = *dynamic_cast<Memory*>(node);
-    return this->write(name, mem, local);
-  } else {
-    if (debug)
-        std::cout << " ! Creating fake Memory to store expression results " << std::endl;
-    // else assume it's an expression with numbers
-    Memory* mem = new Memory(node->evalInt(*this));
-    return this->write(name, mem, local);
-  }
 }
 
 Memory* Environment::read(std::string name)
@@ -122,7 +95,7 @@ Memory* Environment::read(std::string name)
         }
       } else {
         // Key is not declared anywhere
-        throw Error("Variable not in scope: " + name);
+        return new Memory();
       }
     } else {
       if (debug)

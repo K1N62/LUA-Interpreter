@@ -1,19 +1,15 @@
 
 #include "Test.h"
+#include "Memory.h"
 
 Test::Test() : Node()
 {
   this->type = Type::Undefined;
-  this->value = "false";
 }
 
 Test::Test(Type type) : Node()
 {
   this->type = type;
-  if (type == Type::False)
-    this->value = "false";
-  else if (type == Type::True)
-    this->value = "true";
 }
 
 std::string Test::getType()

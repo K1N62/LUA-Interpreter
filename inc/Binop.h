@@ -38,6 +38,11 @@ public:
   * @return bool true if node did execute
   */
   bool execute(Environment& env);
+  /** Evaluate value of node
+   * @param env current Environment
+   * @return Memory* Pointer to memory with value of node
+   */
+  Memory* eval(Environment& env);
   /** Evaluate integer of the Binop
   * @param env current Environment
   * @return integer value of the node

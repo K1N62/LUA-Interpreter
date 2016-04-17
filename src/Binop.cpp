@@ -33,12 +33,17 @@ bool Binop::execute(Environment& env)
 {
   switch (this->type) {
     case Equal:
-      env.write(VAL_LEFT, RIGHT, LEFT->getLocal());
-      return true;
+        env.write(EVAL_STR_LEFT, EVAL_RIGHT, LEFT->getLocal());
+        return true;
 
   default:
     throw Error("Tried to execute invalid binary operation");
   }
+}
+
+Memory* Binop::eval(Environment& env)
+{
+  return new Memory(this->evalInt(env));
 }
 
 int Binop::evalInt(Environment& env)
@@ -50,7 +55,8 @@ int Binop::evalInt(Environment& env)
     case Multiplication:    return EVAL_INT_LEFT * EVAL_INT_RIGHT;
     case Power:             return pow(EVAL_INT_LEFT, EVAL_INT_RIGHT);
     case Modulo:            return EVAL_INT_LEFT % EVAL_INT_RIGHT;
-  default:                  throw Error("Tried to evaluate invalid integer value from binary operation");
+  default:
+    throw Error("Tried to evaluate invalid integer value from binary operation");
   }
 }
 
