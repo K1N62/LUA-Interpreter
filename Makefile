@@ -15,7 +15,7 @@ PROG			= $(BIN)/interpreter
 
 # Flags
 LDFLAGS		=
-CFLAGS 		= -c -std=c++11 -g -m64 -L$(LIB) -I$(INC)
+CFLAGS 		= -c -std=c++11 -Wall -g -m64 -L$(LIB) -I$(INC)
 
 LEX				= scanner
 BISON 		= parser

@@ -117,7 +117,7 @@ bool Node::execute(Environment& env)
             Memory* mem = new Memory(tmp);
             env.write("return", mem);
         } else if (EVAL_STR_RIGHT == "write" ) {
-            //! @bug don't output \n character
+            //! @bug doesn't output \n character
             std::cout << EVAL_STR_RIGHT;
           }
         }
