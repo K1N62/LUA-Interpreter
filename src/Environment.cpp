@@ -21,12 +21,12 @@ Environment::Environment(Environment* parent)
 
 Environment::~Environment()
 {
-  if (debug)
-    std::cout << " - Deleting environment: " << this << std::endl;
-
-  for (std::map<std::string, Memory*>::iterator it = this->memory.begin(); it != this->memory.end(); it++)
-    if (it->second != NULL)
-      delete it->second;
+    if (debug)
+        std::cout << " - Deleting environment: " << this << std::endl;
+        
+    for (std::map<std::string, Memory*>::iterator it = this->memory.begin(); it != this->memory.end(); it++)
+        if (it->second != NULL)
+            delete it->second;
 }
 
 int Environment::write(std::string name, Memory* m, bool local)
@@ -95,7 +95,7 @@ Memory* Environment::read(std::string name)
         }
       } else {
         // Key is not declared anywhere
-        throw Error("Variable not in scope: " + name);
+        return new Memory();
       }
     } else {
       if (debug)

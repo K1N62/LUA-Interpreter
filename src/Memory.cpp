@@ -5,7 +5,7 @@
 Memory::Memory() : Node()
 {
     this->type          = Type::Nil;
-    this->str           = "";
+    this->str           = "Nil";
     this->integer       = 0;
     this->func          = NULL;
 }
@@ -85,7 +85,7 @@ Memory* Memory::eval(Environment& env)
             m = new Memory();
             *m = *env.read(this->str);
             return m;
-        case Nil:           return new Memory("Nil");
+        case Nil:           return new Memory();
         case Number:        return new Memory(this->integer);
         case String:        return new Memory(this->str);
         case Function:      return new Memory(this->func, true);
