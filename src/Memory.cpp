@@ -88,7 +88,7 @@ Memory* Memory::eval(Environment& env)
         case Nil:           return new Memory("Nil");
         case Number:        return new Memory(this->integer);
         case String:        return new Memory(this->str);
-        case Function:      return new Memory(this->func);
+        case Function:      return new Memory(this->func, true);
 
         default:
             return NULL;
