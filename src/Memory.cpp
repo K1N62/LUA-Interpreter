@@ -4,47 +4,48 @@
 
 Memory::Memory() : Node()
 {
-    this->type = Type::Nil;
-    this->str = "";
-    this->integer = 0;
-    this->func = NULL;
+    this->type          = Type::Nil;
+    this->str           = "";
+    this->integer       = 0;
+    this->func          = NULL;
 }
 
 Memory::Memory(int value) : Node()
 {
     if (debug)
         std::cout << " + Creating new Integer " << " ( " << this << " )" << std::endl;
-    this->type = Type::Number;
-    this->str = std::to_string(value);
-    this->integer = value;
-    this->func = NULL;
+    this->type          = Type::Number;
+    this->str           = std::to_string(value);
+    this->integer       = value;
+    this->func          = NULL;
 }
 
 Memory::Memory(std::string value, bool isConstant) : Node()
 {
     if (debug)
         std::cout << " + Creating new String " << " ( " << this << " )" << std::endl;
-    this->type = isConstant ? Type::String : Type::Variable;
-    this->str = value;
-    this->integer = 0;
-    this->func = NULL;
+    this->type          = isConstant ? Type::String : Type::Variable;
+    this->str           = value;
+    this->integer       = 0;
+    this->func          = NULL;
 }
 
-Memory::Memory(Node* func) : Node()
+Memory::Memory(Node* func, bool isSoftLink) : Node()
 {
     if (debug)
         std::cout << " + Creating new Function " << " ( " << func << " )" << std::endl;
- 	this->type = Type::Function;
-    this->str = "*func";
-    this->integer = 0;
- 	this->func = func;
+ 	this->type          = Type::Function;
+    this->str           = "*func";
+    this->integer       = 0;
+ 	this->func          = func;
+ 	this->isSoftLink    = isSoftLink;
 }
 
 Memory::~Memory()
 {
     if (debug)
         std::cout << " - Deleting memory " << getType() << " ( " << this << " )" << std::endl;
-    if (this->func != NULL)
+    if (this->func != NULL && !this->isSoftLink)
         delete this->func;
 }
 

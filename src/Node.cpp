@@ -168,7 +168,14 @@ bool Node::execute(Environment& env)
 }
 
 Memory* Node::eval(Environment& env) {
-    return NULL;
+    switch (this->type) {
+        case FunctionCall:
+            this->execute(env);
+            return new Memory(env.read("return")->evalStr(env));
+
+        default:
+            return NULL;
+    }
 }
 
 int Node::evalInt(Environment& env) {

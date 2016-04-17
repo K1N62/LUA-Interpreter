@@ -24,19 +24,18 @@ public:
   Memory();
   /** Constructor with integer type
   * @param value integer value of the node
-  * @param local Bool True if defined in local namespace
   */
   Memory(int value);
   /** Constructor with string type
   * @param value string value of the node
-  * @param local Bool True if defined in local namespace
+  * @param isConstant Bool Is this string a constant or variable?
   */
   Memory(std::string value, bool isConstant = false);
   /** Constructor with function type
   * @param func Node* value of the node
-  * @param local Bool True if defined in local namespace
+  * @param isSoftLink Bool Determines if link to fuction is soft, that is if it shouldn't be handled by destructor
   */
-  Memory(Node* func);
+  Memory(Node* func, bool isSoftLink = false);
   //! Default destructor
   virtual ~Memory();
 
@@ -95,4 +94,6 @@ protected:
   std::string str;
   //! Function pointer
   Node* func;
+  //! Is function soft link
+  bool isSoftLink;
 };
