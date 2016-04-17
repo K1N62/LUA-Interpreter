@@ -33,16 +33,21 @@ std::string Test::getType()
 
 int Test::evalInt(Environment& env)
 {
+    Memory *l = EVAL_LEFT, *r = EVAL_RIGHT;
+    int left = l->evalInt(env), right = r->evalInt(env);
+    delete l;
+    delete r;
+
     switch (this->type) {
-        case LessThan:          return EVAL_INT_LEFT < EVAL_INT_RIGHT ? TRUE : FALSE;
-        case LessOrEqual:       return EVAL_INT_LEFT <= EVAL_INT_RIGHT ? TRUE : FALSE;
-        case GreaterThan:       return EVAL_INT_LEFT > EVAL_INT_RIGHT ? TRUE : FALSE;
-        case GreaterOrEqual:    return EVAL_INT_LEFT >= EVAL_INT_RIGHT ? TRUE : FALSE;
-        case EqualEqual:        return EVAL_INT_LEFT == EVAL_INT_RIGHT ? TRUE : FALSE;
-        case NotEqual:          return EVAL_INT_LEFT != EVAL_INT_RIGHT ? TRUE : FALSE;
-        case And:               return EVAL_INT_LEFT && EVAL_INT_RIGHT ? TRUE : FALSE;
-        case Or:                return EVAL_INT_LEFT || EVAL_INT_RIGHT ? TRUE : FALSE;
-        case Not:               return !EVAL_INT_LEFT ? TRUE : FALSE;
+        case LessThan:          return left < right ? TRUE : FALSE;
+        case LessOrEqual:       return left <= right ? TRUE : FALSE;
+        case GreaterThan:       return left > right ? TRUE : FALSE;
+        case GreaterOrEqual:    return left >= right ? TRUE : FALSE;
+        case EqualEqual:        return left == right ? TRUE : FALSE;
+        case NotEqual:          return left != right ? TRUE : FALSE;
+        case And:               return left && right ? TRUE : FALSE;
+        case Or:                return left || right ? TRUE : FALSE;
+        case Not:               return !left ? TRUE : FALSE;
         case False:             return FALSE;
         case True:              return TRUE;
     default:                    throw Error("Invalid test case");
