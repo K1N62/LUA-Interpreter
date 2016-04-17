@@ -108,20 +108,21 @@ bool Node::execute(Environment& env)
           delete t;
       }
       else if (LEFT->getType() == "MemberFunction") {
-        if (EVAL_STR_LEFT == "io") {
-          if (EVAL_STR_RIGHT == "read" ) {
+        if (LEFT->getChild(0)->evalStr(env) == "io") {
+          if (LEFT->getChild(1)->evalStr(env) == "read" ) {
             std::string tmp;
             getline(std::cin, tmp);
             std::cin.clear();
             //! @remark Some flushing required?
             Memory* mem = new Memory(tmp);
             env.write("return", mem);
-        } else if (EVAL_STR_RIGHT == "write" ) {
-            //! @bug doesn't output \n character
+          } else if (LEFT->getChild(1)->evalStr(env) == "write" ) {
+            //! @bug doesn't output newline character
             std::cout << EVAL_STR_RIGHT;
           }
         }
-      } else {
+      }
+      else {
         Node* func = env.read(EVAL_STR_LEFT)->getFunc();
 
         // Make a new scope
@@ -129,7 +130,7 @@ bool Node::execute(Environment& env)
         if (debug)
           std::cout << " + Creating new Environment ( " << &f << " ) -> " << &env << std::endl;
 
-        //! @bug this does not include Nil values when no parameters were passed it assumes equal #params
+        //! @bug this does not include Nil values when no parameters were passed, it assumes equal #params
         //! @todo fix this mess
         // Do we have any parameters?
         Node* paramList = func->getChild(0);
@@ -146,7 +147,7 @@ bool Node::execute(Environment& env)
         if (debug)
           std::cout << " -=[ Calling: " << EVAL_STR_LEFT << " ( " << LEFT << " ) ]=-" << std::endl;
         // Execute function
-        func->execute(f); // @bug don't work with memberfunction
+        func->execute(f); //! @bug don't work with memberfunction
       }
       return true;
     case Return:
@@ -203,8 +204,11 @@ std::string Node::evalStr(Environment& env) {
             break;
         }
         // If all numbers add some tabs between, else don't
-        for (auto child: this->children)
-          tmp += allNumbers ? child->evalStr(env) + "\t" : child->evalStr(env);
+        for (auto child: this->children) {
+          Memory* m = child->eval(env);
+          tmp += allNumbers ? m->evalStr(env) + "\t" : m->evalStr(env);
+          delete m;
+        }
         return tmp;
       }
 

@@ -50,7 +50,7 @@ public:
     Hash,
     Negate,             //! @todo Implement this
     Tridot,             //! @todo Implement this
-    Return,             //! @todo Implement this
+    Return,
     Do,                 //! @todo Implement this
     Test,
   };

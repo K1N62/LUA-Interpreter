@@ -212,7 +212,7 @@ var           : NAME                                                { $$ = new M
               ;
 
 namelist      : NAME rep_list_name                                  {
-                                                                      if ($2->size() != 0) {
+                                                                      if ($2->size() > 0) {
                                                                         $$ = $2;
                                                                         $$->addChild(new Memory($1));
                                                                       } else {

@@ -882,7 +882,7 @@ namespace yy {
   case 24:
 #line 214 "src/parser.y" // lalr1.cc:847
     {
-                                                                      if (yystack_[0].value.as< Node* > ()->size() != 0) {
+                                                                      if (yystack_[0].value.as< Node* > ()->size() > 0) {
                                                                         yylhs.value.as< Node* > () = yystack_[0].value.as< Node* > ();
                                                                         yylhs.value.as< Node* > ()->addChild(new Memory(yystack_[1].value.as< string > ()));
                                                                       } else {

@@ -49,9 +49,6 @@ bison:
 # create libraries
 libr:
 
-# generate documentation
-docsconfig:
-	doxygen -g $(DOC)/doxy.conf
 docs:
 	doxygen $(DOC)/doxy.conf
 
