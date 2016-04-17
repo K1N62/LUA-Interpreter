@@ -119,6 +119,7 @@ public:
   */
   virtual bool execute(Environment& env);
   /** Evaluate value of node
+  * @remark It's the callers responsiblility to delete the returned memory
   * @param env current Environment
   * @return Memory* Pointer to memory with value of node
   */

@@ -132,15 +132,15 @@ bool Node::execute(Environment& env)
         //! @bug this does not include Nil values when no parameters were passed it assumes equal #params
         //! @todo fix this mess
         // Do we have any parameters?
-        if (func->size() == 2) {
-          Node* param = func->getChild(0)->getChild(0);
-          f.write(param->evalStr(env), EVAL_RIGHT, true);
-        } else if (func->size() > 2) {
-          Node* paramList = func->getChild(0);
-          // For each parameter get the value supplied in the call
-          for ( size_t i = 0; i < paramList->size(); i++) {
-            f.write(paramList->getChild(i)->evalStr(env), RIGHT->getChild(i+1)->eval(env), true);
-          }
+        Node* paramList = func->getChild(0);
+        if (paramList->size() == 1) {
+            Node* param = paramList->getChild(0);
+            f.write(param->evalStr(env), EVAL_RIGHT, true);
+        } else if (paramList->size() > 1) {
+            // For each parameter get the value supplied in the call
+            for ( size_t i = 0; i < paramList->size(); i++) {
+                f.write(paramList->getChild(i)->evalStr(env), RIGHT->getChild(i)->eval(env), true);
+            }
         }
 
         if (debug)
@@ -150,10 +150,10 @@ bool Node::execute(Environment& env)
       }
       return true;
     case Return:
-      env.write("return", EVAL_LEFT);
-      return true;
+        env.write("return", EVAL_LEFT);
+        return true;
     case Test:
-      return EVAL_INT_LEFT ? EXEC_RIGHT : false;
+        return EVAL_INT_LEFT ? EXEC_RIGHT : false;
 
     default:
       for (auto child : this->children) {
@@ -168,10 +168,13 @@ bool Node::execute(Environment& env)
 }
 
 Memory* Node::eval(Environment& env) {
+    Memory* m;
     switch (this->type) {
         case FunctionCall:
             this->execute(env);
-            return new Memory(env.read("return")->evalStr(env));
+            m = new Memory();
+            *m = *env.read("return");
+            return m;
 
         default:
             return NULL;
@@ -182,10 +185,6 @@ int Node::evalInt(Environment& env) {
   switch (this->type) {
       case Hash:  return env.read(EVAL_STR_LEFT)->length();
 
-      case FunctionCall:
-        this->execute(env);
-        return env.read("return")->evalInt(env);
-
       default:
         throw Error("Error: Tried to evaluate invalid integer value of node");
   }
@@ -193,9 +192,6 @@ int Node::evalInt(Environment& env) {
 
 std::string Node::evalStr(Environment& env) {
   switch (this->type) {
-      case FunctionCall:
-        this->execute(env);
-        return env.read("return")->evalStr(env);
       case ExpressionList:
       {
         std::string tmp = "";
