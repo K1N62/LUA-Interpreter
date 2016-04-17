@@ -47,6 +47,11 @@ class Environment {
     * @return integer value of the variable
     */
     Memory* read(std::string name);
+    /** Check if memory exists
+    * @param string name identifier
+    * @return bool, true if name is in memory
+    */
+    bool isReadable(std::string name) { return this->memory.find(name) != this->memory.end(); }
 
   private:
     // Properties

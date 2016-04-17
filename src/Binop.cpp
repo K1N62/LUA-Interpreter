@@ -48,13 +48,18 @@ Memory* Binop::eval(Environment& env)
 
 int Binop::evalInt(Environment& env)
 {
+  Memory *l = EVAL_LEFT, *r = EVAL_RIGHT;
+  int left = l->evalInt(env), right = r->evalInt(env);
+  delete l;
+  delete r;
+
   switch (this->type) {
-    case Addition:          return EVAL_INT_LEFT + EVAL_INT_RIGHT;
-    case Subtraction:       return EVAL_INT_LEFT - EVAL_INT_RIGHT;
-    case Division:          return EVAL_INT_LEFT / EVAL_INT_RIGHT;
-    case Multiplication:    return EVAL_INT_LEFT * EVAL_INT_RIGHT;
-    case Power:             return pow(EVAL_INT_LEFT, EVAL_INT_RIGHT);
-    case Modulo:            return EVAL_INT_LEFT % EVAL_INT_RIGHT;
+    case Addition:          return left + right;
+    case Subtraction:       return left - right;
+    case Division:          return left / right;
+    case Multiplication:    return left * right;
+    case Power:             return pow(left, right);
+    case Modulo:            return left % right;
   default:
     throw Error("Tried to evaluate invalid integer value from binary operation");
   }

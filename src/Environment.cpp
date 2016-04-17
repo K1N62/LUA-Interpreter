@@ -23,7 +23,7 @@ Environment::~Environment()
 {
     if (debug)
         std::cout << " - Deleting environment: " << this << std::endl;
-        
+
     for (std::map<std::string, Memory*>::iterator it = this->memory.begin(); it != this->memory.end(); it++)
         if (it->second != NULL)
             delete it->second;
@@ -42,7 +42,7 @@ int Environment::write(std::string name, Memory* m, bool local)
     if ( local || this->parent == NULL ) {
       try {
         // Check if key dosen't exists
-        if ( this->memory.find(name) == this->memory.end() ) {
+        if ( !this->isReadable(name) ) {
           if (debug) {
               if (m->getType() == "Function")
                 std::cout << " -> Writing to " << name << " = " << m << " -> " << m->getFunc() << " in: " << this << std::endl;
@@ -84,7 +84,7 @@ Memory* Environment::read(std::string name)
     return this->parent->read(name);
   } else {
     // Check if key dosen't exists then check parent
-    if ( this->memory.find(name) == this->memory.end() ) {
+    if ( !this->isReadable(name) ) {
       // Try to access variable from parent scope
       if ( this->parent != NULL ) {
         try {
@@ -95,7 +95,8 @@ Memory* Environment::read(std::string name)
         }
       } else {
         // Key is not declared anywhere
-        return new Memory();
+        //throw Error("Tried to access undeclared variable");
+        return new Memory(); //! @warning potential memoryleak
       }
     } else {
       if (debug)

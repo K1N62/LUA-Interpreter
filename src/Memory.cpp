@@ -98,25 +98,11 @@ Memory* Memory::eval(Environment& env)
 int Memory::evalInt(Environment& env)
 {
     return this->integer;
-    switch (this->type) {
-        case Variable:
-            return env.read(this->str)->evalInt(env);
-
-        default:
-            return this->integer;
-    }
 }
 
 std::string Memory::evalStr(Environment& env)
 {
     return this->str;
-    switch (this->type) {
-        case Variable:
-            return env.read(this->str)->evalStr(env);
-
-        default:
-            return this->str;
-    }
 }
 
 unsigned int Memory::length()
