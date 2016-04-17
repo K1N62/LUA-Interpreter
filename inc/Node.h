@@ -15,6 +15,7 @@
 
 // Includes
 #include <string>
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -83,6 +84,10 @@ public:
   * @return Node
   */
   Node* getChild(unsigned int i);
+  /** Reorders tha children in reverse
+  * @return void
+  */
+  void reverse() { std::reverse(this->children.begin(), this->children.end()); }
   /** Transfers children to parent
   * @param parent Node* pointer to the parent node
   * @return Node
