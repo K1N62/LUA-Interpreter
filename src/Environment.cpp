@@ -6,7 +6,7 @@
 Environment::Environment()
 {
   if (debug)
-    std::cout << " + Creating new Environment ( " << &f << " )" << std::endl;
+    std::cout << " + Creating new Environment ( " << this << " )" << std::endl;
 
   // Init return value
   this->memory["return"] = NULL;
@@ -17,7 +17,7 @@ Environment::Environment()
 Environment::Environment(Environment* parent)
 {
   if (debug)
-    std::cout << " + Creating new Environment ( " << &f << " ) -> " << &env << std::endl;
+    std::cout << " + Creating new Environment ( " << this << " ) -> " << parent << std::endl;
 
   // Init return value
   this->memory["return"] = NULL;
