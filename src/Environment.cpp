@@ -5,6 +5,9 @@
 
 Environment::Environment()
 {
+  if (debug)
+    std::cout << " + Creating new Environment ( " << this << " )" << std::endl;
+
   // Init return value
   this->memory["return"] = NULL;
   // Init parent scope
@@ -13,6 +16,9 @@ Environment::Environment()
 
 Environment::Environment(Environment* parent)
 {
+  if (debug)
+    std::cout << " + Creating new Environment ( " << this << " ) -> " << parent << std::endl;
+
   // Init return value
   this->memory["return"] = NULL;
   // Init parent scope

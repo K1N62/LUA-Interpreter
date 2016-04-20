@@ -52,7 +52,7 @@ public:
     Tridot,             //! @todo Implement this
     Return,
     Do,                 //! @todo Implement this
-    Test,
+    Test,               //! @remark should be restructured, moved to testclass?
   };
 
   // Constructors
@@ -143,10 +143,18 @@ public:
   * @return string type of the node
   */
   virtual std::string getType();
+  //! Set testFirst value
+  /**
+  * @param bool b testFirst value
+  * @return void
+  */
+  void setTestFirst(bool b) { this->testFirst = b; }
 
 protected:
   // Properties
   // ---------------------------------------
+  //! Test before or after execute?
+  bool testFirst;
   //! Node id
   int id;
   //! Localy defined

@@ -78,8 +78,11 @@ stat          : varlist EQ explist                                  {
                                                                     }
               | REP block UNTIL exp                                 {
                                                                       $$ = new Loop(Loop::Type::Repeat);
-                                                                      $$->addChild($2);
-                                                                      $$->addChild($4);
+                                                                      Node* t = new Node(Node::Type::Test);
+                                                                      t->setTestFirst(false);
+                                                                      t->addChild($4);
+                                                                      t->addChild($2);
+                                                                      $$->addChild(t);
                                                                     }
               | IF exp THEN block rep_elseif opt_else _END          {
                                                                       $$ = new Condition(Condition::Type::If);

@@ -1,14 +1,14 @@
 # LUA-Interpreter
 ![Build Status](https://travis-ci.org/K1N62/LUA-Interpreter.svg?branch=master)
 
-A fully-featured (kind of..) interpreter for LUA
+A not so fully featured and very slow interpreter for LUA
 
 ##Install
 Build the project with
 `make`
 
-To run it use
-`./bin/interpreter FILE`
+To run the interpreter use
+`./bin/interpreter path/to/lua/file`
 
 To create the parse three graph you need [graphviz](http://www.graphviz.org/) installed, then
 `make graph`

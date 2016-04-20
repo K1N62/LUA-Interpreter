@@ -27,15 +27,15 @@ bool Loop::execute(Environment& env)
 {
     // Make a new scope
     Environment f(&env);
-    if (debug)
-      std::cout << " + Creating new Environment ( " << &f << " ) -> " << &env << std::endl;
 
     switch (this->type) {
         case Repeat:
-            while (!EVAL_INT_RIGHT) LEFT->execute(f); //! @bug won't run first time if right isn't true
+            // Execute then test, testFirst flag is set in parser
+            while (!LEFT->execute(f));
             return true;
         case While:
-            while (EXEC_LEFT);
+            // Test then execute
+            while (LEFT->execute(f));
             return true;
         case For:
             return true;
