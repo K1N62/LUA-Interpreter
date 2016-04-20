@@ -137,8 +137,6 @@ bool Node::execute(Environment& env)
 
         // Make a new scope
         Environment f(&env);
-        if (debug)
-          std::cout << " + Creating new Environment ( " << &f << " ) -> " << &env << std::endl;
 
         //! @bug this does not include Nil values when no parameters were passed, it assumes equal #params
         //! @todo fix this mess

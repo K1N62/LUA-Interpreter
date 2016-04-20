@@ -27,8 +27,6 @@ bool Loop::execute(Environment& env)
 {
     // Make a new scope
     Environment f(&env);
-    if (debug)
-      std::cout << " + Creating new Environment ( " << &f << " ) -> " << &env << std::endl;
 
     switch (this->type) {
         case Repeat:
