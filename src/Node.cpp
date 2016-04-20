@@ -8,6 +8,7 @@ Node::Node()
   this->id = 0;
   this->type = Type::Undefined;
   this->local = false;
+  this->testFirst = true;
 }
 
 Node::Node(Type type)
@@ -15,6 +16,7 @@ Node::Node(Type type)
   this->id = 0;
   this->type = type;
   this->local = false;
+  this->testFirst = true;
 }
 
 Node::~Node()
@@ -162,7 +164,12 @@ bool Node::execute(Environment& env)
         env.write("return", EVAL_LEFT);
         return true;
     case Test:
-        return EVAL_INT_LEFT ? EXEC_RIGHT : false;
+        if (this->testFirst) {
+          return EVAL_INT_LEFT ? EXEC_RIGHT : false;
+        } else {
+          EXEC_RIGHT;
+          return EVAL_INT_LEFT ? true : false;
+        }
 
     default:
       for (auto child : this->children) {

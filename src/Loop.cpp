@@ -30,11 +30,12 @@ bool Loop::execute(Environment& env)
 
     switch (this->type) {
         case Repeat:
-            LEFT->execute(f);
-            while (!EVAL_INT_RIGHT) LEFT->execute(f);
+            // Execute then test, testFirst flag is set in parser
+            while (!LEFT->execute(f));
             return true;
         case While:
-            while (EXEC_LEFT);
+            // Test then execute
+            while (LEFT->execute(f));
             return true;
         case For:
             return true;
