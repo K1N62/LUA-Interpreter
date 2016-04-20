@@ -102,14 +102,11 @@ bool Node::execute(Environment& env)
       this->size() == 1 ? EXEC_LEFT : EXEC_RIGHT;
       return true;
     case FunctionCall:
-      if (EVAL_STR_LEFT == "print") {
-          Memory* t = EVAL_RIGHT;
-          std::cout << t->evalStr(env) << std::endl;
-          delete t;
-      }
-      else if (LEFT->getType() == "MemberFunction") {
+      if (LEFT->getType() == "MemberFunction") {
         if (LEFT->getChild(0)->evalStr(env) == "io") {
           if (LEFT->getChild(1)->evalStr(env) == "read" ) {
+            if (debug)
+              std::cout << " $ Reading " << std::endl;
             std::string tmp;
             getline(std::cin, tmp);
             std::cin.clear();
@@ -117,10 +114,23 @@ bool Node::execute(Environment& env)
             Memory* mem = new Memory(tmp);
             env.write("return", mem);
           } else if (LEFT->getChild(1)->evalStr(env) == "write" ) {
+            if (debug)
+              std::cout << " $ Writing " << std::endl;
             //! @bug doesn't output newline character
-            std::cout << EVAL_STR_RIGHT;
+            try {
+              std::cout << EVAL_STR_RIGHT;
+            } catch (std::exception& e) {
+              std::cerr << e.what() << std::endl;
+            }
           }
         }
+      }
+      else if (EVAL_STR_LEFT == "print") {
+        if (debug)
+          std::cout << " $ Printing " << std::endl;
+        Memory* t = EVAL_RIGHT;
+        std::cout << t->evalStr(env) << std::endl;
+        delete t;
       }
       else {
         Node* func = env.read(EVAL_STR_LEFT)->getFunc();
@@ -192,10 +202,19 @@ int Node::evalInt(Environment& env) {
 }
 
 std::string Node::evalStr(Environment& env) {
+  Memory* m;
+  std::string tmp;
+
   switch (this->type) {
+      case FunctionCall:
+        this->execute(env);
+        m = new Memory();
+        *m = *env.read("return");
+        tmp = m->evalStr(env);
+        delete m;
+        return tmp;
       case ExpressionList:
       {
-        std::string tmp = "";
         // Check if all numbers
         bool allNumbers = true;
         for (auto child: this->children) {
@@ -205,7 +224,7 @@ std::string Node::evalStr(Environment& env) {
         }
         // If all numbers add some tabs between, else don't
         for (auto child: this->children) {
-          Memory* m = child->eval(env);
+          m = child->eval(env);
           tmp += allNumbers ? m->evalStr(env) + "\t" : m->evalStr(env);
           delete m;
         }
